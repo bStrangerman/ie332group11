@@ -26,5 +26,5 @@ function crawl_page($url, $depth = 5)
   echo "URL:",$url,PHP_EOL,"<br />","CONTENT:",PHP_EOL,$dom->saveHTML(),PHP_EOL,PHP_EOL,"  <br /><br />";
 }
 
-crawl_page("http://www.loopnet.com/for-lease/west-lafayette-in/", 9);
+crawl_page("http://www.loopnet.com/for-lease/west-lafayette-in/?e=g", 9);
 ?>
