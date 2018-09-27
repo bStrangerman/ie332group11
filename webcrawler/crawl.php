@@ -1,30 +1,28 @@
 <?php
-function crawl_page($url, $depth = 5)
-{
-  static $seen = array();
-  if (isset($seen[$url]) || $depth === 0) {
-    return;
-  }
-
-  $seen[$url] = true;
-
-  $dom = new DOMDocument('1.0');
-  @$dom->loadHTMLFile($url);
-
-  $anchors = $dom->getElementsByTagName('a');
-  foreach ($anchors as $element) {
-    $href = $element->getAttribute('href');
-    if (0 !== strpos($href, 'http')) {
-       /* this is where I changed hobodave's code */
-        $host = "http://".parse_url($url,PHP_URL_HOST);
-        $href = $host. '/' . ltrim($href, '/');
+include_once('simple_html_dom.php');
+$html = new simple_html_dom();
+$url = "http://loopnet.com/"
+$target = "Listing/"
+if(isset($url){
+    $crawl = $target;
+    $find = "http://";
+    if(strpos($crawl,$find)!==false){
+    $html->load_file($crawl);
+    foreach($html->find('a') as $link)
+    {
+        if(strpos($link,"$crawl")!==false){
+            echo "<p class='links'>".$link->href."</p>";
+        }
+        else if(strpos($link,"http://")!==false || strpos($link,"https://")!==false){
+            echo "<p class='links'>".$link->href."</p>";
+        }
+        else{
+            echo "<p class='links'>"."$crawl/".$link->href."</p>";
+        }
     }
-    crawl_page($href, $depth - 1);
-  }
-
-  echo "New Page:<br /> ";
-  echo "URL:",$url,PHP_EOL,"<br />","CONTENT:",PHP_EOL,$dom->saveHTML(),PHP_EOL,PHP_EOL,"  <br /><br />";
+    }
+    else{
+        echo "Invalid URL";
+    }
 }
-
-crawl_page("http://www.loopnet.com/for-lease/west-lafayette-in/?e=g", 9);
 ?>
