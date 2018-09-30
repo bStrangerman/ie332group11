@@ -1,4 +1,5 @@
 Scheduling
+
 Pricing
   -Length of Lease
   -Distance
@@ -10,9 +11,53 @@ Best fit (Possible Solutions)
 Point Based System
   -Location
   -Customer Needs
+    -Climate Controlled, Outdoor, etc.
+    -Size
+      -Greedy Algorithm to decide if 1 or more are needed
   -Warehouse Owner Needs/ Constraints
+    -How many spaces?
+      -Split-able?
+        -Size per space/ Number of spaces based on total area
+        -Flexible?
   -Rating from Previous Customers
   -Decide if multiple warehouses are needed
-  -Size
-    -Greedy Algorithm to decide if 1 or more are needed
-    
+  -If no good solutions, choose next best solutions
+
+  ///////////////////////////////////////////////////////
+
+  Check the size on all warehouses
+    Remove FALSE size warehouses
+    if(size.warehouses[i] == sizeneeded)
+    {
+      warehousesleft <- c(warehousesleft, warehouse[i])
+    }
+  Check the Type on all TRUE size warehouses
+    Remove FALSE types warehouses
+    warehousesleft = NULL;
+    if(type.warehouses[i] == typeneeded)
+    {
+      warehousesleft <- c(warehousesleft, warehouse[i])
+    }
+
+Internal Quality Score:
+Needs:
+Location        | binary (if distance is met)        | int (sorted distances)
+Warehouse Type  | binary (if need is met)            |
+Size            | binary (if size is exceeded)       |
+Price           | binary (if price is reasonable)    | int (sorted ascending)
+Multiple Places | binary (if allowed)                |
+Amenities       | binary (if required)
+  -Loading Dock
+  -Provided moving services in warehouse
+  -Electricity
+  -Restrooms
+  -Secure
+  -Access 24x7
+
+Review Score:
+  -5 star System
+  -Comments
+  -binary (if meets minimum review rating)
+  -int (sort customer reviews)
+
+Figure out priorities for search
