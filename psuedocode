@@ -1,0 +1,18 @@
+Scheduling
+Pricing
+  -Length of Lease
+  -Distance
+  -Size
+  -Amenities
+  -Storage Type (Climate Controlled, Outdoor, etc.)
+
+Best fit (Possible Solutions)
+Point Based System
+  -Location
+  -Customer Needs
+  -Warehouse Owner Needs/ Constraints
+  -Rating from Previous Customers
+  -Decide if multiple warehouses are needed
+  -Size
+    -Greedy Algorithm to decide if 1 or more are needed
+    
