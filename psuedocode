@@ -80,3 +80,20 @@ Maybe sort by state regions, such as if I want California, the algorith will che
 
 Check Binaries
 Ranking
+
+
+Optimized Location Search:
+Customer inputs wanted location of warehouse('s)
+Filter only warehouses that are available during the requested dates
+Take state of desired location
+Keep only the desired state and a region of states around inputted state (e.g. IN will search OH, MI, IL, KY for warehouses)
+If the list of warehouses is less than a predefined amount (i.e. 50), search the bordering states of the original bordering states for new DISTINCT warehouses.
+e.g:
+OH: PA, WV, KY, IN
+KY: IN, OH, WV, VI, TN, IL
+IL: IN, KY, MISSOURI, IOWA, WI
+MI: WI, IL, IN, OH
+Continue until a large enough sample size exists
+Run the binary checks
+Use Google API to calculate distance between warehouse and desired location
+Sort on distance, customer rating, etc.
