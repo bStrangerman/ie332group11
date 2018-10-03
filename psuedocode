@@ -70,6 +70,13 @@ Review Score:
   -binary (if meets minimum review rating)
   -int (sort customer reviews)
 
-Brad
 
 Figure out priorities for search
+
+We want to optimize our code when we discover our code takes too long
+
+Maybe sort by state regions, such as if I want California, the algorith will check NV, OR, and AR before using the Google API.
+
+
+Check Binaries
+Ranking
