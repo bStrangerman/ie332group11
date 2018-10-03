@@ -23,6 +23,16 @@ Point Based System
   -Decide if multiple warehouses are needed
   -If no good solutions, choose next best solutions
 
+
+  <<<<<<<<<<<>>>>>>>>>>>>>
+  Customer inputs filtering requirements
+  Filter out unwanted locations
+  Filter out locations without needed warehouse requirements (type, amenities)
+  Decide if multiple warehouses are needed to meet size and find optimal solutions
+  Sort on price or quality score or customer ratings
+  Output all possible optimal solutions
+  <<<<<<<<<<<<>>>>>>>>>>>>>>
+
   ///////////////////////////////////////////////////////
 
   Check the size on all warehouses
