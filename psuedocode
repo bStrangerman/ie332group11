@@ -1,4 +1,10 @@
 Scheduling
+input of when lessee wants the warehouse
+SELECT calendar.StartDate, calendar.EndDate, spaces.Name
+FROM calendar, spaces
+WHERE calendar.SpaceId = spaces.SpaceID;
+Check if the warehouse is available during dates between end date and start date
+
 
 Pricing
   -Length of Lease
@@ -6,6 +12,8 @@ Pricing
   -Size
   -Amenities
   -Storage Type (Climate Controlled, Outdoor, etc.)
+
+** Price = Flat Fee + space price/sqft/mo * contracted space per type (sqft) * length of lease (months)
 
 Best fit (Possible Solutions)
 Point Based System
@@ -75,11 +83,22 @@ Figure out priorities for search
 
 We want to optimize our code when we discover our code takes too long
 
-Maybe sort by state regions, such as if I want California, the algorith will check NV, OR, and AR before using the Google API.
+Maybe sort by state regions, such as if I want California, the algorithm will check NV, OR, and AR before using the Google API.
 
 
-Check Binaries
-Ranking
+
+Good Pseudocode for Quality Check:
+Get input from lessee on warehouse types
+Verify all binary checks
+--Location
+--Warehouse Type
+--Size
+--Multiple Locations
+--Amenities
+--Available
+--Price
+If a warehouse passes a check make a new array with only those, run next check on new list
+
 
 
 Optimized Location Search:
