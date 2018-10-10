@@ -3,9 +3,9 @@
 $sql = "SELECT *
         FROM factors";
 
-$factor1 = 0;
+$factor1 = (1000>9000) ? 1 : 0;
 $factor2 = 0;
-$factor3 = 0;
+$factor3 = 1;
 $result = $conn->query($sql);
 echo "wID f1 &nbsp;&nbsp;f2 &nbsp;&nbsp;f3 <br>";
 echo "T" . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $factor1 . "&nbsp;&nbsp;&nbsp;&nbsp;" . $factor2 . "&nbsp;&nbsp;&nbsp;&nbsp;" . $factor3 . "<br>";

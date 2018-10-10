@@ -1,0 +1,39 @@
+Fetch the following items in a form/ query from the wanted client
+-Location
+-Distance Radius?
+-Size of the wanted space
+-Dates of Occupancy wanted
+-Checkbox asking if multiple spaces are ok on the basis of optimization of price, etc.
+-Dropdown of warehouse types including:
+--Frozen
+--Climate Controlled
+--Outside
+--Inside, No AC
+-Checklist of amenities including:
+--Loading Dock
+--Provided in-warehouse moving services
+--Electricity Dropdown
+--Restrooms
+--24x7 Access
+--Security Dropdown
+---Locker   (1)
+---Cameras  (2)
+---Guards   (3)
+POST the inputs into the matching algorithm
+
+Matching Algorithm
+-Take inputs from the customer query
+-Filter warehouses by geographic location within the distance radius provided by the customer
+-Filter warehouses based on if it is available during the wanted time slot
+-Filter warehouses based on warehouse types (e.g Frozen, Outside, Climate Controlled)
+-Filter warehouses based on the wanted customer amenities
+-Filter warehouses based on the security of the location, where any level greater than is wanted is shown. (e.g Lockers will display cameras and guards)
+-Determine all the one warehouse solutions
+-Determine all the multiple warehouse solutions
+
+Output of results
+-Sorting options
+--SpaceID (Default)
+--Pricing
+--Customer reviews
+--Distance
