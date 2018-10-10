@@ -3,3 +3,11 @@ For the ER diagram, do we have to have Relationship Tables?
 -Multiple spaces in each contract/ schedule
 
 Do we have to flush out our psuedo-code more?
+
+Price on a space-by-space basis or sum all the prices for that contract?
+
+Is generating locations by zip code a valid way of synthesizing location data?
+
+We have data for 100 warehouses, is this enough to extrapolate from? How much data to we need synthesize? 500? 1,000? 5,000?
+
+Which entities are weak and if we represented them correctly in the diagram?

@@ -16,9 +16,9 @@ Fetch the following items in a form/ query from the wanted client
 --Restrooms
 --24x7 Access
 --Security Dropdown
----Locker   (1)
----Cameras  (2)
----Guards   (3)
+---Locker             (1)
+---Cameras            (2)
+---On-site security   (3)
 POST the inputs into the matching algorithm
 
 Matching Algorithm
