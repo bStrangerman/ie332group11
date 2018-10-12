@@ -5,6 +5,18 @@ FROM calendar, spaces
 WHERE calendar.SpaceId = spaces.SpaceID;
 Check if the warehouse is available during dates between end date and start date
 
+Can we book this warehouse?
+
+
+(table.start > test.end AND table.start> test.start)
+OR
+(table.end <test.end AND table.end < test.start)
+
+
+Quality Score (Our featured warehouses)
+
+
+
 
 Pricing
   -Length of Lease
