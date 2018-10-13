@@ -7,10 +7,39 @@ Check if the warehouse is available during dates between end date and start date
 
 Can we book this warehouse?
 
-
-(table.start > test.end AND table.start > test.start)
+Select for non-interfering contracts
+WHERE (table.start > test.end AND table.start > test.start)
 OR
 (table.end < test.end AND table.end < test.start)
+
+WHERE ()
+
+
+
+SELECT Calendar.id
+FROM Calendar
+WHERE (Calendar.start > '2018-10-30' OR  Calendar.start > '2018-10-29')
+OR
+(Calendar.end < '2018-10-30' AND Calendar.end < '2018-10-29')
+
+It fucking works, selects interfering contracts
+
+
+
+
+DO NOT DELETE OR YOU ARE FIRED!
+this gets the warehouses that are booked
+***********************************
+SELECT *
+FROM Calendar
+WHERE (NOT Calendar.start > '2018-11-07' OR NOT Calendar.start > '2018-11-03')
+AND
+(NOT Calendar.end < '2018-11-07' OR NOT Calendar.end < '2018-11-03')
+**********************************
+
+
+
+
 
 
 Quality Score (Our featured warehouses)
