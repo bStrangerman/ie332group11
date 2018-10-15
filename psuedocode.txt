@@ -28,7 +28,7 @@ It fucking works, selects interfering contracts
 
 
 DO NOT DELETE OR YOU ARE FIRED!
-this gets the warehouses that are booked
+this gets the warehouses that are booked  REVISION V1
 ***********************************
 SELECT *
 FROM Calendar
@@ -38,6 +38,15 @@ AND
 **********************************
 
 
+REVISION V2
+
+SELECT *
+FROM spaces
+WHERE spaceID NOT IN
+(SELECT spaceID FROM Calendar
+WHERE (NOT Calendar.start > '2018-11-07' OR NOT Calendar.start > '2018-11-03')
+AND
+(NOT Calendar.end < '2018-11-07' OR NOT Calendar.end < '2018-11-03'))
 
 
 

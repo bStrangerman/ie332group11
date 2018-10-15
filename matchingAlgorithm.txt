@@ -31,6 +31,9 @@ Matching Algorithm
 -Determine all the one warehouse solutions
 -Determine all the multiple warehouse solutions
 
+Calculating Emptiness of a warehouse
+-
+
 Output of results
 -Sorting options
 --SpaceID (Default)
