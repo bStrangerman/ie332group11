@@ -50,6 +50,14 @@ AND
 
 
 
+SELECT COUNT(*)
+FROM calendar
+WHERE Calendar.start > 'End Date'
+AND Calendar.end < 'Start Date'
+ORDER BY TIMEDIFF(Calendar.start, 'End Date') ASC
+ORDER BY TIMEDIFF(Calendar.end, 'Start Date') ASC
+
+
 
 Quality Score (Our featured warehouses)
 
