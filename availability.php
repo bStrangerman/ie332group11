@@ -18,10 +18,36 @@ echo "The following schedule is for debugging purposes.<br>";
 while($row = $result -> fetch_assoc())
 {
   echo "<tr><td>" . $row['spaceName'] . "</td><td>" . $row['start'] . "</td><td>" . $row['end'] . "</td>";
-}
-echo "</table>";
-echo "<br><hr>";
+}?>
 
+<form action="availability.php" method="post">
+<tr>
+  <td>
+    <select name="in_space">
+      <?php
+      $sql = "SELECT *
+              FROM spaces";
+      $result = $conn -> query($sql);
+
+      while($row = $result -> fetch_assoc())
+      {
+        echo "<option value='" . $row['spaceID'] . "'>" . $row['spaceName'] . "</option>";
+      }?>
+    </select>
+  </td>
+  <td>
+    <input type="date" name="in_start" value="">
+  </td>
+  <td>
+    <input type="date" name="in_end" value="">
+  </td>
+</tr>
+</table>
+
+<input type="submit">
+</form>
+<br><hr>
+<?php
 if(isset($_GET['start']) & isset($_GET['end'])){
   $start = $_GET['start'];
   $end = $_GET['end'];
@@ -47,6 +73,18 @@ if(isset($_GET['start']) & isset($_GET['end'])){
       <input value="RESET" type="submit">
     </form>
   <?php }
+  else if (isset($_POST["in_space"]) || isset($_POST["in_start"]) || isset($_POST["in_end"])){
+    $sql2 = "INSERT INTO calendar (spaceID, start, end) VALUES ('" . $_POST['in_space'] . "', '" . $_POST['in_start'] . "', '" . $_POST['in_end'] . "')";
+
+    if ($conn->query($sql2) === TRUE) {
+        echo "New record created successfully<br>";
+        echo "<a href='availability.php' target='_self' >Refresh</a>";
+
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+  }
   else {
     ?>
     <form action="availability.php" method="get">
@@ -56,4 +94,4 @@ if(isset($_GET['start']) & isset($_GET['end'])){
     </form>
     <?php
   }
-  ?>
+?>
