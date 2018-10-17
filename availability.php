@@ -21,6 +21,7 @@ while($row = $result -> fetch_assoc())
 }?>
 
 <form action="availability.php" method="post">
+  <tr> <td><h4>Add Booking:</h4></td></tr>
 <tr>
   <td>
     <select name="in_space">
@@ -87,6 +88,7 @@ if(isset($_GET['start']) & isset($_GET['end'])){
   }
   else {
     ?>
+    <h1>Search</h1>
     <form action="availability.php" method="get">
       Start Date: <input type="date" name="start" value="<?php echo date("Y-m-d"); ?>"><br>
       End Date: <input type="date" name="end" value="<?php echo date("Y-m-d"); ?>"><br>
