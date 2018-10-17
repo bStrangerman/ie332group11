@@ -17,7 +17,32 @@ echo "<table style='width:100%'>
 echo "The following schedule is for debugging purposes.<br>";
 while($row = $result -> fetch_assoc())
 {
-  echo "<tr><td>" . $row['spaceName'] . "</td><td>" . $row['start'] . "</td><td>" . $row['end'] . "</td>";
+  $currentspace = $row['spaceID'];
+
+  $selectOutterDates = "SELECT COUNT(*) as DateCount
+                        FROM calendar
+                        WHERE
+                        calendar.spaceID = $currentspace
+                        AND
+                        (calendar.end < CURRENT_DATE()
+                        AND
+                        calendar.end > DATE(NOW()) + INTERVAL -90 DAY)
+                        OR
+                        (calendar.start > CURRENT_DATE()
+                        AND
+                        calendar.start < DATE(NOW()) + INTERVAL +90 DAY)";
+
+  $outerResult = $conn->query($selectOutterDates);
+  while($outerrow = $outerResult -> fetch_assoc())
+  {
+    if(isset($outerrow['DateCount'])){
+      $datecount = $outerrow['DateCount'];
+    }
+    else{
+      $datecount = 0;
+    }
+  }
+  echo "<tr><td>" . $row['spaceName'] . " (" . $datecount . ") " . "</td><td>" . $row['start'] . "</td><td>" . $row['end'] . "</td>";
 }?>
 
 <form action="availability.php" method="post">
