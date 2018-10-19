@@ -81,10 +81,10 @@ if(isset($_GET['start']) & isset($_GET['end'])){
   $sql = "SELECT *
   FROM spaces
   WHERE spaceID NOT IN
-  (SELECT spaceID FROM Calendar
-    WHERE (NOT Calendar.start > '$end' OR NOT Calendar.start > '$start')
+  (SELECT spaceID FROM calendar
+    WHERE (NOT calendar.start > '$end' OR NOT calendar.start > '$start')
     AND
-    (NOT Calendar.end < '$end' OR NOT Calendar.end < '$start'))";
+    (NOT calendar.end < '$end' OR NOT calendar.end < '$start'))";
 
     $result = $conn -> query($sql);
 
