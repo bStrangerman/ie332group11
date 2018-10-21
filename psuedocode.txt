@@ -3,16 +3,17 @@
 Sorting (Get binary score cut out) X
     binary  X
     Locations  X
+    price Na
     -----------
     Scheduling (is it being used)  X
   [Good Warehouse]
 -----------------------
 
 [Good]
-Quality Score (How good is the warehouses)
-    Single warehouse
-    Distance
-    Price
+Quality Score (How good is the warehouses)X
+    Single warehouse        20
+    Distance                20 linear equation 5 miles
+    Price                   20 linear
     Space/Warehouse Score
 
 [Good]
@@ -20,7 +21,7 @@ Featured (Who isn't getting business)
     if they suck, no go
     calendar business
     3 lowest
-    
+
     [Featured]
 
 

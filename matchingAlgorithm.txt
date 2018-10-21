@@ -30,9 +30,11 @@ Matching Algorithm
 -Filter warehouses based on the security of the location, where any level greater than is wanted is shown. (e.g Lockers will display cameras and guards)
 -Determine all the one warehouse solutions
 -Determine all the multiple warehouse solutions
+-Give a quality score to each solution based on distance, number of warehouses, customer reviews, and price
 
-Calculating Emptiness of a warehouse
--
+Calculating Emptiness of a warehouse for "Featured Warehouse" section
+-Find how many days each warehouse has been filled for the last 6 months and next 6 months
+-Set the top three most empty as the "Featured Warehouses"
 
 Output of results
 -Sorting options
