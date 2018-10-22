@@ -22,14 +22,14 @@ Fetch the following items in a form/ query from the wanted client
 POST the inputs into the matching algorithm
 
 Matching Algorithm
-1 Take inputs from the customer query
-2 Filter warehouses by geographic location within the distance radius provided by the customer
-3 Filter warehouses based on if it is available during the wanted time slot
-4 Filter warehouses spaces based on storage types (e.g Frozen, Outside, Climate Controlled)
-5 Filter warehouses spaces based on the wanted customer amenities
-6 Matching Algorithm
-7 Determine all the one warehouse solutions
-8 Determine all the multiple warehouse solutions
+  1 Take inputs from the customer query
+  2 Filter warehouses by geographic location within the distance radius provided by the customer
+  3 Filter warehouses based on if it is available during the wanted time slot
+  4 Filter warehouses spaces based on storage types (e.g Frozen, Outside, Climate Controlled)
+  5 Filter warehouses spaces based on the wanted customer amenities
+  6 Matching Algorithm
+  7 Determine all the one warehouse solutions
+  8 Determine all the multiple warehouse solutions
 
 Calculating Emptiness of a warehouse
 -

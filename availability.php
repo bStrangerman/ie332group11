@@ -1,4 +1,16 @@
-<?php include "db.php";
+<?php
+include "db.php";
+require_once 'PhpRbac/src/PhpRbac/Rbac.php';
+
+use PhpRbac\Rbac;
+$rbac = new Rbac();
+
+// Get Role Id
+$role_id = $rbac->Roles->returnId('root');
+$rbac->Users->hasRole($role_id, 105);
+echo $role_id . "<br>";
+
+
 
 $sql = "SELECT calendar.*, spaces.*
 FROM calendar

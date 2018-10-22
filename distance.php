@@ -1,6 +1,7 @@
 <?php include "db.php";
 
 $destination = array(
+  "1275 First St 47906",
   "Library of Congress",
   "Los Angeles City Hall",
   "Disney World",
