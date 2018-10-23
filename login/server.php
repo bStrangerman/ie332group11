@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	require_once '../PhpRbac/src/PhpRbac/Rbac.php';
+	$rbac = new \PhpRbac\Rbac();
 
 	// variable declaration
 	$username = "";
@@ -37,6 +39,8 @@
 			if(mysqli_query($db, $query)){
 			  $_SESSION['UserID'] = mysqli_insert_id($db);
 			};
+
+			$rbac->Users->assign('no_roles', $UserID = $_SESSION['UserID']);
 
 			$_SESSION['username'] = $username;
 			$_SESSION['success'] = "You are now logged in"	;

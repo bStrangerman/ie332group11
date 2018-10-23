@@ -1,6 +1,9 @@
 <?php
 	session_start();
 
+	require_once '../PhpRbac/src/PhpRbac/Rbac.php';
+	$rbac = new \PhpRbac\Rbac();
+
 	if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: login.php');
@@ -42,6 +45,15 @@
 		<!-- logged in user information -->
 		<?php  if (isset($_SESSION['username'])) : ?>
 			<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+			<?php
+			$allroles = $rbac->Users->allRoles($UserID = $_SESSION['UserID']);
+			$i = 0;
+			echo "<h2>You have the following roles: </h2>";
+			while($i < count($allroles)){
+			  echo "<h3>" . $allroles[$i]['ID'] . "</h3>";
+			  $i++;
+			}
+			?>
 			<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
 		<?php endif ?>
 	</div>
