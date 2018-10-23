@@ -1,6 +1,6 @@
 <?php require('includes/config.php');
 
-//if logged in redirect to members page
+//if logged in redirect to phprbac_users page
 if( $user->is_logged_in() ){ header('Location: memberpage.php'); exit(); }
 
 //if form has been submitted process it
@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
 	if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 	    $error[] = 'Please enter a valid email address';
 	} else {
-		$stmt = $db->prepare('SELECT email FROM members WHERE email = :email');
+		$stmt = $db->prepare('SELECT email FROM phprbac_users WHERE email = :email');
 		$stmt->execute(array(':email' => $_POST['email']));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
 	if(!isset($error)){
 
 		//create the activation code
-		$stmt = $db->prepare('SELECT password, email FROM members WHERE email = :email');
+		$stmt = $db->prepare('SELECT password, email FROM phprbac_users WHERE email = :email');
 		$stmt->execute(array(':email' => $_POST['email']));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		$token = hash_hmac('SHA256', $user->generate_entropy(8), $row['password']);//Hash and Key the random data
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
 
 		try {
 
-			$stmt = $db->prepare("UPDATE members SET resetToken = :token, resetComplete='No' WHERE email = :email");
+			$stmt = $db->prepare("UPDATE phprbac_users SET resetToken = :token, resetComplete='No' WHERE email = :email");
 			$stmt->execute(array(
 				':email' => $row['email'],
 				':token' => $storedToken

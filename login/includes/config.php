@@ -7,13 +7,13 @@ date_default_timezone_set('Europe/London');
 
 //database credentials
 define('DBHOST','localhost');
-define('DBUSER','database username');
-define('DBPASS','password');
-define('DBNAME','database name');
+define('DBUSER','root');
+define('DBPASS','');
+define('DBNAME','ie332group11');
 
 //application address
 define('DIR','http://domain.com/');
-define('SITEEMAIL','noreply@domain.com');
+define('SITEEMAIL','brandonhaberman@kd6bch.com');
 
 try {
 

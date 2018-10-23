@@ -1,11 +1,11 @@
 <?php require('includes/config.php'); 
 
-//if logged in redirect to members page
+//if logged in redirect to phprbac_users page
 if( $user->is_logged_in() ){ header('Location: memberpage.php'); exit(); }
 
 $resetToken = hash('SHA256', ($_GET['key']));
 
-$stmt = $db->prepare('SELECT resetToken, resetComplete FROM members WHERE resetToken = :token');
+$stmt = $db->prepare('SELECT resetToken, resetComplete FROM phprbac_users WHERE resetToken = :token');
 $stmt->execute(array(':token' => $resetToken));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
 
 		try {
 
-			$stmt = $db->prepare("UPDATE members SET password = :hashedpassword, resetComplete = 'Yes'  WHERE resetToken = :token");
+			$stmt = $db->prepare("UPDATE phprbac_users SET password = :hashedpassword, resetComplete = 'Yes'  WHERE resetToken = :token");
 			$stmt->execute(array(
 				':hashedpassword' => $hashedpassword,
 				':token' => $row['resetToken']
