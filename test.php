@@ -1,16 +1,34 @@
-<?php 
+<?php
 session_start();
 
-require_once '332/PhpRbac/src/PhpRbac/Rbac.php';
+$_SESSION['UserID'] = $_GET['id'];
+
+require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
-$rbac->reset($Ensure = true);
 
-/* $rbac->enforce('root', $_SESSION['UserID']);
+echo "<h1>USER INFORMATION FOR USER ID: " . $_SESSION['UserID'] . "</h1><br>";
 
-$role_id = $rbac->Users->allRoles($UserID = $_SESSION['UserID']);
+$allroles = $rbac->Users->allRoles($UserID = $_SESSION['UserID']);
+$i = 0;
+echo "<h2>This user has the following roles: </h2>";
+while($i < count($allroles)){
+  echo "<h3>" . $allroles[$i]['ID'] . "</h3>";
+  $i++;
+}
 
-print_r($role_id);
-echo "<br>";
-$rbac->Users->hasRole($role_id, $_SESSION['UserID']);
-print_r($rbac); */
+$role = 'Warehouse_Owner';
+if($rbac->Users->hasRole($role, $UserID = $_SESSION['UserID'])){
+  echo "GOOD<br>";
+}
+else {
+  echo "ERROR<br>";
+}
+
+$i = 1;
+echo "Which users are a " . $role . "?<br>";
+while($i <= 2){
+  $userHasRole = $rbac->Users->hasRole($role, $UserID = $i);
+  echo $i . ": " . $userHasRole . "<br>";
+  $i++;
+}
 ?>
