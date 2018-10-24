@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<!-- https://codepen.io/anon/pen/XxyEQO-->
+<!-- https://codepen.io/Gibbu/pen/mxGKjP -->
 <!-- JQUERY AND NORMALIZED CSS INSTALLED
 View settings for more info. -->
 
