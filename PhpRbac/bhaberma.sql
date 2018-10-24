@@ -82,7 +82,7 @@
 	  PRIMARY KEY (`UserID`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
 
-// NAMES, COMPANIES, Phone Numbers, AND EMAILS IN USER TABLE?
+-- NAMES, COMPANIES, Phone Numbers, AND EMAILS IN USER TABLE?
 
 	INSERT INTO `phprbac_users` (`UserID`, `Username`, `Password`, `CreationDate`) VALUES
 	(1, 'bhaberman', '202cb962ac59075b964b07152d234b70', '2018-10-22 15:24:17'),
