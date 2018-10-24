@@ -1,30 +1,34 @@
-<?php include "db.php";
+<?php
+session_start();
 
-$sql = "SELECT *
-        FROM factors";
+$_SESSION['UserID'] = $_GET['id'];
 
-$factor1 = (1000>9000) ? 1 : 0;
-$factor2 = 0;
-$factor3 = 1;
-$result = $conn->query($sql);
-echo "wID f1 &nbsp;&nbsp;f2 &nbsp;&nbsp;f3 <br>";
-echo "T" . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $factor1 . "&nbsp;&nbsp;&nbsp;&nbsp;" . $factor2 . "&nbsp;&nbsp;&nbsp;&nbsp;" . $factor3 . "<br>";
-while($row = $result->fetch_assoc()){
-  echo $row['warehouseID'];
-  $factordb1 = $row['factor1'];
-  $factordb2 = $row['factor2'];
-  $factordb3 = $row['factor3'];
-  echo " &nbsp; &nbsp; &nbsp; " . $factordb1;
-  echo " &nbsp; &nbsp;  " . $factordb2;
-  echo " &nbsp; &nbsp;  " . $factordb3 . "&nbsp;";
+require_once 'PhpRbac/src/PhpRbac/Rbac.php';
+$rbac = new \PhpRbac\Rbac();
 
-  if($factordb1 == $factor1 & $factordb2 == $factor2 & $factordb3 == $factor3){
-    echo "TRUE <br>";
-  }
-  else {
-    echo "<br>";
-  }
+echo "<h1>USER INFORMATION FOR USER ID: " . $_SESSION['UserID'] . "</h1><br>";
 
+$allroles = $rbac->Users->allRoles($UserID = $_SESSION['UserID']);
+$i = 0;
+echo "<h2>This user has the following roles: </h2>";
+while($i < count($allroles)){
+  echo "<h3>" . $allroles[$i]['ID'] . "</h3>";
+  $i++;
+}
 
+$role = 'Warehouse_Owner';
+if($rbac->Users->hasRole($role, $UserID = $_SESSION['UserID'])){
+  echo "GOOD<br>";
+}
+else {
+  echo "ERROR<br>";
+}
+
+$i = 1;
+echo "Which users are a " . $role . "?<br>";
+while($i <= 2){
+  $userHasRole = $rbac->Users->hasRole($role, $UserID = $i);
+  echo $i . ": " . $userHasRole . "<br>";
+  $i++;
 }
 ?>
