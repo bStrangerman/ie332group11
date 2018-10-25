@@ -5,9 +5,9 @@
 }
 
 #formContainer {
-  width: 100vw;
-  height: 100vh;
-  background: url("https://source.unsplash.com/2560x1440/daily") center;
+  width: 100%;
+  height: 97vh;
+  background: url("warehouse.jpg") center;
   background-attachment: fixed !important;
   background-size: cover;
   display: flex;
@@ -68,7 +68,7 @@
 }
 #formRight:before {
   content: "";
-  background: url("https://source.unsplash.com/2560x1440/daily") center;
+  background: url("warehouse.jpg") center;
   background-attachment: fixed !important;
   background-size: cover;
   position: absolute;

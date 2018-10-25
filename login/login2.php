@@ -15,11 +15,11 @@ View settings for more info. -->
 	<div id="form">
 		<div id="formLeft" class="f">
 			<img src="https://pbs.twimg.com/profile_images/1044222938474397696/TtNO9cun_400x400.jpg" alt="Avatar Picture">
-			<h2>Gibbu</h2>
+			<h2>@Capacity</h2>
 		</div>
 		<div id="formRight">
 			<form id="forgot" class="contentArea otherForm">
-				<div class="formHead">
+				<!-- <div class="formHead">
 					<h1>Forgot Password?</h1>
 					<p>Looks like you forgot your password</p>
 				</div>
@@ -30,15 +30,18 @@ View settings for more info. -->
 				</label>
 				<div class="formDiv">
 					<input type="submit" value="Send">
-				</div>
-				<footer>
+				</div> -->
+        <div class="formDiv">
+          <h1>This feature is<br> Work in Progress</h1>
+        </div>
+        <footer>
 					<p class="forgotBtn">Back to Login</p>
 				</footer>
 			</form>
 			<form id="register" class="contentArea otherForm">
 				<div class="formHead">
-					<h1>Become a bro</h1>
-					<p>Register to gain full access</p>
+					<h1>Join</h1>
+					<p>Register now</p>
 				</div>
 				<label class="formDiv">
 					<input type="text" placeholder=" ">
