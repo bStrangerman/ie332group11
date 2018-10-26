@@ -1,0 +1,378 @@
+Warehouse,Space,Address,City,State,price_year,price_month,Type,Space_Available,Building_Size,Ammenities
+1,1,512 N Energy Dr.,Rock Springs,Wyoming,12.69,1.06,Industrial,10400,10400,"5 ton crane, 6-14' bay doors (2 drive-thru bays), 1 wash bay, and sprinkler system."
+2,2,331 Lexington Ave.,Cheyenne,Wyoming,7,0.58,Industrial,8800,15300,"office plus 2 bathrooms, Building is heated, four 14' overhead doors plus pass doors"
+3,3,311 Progress Cir.,Cheyenne,Wyoming,6.98,0.58,Industrial,5500,21112,"Has 2' high covered loading dock,"
+4,4,220 Evelyn St,Cheyenne,Wyoming,6.35,0.53,Industrial,8080,79767,"Space available for lease in both 220 Evelyn, a 67,096 square-foot building, and 314 Evelyn, a 45,068 square-foot building. Both have high 26' ceilings, are fully fire sprinklered, provide 3-phase power, have paved lots, and provided gas heaters. 314 Evelyn has two spaces available: a 7,733 SF unit with offices, restrooms, reception area, and a single large dock-high door and a 15,378 SF unit with offices, restrooms, reception area, 3 dock-high doors, and a drive-in door. Because these units are adjacent, they can also be leased together, providing 23,111 SF. Yard is available with the 15,378 SF unit. 220 Evelyn has a 56,656 SF unit available with 5 dock-high doors, 2 drive-in doors, and bathroom. This unit can be leased as is with a low lease rate, or landlord will divide it to as little as 20,000 SF with build-to-suit offices and restrooms. Yard is also available. Renovations are planned this year, which will include major roof work, which will provide a 5- year roof certification, and exterior wall sealing, priming, and painting."
+4,5,220 Evelyn St,Cheyenne,Wyoming,6.35,0.53,Industrial,9161,79767,"Space available for lease in both 220 Evelyn, a 67,096 square-foot building, and 314 Evelyn, a 45,068 square-foot building. Both have high 26' ceilings, are fully fire sprinklered, provide 3-phase power, have paved lots, and provided gas heaters. 314 Evelyn has two spaces available: a 7,733 SF unit with offices, restrooms, reception area, and a single large dock-high door and a 15,378 SF unit with offices, restrooms, reception area, 3 dock-high doors, and a drive-in door. Because these units are adjacent, they can also be leased together, providing 23,111 SF. Yard is available with the 15,378 SF unit. 220 Evelyn has a 56,656 SF unit available with 5 dock-high doors, 2 drive-in doors, and bathroom. This unit can be leased as is with a low lease rate, or landlord will divide it to as little as 20,000 SF with build-to-suit offices and restrooms. Yard is also available. Renovations are planned this year, which will include major roof work, which will provide a 5- year roof certification, and exterior wall sealing, priming, and painting."
+4,6,220 Evelyn St,Cheyenne,Wyoming,5.95,0.5,Industrial,17246,79767,"Space available for lease in both 220 Evelyn, a 67,096 square-foot building, and 314 Evelyn, a 45,068 square-foot building. Both have high 26' ceilings, are fully fire sprinklered, provide 3-phase power, have paved lots, and provided gas heaters. 314 Evelyn has two spaces available: a 7,733 SF unit with offices, restrooms, reception area, and a single large dock-high door and a 15,378 SF unit with offices, restrooms, reception area, 3 dock-high doors, and a drive-in door. Because these units are adjacent, they can also be leased together, providing 23,111 SF. Yard is available with the 15,378 SF unit. 220 Evelyn has a 56,656 SF unit available with 5 dock-high doors, 2 drive-in doors, and bathroom. This unit can be leased as is with a low lease rate, or landlord will divide it to as little as 20,000 SF with build-to-suit offices and restrooms. Yard is also available. Renovations are planned this year, which will include major roof work, which will provide a 5- year roof certification, and exterior wall sealing, priming, and painting."
+5,7,217 W 5th St.,Cheyenne,Wyoming,6.5,0.54,Industrial,1920,1960,"Fenced storage yard, inside plumbing inventory"
+6,8,1451 Buiness Cir.,Gillette,Wyoming,9.8,0.82,Industrial,7344,7344,"Fenced Lot, Storage Space, Floor Drains"
+7,9,2700 N US Hwy 14,Gillette,Wyoming,7.59,0.63,Industrial,16740,16740,"Gas - Natural, Heating - Gas"
+8,10,1938 Wyott Dr.,Cheyenne,Wyoming,7.75,0.65,Industrial,3300,210518,"Fantastic warehouse/distribution center available for Lease at $4.50/sf NNN. Located just off the intersection of I-25 & I-80 the Property provides the flexibility to accommodate tenants from 3,000 sq ft all the way to 150,000 sq ft and also has office space available. In addition, the Property can provide virtually any users power needs with 227/480V 3 phase 4,000 AMP power available. Extensive yard available for outside storage & parking and the building can be situated to accommodate drive around or drive through capability. Ownership is willing to demise space & add overhead AND docks doors per tenants needs."
+8,11,1938 Wyott Dr.,Cheyenne,Wyoming,7.75,0.65,Industrial,3300,210518,
+8,12,1938 Wyott Dr.,Cheyenne,Wyoming,7.75,0.65,Industrial,3300,210518,
+8,13,1938 Wyott Dr.,Cheyenne,Wyoming,5,0.42,Industrial,12700,210518,
+8,14,1938 Wyott Dr.,Cheyenne,Wyoming,5,0.42,Industrial,20100,210518,
+8,15,1938 Wyott Dr.,Cheyenne,Wyoming,4.5,0.38,Industrial,16900,210518,
+8,16,1938 Wyott Dr.,Cheyenne,Wyoming,4.5,0.38,Industrial,50500,210518,
+8,17,1938 Wyott Dr.,Cheyenne,Wyoming,4.5,0.38,Industrial,16600,210518,
+8,18,1938 Wyott Dr.,Cheyenne,Wyoming,4.5,0.38,Industrial,33600,210518,
+8,19,1938 Wyott Dr.,Cheyenne,Wyoming,12,1,Office/Industrial,7500,210518,
+9,20,2632 Industry Dr.,Cheyenne,Wyoming,10.25,0.85,Industrial,14520,14520,"fenced yard, 4, 16'x14' drive in doors with drive through and drive around capabilities"
+10,21,1010 Falcon Ave,Mills,Wyoming,9,0.75,Office/Industrial,10700,28390,"Good office, shop and fenced yard, Lighting - Sodium Gas Water - City Water Sewer - City Sewer Heating - Gas"
+11,22,1120 Logan Ave,Cheyenne,Wyoming,14.96,1.25,Office/Industrial,1600,2600,"Wonderful office or retail space. Currently occupied by chiropractors office. Space will be available in November 2018. Very nice common area kitchen included. $1995/mo!
+
+Additional Warehouse space in back with overhead door. Separate office, private bathroom and shower included. Perfect for a contractor, Auto detailing/mechanic use, gym/fitness use and other opportunities! $995/mo!"
+11,23,1120 Logan Ave,Cheyenne,Wyoming,11.94,1,Industrial,1000,2600,
+12,24,1920 Missile Dr.,Cheyenne,Wyoming,6.57,0.55,Industrial,2300,12600,office and restroom and 14 ft automatic door.
+12,25,1920 Missile Dr.,Cheyenne,Wyoming,6.51,0.54,Industrial,3040,12600,
+13,26,1800 Opportunity Blvd,Casper,Wyoming,10,0.83,Industrial,11000,11000,"Floor Drains , Yard"
+14,27,802-810 N Foster Rd,Casper,Wyoming,10,0.83,Industrial,2500,7500,Mezzanine
+15,28,1733 E Yellowstone Hwy,Casper,Wyoming,6.86,0.57,Office/Industrial,3150,7700,kitchenette and break room
+16,29,190 S College Dr.,Cheyenne,Wyoming,10,0.83,Industrial,9000,12000,private restrooms
+17,30,518 N US Highway 14-16,Gillette,Wyoming,12,1,Industrial,2040,11800,Lighting Gas - Natural Water - City Water Sewer - City Sewer Heating - Gas
+17,31,518 N US Highway 14-16,Gillette,Wyoming,12,1,Industrial,2040,11800,
+18,32,3851 E Collins Rd,GIllette,Wyoming,14.49,1.21,Industrial,8800,8860,"Fenced Lot, Security System"
+19,33,620 N US Highway 14-16,Gillette,Wyoming,12.5,1.04,Industrial,3000,18000,Gas - Natural Water - City Water Sewer - City Sewer Heating - Gas
+20,34,612 N US Highway 14-16,Gillette,Wyoming,12,1,Industrial,3360,14800,"snow removal, garbage and landscaping."
+21,35,1935 Cooper St,Missoula,Montana,12,1,Industrial,2400,2400,"High visibility, two-bay auto service center right in the middle of town. Properties like this are extremely rare in Missoula. This 2,400sf +/- facility has a sign that is prominently displayed for passing traffic on Broadway with its 19,228 cars per day passing by the site. Two service pits with work platform on site. Bright and open waiting room with service counter, two bathrooms and mezzanine also included. Work bay has gas unit heater and waiting area has gas forced air heat. Lot is approximately .36 acres."
+22,36,2601 Overland Ave.,Billings,Montana,9.75,0.81,Industrial,4403,4403,"Suite 1 for LEASE - Price Notes Monthly Lease Rate! High quality, newly constructed commercial space in a convenient west end location close to King Avenue & S 24th Street W. Includes restroom, shared-use loading dock, light storage mezzanine with fork lift gate, large warehouse space accessible by main 16'x16' & also rear 12'X12' overhead doors, customizable open & well-lit office space that is heated/cooled, heated warehouse space, fenced perimeter. Street frontage with paved parking lot. 
+Call agent for showings 406-671-8163. $9.75 PSF, NNN (approx. $646/mn). Separate electric & gas meters, shared water meter. 50% water, lawn maintenance, & snow removal to be billed monthly to tenant. Nice, comfortable, clean, open and well-lit space."
+23,37,5360 Southgate Dr.,Billings,Montana,6.5,0.54,Industrial,25000,25000,"Legal description: Lot 7A Block 3 Southgate Subdivision 1st Filing - Approx. 3.2 acres. Main shop: Built in 2001, Approx. 14,870 sqft - with 2,080 sqft of office/retail space. 7 overhead doors, radiant heat at shop. Warehouse: Built in 2001, Approx. 10,125 sqft. 3 overhead doors. Motion sensor lighting."
+24,38,54 Ginger Bear Ln,Bozeman,Montana,9.5,0.79,Industrial,3600,3600,"3600 Sqft Of Shops with offices with one shower, Larger unit has 2nd floor offices. 16 Foot side walls pull through 12X14 ft doors with electric operators . $2850 Per Month Gross . M-1 Zoned Light manufacturing / warehousing space. 3 Year Lease. Broker Owned. Ready July 1"
+25,39,7201 Expressway,Missoula,Montana,9.5,0.79,Industrial,20000,20000,"We will work with you and our designer/builder to customize the space to your liking at a long term lease rate that makes sense for your business. From lease signing to occupancy is estimated at 6-9 months, depending upon final design and permitting specifics. Build-to-suit can be a great way for your business to get the space it needs without sinking capital in real estate."
+26,40,1943 Main St,Billings,Montana,9.485,0.79,Industrial,1330,10060,
+26,41,1943 Main St,Billings,Montana,9.485,0.79,Industrial,800,10060,
+26,42,1943 Main St,Billings,Montana,9.485,0.79,Retail/Industrial,2500,10060,
+26,43,1943 Main St,Billings,Montana,9.485,0.79,Office/Industrial,3500,10060,
+26,44,1943 Main St,Billings,Montana,9.485,0.79,Office/Industrial,1800,10060,
+27,45,610 W Griffin Dr.,Bozeman,Montana,11.32,0.94,Industrial,2650,8000,
+28,46,330-334 Fuller Ave,Helena,Montana,6,0.5,Industrial,500,2300,
+28,47,330-334 Fuller Ave,Helena,Montana,6,0.5,Industrial,500,2300,
+28,48,330-334 Fuller Ave,Helena,Montana,6,0.5,Industrial,500,2300,
+28,49,330-334 Fuller Ave,Helena,Montana,6,0.5,Industrial,500,2300,
+29,50,706 Daniels St,Billings,Montana,9,0.75,Industrial,20000,119757,Centrally located in the industrial hub of Billings. Easy access on & off the interstate 90. Great distribution location. Secured yard. Group 2 fire sprinklers throughout. 6 dock high doors.
+29,51,706 Daniels St,Billings,Montana,9,0.75,Industrial,1000,119757,
+30,52,5 Wall St,Montana City,Montana,5.04,0.42,Industrial,11200,11200,"Great open warehouse lease space in Montana City. Currently used as a gym. Very clean. Viewing mezzanine. Handicap accessible bathrooms. Occupancy available June 1, 2018 or possibly sooner."
+31,53,2330 N Frontae Rd,Billings,Montana,10.24,0.85,Industrial,13200,13200,
+32,54,3102 W Broadway St,Missoula,Montana,10.46,0.87,Industrial,2173,11872,"Hard to find warehouse/workshop space in town now available. Approximately 2,173 sf warehouse/ workshop space in town on W Broadway. The space has access via a personnel door and one 8'x8’ overhead door. Square footage includes a 16'x32’ mezzanine. Heat provided by an overhead gas forced air heater unit. Two parking spots are provided. Three phase power available, 24’ ceilings. $1,895/mo gross + utility bill back pro rata. Short term leases possible with the possibility of adding one or more offices at $100/mo extra. This unit has access to a common area bathroom. Please call or text Matt at 406-203-3950 for additional information or to arrange a showing. The listing agent is one of the owners of the building."
+33,55,Yukon Ln,Belgrade,Montana,10,0.83,Industrial,12275,19100,
+34,56,6950 Train Bridge Loop,Missoula,Montana,7.25,0.6,Industrial,5000,10000,"Newly constructed warehouse/flex space near the Wye interchange now ready for you to customize. The building is 18' clear span with a 14' overhead door for each unit. Three phase, 200A electric service available for each unit. A total of 7,500sf of space available, divisible to 2,500sf suites. Each unit has a bathroom and overhead gas unit heater. Call listing agent for more details."
+35,57,1922 Airport Ct,Great Falls,Montana,5,0.42,Industrial,3725,5950,"Great shop or distribution location. Subject property is a block construction shop building with 7 storage bay including one 70-foot pull through bay. Building dimensions are 70 feet by 85 feet. Small office, kitchen and restroom facilities also included. Shop is heated. Building is located at the northeast corner of the Great Falls International Airport. Location is less than a quarter mile from Montana FedEx hub, US Customs inspection service, Interstate 15s and the airline terminal. Fully fenced secure location."
+36,58,8462 Highway 200,Bonner,Montana,4.5,0.38,Industrial,22000,587800,Lighting Gas Water Sewer
+37,59,3750 Wise Ln,Billings,Montana,1,0.08,Industrial,19200,19200,"*19,200 SF Warehouse 
+*14 ft Entry Door 
+*10 ft sidewalls 
+*No Power, No Heat, No Lights 
+*Dirt/Gravel Floor 
+*Skylights throughout the roof to let light in during the day 
+
+Warehouse will be available September 1st. 
+
+NOTE: 1,480 SF shop/warehouse also for lease adjacent to the 19,800 SF warehouse for an additional $900/mo"
+38,60,5229 King Ave W,Billings,Montana,6,0.5,Industrial,2400,40800,"Property Highlights:
+1,800 & 2,400 Square Foot Units
+Insulated with metal finish interior walls
+Finished Office Space with Restroom
+16' Side Walls
+14' Overhead Doors
+Walk-in Door
+Well lit
+Natural Gas Heat
+Water & Sewer provided by cistern & septic
+Zoned Community Commercial
+
+Location Highlights:
+Prime West End Location
+Convenient Access to Interstate 90
+Professional setting 
+ Nicely Landscaped Surroundings
+Roads Provide Easy Access For Semi' s
+FOR LEASE $5.99 PSF NNN , Fenced Lot"
+38,61,5229 King Ave W,Billings,Montana,6,0.5,Industrial,2400,40800,
+38,62,5229 King Ave W,Billings,Montana,6,0.5,Industrial,2400,40800,
+39,63,12211 Spring Brook Dr,Eagle River,Alaska,27.6,2.3,Industrial,4360,4360,"4,360 SF warehouse/ office building for sub-lease in Eagle River. Space is divided as 2,600 SF warehouse/ shop, 1,160 SF 2nd floor mezzanine, and 600 SF office space. Three 12' overhead doors. 50,173 (1.15 acres) fenced parcel zoned I-1. Property is serviced by public electricity and gas, with water/ sewer on well & septic. Current lease expires 11/30/2035. Approx. $10,000/ month, plus utilities."
+40,64,7613 W Buttercup Dr,Wasilla,Alaska,12,1,Industrial,5912,6622,"5,912 SF industrial building on a 2.05 acre fenced parcel. Building provides warehouse/ shop space, office space, and mezzanine storage. Two overhead doors; one 14'x16' and one 20'x8'. Doors are on opposing sides of the shop allowing for a drive-through bay. 17' ceilings in the warehouse. Excellent location and great signage potential. $1.00/ SF plus utilities. See package under attachments."
+41,65,4721 E Bogard Rd,Wasilla,Alaska,14.7,1.23,Industrial,6320,10800,Freezer (Space) Mezzanine
+42,66,2125 E 79th ave,Anchorage,Alaska,13.2,1.1,Industrial,34984,56945,"Large warehouse distribution facility with Yard. Approx 29,000 warehouse with 22 ft ceilings, 2-story office approx. 5,984 SF, usable mezzanine approx. 2,480 SF, 5 dock & 1 overhead door, sprinklers, fenced yard, room for trailer parking, original floor plans avail. Offered at $1.10 psf NNN.
+
+Commision equal to 2.5% of gross rent over years 1-5 and 1.25% thereafter LESS any tenant improvements"
+43,67,3201 International St,Fairbanks,Alaska,12,1,Industrial,6000,8000,"Warehouse that can be converted easily into 2 units if a wall is built in the center of the shop. It currently is 8,000 sq ft (+/-) total, 700 sq ft is
+office space and 700 sq ft of mezzanine not included in the sq ft total. •Foundation is Monolithic slab with 12""x24: footing with 3 ff5 bars
+continuous #4 bar ties at 48"" oc. Slab has 5"" 3500 Tb. Mix concrete and #4 bar at 24""oc each way. •Exterior bearing walls are 2' x 8' at 24""
+oc. and have twin ribbed, metal siding and trim •Roof trusses are free-span engineered trusses with 19/32 OSB. Metal roofing. •Ceilings
+have 5/8"" GWB taped & painted. •All interior walls have 5/8"" GWB taped, primed & newly painted. •Windows are double pane, Low-E,
+Casement. •Six exterior personnel doors are metal clad doors. •Interior personnel doors are metal frames & solid core, with Contractor
+grade hardware. Four overhead doors. •Office area has new carpet and restroom floors have vinyl tile. •Heating: Two gas boilers, one for
+each side if building separated. •The site is entirely gravel filled and there is a chain link fence around the rear yard."
+44,68,250 N Post Rd,Anchorage,Alaska,13.8,1.15,Industrial,10300,10300,Large fenced yard Close to Port of Anchorage
+45,69,6200 A St,Anchorage,Alaska,15,1.25,Industrial,3500,3504,"Clean and well-built, contractor type building for lease. 1,000 SF warehouse/ shop space w/ one 12x12 OH door and one 9x9 dock loading door. 2,500 SF office space on two floors, well designed and very functional. Single phase, 240V power. Property also provides small mezzanine storage, 2 showers, security cameras & alarm system, forklift & air compressor, and small fenced yard in back. See package under attachments."
+46,70,8001Petersburg St,Anchorage,Alaska,11.88,0.99,Industrial,29550,29550,"Versatile and well-equipped industrial building for lease. 29,550 SF building situated on 189,080 SF (4.34 acres) zoned I-1. Features +/-25' wall heights, 8 OH doors, overhead cranes, steel reinforced concrete slab and 277/480V – 4W, 600 AMP 3-phase power. $0.99/SF, NNN for the building and $0.06/SF for the 2-acres of excess yard. See flyer for more details under attachments."
+47,71,4025 W 50th Ave,Anchorage,Alaska,15,1.25,Industrial,3127,23487,Reception Private Restrooms
+48,72,34995 Kustatan St,Kenai,Alaska,7.44,0.62,Industrial,6304,6304,"4.37 Acre All 6,304 sf rents for $3,900/month. Space can be broken down and rental rate will be negotiable. Short distance from K-Beach & W. Poppy intersection. 3,000 Sq. Ft. heated shop & 480 Sq. Ft. office area with 1 bath plus 480 Sq. Ft. upper level break area with kitchenette & full bath, both interior & exterior stairway. 12 X 12 storage area, 1,400 Sq. Ft. storage bldg. & 800 Sq. Ft. shop bldg. with covered concrete ramp leading to 14' overhead door. May lease all or part including 4.37 acre lot."
+49,73,000 Halliburton Dr,Nikiski,Alaska,12.72,1.06,Industrial,9204,9204,New construction shop/hangar or warehouse. Features 1 large(70'x 21') fold out hangar door and 2(16' x 16') roll up overhead doors and 23' ceiling height. Offices can easily be added as well as tenants choice for yard space. Total lot size is 22.48 acres. Great location near both docks. Terms are negotiable.
+50,74,1220-1320 E 68th Ave,Anchorage,Alaska,14.1,1.18,Office/Industrial,1952,29872,"Warehouse space with small office available for immediate occupancy in the Quest Business Park. Easy access to Midtown and South Anchorage.
+
+SW corner of E. 68th and Homer Drive."
+51,75,40902 Kalifornsky Beach Rd,Kenai,Alaska,17.4,1.45,Industrial,3600,3600,
+52,76,1549 Davison St,Fairbanks,Alaska,12,1,Industrial,4500,4500,"4500 sq. ft. footprint. Warehouse, office, breakroom, laundry, tool room on ground floor. 1 bedroom apartment upstairs. 2000 sq. ft. cold storage building in 1 acre fenced and filled lot.
+
+Off the Richardson Highway, just south of the Badger Road exchange. Property is near Fairbanks and North Pole with easy access to Eielson Air Force Base."
+53,77,351 E 104th Ave,Anchorage,Alaska,15.24,1.27,Industrial,59252,59252,"South Anchorage warehouse/office facility located on 5.15 acres of I-2 land. All or part available. Warehouse 43,852 SF, office 11,400 SF, mezzanine 4,000 SF. Mezzanine is reinforced & can be easily converted to office space with windows. Approx. 100,000 SF excess yard space. Lease rate is $75,000/month NNN for the entire property.
+
+A new 30,000 SF warehouse addition can be constructed for the right tenant and terms.
+
+Existing tenants are exclusions from this listing.
+
+From Dimond Blvd, south on King Street, east on 104th , property on your left. Or south on C Street, east on 104th , just east of Target."
+54,78,1101 Well St,Fairbanks,Alaska,8.4,0.7,Industrial,7500,25000,"This dock high warehouse is shared with Alaska Communications and their garage facility. We have various options for configuration of your leased warehouse space.
+
+The property is conveniently located in the AK railroad industrial area in the heart of Fairbanks and Alaska. Rail access is possible, distribution to downtown or all directions N,S,E and West are easily accessible."
+55,79,550 W 64th Ave,Anchorage,Alaska,13.2,1.1,Industrial,62668,62668,11- Dock high doors 1- Overhead door Yard for trailers Sprinklered 3-Phase power Floor drain
+56,80,2799 Rampart Dr,Anchorage,Alaska,13.8,1.15,Industrial,10500,10500,"Approx. 9,300sf warehouse and 1,200sf office. 66,000sf fenced yard/storage, Two 14 x 16 overhead doors, one 8 x 8 delivery door, 20 foot eave height, 3-phase 400amp. This is a sublease, main lease runs thru 12/31/21. Subtenant to lease all space Subtenant pays all operating costs, pass through of taxes and insurance. Landlord pays structural, roof, slab, HVAC. Current tenant will provide subleasee with $50,000 FREE RENT with full price offer."
+57,81,1910 1st Ave N,Fargo,North Dakota,7,0.58,Industrial,14169,14169,Lighting Gas Water Sewer Heating
+58,82,10285 3rd St SW,Killdeer,North Dakota,9.75,0.81,Industrial,10000,10000,Kitchen Facilities Reception
+59,83,601 Gilbertson St SE,Tioga,North Dakota,15,1.25,Industrial,7000,7000,"Dedicated Shower Facilities Reception
+Kitchen Facilities"
+60,84,4946 Hwy 85,Williston,North Dakota,14,1.17,Industrial,19240,19240,"Air Conditioning Private Restrooms
+Print/Copy Room"
+61,85,4942 Highway 85,Williston,North Dakota,14,1.17,Industrial,12000,12000,"roperty is currently leased until 10/01/2019. One 80' x 120' building = 12,000 SF; 8,000 SF Shop; 2,000 SF Wash Bay; 2,000 SF Office (4 private offices, 2 private restrooms, break room, locker room & parts area); 2,000 SF Mezzanine (includes 192 SF storage room). Can be purchased or leased in conjunction with 4946 Highway 85 (19,420 SF industrial building on 2.19 acres) which is right next door.
+Amenities 
+Air Conditioning 
+Secure Storage 
+Central Heating 
+Private Restrooms 
+Partitioned Offices"
+62,86,5072 Bennett Loop,Williston,North Dakota,13.5,1.13,Industrial,9900,11900,"High quality ± 9,900 SF single tenant shop, office & ± 2 - 3 acre yard
+Building dimensions: 66 x 150
+± 9,900 SF single tenant shop, office &amp; yard, Fenced Lot 
+Yard 
+Mezzanine 
+± 8,000 SF of shop space
+± (2) stories of office built out
+± 2,000 SF downstairs
+± 2,000 SF upstairs
+Conference rooms, kitchenette(s) &amp; multiple bathrooms w/ showers
+Additional +/- 1.2 acres available adjacent for: $1,200/month (Stabilized and fenced)
+Multi-zone In floor heating system
+(2) one ton Jib cranes
+Multiple trench drains with sand/oil separator system
+(5) 14 x 16 overhead doors with protective ballards
+Large concrete aprons
+Ideally located near the intersection of HWY 2 &amp; HWY 85
+Can modify the building to suit your needs"
+62,87,5072 Bennett Loop,Williston,North Dakota,13.5,1.13,Industrial,2000,11900,
+63,88,2530 132nd Ave NW,Arnegard,North Dakota,12.96,1.08,Industrial,10000,10000,"10,000 SF warehouse includes 2,000 SF office/storage space and 8,000 sq ft of shop. Sits on 5 acres Ceiling height: 18' Five roll up doors; includes three 26' x 80' drive in bays Three of five roll up doors are 14' high with room to go higher Includes separate retail entrance Easy access to Highway 85 Eight miles to Watford City, ND Located near the dump in the Arnegard Industrial Park
+Description
+10,000 SF warehouse includes 2,000 SF office/storage space and 8,000 sq ft of shop. 
+Sits on 5 acres
+Ceiling height: 18' 
+Five roll up doors; includes three 26' x 80' drive in bays
+Three of five roll up doors are 14' high with room to go higher
+Includes separate retail entrance
+Easy access to Highway 85
+Eight miles to Watford City, ND
+Located near the dump in the Arnegard Industrial Park
+2 Year lease minimum"
+64,89,5302 22nd Ave W,Williston,North Dakota,15,1.25,Industrial,12151,12151,"Property is 12,151 SF on 14 AC total. Lease includes 12,151 SF and 5 AC, additional acreage can be leased at $1,000/MO/AC. For Sale: CALL FOR PRICING
+For Lease: $15/SF NNN
+Each additional AC after 5 AC is $1,000/AC/MO
+12,151 SF industrial and office building on 14+/- AC 
+- 7,651 SF office space
+- 4,500 SF industrial space
+(2) 16’ drive through bays
+135 truck plug-ins
+One bay equipped with a pit
+Located just five miles northwest of downtown Williston and two miles west of Highway 2
+Ideally located in the heart of Bakken oil and gas activity near to area suppliers and providers."
+65,90,896 22nd Ave N,Wahpeton,North Dakota,5.25,0.44,Industrial,38000,38250,"Turn-key warehouse for sale in Wahpeton, ND. Clean, well maintained building with office furniture included and six-foot reinforced concrete floors throughout. Food grade facility with floor drains and propane curtailment system. Water pump booster provides additional water pressure to the building. Also available for lease.Adjacent Land: Lots 7/8 are available either as a package with the warehouse or can be sold seperately (3.22 acres). Can be used for future expansion. Mezzanine"
+66,91,1910 50th St W,Williston,North Dakota,14,1.17,Industrial,3500,39000,Air conditioning
+66,92,1910 50th St W,Williston,North Dakota,14,1.17,Industrial,3500,39000,
+66,93,1910 50th St W,Williston,North Dakota,14,1.17,Industrial,3500,39000,
+67,94,205 42nd St SE,Minot,North Dakota,12,1,Industrial,7200,279328,
+68,95,1150 S 46th St,Grand Forks,North Dakota,7,0.58,Industrial,40026,40026,"Large industrial shop/warehouse for lease in the Industrial Park. Former GF Herald printing press building. 20' clear height in most areas of building. 5- 10'x10' o/h doors, 2- below grade loading docks and one above grade, 3 phase power, No structural interior walls, 48 parking stalls"
+69,96,3804 NE 17th Ave,Watford City,North Dakota,18,1.5,Industrial,11300,11300,"Natural Light , Private Restrooms , Security System, FOR SALE: $2,100,000
+FOR LEASE: $18.00/SF NNN
+11,300 SF shop and office buildings on a 10 AC site:
+8,000 SF drive-thru maintenance garage w/ mezzanine
+3,300 SF office building
+Stabilized and treated yard
+Security system with alarms and cameras
+Utilities: Electric and well water
+Ideally located half a mile Northeast of CBD Watford City, a large hub for Bakken energy activity
+This property is one of the few remaining industrial assets of this type/size available in the Watford City market"
+70,97,3217 111th Ave SW,Dickinson,North Dakota,12,1,Industrial,5000,10000,"FOR SUBLEASE: $12/SF NNN
+5,000 SF shop, showroom and office space with a 0.98 AC controlled access fenced storage yard
+Office space includes: 
+(2) Offices
+Open office area
+Conference room
+IT room 
+Break room
+(2) Bathrooms
+Shop space includes: 
+(2) 16’x16’ overhead doors with electronic openers
+(2) Hanging natural gas fire unit heaters
+3 phase – 400 amp panel
+6 parking spaces 
+Fire alarm system
+Sand/oil separator with high strength grate
+Ideally located with excellent ingress/egress"
+71,98,6416 Wilckum Rd,Williston,North Dakota,18,1.5,Industrial,4000,17850,"PROPERTY HIGHLIGHTS • Sublease of 4,000 Sq Ft • Total Size: 4,000 SF- 3,500 SF Shop & 500 SF Office/Showroom • Great Access & Location Just Off Highways 85 & 2. • Near Hot Drilling Area at the 13 Mile Corner • Two Drive-in Bays, One Drive Through Bay • Current Tenant Outgrew Space • Available For Immediate Move In"
+72,99,629 20th Ave,Minot,North Dakota,4.57,0.38,Industrial,4000,10500,"Does your business need storage?! How about just an indoor area to do odds and ends?! This 4,000 sq ft shop space is in a secured fenced area in SE Minot. There are two overhead garage doors that are 12 x 16 ft each. There is limited electrical and heat, typically kept at 40 degrees in the winter, no water or bathroom access. Landlord pays utilities, taxes, and insurance for the space. There is also outdoor yard space available for lease."
+73,100,5806 Baldwin ln,Williston,North Dakota,14,1.17,Industrial,5000,14000,"FOR LEASE: $14/SF NNN
+• Unit 1 | 5,000 SF end unit
+• Includes 14 foot roll-up door, office space, and bathroom
+• Situated in the Missouri Ridge Commercial Park just North of downtown Williston, the economic center of the Bakken
+• In close proximity to numerous oil and oil service companies"
+74,101,4001 32nd St N,Fargo,North Dakota,5.5,0.46,Industrial,54500,293496,"Air Conditioning , Large, dock high distribution warehouse with office space, 26 ft clear ceiling height and easy access to I-29!"
+75,102,3911 37th Ave S,Fargo,North Dakota,5.9,0.49,Industrial,14000,26000,Floor Drains
+75,103,3911 37th Ave S,Fargo,North Dakota,10.5,0.88,Industrial,4960,26000,
+75,104,3911 37th Ave S,Fargo,North Dakota,6.25,0.52,Industrial,7040,26000,
+76,105,16 Heidi Ln,Ross,North Dakota,9.5,0.79,Industrial,7200,7200,"FOR SALE: PRICE REDUCTION- $595,000
+FOR LEASE (SHOP): $9.50/SF NNN 
+FOR LEASE (HOUSING): $5,000/MO
+7,200 SF industrial shop
+Four drive-thru bays with 14’ overhead doors
+Two drive-thrus are full length
+Two drive-thrus are tractor length
+Small office located in shop area
+Man camp/housing includes 20 small bedrooms, kitchen area and laundry facility
+6.02 AC yard
+Ample parking with 14 trailer plug-ins
+Property has access to city water
+Located in Ross, ND"
+77,106,2655 6th Ave S,Saint Petersburg,Florida,5.6,0.47,Industrial,,,
+78,107,1825 Sunset Point Rd,Clearwater,Florida,14,1.17,Industrial,7976,8000,
+79,108,2655 6th Ave S,Saint Petersburg,Florida,5.6,0.47,Industrial,,,
+80,109,3749 Wd Judge Rd,Orlando,Florida,6.6,0.55,Industrial,28078,110400,
+81,110,408 Brookmeade Dr,Crestview,Florida,5.25,0.44,Industrial,59064,59086,
+82,111,5814 Merritt Brown Rd,Panama City,Florida,6.73,0.56,Industrial,5708,5708,
+83,112,8286 Western Way Cir,Jacksonville,Florida,7.75,0.65,Industrial,5400,54000,
+83,113,8286 Western Way Cir,Jacksonville,Florida,7.75,0.65,Industrial,2700,54000,
+83,114,8286 Western Way Cir,Jacksonville,Florida,7.75,0.65,Industrial,2700,54000,
+84,115,2815 Mercury Rd,Jacksonville,Florida,7.5,0.63,Industrial,8400,8400,"Two restrooms, break room, and two offices all in immaculate condition, move-in ready"
+85,116,13907 Arnold Rhoden Rd,Sanderson,Florida,3.25,0.27,Industrial,113546,113546,"Fenced lot, yard"
+86,117,115 S 2nd St,Fernandina Beach,Florida,7,0.58,Industrial,6315,18699,Waterfront
+87,118,4541 St Augustine Rd,Jacksonville,Florida,7.9,0.66,Industrial,2200,55000,"Laboratory 
+ Drop Ceiling 
+ Air Conditioning 
+ Private Restrooms 
+ Partitioned Offices"
+88,119,904 S 20th St,Tampa,Florida,5.95,0.5,Industrial,24722,59498,
+88,120,904 S 20th St,Tampa,Florida,5.95,0.5,Industrial,14007,59498,
+89,121,1020 Holland Dr,Boca Raton,Florida,19,1.58,Industrial,1108,36410,"Large, Air-Conditioned Warehouse; 10' x 10' Overhead Door; Office with Restroom; Service Sink; Drinking Fountain"
+89,122,1020 Holland Dr,Boca Raton,Florida,19,1.58,Industrial,1108,36410,"Large, Air-Conditioned Warehouse; 10' x 10' Overhead Door; Office with Restroom; Service Sink; Drinking Fountain"
+89,123,1020 Holland Dr,Boca Raton,Florida,19,1.58,Industrial,2119,36410,"Large, Air-Conditioned Warehouse; 10' x 10' Overhead Door; Office with Restroom; Service Sink; Drinking Fountain"
+90,124,8601 NW 54th St,Doral,Florida,15,1.25,Industrial,1000,16000,
+91,125,14501 58th St N,Clearwater,Florida,7,0.58,Industrial,26000,26000,Air conditioning
+92,126,1736 E Main St,Leesburg,Florida,7,0.58,Industrial,14400,14400,
+93,127,4140 SW 30th Ave,Fort Lauderdale,Florida,9,0.75,Industrial,41200,135000,"Air conditioning, Skylights, Bus line"
+93,128,4140 SW 30th Ave,Fort Lauderdale,Florida,9,0.75,Industrial,21880,135000,"Air conditioning, Skylights, Bus line"
+94,129,51 Hypoluxo Rd,Latana,Florida,7.95,0.66,Industrial,56382,56382,"24 Hour Availability 
+ Foreign Trade Zone 
+ Air Conditioning 
+ Mezzanine 
+ Bio-Tech/ Lab Space 
+ Security System 
+ Commuter Rail 
+ Signage 
+ Courtyard 
+ USDA/FDA 
+ Enterprise Zone 
+ Yard 
+ Fenced Lot 
+ Storage Space 
+ Floor Drains"
+95,130,2222 NW 14th St,Miami,Florida,11.5,0.96,Industrial,1220,4920,"Bus Line 
+ Central Employment Area 
+ Fenced Lot 
+ Storage Space"
+96,131,6942 NW 7 Ave,Miami,Florida,14.88,1.24,Industrial,14690,14690,"24 Hour Availability 
+ Raised Floor 
+ Air Conditioning 
+ Security System 
+ Bus Line 
+ Central Employment Area 
+ Commuter Rail 
+ Yard 
+ Conferencing Facility 
+ Storage Space 
+ Fenced Lot"
+97,132,5800 NW 163rd St,Miami Lakes,Florida,9.5,0.79,Industrial,18005,108507,Bus Lines
+98,133,1312 Randall Ave,Bronx,New York,18,1.5,Industrial,5000,10000,"Lightin, Heating"
+99,134,2115 Jericho Tpke,New Hyde Park,New York,25,2.08,Industrial,10000,20980,Mezzanine
+99,135,2115 Jericho Tpke,New Hyde Park,New York,25,2.08,Industrial,3900,20980,Mezzanine
+99,136,2115 Jericho Tpke,New Hyde Park,New York,25,2.08,Industrial,2880,20980,Mezzanine
+99,137,2115 Jericho Tpke,New Hyde Park,New York,25,2.08,Industrial,4200,20980,Mezzanine
+100,138,10 Ludlow St,Yonkers,New York,13,1.08,Industrial,6880,6880,
+101,139,5000 Airport Executive Park,Nanuet,New York,13,1.08,Industrial,2310,40000,Gas - Natural Water - City Water Sewer - City Sewer Heating - Gas
+102,140,157 21st St,Bronx,New York,29.5,2.46,Industrial,5000,5000,Lighting - Fluorescent Water - City Water Sewer - City Sewer Heating - Gas
+103,141,146 Hanse Ave,Freeport,New York,9.5,0.79,Industrial,39614,82717,"Waterfront 
+ Fenced Lot 
+ Buss Ducts"
+104,142,45 Ryan Ave,Port Chester,New York,17.41,1.45,Industrial,16400,16400,
+105,143,1404 Portland Ave,Rochester,New York,23,1.92,Industrial,988,3260,
+106,144,295 W Main,Oneonta,New York,9,0.75,Industrial,1200,20280,Bus line
+107,145,2070 Route 52,Hopewell Junction,New York,8,0.67,Industrial,304514,371480,"Air Conditioning 
+ Security System"
+108,146,631 State Route 15 N,Lake Hopatcong,New York,14,1.17,Industrial,4000,10400,"Freeway Visibility 
+ Signage"
+108,147,631 State Route 15 N,Lake Hopatcong,New York,14,1.17,Industrial,6200,10400,"Freeway Visibility 
+ Signage"
+109,148,79 Carlough Rd,Bohemia,New York,12,1,Industrial,12500,12500,"Partitioned Offices 
+ Private Restrooms"
+110,149,1 Garvies Point Rd,Glen Cove,New York,12,1,Industrial,2800,85000,Fenced Lot
+111,150,46 Metropolitan Ave,Ridgewood,New York,23.385,1.95,Industrial,1000,35312,
+111,151,46 Metropolitan Ave,Ridgewood,New York,23.385,1.95,Industrial,1400,35312,
+111,152,46 Metropolitan Ave,Ridgewood,New York,23.385,1.95,Industrial,800,35312,
+112,153,333 N Bedford Rd,Mount Kisco,New York,14,1.17,Industrial,55000,604095,Natural Light
+112,154,333 N Bedford Rd,Mount Kisco,New York,14,1.17,Industrial,45258,604095,
+113,155,57 Seaview Blvd,Port Washington,New York,11.5,0.96,Industrial,130853,130853,
+114,156,100 Wells Ave,Congers,New York,10,0.83,Industrial,12500,25000,
+114,157,100 Wells Ave,Congers,New York,10,0.83,Industrial,2500,25000,
+115,158,1538 Old country Rd,Plainview,New York,10.5,0.88,Industrial,6500,10000,
+115,159,1538 Old country Rd,Plainview,New York,10.5,0.88,Industrial,6477,10000,
+116,160,230 Richardson St,Brooklyn,New York,40,3.33,Industrial,1800,2500,
+117,161,1600 E Orangethorpe Ave ,Fullerton,California,15,1.25,Industrial ,15017,200162,"BUILDING FEATURES ±15,017 square foot part of larger industrial project Immediate access to 91 & 57 freeways Major street frontage on Orangethorpe ±3,012 square feet of office space 1 dock high loading door 1 ground level loading door 12’ warehouse clearance Two (2) 250 amp 3 phase 4-wire power (verify) 2.0:1,000 SF parking ratio 
+Fenced Lot"
+118,162,5960 Franklin Blvd,Sacramento,California,6,0.5,Industrial,14900,14900,"Located less than two miles from the Fruitridge Blvd exit off Highway 99, 5960-5990 Franklin Blvd provides a rare opportunity to occupy two recently renovated buildings on the signalized intersection of Franklin Blvd and 38th Ave in South Sacramento. The property consists of two buildings totaling ±14,900 on ±0.75 acres (2 parcels). Both parcels are zoned C-2 (City of Sacramento)"
+119,163,308 Palm,Santa Barbara,California,22.2,1.85,Industrial,3078,3078,"This property, originally used for an auto shop offers a 3,078 SF building on a 7,000 SF gated lot. The large parking lot, roll up door and second story office make it perfect for a small manufacturer or mechanic."
+120,164,2413 Amsler,Torrance,California,13.8,1.15,Industrial,5000,17000,"Approximately 1,350 sq ft of office space and 3,650 of warehouse space and an additional 1,000 sq ft of outside storage space. Central a/c and 4 private offices, Large bullpen, 2 restrooms, 1 rollup door. Ceilings are 10 1/2 feet high. 7 Parking spaces and an abundance of street parking. Electrical and lighting upgrades in warehouse."
+121,165,16253 Gale ave,City of Industry,California,13.8,1.15,Industrial,13526,124282,Bus Line
+122,166,1690 Brandywine ave,Chula Vista,California,9.48,0.79,Industrial,43942,69960,Fenced Lot
+123,167,912 E 1st street,Pomona,California,6.6,0.55,Industrial,18719,20200,Fenced Lot
+124,168,3440 Airway drive,Santa Rosa,California,48,4,Industrial,8000,21925,"Beautiful industrial space, sprinklered, ADA bathroom, private roll-up door, HVAC in office area, ample parking. All uses allowed"
+125,169,9685 Distribution Ave,San Diego,California,11.88,0.99,Industrial,6512,34834,"Approximately 6,512 SF for lease 20’-22’ clear height Sprinklered Good freeway access Located just off Miramar Road 10% HVAC offices Skylights 1 dock high door"
+126,170,1201 Minnesota Drive,San Fransisco ,California,18,1.5,Industrial,20000,40000,"1,200 sqft Office 5,000 sqft of Insulated AC Storage Two (2) large drive-in doors Large skylights throughout interior Exposed wood ceilings Floor and trench drains Sprinklers 3 Phase / 400 Amps POTENTIAL UPGRADES 4,000 to 6,000 sqft of Mezzanine Upgraded Power Installation"
+127,171,29816 Avienda de las Banderas,Rancho Santa Margarita,California,15,1.25,Industrial,6180,6180,"±5,880 SF Industrial Building • ±3,300 SF of Office / HVAC Production Space • Built in 1998 • ±16' Ceiling Height • 400 Amps of Power (Verify) • ±16 Parking Spaces • ±300 SF Bonus Mezzanine • ±10,794 SF Lot • Fenced Yard • Fire Sprinklered • One (1) Ground Level Door"
+128,172,1201 46th Ave,Oakland,California,24,2,Industrial,4000,26048,
+129,173,1611 17th St,Oakland,California,15,1.25,,10000,17862,3 phase power
+130,174,745 8th Ave,Oakland,California,10.68,0.89,,20000,41535,Remote Access
+131,175,1450 W 228th St,Torrance,California,10.92,0.91,,6300,12238,water and sewage
+132,176,2325 Charter,Stockton,California,6.6,0.55,Industrial,61250,13250,Part of a larger building. Space built in 2001. Shared office/restroom space available. T-8 light fixtures. Paved/ fenced yard/ parking area.
+133,177,22815 Frampton,Torrance ,California,10.08,0.84,Industrial,12000,13442,"Fenced lot, Mezzanine"
+134,178,3555 W Lomita Blvd,Torrance,California,16.2,1.35,Industrial,7650,7650,Air Conditioning
+135,179,2610 Columbia St,Torrance,California,10.56,0.88,Industrial,25000,51023,Air Conditioning
+136,180,9909 Hibert St,San Diego,California,12,1,Industrial,1920,1920,"Signage, Water, Sewer"
+137,181,4888 Ronson Ct,San Diego,California,17.4,1.45,Industrial,1000,1300,Rear Parking
+138,182,6231 E Stassney Ln,Austin,Texas,7.64,0.64,Industrial,21600,130002,"9,284 sf of bulk warehouse with the remaining being office - Office portion has 1 office, break area, and open area for desks - 3 dock high loading areas and 1 loading ramp"
+139,183,13802 Turbine Dr,Austin,Texas,7,0.58,Industrial,10320,15920,"Large Office/Warehouse with Efficient parking & 18 Wheeler access. Building has large overhead and dock doors, Clear Span building with 18 wheeler access and large yard. Over 20 clear height 10,300 Total RSF Available. Has 3 wire singe phase 120/240"
+140,184,1912 Smith Rd,Austin,Texas,12,1,Industrial,3100,13000,high ceilings and large roll up doors.
+141,185,10751 Mapleridge Dr,Dallas,Texas,7,0.58,Industrial,10100,10100,Clear Height: 18 Feet
+142,186,2931 Irving Blvd,Dallas,Texas,7.5,0.63,Industrial,8949,32068,"Newly renovated, 100% HVAC, 1 dock high door, 1 ramped door, existing kitchen / breakroom area."
+143,187,2930 Ladybird Ln,Dallas,Texas,4.5,0.38,Industrial,15000,50000,
+144,188,530 Portwall St,Houston,Texas,3.24,0.27,Industrial,144620,144620,"ully Sprinklered. 32 Overhead dock doors. Large Fenced Truck Apron. 20' Clear Height. 5,650 SF office."
+145,189,8303 Knight Rd,Houston,Texas,6,0.5,Industrial,60000,90000,
+146,190,3522 Bacor,Houston,Texas,9.6,0.8,Industrial,3000,8000,3 - 14'x14' overhead doors. Fully fenced on 1 acre of land.   Automatic gate opener on driveway
+147,191,9600 Technology Blvd,Fort Worth,Texas,4.46,0.37,Industrial,10000,20160,
+148,192,500 Rainhead Rd,Fort Worth,Texas,6.25,0.52,Industrial,9521,35213,Enterprise zone
+149,193,7333 N Jack Newell Blvd,Fort Worth,Texas,4.95,0.41,Industrial,23342,37320,3 Access gates
+150,194,2921 Suffolk Dr,Fort Worth,Texas,7,0.58,Industrial,3000,3000,High Clearance 
+151,195,415 Texas Ave,Texas City,Texas,7.62,0.64,Industrial,5200,5200,Large Parkinglot
+152,196,312 31st St,Texas City,Texas,8.43,0.7,Industrial,12100,12100,Access ramp
+153,197,3700 Thompson St,Austin ,Texas,14.8,1.23,Industrial,3000,9000,Private parking prime location
+154,198,12112 Anderson Mill Rd,Austin,Texas,13.8,1.15,Industrial,2000,6000,Office space with HVAC
+155,199,4018 Caven Rd,Austin,Texas,9,0.75,Industrial,17600,17600,"First Floor access, fence"
+156,200,1718 N Fry Rd,Houston,Texas,13,1.08,Industrial,3313,18330,Recently Built
+157,201,827 W 34th St,Houston,Texas,12,1,INdustrial,2500,5500,Large Entryway and 3 phase power
