@@ -11,4 +11,5 @@ $(function() {
 		$('#register, #form').toggleClass('toggle');
 	});
 
+
 });

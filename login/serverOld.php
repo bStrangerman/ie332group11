@@ -18,18 +18,23 @@
 		// receive all input values from the form
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$email = mysqli_real_escape_string($db, $_POST['email']);
-		$psswd = mysqli_real_escape_string($db, $_POST['password']);
+		$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
+		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
 		// form validation: ensure that the form is correctly filled
 		if (empty($username)) { array_push($errors, "Username is required"); }
 		if (empty($email)) { array_push($errors, "Email is required"); }
-		if (empty($psswd)) { array_push($errors, "Password is required"); }
+		if (empty($password_1)) { array_push($errors, "Password is required"); }
+
+		if ($password_1 != $password_2) {
+			array_push($errors, "The two passwords do not match");
+		}
 
 		// register user if there are no errors in the form
 		if (count($errors) == 0) {
-			$psswd_insert = md5($psswd);//encrypt the password before saving in the database
+			$password = md5($password_1);//encrypt the password before saving in the database
 			$query = "INSERT INTO phprbac_users (username, email, password)
-					  VALUES('$username', '$email', '$psswd_insert')";
+					  VALUES('$username', '$email', '$password')";
 
 			if(mysqli_query($db, $query)){
 			  $_SESSION['UserID'] = mysqli_insert_id($db);
@@ -38,9 +43,8 @@
 			$rbac->Users->assign('no_roles', $UserID = $_SESSION['UserID']);
 
 			$_SESSION['username'] = $username;
-			$_SESSION['email'] = $email;
 			$_SESSION['success'] = "You are now logged in"	;
-			header('location: account_setup.php');
+			header('location: index.php');
 		}
 
 	}
