@@ -1,5 +1,4 @@
-<?php
-	session_start();
+<?php include "../db.php";
 	require_once '../PhpRbac/src/PhpRbac/Rbac.php';
 	$rbac = new \PhpRbac\Rbac();
 
@@ -11,7 +10,7 @@
 	$_SESSION['$UserID'] = "";
 
 	// connect to database
-	$db = mysqli_connect('localhost', 'root', '', 'ie332group11');
+	$db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 	// REGISTER USER
 	if (isset($_POST['reg_user'])) {

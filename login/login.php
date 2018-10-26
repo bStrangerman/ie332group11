@@ -4,7 +4,12 @@ $rbac = new \PhpRbac\Rbac();
 
 if(isset($_SESSION['UserID'])){
   if($rbac->Users->roleCount($UserID = $_SESSION['UserID'])){
-    header('Location: index.php');
+    if($rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
+      header('Location: account_setup.php');
+    }
+    else{
+      header('Location: index.php');
+    }
   }
 }
 
@@ -13,9 +18,9 @@ if(isset($_SESSION['UserID'])){
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="login.css">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="login.js"></script>
+  <script src="js/login.js"></script>
 </head>
 <body>
 
