@@ -49,18 +49,21 @@
 	  `Description` text COLLATE utf8_bin NOT NULL,
 	  `Lft` int(11) NOT NULL,
 	  `Rght` int(11) NOT NULL,
+		`OrderNumber` int(11) DEFAULT NULL,
 	  PRIMARY KEY (`ID`),
 	  KEY `Title` (`Title`),
 	  KEY `Lft` (`Lft`),
 	  KEY `Rght` (`Rght`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
-	INSERT INTO `phprbac_roles` (`ID`, `Title`, `Description`, `Lft`, `Rght`) VALUES
+	INSERT INTO `phprbac_roles` (`ID`, `Title`, `Description`, `Lft`, `Rght`, `OrderNumber`) VALUES
 	(1, 'root', 'root', 1, 10),
 	(2, 'Warehouse', '', 2, 7),
 	(3, 'Warehouse_Owner', '', 3, 4),
 	(4, 'Warehouse_Employee', '', 5, 6),
-	(5, 'Lessee', '', 8, 9);
+	(5, 'Lessee', '', 8, 9)
+	(91, 'no_roles', '', 99, 100),
+	(99, 'need_setup', '', 199, 200);
 
 	CREATE TABLE IF NOT EXISTS `phprbac_userroles` (
 	  `UserID` int(11) NOT NULL,
@@ -79,14 +82,15 @@
 	  `Username` varchar(50) COLLATE utf8_bin NOT NULL,
 	  `Password` varchar(255) COLLATE utf8_bin DEFAULT NULL,
 	  `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		`Email` varchar(100) COLLATE utf8_bin NOT NULL,
 	  PRIMARY KEY (`UserID`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
 
 -- NAMES, COMPANIES, Phone Numbers, AND EMAILS IN USER TABLE?
 
-	INSERT INTO `phprbac_users` (`UserID`, `Username`, `Password`, `CreationDate`) VALUES
-	(1, 'bhaberman', '202cb962ac59075b964b07152d234b70', '2018-10-22 15:24:17'),
-	(2, '543', '81448138f5f163ccdba4acc69819f280', '2018-10-22 19:29:08');
+	INSERT INTO `phprbac_users` (`UserID`, `Username`, `Password`, `CreationDate`, `Email`) VALUES
+	(1, 'bhaberman', '202cb962ac59075b964b07152d234b70', '2018-10-22 15:24:17', 'bhaberma@purdue.edu'),
+	(2, '543', '81448138f5f163ccdba4acc69819f280', '2018-10-22 19:29:08', 'purduepete@purdue.edu');
 
 	ALTER TABLE `phprbac_rolepermissions`
 	  ADD CONSTRAINT `phprbac_rolepermissions_ibfk_1` FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE,
@@ -96,14 +100,14 @@
 	  ADD CONSTRAINT `phprbac_userroles_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `phprbac_users` (`UserID`) ON DELETE CASCADE,
 	  ADD CONSTRAINT `phprbac_userroles_ibfk_2` FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE;
 
-		
+
 	CREATE TABLE Warehouse (
 		warehouseID int(11) NOT NULL auto_increment,
 		owner_id int(11) NOT NULL,
 		address varchar(100),
 		PRIMARY KEY(warehouseID),
 		FOREIGN KEY(owner_id) REFERENCES phprbac_users(UserID));
-		
+
 	CREATE TABLE Spaces (
 		spaceID int(11) NOT NULL auto_increment,
 		warehouseID int(11) NOT NULL,
@@ -112,7 +116,7 @@
 		active BOOLEAN DEFAULT TRUE,
 		PRIMARY KEY(spaceID),
 		FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID));
-		
+
 	CREATE TABLE Contracts (
 		contractID int(11) NOT NULL auto_increment,
 		spaceID int(6) NOT NULL,
@@ -139,14 +143,14 @@
 		rght int(11) NOT NULL,
 		PRIMARY KEY(attributeID));
 
-		
+
 	CREATE TABLE Space_Attributes (
 		spaceID int(11),
 		attributeID int(11),
 		PRIMARY KEY(spaceID, attributeID),
 		FOREIGN KEY(spaceID) REFERENCES Spaces(spaceID),
 		FOREIGN KEY(attributeID) REFERENCES Attributes(attributeID));
-		
+
 	CREATE TABLE Search_Log (
 		SearchID int(11) NOT NULL auto_increment,
 		UserID int(11),

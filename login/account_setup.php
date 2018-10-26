@@ -7,7 +7,7 @@ $rbac = new \PhpRbac\Rbac();
 
 if(isset($_SESSION['UserID'])){
   if($rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
-    
+
   }
   else {
     header('Location: index.php');
