@@ -1,4 +1,14 @@
-<?php include('server.php'); ?>
+<?php include('server.php');
+require_once '../PhpRbac/src/PhpRbac/Rbac.php';
+$rbac = new \PhpRbac\Rbac();
+
+if(isset($_SESSION['UserID'])){
+  if($rbac->Users->roleCount($UserID = $_SESSION['UserID'])){
+    header('Location: index.php');
+  }
+}
+
+?>
 
 <!DOCTYPE html>
 <html>

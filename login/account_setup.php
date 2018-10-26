@@ -5,10 +5,10 @@
 require_once '../PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
-$user_check = "";
-
 if(isset($_SESSION['UserID'])){
-  $user_check = $rbac->Users->hasRole('no_roles', $UserID = $_SESSION['UserID']);
+  if($rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])==0){
+    header('Location: index.php');
+  }
 }
 else {
   header('Location: index.php');

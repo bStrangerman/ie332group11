@@ -35,7 +35,7 @@
 			  $_SESSION['UserID'] = mysqli_insert_id($db);
 			};
 
-			$rbac->Users->assign('no_roles', $UserID = $_SESSION['UserID']);
+			$rbac->Users->assign('need_setup', $UserID = $_SESSION['UserID']);
 
 			$_SESSION['username'] = $username;
 			$_SESSION['email'] = $email;
