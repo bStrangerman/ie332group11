@@ -1,4 +1,5 @@
 <?php
+include('db.php');
 /*
 This file is free software: you can redistribute it and/or modify
 the code under the terms of the GNU General Public License as published by
@@ -59,14 +60,9 @@ $_SERVER['REMOTE_ADDR'] = '128.210.106.57';
 //locate the IP
 $geoplugin->locate($_SERVER['REMOTE_ADDR']);
 
-$ip = $geoplugin->ip;
-$lat = $geoplugin->latitude;
-$lon = $geoplugin->longitude;
-$timezone = $geoplugin->timezone;
-
-$sql = "INSERT INTO visits (ip, latitude, longitude) VALUES ($ip, $lat, $lon)";
-
-echo $sql . "<br>";
+$_SESSION['ip'] = $geoplugin->ip;
+$_SESSION['lat'] = $geoplugin->latitude;
+$_SESSION['lon'] = $geoplugin->longitude;
 
 // echo "Geolocation results for {$geoplugin->ip}: <br />\n".
 // 	"City: {$geoplugin->city} <br />\n".
