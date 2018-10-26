@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php include "db.php";
 
 require_once 'PhpRbac/src/PhpRbac/Rbac.php';
@@ -15,6 +13,10 @@ else {
   exit;
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Multi-step form interface</title>

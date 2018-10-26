@@ -58,13 +58,13 @@
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
 	INSERT INTO `phprbac_roles` (`ID`, `Title`, `Description`, `Lft`, `Rght`, `OrderNumber`) VALUES
-	(1, 'root', 'root', 1, 10),
-	(2, 'Warehouse', '', 2, 7),
-	(3, 'Warehouse_Owner', '', 3, 4),
-	(4, 'Warehouse_Employee', '', 5, 6),
-	(5, 'Lessee', '', 8, 9)
-	(91, 'no_roles', '', 99, 100),
-	(99, 'need_setup', '', 199, 200);
+	(1, 'root', 'root', 1, 10, ''),
+	(2, 'Warehouse', '', 2, 7, ''),
+	(3, 'Warehouse_Owner', '', 3, 4, 1),
+	(4, 'Warehouse_Employee', '', 5, 6, 2),
+	(5, 'Lessee', '', 8, 9, 3),
+	(91, 'no_roles', '', 99, 100, ''),
+	(99, 'need_setup', '', 199, 200, '');
 
 	CREATE TABLE IF NOT EXISTS `phprbac_userroles` (
 	  `UserID` int(11) NOT NULL,
@@ -81,7 +81,7 @@
 
 	CREATE TABLE IF NOT EXISTS `phprbac_users` (
 	  `UserID` int(11) NOT NULL AUTO_INCREMENT,
-	  `Username` varchar(50) COLLATE utf8_bin NOT NULL,
+	  `Username` varchar(50) UNIQUE COLLATE utf8_bin NOT NULL,
 	  `Password` varchar(255) COLLATE utf8_bin DEFAULT NULL,
 	  `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		`Email` varchar(100) COLLATE utf8_bin NOT NULL,
@@ -103,14 +103,14 @@
 	  ADD CONSTRAINT `phprbac_userroles_ibfk_2` FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE;
 
 
-	CREATE TABLE Warehouse (
+	CREATE TABLE IF NOT EXISTS Warehouse (
 		warehouseID int(11) NOT NULL auto_increment,
 		owner_id int(11) NOT NULL,
 		address varchar(100),
 		PRIMARY KEY(warehouseID),
 		FOREIGN KEY(owner_id) REFERENCES phprbac_users(UserID));
 
-	CREATE TABLE Spaces (
+	CREATE TABLE IF NOT EXISTS Spaces (
 		spaceID int(11) NOT NULL auto_increment,
 		warehouseID int(11) NOT NULL,
 		size real,
@@ -119,25 +119,25 @@
 		PRIMARY KEY(spaceID),
 		FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID));
 
-	CREATE TABLE Contracts (
+	CREATE TABLE IF NOT EXISTS Contracts (
 		contractID int(11) NOT NULL auto_increment,
 		spaceID int(6) NOT NULL,
 		lessee_ID int(11) NOT NULL,
-		start_date datetime NOT NULL,
-		end_date datetime NOT NULL,
+		start_date timestamp NOT NULL,
+		end_date timestamp NOT NULL,
 		warehouse_rating int(1),
 		lessee_rating int(1),
 		amount_charged real NOT NULL,
 		contract_text varchar(300),
-		reserved_time datetime DEFAULT CURRENT_TIMESTAMP,
-		confirmed_time datetime DEFAULT NULL,
-		approved_time datetime DEFAULT NULL,
-		denied_time datetime DEFAULT NULL,
+		reserved_time timestamp NOT NULL,
+		confirmed_time timestamp NOT NULL,
+		approved_time timestamp NOT NULL,
+		denied_time timestamp NOT NULL,
 		PRIMARY KEY(contractID),
 		FOREIGN KEY(spaceID) REFERENCES Spaces(spaceID) ON DELETE CASCADE,
 		FOREIGN KEY(lessee_ID) REFERENCES phprbac_users(UserID));
 
-	CREATE TABLE Attributes (
+	CREATE TABLE IF NOT EXISTS Attributes (
 		AttributeID int(11) NOT NULL auto_increment,
 		AttributeName varchar(50),
 		AttributeDescription varchar(200),
@@ -146,19 +146,19 @@
 		PRIMARY KEY(attributeID));
 
 
-	CREATE TABLE Space_Attributes (
+	CREATE TABLE IF NOT EXISTS Space_Attributes (
 		spaceID int(11),
 		attributeID int(11),
 		PRIMARY KEY(spaceID, attributeID),
 		FOREIGN KEY(spaceID) REFERENCES Spaces(spaceID),
 		FOREIGN KEY(attributeID) REFERENCES Attributes(attributeID));
 
-	CREATE TABLE Search_Log (
+	CREATE TABLE IF NOT EXISTS Search_Log (
 		SearchID int(11) NOT NULL auto_increment,
 		UserID int(11),
 		SearchTerms varchar(400),
 		FromLatitude real,
 		FromLongitude real,
-		SearchTime datetime DEFAULT CURRENT_TIMESTAMP,
+		SearchTime timestamp DEFAULT CURRENT_TIMESTAMP,
 		PRIMARY KEY (SearchID),
 		FOREIGN KEY (UserID) REFERENCES phprbac_users(UserID));
