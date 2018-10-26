@@ -1,5 +1,5 @@
 <?php include('server.php');
-require_once '../PhpRbac/src/PhpRbac/Rbac.php';
+require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
 if(isset($_SESSION['UserID'])){

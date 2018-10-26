@@ -1,5 +1,5 @@
-<?php include "../db.php";
-	require_once '../PhpRbac/src/PhpRbac/Rbac.php';
+<?php include "db.php";
+	require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 	$rbac = new \PhpRbac\Rbac();
 
 	// variable declaration

@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	require_once '../PhpRbac/src/PhpRbac/Rbac.php';
+	require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 	$rbac = new \PhpRbac\Rbac();
 
 	if (!isset($_SESSION['username'])) {

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "../db.php";
+<?php include "db.php";
 
-require_once '../PhpRbac/src/PhpRbac/Rbac.php';
+require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
 if(isset($_SESSION['UserID'])){
-  if($rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
+  if(!$rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
     header('Location: index.php');
   }
 }
