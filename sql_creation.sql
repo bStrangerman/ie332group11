@@ -27,7 +27,8 @@
 	CREATE TABLE IF NOT EXISTS `phprbac_rolepermissions` (
 	  `RoleID` int(11) NOT NULL,
 	  `PermissionID` int(11) NOT NULL,
-	  `AssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		`AssignmentDate` int(11) NOT NULL,
+	  `PermissionAssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	  PRIMARY KEY (`RoleID`,`PermissionID`),
 	  KEY `PermissionID` (`PermissionID`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -68,7 +69,8 @@
 	CREATE TABLE IF NOT EXISTS `phprbac_userroles` (
 	  `UserID` int(11) NOT NULL,
 	  `RoleID` int(11) NOT NULL,
-	  `AssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		`AssignmentDate` int(11) NOT NULL,
+	  `RoleAssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	  PRIMARY KEY (`UserID`,`RoleID`),
 	  KEY `RoleID` (`RoleID`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
