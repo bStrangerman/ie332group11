@@ -1,0 +1,10 @@
+name: test
+title:
+username:
+account: bstrangerman
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 538028
+bundleId: 1666404
+url: https://bstrangerman.shinyapps.io/test/
+when: 1540660452.84563
