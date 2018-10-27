@@ -55,10 +55,11 @@ $geoplugin->lang = 'ja';
 
 */
 
-$_SERVER['REMOTE_ADDR'] = '128.210.106.57';
+// $_SERVER['REMOTE_ADDR'] = '128.210.106.57';
 
 //locate the IP
-$geoplugin->locate($_SERVER['REMOTE_ADDR']);
+$ip=$_SERVER['REMOTE_ADDR'];
+$geoplugin->locate($ip);
 
 $_SESSION['ip'] = $geoplugin->ip;
 $_SESSION['lat'] = $geoplugin->latitude;
