@@ -82,9 +82,13 @@
 	CREATE TABLE IF NOT EXISTS `phprbac_users` (
 	  `UserID` int(11) NOT NULL AUTO_INCREMENT,
 		`Username` varchar(50) UNIQUE COLLATE utf8_bin NOT NULL,
+		`FirstName` varchar(50),
+		`LastName` varchar(50),
 	  `Password` varchar(255) COLLATE utf8_bin DEFAULT NULL,
 	  `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		`Email` varchar(100) COLLATE utf8_bin NOT NULL,
+		`PhoneNumber` varchar(11),
+		`Company` varchar(50),
 	  PRIMARY KEY (`UserID`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
 

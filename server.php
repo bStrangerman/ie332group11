@@ -7,7 +7,7 @@
 	$email    = "";
 	$errors = array();
 	$_SESSION['success'] = "";
-	$_SESSION['$UserID'] = "";
+	$_SESSION['UserID'] = "";
 
 	// connect to database
 	$db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -68,6 +68,7 @@
 				$_SESSION['username'] = $username;
 				while($rows = $results -> fetch_assoc()){
 					$_SESSION['UserID'] = $rows['UserID'];
+					$_SESSION['email'] = $rows['email'];
 				}
 				$_SESSION['success'] = "You are now logged in";
 				header('location: index.php');

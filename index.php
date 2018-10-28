@@ -1,5 +1,6 @@
 <?php
-	session_start();
+	// session_start();
+	include "db.php";
 
 	require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 	$rbac = new \PhpRbac\Rbac();
@@ -25,7 +26,7 @@
 <body>
 	<div class="header">
 		<h2>Home Page</h2>
-		<?php echo $_SESSION['UserID'];?>
+		<?php echo $_SESSION['UserID']; ?>
 	</div>
 	<div class="content">
 
