@@ -1,0 +1,176 @@
+Scheduling
+input of when lessee wants the warehouse
+SELECT calendar.StartDate, calendar.EndDate, spaces.Name
+FROM calendar, spaces
+WHERE calendar.SpaceId = spaces.SpaceID;
+Check if the warehouse is available during dates between end date and start date
+
+Can we book this warehouse?
+
+Select for non-interfering contracts
+WHERE (table.start > test.end AND table.start > test.start)
+OR
+(table.end < test.end AND table.end < test.start)
+
+WHERE ()
+
+
+
+SELECT Calendar.id
+FROM Calendar
+WHERE (Calendar.start > '2018-10-30' OR  Calendar.start > '2018-10-29')
+OR
+(Calendar.end < '2018-10-30' AND Calendar.end < '2018-10-29')
+
+It fucking works, selects interfering contracts
+
+
+
+
+DO NOT DELETE OR YOU ARE FIRED!
+this gets the warehouses that are booked  REVISION V1
+***********************************
+SELECT *
+FROM Calendar
+WHERE (NOT Calendar.start > '2018-11-07' OR NOT Calendar.start > '2018-11-03')
+AND
+(NOT Calendar.end < '2018-11-07' OR NOT Calendar.end < '2018-11-03')
+**********************************
+
+
+REVISION V2
+
+SELECT *
+FROM spaces
+WHERE spaceID NOT IN
+(SELECT spaceID FROM Calendar
+WHERE (NOT Calendar.start > '2018-11-07' OR NOT Calendar.start > '2018-11-03')
+AND
+(NOT Calendar.end < '2018-11-07' OR NOT Calendar.end < '2018-11-03'))
+
+
+
+SELECT COUNT(*)
+FROM calendar
+WHERE Calendar.start > 'End Date'
+AND Calendar.end < 'Start Date'
+ORDER BY TIMEDIFF(Calendar.start, 'End Date') ASC
+ORDER BY TIMEDIFF(Calendar.end, 'Start Date') ASC
+
+
+
+Quality Score (Our featured warehouses)
+
+
+
+
+Pricing
+  -Length of Lease
+  -Distance
+  -Size
+  -Amenities
+  -Storage Type (Climate Controlled, Outdoor, etc.)
+
+** Price = Flat Fee + space price/sqft/mo * contracted space per type (sqft) * length of lease (months)
+
+Best fit (Possible Solutions)
+Point Based System
+  -Location
+  -Customer Needs
+    -Climate Controlled, Outdoor, etc.
+    -Size
+      -Greedy Algorithm to decide if 1 or more are needed
+  -Warehouse Owner Needs/ Constraints
+    -How many spaces?
+      -Split-able?
+        -Size per space/ Number of spaces based on total area
+        -Flexible?
+  -Rating from Previous Customers
+  -Decide if multiple warehouses are needed
+  -If no good solutions, choose next best solutions
+
+
+  <<<<<<<<<<<>>>>>>>>>>>>>
+  Customer inputs filtering requirements
+  Filter out unwanted locations
+  Filter out locations without needed warehouse requirements (type, amenities)
+  Decide if multiple warehouses are needed to meet size and find optimal solutions
+  Sort on price or quality score or customer ratings
+  Output all possible optimal solutions
+  <<<<<<<<<<<<>>>>>>>>>>>>>>
+
+  ///////////////////////////////////////////////////////
+
+  Check the size on all warehouses
+    Remove FALSE size warehouses
+    if(size.warehouses[i] == sizeneeded)
+    {
+      warehousesleft <- c(warehousesleft, warehouse[i])
+    }
+  Check the Type on all TRUE size warehouses
+    Remove FALSE types warehouses
+    warehousesleft = NULL;
+    if(type.warehouses[i] == typeneeded)
+    {
+      warehousesleft <- c(warehousesleft, warehouse[i])
+    }
+
+Internal Quality Score:
+Needs:
+Location        | binary (if distance is met)        | int (sorted distances)
+Warehouse Type  | binary (if need is met)            |
+Size            | binary (if size is exceeded)       |
+Price           | binary (if price is reasonable)    | int (sorted ascending)
+Multiple Places | binary (if allowed)                |
+Amenities       | binary (if required)
+  -Loading Dock
+  -Provided moving services in warehouse
+  -Electricity
+  -Restrooms
+  -Secure
+  -Access 24x7
+
+Review Score:
+  -5 star System
+  -Comments
+  -binary (if meets minimum review rating)
+  -int (sort customer reviews)
+
+
+Figure out priorities for search
+
+We want to optimize our code when we discover our code takes too long
+
+Maybe sort by state regions, such as if I want California, the algorithm will check NV, OR, and AR before using the Google API.
+
+
+
+Good Pseudocode for Quality Check:
+Get input from lessee on warehouse types
+Verify all binary checks
+--Location
+--Warehouse Type
+--Size
+--Multiple Locations
+--Amenities
+--Available
+--Price
+If a warehouse passes a check make a new array with only those, run next check on new list
+
+
+
+Optimized Location Search:
+Customer inputs wanted location of warehouse('s)
+Filter only warehouses that are available during the requested dates
+Take state of desired location
+Keep only the desired state and a region of states around inputted state (e.g. IN will search OH, MI, IL, KY for warehouses)
+If the list of warehouses is less than a predefined amount (i.e. 50), search the bordering states of the original bordering states for new DISTINCT warehouses.
+e.g:
+OH: PA, WV, KY, IN
+KY: IN, OH, WV, VI, TN, IL
+IL: IN, KY, MISSOURI, IOWA, WI
+MI: WI, IL, IN, OH
+Continue until a large enough sample size exists
+Run the binary checks
+Use Google API to calculate distance between warehouse and desired location
+Sort on distance, customer rating, etc.
