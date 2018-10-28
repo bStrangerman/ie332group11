@@ -58,7 +58,7 @@ View settings for more info. -->
 			<form id="register" class="contentArea otherForm" method="post" action="login.php">
         <?php include('errors.php'); ?>
 				<div class="formHead">
-					<h1>Join</h1>
+					<h1>Become a member!</h1>
 					<p>Register now</p>
 				</div>
 				<label class="formDiv">
