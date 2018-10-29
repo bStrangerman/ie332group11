@@ -3,57 +3,57 @@
 require_once '../PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
+// Verifies the user is a warehouse owner
 if(isset($_SESSION['UserID'])){
    if(!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID'])){
      header('Location: ../index.php');
    }
+   $UserID = $_SESSION['UserID'];
 }
 
-
+// Checks if the URL has a contract ID in it, and if it has a status
 if(isset($_GET['contract'])){
   $contractID = $_GET['contract'];
-  $sql = "SELECT COUNT(*) AS ifApprovedOrDenied
-          FROM Contract_status
+  $sql = "SELECT *
+          FROM status
           WHERE statusID IN (
-            SELECT StatusID
-            FROM status
-            WHERE statusName = 'Approved'
-            OR StatusName = 'Denied'
+            SELECT statusID
+            FROM Contract_status
+            WHERE contractID = $contractID
+            ORDER BY statusTime DESC
           )
-          AND ContractID = $contractID";
+          LIMIT 1";
+
   $result = $conn -> query($sql);
   $row = $result -> fetch_assoc();
 
-  if($row['ifApprovedOrDenied'] > 0){
+// prevents the accept cotract button from showing if it has already been approved or denied
+  if($row['statusName']){
+    $contractStatus = $row['statusName'];
     $status = 1;
   }
   else {
     $status = 0;
   }
 
-
+  // inserts the status change into the database
   if(isset($_GET['accept']))
   {
     if($_GET['accept'] == 1){
-      $sql = "INSERT INTO Contract_status (contractID, statusID)
-              SELECT $contractID, status.statusID
-              FROM status
-              WHERE status.StatusName = 'Approved'";
-      mysqli_query($conn, $sql);
-      $status = 1;
+      $changedStatus = "Approved";
+      $contractStatus = "Approved";
     }
     else if($_GET['accept'] == 0){
-      $sql = "INSERT INTO Contract_status (contractID, statusID)
-              SELECT $contractID, status.statusID
-              FROM status
-              WHERE status.StatusName = 'Denied'";
-      mysqli_query($conn, $sql);
-      $status = 1;
+      $changedStatus = "Denied";
+      $contractStatus = "Denied";
     }
-    else{
-    }
-  }
-  else{
+
+    $sql = "INSERT INTO Contract_status (contractID, statusID)
+            SELECT $contractID, status.statusID
+            FROM status
+            WHERE status.StatusName = '$changedStatus'";
+    mysqli_query($conn, $sql);
+    $status = 1;
   }
 }
 else
@@ -436,16 +436,39 @@ else
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
+                      <!--  Select the contract information for specifically this one contract -->
+                      <?php
+                      // $UserID = 1;
+                      $sql = "SELECT *
+                              FROM Contracts
+                              WHERE spaceID IN(
+                                SELECT spaceID
+                                FROM Spaces
+                                WHERE warehouseID IN (
+                                  SELECT warehouseID
+                                  FROM Warehouse
+                                  WHERE owner_id = $UserID))
+                              AND contractID = $contractID";
+
+                      $result = $conn -> query($sql);
+
+                      $row = $result -> fetch_assoc();
+                      ?>
+                        <h1 class="page-header">Contract No. <?php echo $contractID; ?></h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-default">
+                      <!-- Changes box color depending on status -->
+                        <div class="panel <?php
+                        echo ($contractStatus == "Approved") ? "panel-green" : "";
+                        echo ($contractStatus == "Denied") ? "panel-red" : "";
+                        echo ($contractStatus == "Pending") ? "panel-yellow" : "";
+                        echo ($contractStatus == "") ? "panel-default" : "";
+                        ?>">
                             <div class="panel-heading">
                               <?php
-                              $UserID = 1;
                               $sql = "SELECT *
                                       FROM Contracts
                                       WHERE spaceID IN(
@@ -476,38 +499,7 @@ else
                                   echo "<a href='blank.php?contract=" . $contractID . "&accept=0' class='btn btn-danger' id='deny'>Deny Contract</a>";
                                 } ?>
 
-                                <h4>Normal Buttons</h4>
-                                <p>
-                                    <button type="button" class="btn btn-default">Default</button>
-                                    <button type="button" class="btn btn-primary">Primary</button>
-                                    <button type="button" class="btn btn-success">Success</button>
-                                    <button type="button" class="btn btn-info">Info</button>
-                                    <button type="button" class="btn btn-warning">Warning</button>
-                                    <button type="button" class="btn btn-danger">Danger</button>
-                                    <button type="button" class="btn btn-link">Link</button>
-                                </p>
-                                <br>
-                                <h4>Disabled Buttons</h4>
-                                <p>
-                                    <button type="button" class="btn btn-default disabled">Default</button>
-                                    <button type="button" class="btn btn-primary disabled">Primary</button>
-                                    <button type="button" class="btn btn-success disabled">Success</button>
-                                    <button type="button" class="btn btn-info disabled">Info</button>
-                                    <button type="button" class="btn btn-warning disabled">Warning</button>
-                                    <button type="button" class="btn btn-danger disabled">Danger</button>
-                                    <button type="button" class="btn btn-link disabled">Link</button>
-                                </p>
-                                <br>
-                                <h4>Button Sizes</h4>
-                                <p>
-                                    <button type="button" class="btn btn-primary btn-lg">Large button</button>
-                                    <button type="button" class="btn btn-primary">Default button</button>
-                                    <button type="button" class="btn btn-primary btn-sm">Small button</button>
-                                    <button type="button" class="btn btn-primary btn-xs">Mini button</button>
-                                    <br>
-                                    <br>
-                                    <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-                                </p>
+                              
                             </div>
                             <!-- /.panel-body -->
                         </div>
