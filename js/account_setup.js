@@ -1,3 +1,4 @@
+// The below code was found on https://www.w3tweaks.com/css/multi-step-html-forms.html and modified
 $("body").on("keyup", "form", function(e){
   if (e.which == 13){
     if ($("#next").is(":visible") && $("fieldset.current").find("input, textarea").valid() ){
@@ -7,19 +8,19 @@ $("body").on("keyup", "form", function(e){
     }
   }
 });
- 
- 
+
+
 $("#next").on("click", function(e){
   console.log(e.target);
   nextSection();
 });
- 
+
 $("form").on("submit", function(e){
   if ($("#next").is(":visible") || $("fieldset.current").index() < 3){
     e.preventDefault();
   }
 });
- 
+
 function goToSection(i){
   $("fieldset:gt("+i+")").removeClass("current").addClass("next");
   $("fieldset:lt("+i+")").removeClass("current");
@@ -34,9 +35,9 @@ function goToSection(i){
         $("input[type=submit]").hide();
       }
   }, 80);
- 
+
 }
- 
+
 function nextSection(){
   var i = $("fieldset.current").index();
   if (i < 3){
@@ -44,7 +45,7 @@ function nextSection(){
     goToSection(i+1);
   }
 }
- 
+
 $("li").on("click", function(e){
   var i = $(this).index();
   if ($(this).hasClass("active")){

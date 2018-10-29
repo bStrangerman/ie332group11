@@ -1,5 +1,7 @@
-<?php include "../db.php";
+<?php
 
+// database and user authentication includes
+include "../db.php";
 require_once '../PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 

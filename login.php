@@ -1,20 +1,25 @@
-<?php include('server.php');
+<?php
+// include the database and authentication information
+include('server.php');
 require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
+// redirects users that have a role
 if(isset($_SESSION['UserID'])){
   if($rbac->Users->roleCount($UserID = $_SESSION['UserID'])){
+    // redirects to account_setup if user has the need setup role
     if($rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
       header('Location: account_setup.php');
     }
+    // redirects to index if user does not have the setup role
     else{
       header('Location: index.php');
     }
   }
 }
-
 ?>
 
+<!-- The below code was found on https://codepen.io/Gibbu/pen/mxGKjP and modified -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +40,10 @@ View settings for more info. -->
 			<h2>@Capacity</h2>
 		</div>
 		<div id="formRight">
+
+      <!-- Forget Password tab -->
 			<form id="forgot" class="contentArea otherForm">
+        <!-- Forget Password feature is not currently working -->
 				<!-- <div class="formHead">
 					<h1>Forgot Password?</h1>
 					<p>Looks like you forgot your password</p>
@@ -55,6 +63,8 @@ View settings for more info. -->
 					<p class="forgotBtn">Back to Login</p>
 				</footer>
 			</form>
+
+      <!-- Registration tab -->
 			<form id="register" class="contentArea otherForm" method="post" action="login.php">
         <?php include('errors.php'); ?>
 				<div class="formHead">
@@ -83,6 +93,8 @@ View settings for more info. -->
 					<p class="registerBtn">Back to login</p>
 				</footer>
 			</form>
+
+      <!-- Login tab -->
 			<form class="contentArea" id="login" method="post" action="login.php">
         <div class="formHead">
 					<h1>WELCOME BACK</h1>

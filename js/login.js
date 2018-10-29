@@ -1,3 +1,5 @@
+// The below code was found on https://codepen.io/Gibbu/pen/mxGKjP and modified
+
 // jQuery
 $(function() {
 

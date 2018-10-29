@@ -1,5 +1,7 @@
-<?php include "../db.php";
+<?php
 
+// database and user authentication includes
+include "../db.php";
 require_once '../PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
@@ -503,10 +505,29 @@ else
                                 $startdate = date("M d, Y", strtotime($contractInforow['start_date']));
                                 $enddate = date("M d, Y", strtotime($contractInforow['end_date']));
                                 echo $startdate . " to " . $enddate . "</h4>";
+                                $lesseeID = $lesseeInforow['lessee_ID'];
                                 echo "Name: " . $lesseeInforow['FirstName'] . " " . $lesseeInforow['LastName'] . "<br>";
                                 echo "Company: " . $lesseeInforow['Company'] . "<br>";
                                 echo "Phone Number: " . $lesseeInforow['PhoneNumber'] . "<br>";
-                                echo "Email: " . $lesseeInforow['email'] . "<br>";
+                                echo "Email: " . $lesseeInforow['email'] . "<br><br>";
+
+                                $getCustomerPreviousCount = "SELECT COUNT(*) as COUNT
+                                                             FROM contracts
+                                                             WHERE lessee_ID = $lesseeID";
+                                $prevCountResult = $conn -> query($getCustomerPreviousCount);
+                                $prevCount = $prevCountResult -> fetch_assoc();
+                                if($prevCount['COUNT'] == 1){
+                                  echo "This is this customer's <strong>First</strong> booking on this site.";
+                                }
+                                else if($prevCount['COUNT'] == 2){
+                                  echo "This is this customer's <strong>Second</strong> booking on this site.";
+                                }
+                                else{
+                                  echo "This is this customer's <strong>" . $prevCount['COUNT'] . "th</strong> Booking on this site.";
+                                }
+
+
+
                                 echo "</div>";
                                 if($contractStatus == "Pending")
                                 { ?>
@@ -537,7 +558,7 @@ else
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                <a href='blank.php?contract=<?php echo $contractID; ?>&accept=1' class='btn btn-success' id='accept'>Accept Contract</a>
+                                                <a href='contract.php?contract=<?php echo $contractID; ?>&accept=1' class='btn btn-success' id='accept'>Accept Contract</a>
                                             </div>
                                         </div>
                                         <!-- /.modal-content -->
@@ -557,7 +578,7 @@ else
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <a href='blank.php?contract=<?php echo $contractID; ?>&accept=0' class='btn btn-danger' id='deny'>Deny Contract</a>
+                                                <a href='contract.php?contract=<?php echo $contractID; ?>&accept=0' class='btn btn-danger' id='deny'>Deny Contract</a>
                                             </div>
                                         </div>
                                         <!-- /.modal-content -->

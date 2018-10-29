@@ -1,4 +1,7 @@
-<?php include "db.php";
+<?php
+
+	// database and user authentication includes
+	include "db.php";
 	require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 	$rbac = new \PhpRbac\Rbac();
 
@@ -30,27 +33,28 @@
 			$query = "INSERT INTO phprbac_users (username, email, password)
 					  VALUES('$username', '$email', '$psswd_insert')";
 
+			// get the User ID from the newest user
 			if(mysqli_query($db, $query)){
 			  $_SESSION['UserID'] = mysqli_insert_id($db);
 			};
 
+			// assign temporary role to new users
 			$rbac->Users->assign('need_setup', $UserID = $_SESSION['UserID']);
 
+			// sets the user information into the session
 			$_SESSION['username'] = $username;
 			$_SESSION['email'] = $email;
 			$_SESSION['success'] = "You are now logged in"	;
-			header('location: account_setup.php');
+			header('location: account_setup.php');  // redirects to the account setup page
 		}
-
 	}
-
-	// ...
 
 	// LOGIN USER
 	if (isset($_POST['login_user'])) {
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$password = mysqli_real_escape_string($db, $_POST['password']);
 
+		// validates the user information is provided
 		if (empty($username)) {
 			array_push($errors, "Username is required");
 		}
@@ -58,6 +62,7 @@
 			array_push($errors, "Password is required");
 		}
 
+		// validates the user is in the database and logs in the user
 		if (count($errors) == 0) {
 			$password = md5($password);
 			$query = "SELECT * FROM phprbac_users WHERE username='$username' AND password='$password'";
@@ -72,10 +77,10 @@
 				}
 				$_SESSION['success'] = "You are now logged in";
 				header('location: index.php');
-			}else {
+			}
+			else {
 				array_push($errors, "Wrong username/password combination");
 			}
 		}
 	}
-
 ?>

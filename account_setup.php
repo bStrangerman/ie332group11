@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include "db.php";
-
+<?php
+// sets up the database and user authentication functions
+include "db.php";
 require_once 'PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
+// forces only users who still need account setup
 if(isset($_SESSION['UserID'])){
   if(!$rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
     header('Location: index.php');
@@ -12,6 +12,7 @@ if(isset($_SESSION['UserID'])){
   else if(isset($_GET['submit'])){
     if($_GET['submit'])
     {
+      // Submits user information into the database
       $firstName = $_POST['firstName'];
       $lastName = $_POST['lastName'];
       $UserID = $_SESSION['UserID'];
@@ -29,6 +30,7 @@ if(isset($_SESSION['UserID'])){
       Company = '$company'
       WHERE UserID = $UserID;";
 
+      // changes the user role from need setup to the role that the user selected as their primary role
       if(mysqli_query($conn, $sql)){
         $rbac->Users->assign($role, $UserID = $_SESSION['UserID']);
         $rbac->Users->unassign('need_setup', $UserID = $_SESSION['UserID']);
@@ -36,18 +38,19 @@ if(isset($_SESSION['UserID'])){
       }
     }
   }
-
 }
 else {
   header('Location: index.php');
   exit;
 }
-
 ?>
+
+<!-- The below code was found on https://www.w3tweaks.com/css/multi-step-html-forms.html and modified -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Multi-step form interface</title>
-
   <link rel="stylesheet" href="css/account_setup.css">
 
 </head>
@@ -55,12 +58,16 @@ else {
 <body>
   <h1 align="center">Continue your setup</h1>
   <form id="signup" action="account_setup.php?submit=1" method="POST">
+
+    <!-- tab creation -->
     <ul id="section-tabs">
       <li class="current active"><span>1.</span> Basic Info</li>
       <li><span>2.</span> Contact Info</li>
       <li><span>3.</span> Settings</li>
       <li><span>4.</span> Last Words</li>
     </ul>
+
+    <!-- Basic Info tab -->
     <div id="fieldsets">
       <fieldset class="current">
         <label for="firstName">First Name:</label>
@@ -68,6 +75,8 @@ else {
         <label for="lastName">Last Name:</label>
         <input name="lastName" type="text" class="required" />
         <label for="role">Select Your Primary Role:</label>
+
+        <!-- Selects the possible user roles from the database -->
         <?php
         $sql = "SELECT Title, ID as RoleID
         FROM phprbac_roles
@@ -76,14 +85,16 @@ else {
         $result = $conn->query($sql);
 
         echo "<select name='role'>";
-        // output data of each row
+
+        // output each user role
         while($row = $result->fetch_assoc()) {
           $shortname = $row['Title']; ?>
           <option value="<?php echo $row['RoleID']; ?>"><?php echo $shortname;?></option>
-        <?php }
-        ?>
+        <?php } ?>
       </select>
     </fieldset>
+
+    <!-- Contact Info tab -->
     <fieldset class="next">
       <label for="company">Company:</label>
       <input name="company" type="text"/>
@@ -92,6 +103,8 @@ else {
       <label for="email">Verify Your Email:</label>
       <input name="email" value="<?php echo $_SESSION['email']; ?>" type="email">
     </fieldset>
+
+    <!-- Third tab -->
     <fieldset class="next">
       <label for="interests">Basic Interests:</label>
       <textarea name="bio"></textarea>
@@ -100,6 +113,8 @@ else {
         <input type="radio" name="newsletter" value="no"><label for="newsletter">no</label>
       </p>
     </fieldset>
+
+    <!-- Fourth tab -->
     <fieldset class="next">
       <label for="referrer">Referred by:</label>
       <input type="text" name="referrer">
@@ -111,14 +126,6 @@ else {
   </div>
 </form>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-
-
 <script  src="js/account_setup.js"></script>
-
-
-
-
 </body>
-
 </html>
