@@ -469,7 +469,7 @@ else
                         ?>">
                             <div class="panel-heading">
                               <?php
-                              $sql = "SELECT *
+                              $contractInfoQuery = "SELECT *
                                       FROM Contracts
                                       WHERE spaceID IN(
                                         SELECT spaceID
@@ -480,26 +480,50 @@ else
                                           WHERE owner_id = $UserID))
                                       AND contractID = $contractID";
 
-                              $result = $conn -> query($sql);
+                              $contractInforesult = $conn -> query($contractInfoQuery);
+                              $contractInforow = $contractInforesult -> fetch_assoc();
 
-                              $row = $result -> fetch_assoc();
-                              ?>
-                                Contract No. <?php echo $contractID; ?>
+                              $lesseeInfoQuery = "SELECT *
+                                                  FROM phprbac_users
+                                                  INNER JOIN contracts
+                                                  ON contracts.lessee_ID = phprbac_users.UserID
+                                                  INNER JOIN spaces
+                                                  ON contracts.SpaceID = spaces.SpaceID
+                                                  INNER JOIN warehouse
+                                                  ON warehouse.warehouseID = spaces.warehouseID
+                                                  AND contracts.contractID = $contractID";
+                              $lesseeInfoResult = $conn -> query($lesseeInfoQuery);
+                              $lesseeInforow = $lesseeInfoResult -> fetch_assoc();
+
+                              echo $lesseeInforow['address']; ?>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <h4><?php
-                                $startdate = date("M d, Y", strtotime($row['start_date']));
-                                $enddate = date("M d, Y", strtotime($row['end_date']));
+                                $startdate = date("M d, Y", strtotime($contractInforow['start_date']));
+                                $enddate = date("M d, Y", strtotime($contractInforow['end_date']));
                                 echo $startdate . " to " . $enddate . "</h4>";
-
+                                echo "Name: " . $lesseeInforow['FirstName'] . " " . $lesseeInforow['LastName'] . "<br>";
+                                echo "Company: " . $lesseeInforow['Company'] . "<br>";
+                                echo "Phone Number: " . $lesseeInforow['PhoneNumber'] . "<br>";
+                                echo "Email: " . $lesseeInforow['email'] . "<br>";
+                                echo "</div>";
                                 if($contractStatus == "Pending")
                                 { ?>
-
-
+                                  <div class="panel-footer">
+                                    <div class="row">
+                                    <div align="center" class="col-md-6">
                                 <button class="btn btn-success" data-toggle="modal" data-target="#accept_contract">
                                   Accept this contract
                                 </button>
+                              </div>
+                              <div align="center" class="col-md-6">
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#deny_contract">
+                                  Deny this contract
+                                </button>
+                              </div>
+                            </div>
+
                                 <!-- Modal -->
                                 <div class="modal fade" id="accept_contract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -520,11 +544,7 @@ else
                                     </div>
                                     <!-- /.modal-dialog -->
                                 </div>
-                                <!-- /.modal -->
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#deny_contract">
-                                  Deny this contract
-                                </button>
-                                <!-- Modal -->
+
                                 <div class="modal fade" id="deny_contract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -544,6 +564,7 @@ else
                                     </div>
                                     <!-- /.modal-dialog -->
                                 </div>
+                              </div>
                                 <!-- /.modal -->
                               <?php } ?>
 
