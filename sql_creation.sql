@@ -133,13 +133,24 @@
 		lessee_rating int(1),
 		amount_charged real NOT NULL,
 		contract_text varchar(300),
-		reserved_time timestamp NOT NULL,
-		confirmed_time timestamp NOT NULL,
-		approved_time timestamp NOT NULL,
-		denied_time timestamp NOT NULL,
 		PRIMARY KEY(contractID),
 		FOREIGN KEY(spaceID) REFERENCES Spaces(spaceID) ON DELETE CASCADE,
 		FOREIGN KEY(lessee_ID) REFERENCES phprbac_users(UserID));
+
+	CREATE TABLE IF NOT EXISTS Status (
+		statusID int(11) NOT NULL AUTO_INCREMENT,
+		statusName varchar(50),
+		statusDescription varchar(200),
+		PRIMARY KEY (statusID));
+
+	CREATE TABLE IF NOT EXISTS Contract_Status (
+		contractID int(11) NOT NULL,
+		statusID int(11) NOT NULL,
+		statusTime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		PRIMARY KEY (contractID, statusID),
+		FOREIGN KEY (contractID) REFERENCES Contracts(contractID),
+		FOREIGN KEY (statusID) REFERENCES Status(statusID));
+
 
 	CREATE TABLE IF NOT EXISTS Attributes (
 		AttributeID int(11) NOT NULL auto_increment,
