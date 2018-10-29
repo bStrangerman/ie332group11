@@ -1,5 +1,5 @@
 TRUNCATE TABLE spaces;
-INSERT INTO spaces(warehouseID, spaceID, price_m, price_y, size) VALUES
+INSERT INTO Spaces(WarehouseID, SpaceID, MonthlyPrice, YearlyPrice, SpaceSize) VALUES
 (1,1,12.69,1.06,'10400')
 ,(2,2,7,0.58,'8800')
 ,(3,3,6.98,0.58,'5500')

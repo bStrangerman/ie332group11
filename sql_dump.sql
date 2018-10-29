@@ -157,7 +157,25 @@ CREATE TABLE IF NOT EXISTS Attributes (
 
 CREATE TABLE IF NOT EXISTS Space_Attributes (
   SpaceID int(11),
-  attributeID int(11),
-  PRIMARY KEY(SpaceID, attributeID),
+  AttributeID int(11),
+  PRIMARY KEY(SpaceID, AttributeID),
   FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID),
-  FOREIGN KEY(attributeID) REFERENCES Attributes(attributeID));
+  FOREIGN KEY(AttributeID) REFERENCES Attributes(AttributeID));
+
+CREATE TABLE IF NOT EXISTS Attributes (
+  AttributeID int(11) NOT NULL auto_increment,
+  AttributeName varchar(50),
+  AttributeDescription varchar(200),
+  AttributeType int(5),
+  lft int(11) NOT NULL,
+  rght int(11) NOT NULL,
+  PRIMARY KEY(AttributeID));
+
+INSERT INTO Attributes (AttributeName, AttributeType) VALUES
+  ('Retail/Industrial', 1),
+  ('Office/Industrial', 1),
+  ('Industrial', 1),
+  ('Fencing', 2),
+  ('Floor Drains', 2),
+  ('Yard', 2),
+  ('Loading Dock', 2);

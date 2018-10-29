@@ -1,5 +1,5 @@
-TRUNCATE TABLE warehouse;
-INSERT INTO Warehouse(warehouseID,Address,City,State,BuildingSize,owner_id) VALUES
+TRUNCATE TABLE Warehouses;
+INSERT INTO Warehouses(WarehouseID, Address, City, State, BuildingSize, OwnerID) VALUES
 (1,'512 N Energy Dr.','Rock Springs','WY','10400',1)
 ,(2,'331 Lexington Ave.','Cheyenne','WY','15300',1)
 ,(3,'311 Progress Cir.','Cheyenne','WY','21112',1)

@@ -1,29 +1,5 @@
-CREATE TABLE IF NOT EXISTS Attributes (
-  AttributeID int(11) NOT NULL auto_increment,
-  AttributeName varchar(50),
-  AttributeDescription varchar(200),
-  AttributeType int(5),
-  lft int(11) NOT NULL,
-  rght int(11) NOT NULL,
-  PRIMARY KEY(attributeID));
-
-INSERT INTO Attributes (AttributeName, AttributeType) VALUES
-('Retail/Industrial', 1),
-('Office/Industrial', 1),
-('Industrial', 1),
-('Fencing', 2),
-('Floor Drains', 2),
-('Yard', 2),
-('Loading Dock', 2);
-
-CREATE TABLE IF NOT EXISTS Space_Attributes (
-  spaceID int(11),
-  attributeID int(11),
-  PRIMARY KEY(spaceID, attributeID),
-  FOREIGN KEY(spaceID) REFERENCES Spaces(spaceID),
-  FOREIGN KEY(attributeID) REFERENCES Attributes(attributeID));
-
-INSERT INTO Space_Attributes(spaceID,attributeID) VALUES
+TRUNCATE TABLE Space_Attributes;
+INSERT INTO Space_Attributes(SpaceID,AttributeID) VALUES
  (1,3)
 ,(2,3)
 ,(3,3)
