@@ -493,13 +493,60 @@ else
                                 $enddate = date("M d, Y", strtotime($row['end_date']));
                                 echo $startdate . " to " . $enddate . "</h4>";
 
-                                if($status == 0)
-                                {
-                                  echo "<a href='blank.php?contract=" . $contractID . "&accept=1' class='btn btn-success' id='accept'>Accept Contract</a>";
-                                  echo "<a href='blank.php?contract=" . $contractID . "&accept=0' class='btn btn-danger' id='deny'>Deny Contract</a>";
-                                } ?>
+                                if($contractStatus == "Pending")
+                                { ?>
 
-                              
+
+                                <button class="btn btn-success" data-toggle="modal" data-target="#accept_contract">
+                                  Accept this contract
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="accept_contract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="myModalLabel">Are you sure you would like to accept this contract?</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                              This step can only be done once.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                <a href='blank.php?contract=<?php echo $contractID; ?>&accept=1' class='btn btn-success' id='accept'>Accept Contract</a>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#deny_contract">
+                                  Deny this contract
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deny_contract" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="myModalLabel">Are you sure you would like to deny this contract?</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                              This step can only be done once.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <a href='blank.php?contract=<?php echo $contractID; ?>&accept=0' class='btn btn-danger' id='deny'>Deny Contract</a>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+                              <?php } ?>
+
                             </div>
                             <!-- /.panel-body -->
                         </div>
