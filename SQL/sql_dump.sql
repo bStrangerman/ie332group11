@@ -128,7 +128,8 @@ CREATE TABLE IF NOT EXISTS Contracts (
   LesseeRating int(1),
   LesseeComments varchar(300),
   AmountCharged real NOT NULL,
-  ContractText varchar(300),
+  ContractInformation varchar(400),
+  ContractText varchar(400),
   PRIMARY KEY(ContractID),
   FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID) ON DELETE CASCADE,
   FOREIGN KEY(LesseeID) REFERENCES phprbac_users(UserID));

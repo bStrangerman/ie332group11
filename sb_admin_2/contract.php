@@ -13,9 +13,25 @@ if(isset($_SESSION['UserID'])){
    $UserID = $_SESSION['UserID'];
 }
 
-// Checks if the URL has a contract ID in it, and if it has a status
+// Checks if the URL has a contract ID in it
 if(isset($_GET['contract'])){
   $contractID = $_GET['contract'];
+
+  $mainSqlQuery = "SELECT *
+                      FROM phprbac_users
+                      INNER JOIN contracts
+                      ON contracts.lessee_ID = phprbac_users.UserID
+                      INNER JOIN spaces
+                      ON contracts.SpaceID = spaces.SpaceID
+                      INNER JOIN warehouse
+                      ON warehouse.warehouseID = spaces.warehouseID
+                      WHERE contracts.contractID = $contractID
+                      AND warehouse.owner_id = $UserID";
+  $mainSqlResult = ($conn -> query($mainSqlQuery)) -> fetch_assoc();
+
+  echo count($mainSqlResult);
+
+  // Gets the status of the contract
   $sql = "SELECT *
           FROM status
           WHERE statusID IN (
@@ -438,24 +454,6 @@ else
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                      <!--  Select the contract information for specifically this one contract -->
-                      <?php
-                      // $UserID = 1;
-                      $sql = "SELECT *
-                              FROM Contracts
-                              WHERE spaceID IN(
-                                SELECT spaceID
-                                FROM Spaces
-                                WHERE warehouseID IN (
-                                  SELECT warehouseID
-                                  FROM Warehouse
-                                  WHERE owner_id = $UserID))
-                              AND contractID = $contractID";
-
-                      $result = $conn -> query($sql);
-
-                      $row = $result -> fetch_assoc();
-                      ?>
                         <h1 class="page-header">Contract No. <?php echo $contractID; ?></h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -471,49 +469,30 @@ else
                         ?>">
                             <div class="panel-heading">
                               <?php
-                              $contractInfoQuery = "SELECT *
-                                      FROM Contracts
-                                      WHERE spaceID IN(
-                                        SELECT spaceID
-                                        FROM Spaces
-                                        WHERE warehouseID IN (
-                                          SELECT warehouseID
-                                          FROM Warehouse
-                                          WHERE owner_id = $UserID))
-                                      AND contractID = $contractID";
-
-                              $contractInforesult = $conn -> query($contractInfoQuery);
-                              $contractInforow = $contractInforesult -> fetch_assoc();
-
-                              $lesseeInfoQuery = "SELECT *
-                                                  FROM phprbac_users
-                                                  INNER JOIN contracts
-                                                  ON contracts.lessee_ID = phprbac_users.UserID
-                                                  INNER JOIN spaces
-                                                  ON contracts.SpaceID = spaces.SpaceID
-                                                  INNER JOIN warehouse
-                                                  ON warehouse.warehouseID = spaces.warehouseID
-                                                  AND contracts.contractID = $contractID";
-                              $lesseeInfoResult = $conn -> query($lesseeInfoQuery);
-                              $lesseeInforow = $lesseeInfoResult -> fetch_assoc();
-
-                              echo $lesseeInforow['address']; ?>
+                            $address = $mainSqlResult['address'] . "<br>" . $mainSqlResult['city'] . " " . $mainSqlResult['state'] . (($mainSqlResult['zipcode'] != NULL) ? ", " . $mainSqlResult['zipcode'] : "");
+                            echo $address; ?>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <h4><?php
-                                $startdate = date("M d, Y", strtotime($contractInforow['start_date']));
-                                $enddate = date("M d, Y", strtotime($contractInforow['end_date']));
+                                $startdate = date("M d, Y", strtotime($mainSqlResult['start_date']));
+                                $enddate = date("M d, Y", strtotime($mainSqlResult['end_date']));
                                 echo $startdate . " to " . $enddate . "</h4>";
-                                $lesseeID = $lesseeInforow['lessee_ID'];
-                                echo "Name: " . $lesseeInforow['FirstName'] . " " . $lesseeInforow['LastName'] . "<br>";
-                                echo "Company: " . $lesseeInforow['Company'] . "<br>";
-                                echo "Phone Number: " . $lesseeInforow['PhoneNumber'] . "<br>";
-                                echo "Email: " . $lesseeInforow['email'] . "<br><br>";
+                                $lesseeID = $mainSqlResult['lessee_ID'];
+                                echo "Name: " . $mainSqlResult['FirstName'] . " " . $mainSqlResult['LastName'] . "<br>";
+                                echo "Company: " . $mainSqlResult['Company'] . "<br>";
+                                echo "Phone Number: " . $mainSqlResult['PhoneNumber'] . "<br>";
+                                echo "Email: " . $mainSqlResult['email'] . "<br><br>";
 
+                                echo "<h4>The customer provided this information regarding what the space will be used for:</h4>";
+                                echo "<p>" . $mainSqlResult['ContractInfo'] . "</p><br>";
+
+                                // get the number of contracts (of any status) for this customer
                                 $getCustomerPreviousCount = "SELECT COUNT(*) as COUNT
                                                              FROM contracts
                                                              WHERE lessee_ID = $lesseeID";
+
+                                echo "<h4>Important Client Information</h4>";
                                 $prevCountResult = $conn -> query($getCustomerPreviousCount);
                                 $prevCount = $prevCountResult -> fetch_assoc();
                                 if($prevCount['COUNT'] == 1){
@@ -522,13 +501,15 @@ else
                                 else if($prevCount['COUNT'] == 2){
                                   echo "This is this customer's <strong>Second</strong> booking on this site.";
                                 }
+                                else if($prevCount['COUNT'] == 3){
+                                  echo "This is this customer's <strong>Third</strong> booking on this site.";
+                                }
                                 else{
                                   echo "This is this customer's <strong>" . $prevCount['COUNT'] . "th</strong> Booking on this site.";
                                 }
 
-
-
                                 echo "</div>";
+
                                 if($contractStatus == "Pending")
                                 { ?>
                                   <div class="panel-footer">
