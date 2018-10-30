@@ -74,13 +74,32 @@ if (isset($_SESSION['UserID'])) {
                         <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
-                      <?php getNotifications(15, 5, $conn); ?>
+                      <?php
+                      $n = 5;
+                      $alertInfo = getRecentInfo(15, $n, $conn);
+                      $i = 1;
+                      while ($i <= $n) {
+                        echo "
                         <li>
-                            <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
+                          <a href='#'>
+                            <div>
+                              <strong>" . $alertInfo['Type'] . "</strong>
+                              <span class='pull-right text-muted'>
+                                <em>" . $alertInfo['Time_Elapsed'] . "</em>
+                              </span>
+                            </div>
+                            <div>" . $alertInfo['Content'] . "</div>
+                          </a>
                         </li>
+                        <li class='divider'></li>";
+                      $i++;
+                      }?>
+                      <li>
+                        <a class="text-center" href="#">
+                          <strong>Read All Messages</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </li>
                     </ul>
                     <!-- /.dropdown-messages -->
                 </li>
@@ -169,8 +188,25 @@ if (isset($_SESSION['UserID'])) {
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
-                        <?php getAlerts("Bar", 15, 5, $conn); ?>
+                        <?php
+                        $n = 5;
+                        $alertInfo = getRecentInfo(15, $n, $conn);
+                        $i = 1;
+                        while ($i <= $n) {
+                            echo "<li>
+                          <a href='#'>
+                          <div>
+                          <i class='fa " . $alertInfo['Icon'] . " fa-fw'></i> " . $alertInfo['Type'] . "
+                          <span class='pull-right text-muted small'> " . $alertInfo['Time_Elapsed'] . "</span>
+                          </div>
+                          </a>
+                          </li>
+                          <li class='divider'></li>";
+                            $i++;
+                        }
 
+
+                    ?>
                         <li>
                             <a class="text-center" href="#">
                                 <strong>See All Alerts</strong>
@@ -673,8 +709,18 @@ if (isset($_SESSION['UserID'])) {
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <?php getAlerts("Panel", 15, 9, $conn); ?>
-
+                              <?php
+                              $n = 9;
+                              $i = 1;
+                              $alertInfo = getRecentInfo(15, $n, $conn);
+                              while ($i <= $n) {
+                                  echo "<a href='#' class='list-group-item'>
+                                <i class='fa ". $alertInfo['Icon'] . " fa-fw'></i> " . $alertInfo['Type'] . "
+                                <span class='pull-right text-muted small'><em> " . $alertInfo['Time_Elapsed'] . "</em>
+                                </span>
+                                </a>";
+                                  $i++;
+                              }?>
                             </div>
                             <!-- /.list-group -->
                             <a href="#" class="btn btn-default btn-block">View All Alerts</a>
