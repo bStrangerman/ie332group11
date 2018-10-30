@@ -13,7 +13,11 @@ if(isset($_SESSION['UserID'])){
     }
     // redirects to index if user does not have the setup role
     else{
-      header('Location: index.php');
+      if(isset($_SESSION['redirect'])){
+        $redirect = $_SESSION['redirect'];
+        unset($_SESSION['redirect']);
+        header($redirect);
+      }
     }
   }
 }

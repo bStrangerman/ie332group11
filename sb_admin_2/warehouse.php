@@ -9,7 +9,8 @@ $rbac = new \PhpRbac\Rbac();
 
 if (isset($_SESSION['UserID'])) {
     if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID'])) {
-        header('Location: ../index.php');
+        header('Location: ../login.php');
+        $_SESSION['redirect'] = 'Location: sb_admin_2/warehouse.php';
     }
 }
 ?>
@@ -79,7 +80,7 @@ if (isset($_SESSION['UserID'])) {
                       $alertInfo = getRecentInfo(15, $n, $conn);
                       $i = 1;
                       while ($i <= $n) {
-                        echo "
+                          echo "
                         <li>
                           <a href='#'>
                             <div>
@@ -92,7 +93,7 @@ if (isset($_SESSION['UserID'])) {
                           </a>
                         </li>
                         <li class='divider'></li>";
-                      $i++;
+                          $i++;
                       }?>
                       <li>
                         <a class="text-center" href="#">
@@ -227,7 +228,7 @@ if (isset($_SESSION['UserID'])) {
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="../logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

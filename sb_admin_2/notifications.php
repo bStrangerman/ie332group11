@@ -22,30 +22,31 @@ function notify($TargetUser, $Message)
  * @param  [type] $conn       [description]
  * @return [array]            Information to be displayed in the notification
  */
-function getRecentInfo($TargetUser, $n, $conn){
-  $sql = "SELECT TIMEDIFF(NOW, NotificationTimeStamp) AS Time_Elapsed, *
+function getRecentInfo($TargetUser, $n, $conn)
+{
+    $sql = "SELECT TIMEDIFF(CURRENT_TIMESTAMP, NotificationTimeStamp) AS Time_Elapsed, *
   FROM User_Notifications
   WHERE User_ID = $TargetUser
   ORDER BY NotificationTimeStamp DESC
   LIMIT $n";
 
-  // $result = $conn -> query($sql);
+    // $result = $conn -> query($sql);
 
-  $row = array(
+    $row = array(
   "Type"=>"new_contract",
   "Time_Elapsed"=>"43 minutes",
   "Content"=>"You've got mail",
   "Icon"=>"fa-comment");
 
-  $i = 1;
-  // while($row = -> $result -> fetch_assoc()){
-  while ($i <= $n) {
-    $out['Type'] = $row['Type'];
-    $out['Time_Elapsed'] = $row['Time_Elapsed'];
-    $out['Content'] = $row['Content'];
-    $out['Icon'] = $row['Icon'];
-    $i++;
-  }
+    $i = 1;
+    // while($row = -> $result -> fetch_assoc()){
+    while ($i <= $n) {
+        $out['Type'] = $row['Type'];
+        $out['Time_Elapsed'] = $row['Time_Elapsed'];
+        $out['Content'] = $row['Content'];
+        $out['Icon'] = $row['Icon'];
+        $i++;
+    }
 
-  return $row;
+    return $row;
 }
