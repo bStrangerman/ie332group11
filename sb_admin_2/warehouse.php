@@ -7,10 +7,10 @@ require_once '../PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
 
-if(isset($_SESSION['UserID'])){
-   if(!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID'])){
-     header('Location: ../index.php');
-   }
+if (isset($_SESSION['UserID'])) {
+    if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID'])) {
+        header('Location: ../index.php');
+    }
 }
 ?>
 
@@ -74,7 +74,7 @@ if(isset($_SESSION['UserID'])){
                         <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
-                      <?php getNotifications(15,5,$conn); ?>
+                      <?php getNotifications(15, 5, $conn); ?>
                         <li>
                             <a class="text-center" href="#">
                                 <strong>Read All Messages</strong>
@@ -169,7 +169,7 @@ if(isset($_SESSION['UserID'])){
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
-                        <?php getAlerts("Bar",15,5,$conn); ?>
+                        <?php getAlerts("Bar", 15, 5, $conn); ?>
 
                         <li>
                             <a class="text-center" href="#">
@@ -673,7 +673,7 @@ if(isset($_SESSION['UserID'])){
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <?php getAlerts("Panel", 15,9,$conn); ?>
+                                <?php getAlerts("Panel", 15, 9, $conn); ?>
 
                             </div>
                             <!-- /.list-group -->
