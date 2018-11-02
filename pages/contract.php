@@ -228,7 +228,44 @@ require_once "../layouts/sb_admin_2/header.php";
               </div>
             </div>
             <!-- /.modal -->
-          <?php } ?>
+          <?php }
+          else if($contractStatus = "Approved" OR $contractStatus = "Denied"){ ?>
+            <div class="panel-footer">
+              <div class="row">
+                <div align="center" class="col-md-12">
+                  <button class="btn btn-success" data-toggle="modal" data-target="#accept_contract">
+                    Undo
+                  </button>
+                </div>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="accept_contract" tabindex="-1" role="dialog" aria-labelledby="accept_contract" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Are you sure you would like to accept this contract?</h4>
+                    </div>
+                    <div class="modal-body">
+                      This step can only be done once.
+                    </div>
+                    <div class="modal-footer">
+                      <form action="" method="POST">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success" name="status" value="Undo">Undo</button>
+                      </form>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+            </div>
+            <!-- /.modal -->
+        <?php
+
+          } ?>
 
         </div>
         <!-- /.panel-body -->
