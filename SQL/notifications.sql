@@ -6,6 +6,9 @@ CREATE TABLE IF NOT EXISTS Notification_Types_Types (
   PRIMARY KEY(TypeTypeID)
 );
 
+INSERT INTO Notification_Types_Types (TypeTypeShortName, TypeTypeName, TypeTypeIcon)
+VALUES ('contract', 'Contract Update', 'fa-bell');
+
 CREATE TABLE IF NOT EXISTS Notification_Types (
   TypeID int(11) AUTO_INCREMENT,
   TypeTypeID int(11),
@@ -15,6 +18,10 @@ CREATE TABLE IF NOT EXISTS Notification_Types (
   PRIMARY KEY(TypeID),
   FOREIGN KEY(TypeTypeID) REFERENCES Notification_Types_Types(TypeTypeID)
 );
+
+INSERT INTO `notification_types` (`TypeID`, `TypeTypeID`, `TypeShortName`, `TypeName`, `TypeIcon`) VALUES
+(1, 'approved', 'Approved Contract', 'fa-check'),
+(1, 'denied', 'Denied Contract', 'fa-times');
 
 CREATE TABLE IF NOT EXISTS Notifications (
   NotificationID int(11) AUTO_INCREMENT,
