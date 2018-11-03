@@ -87,6 +87,24 @@ if(isset($_GET['contract'])){  // checks if the customer is searching a contract
     $mainSqlResult = ($conn -> query($mainSqlQuery)) -> fetch_assoc();
 
     $_SESSION['contractInfo'] = $mainSqlResult;  // store the results into the session
+
+    // Gets the status of the contract
+    $sql = "SELECT *
+    FROM status
+    WHERE statusID IN (
+      SELECT statusID
+      FROM Contract_status
+      WHERE contractID = $contractID
+      ORDER BY statusTime DESC
+    )
+    LIMIT 1";
+
+    $result = $conn -> query($sql);
+    $row = $result -> fetch_assoc();
+
+    // prevents the accept cotract button from showing if it has already been approved or denied
+    if($row['statusName'])
+      $contractStatus = $row['statusName'];
   }
 
   // redirects if the user has no contract with that number
