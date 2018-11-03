@@ -5,7 +5,7 @@
 
 
 ?>
-<?php include "db.php";
+<?php include "../includes/main.php";
 
 $sql = "SELECT *
         FROM Spaces
