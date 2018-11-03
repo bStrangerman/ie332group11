@@ -1,5 +1,6 @@
 <?php
 require_once "../includes/main.php";
+include_once "../includes/contracts.php";
 
 if (isset($_SESSION['UserID'])) {
     if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID'])) {
@@ -382,16 +383,18 @@ require_once "../layouts/sb_admin_2/header.php";
           <div class="list-group">
             <?php
                               $n = 9;
-                              $i = 1;
+                              $i = 0;
                               $alertInfo = getRecentInfo(15, $n, $conn);
-                              while ($i <= $n) {
-                                  echo "<a href='#' class='list-group-item'>
-                                <i class='fa ". $alertInfo['Icon'] . " fa-fw'></i> " . $alertInfo['Type'] . "
-                                <span class='pull-right text-muted small'><em> " . $alertInfo['Time_Elapsed'] . "</em>
+                              while ($i < count($alertInfo)) {
+                                $alert = $alertInfo[$i];
+                                  echo "<a href='" . $alert[$NotificationLink] . "' class='list-group-item'>
+                                <i class='fa ". $alert[$NotificationTypeTypeIcon] . " fa-fw'></i> " . $alert[$NotificationTypeTypeName] . "
+                                <span class='pull-right text-muted small'><em> " . time_ago(date("Y-m-d H:i:s", strtotime($alert[$NotificationTimeElapsed]))) . "</em>
                                 </span>
                                 </a>";
                                   $i++;
-                              }?>
+                              }
+                              ?>
           </div>
           <!-- /.list-group -->
           <a href="#" class="btn btn-default btn-block">View All Alerts</a>

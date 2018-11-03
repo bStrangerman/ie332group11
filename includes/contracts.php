@@ -1,4 +1,6 @@
 <?php
+include_once "../includes/notifications.php";
+
 function set_contract_status ($contractID, $status, $conn)
 {
   if($status == "Undo"){
@@ -13,11 +15,18 @@ function set_contract_status ($contractID, $status, $conn)
     mysqli_query($conn, $sql);
   }
   else {
+    $getLesseeQuery = "SELECT lessee_ID
+    FROM contracts
+    WHERE contracts.contractID = $contractID";
+    $getLessee = ($conn -> query($getLesseeQuery)) -> fetch_assoc();
+
     $sql = "INSERT INTO Contract_status (contractID, statusID)
     SELECT $contractID, status.statusID
     FROM status
     WHERE status.StatusName = '$status'";
     mysqli_query($conn, $sql);
+
+    notify($getLessee['lessee_ID'], $status, "Contract " . $contractID . " was " . $status, 'contract.php?contract=' . $contractID, $conn);
   }
 
   return $status;
