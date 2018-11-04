@@ -384,7 +384,7 @@ require_once "../layouts/sb_admin_2/header.php";
             <?php
                               $n = 9;
                               $i = 0;
-                              $alertInfo = getRecentInfo(15, $n, $conn);
+                              $alertInfo = getRecentInfo($_SESSION['UserID'], $n, $conn);
                               while ($i < count($alertInfo)) {
                                 $alert = $alertInfo[$i];
                                   echo "<a href='" . $alert[$NotificationLink] . "' class='list-group-item'>

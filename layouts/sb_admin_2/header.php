@@ -47,7 +47,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                  <a class="navbar-brand" href="warehouse.php">@Capacity</a>
               </div>
               <!-- /.navbar-header -->
 
@@ -59,7 +59,7 @@
                       <ul class="dropdown-menu dropdown-messages">
                         <?php
                         $n = 5;
-                        $alertInfo = getRecentInfo(15, $n, $conn);
+                        $alertInfo = getRecentInfo($_SESSION['UserID'], $n, $conn);
                         $i=0;
                         while ($i < count($alertInfo)) {
                           $alert = $alertInfo[$i];
@@ -176,7 +176,7 @@
                           <?php
                           $n = 5;
                           $i = 0;
-                          $alertInfo = getRecentInfo(15, $n, $conn);
+                          $alertInfo = getRecentInfo($_SESSION['UserID'], $n, $conn);
                           while ($i < count($alertInfo)) {
                             $alert = $alertInfo[$i];
                               echo "<li>
