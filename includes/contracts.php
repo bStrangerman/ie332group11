@@ -15,7 +15,7 @@ function set_contract_status ($contractID, $status, $conn)
     mysqli_query($conn, $sql);
   }
   else {
-    $getLesseeQuery = "SELECT lessee_ID
+    $getLesseeQuery = "SELECT LesseeID
     FROM contracts
     WHERE contracts.contractID = $contractID";
     $getLessee = ($conn -> query($getLesseeQuery)) -> fetch_assoc();
@@ -26,7 +26,7 @@ function set_contract_status ($contractID, $status, $conn)
     WHERE status.StatusName = '$status'";
     mysqli_query($conn, $sql);
 
-    notify($getLessee['lessee_ID'], $status, "Contract " . $contractID . " was " . $status, 'contract.php?contract=' . $contractID, $conn);
+    notify($getLessee['LesseeID'], $status, "Contract " . $contractID . " was " . $status, 'contract.php?contract=' . $contractID, $conn);
   }
 
   return $status;

@@ -1,8 +1,7 @@
 <?php
 // sets up the database and user authentication functions
-include "db.php";
-require_once 'PhpRbac/src/PhpRbac/Rbac.php';
-$rbac = new \PhpRbac\Rbac();
+require_once "../includes/main.php";
+include_once "../includes/contracts.php";
 
 // forces only users who still need account setup
 if (isset($_SESSION['UserID'])) {
@@ -32,7 +31,11 @@ if (isset($_SESSION['UserID'])) {
             if (mysqli_query($conn, $sql)) {
                 $rbac->Users->assign($role, $UserID = $_SESSION['UserID']);
                 $rbac->Users->unassign('need_setup', $UserID = $_SESSION['UserID']);
-                header('Location: index.php');
+                if($role == "Warehouse_Owner")
+                  header('Location: warehouse.php');
+                else
+                  header('Location: index.php');
+
             }
         }
     }
@@ -48,7 +51,7 @@ if (isset($_SESSION['UserID'])) {
 <head>
   <meta charset="UTF-8">
   <title>Multi-step form interface</title>
-  <link rel="stylesheet" href="css/account_setup.css">
+  <link rel="stylesheet" href="../includes/css/account_setup.css">
 
 </head>
 
@@ -75,7 +78,7 @@ if (isset($_SESSION['UserID'])) {
 
         <!-- Selects the possible user roles from the database -->
         <?php
-        $sql = "SELECT Title, ID as RoleID
+        $sql = "SELECT Description, ID as RoleID
         FROM phprbac_roles
         WHERE OrderNumber IS NOT NULL
         ORDER BY OrderNumber ASC";
@@ -85,7 +88,7 @@ if (isset($_SESSION['UserID'])) {
 
         // output each user role
         while ($row = $result->fetch_assoc()) {
-            $shortname = $row['Title']; ?>
+            $shortname = $row['Description']; ?>
           <option value="<?php echo $row['RoleID']; ?>"><?php echo $shortname; ?></option>
         <?php
         } ?>
@@ -124,6 +127,6 @@ if (isset($_SESSION['UserID'])) {
   </div>
 </form>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script  src="js/account_setup.js"></script>
+<script  src="../includes/js/account_setup.js"></script>
 </body>
 </html>

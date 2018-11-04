@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `phprbac_users` (
   `PhoneNumber` varchar(11),
   `Company` varchar(50),
   PRIMARY KEY (`UserID`)
-  ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 ALTER TABLE `phprbac_rolepermissions`
   ADD CONSTRAINT `phprbac_rolepermissions_ibfk_1` FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE,
@@ -123,10 +123,6 @@ CREATE TABLE IF NOT EXISTS Contracts (
   LesseeID int(11) NOT NULL,
   StartDate timestamp NOT NULL,
   EndDate timestamp NOT NULL,
-  WarehouseRating int(1),
-  WarehouseComments varchar(300),
-  LesseeRating int(1),
-  LesseeComments varchar(300),
   AmountCharged real NOT NULL,
   ContractInformation varchar(400),
   ContractText varchar(400),
@@ -148,13 +144,14 @@ CREATE TABLE IF NOT EXISTS Contract_Status (
   FOREIGN KEY (ContractID) REFERENCES Contracts(ContractID),
   FOREIGN KEY (StatusID) REFERENCES Status(StatusID));
 
-CREATE TABLE IF NOT EXISTS Attributes (
-  AttributeID int(11) NOT NULL auto_increment,
-  AttributeName varchar(50),
-  AttributeDescription varchar(200),
-  lft int(11) NOT NULL,
-  rght int(11) NOT NULL,
-  PRIMARY KEY(attributeID));
+  CREATE TABLE IF NOT EXISTS Attributes (
+    AttributeID int(11) NOT NULL auto_increment,
+    AttributeName varchar(50),
+    AttributeDescription varchar(200),
+    AttributeType int(5),
+    lft int(11) NOT NULL,
+    rght int(11) NOT NULL,
+    PRIMARY KEY(AttributeID));
 
 CREATE TABLE IF NOT EXISTS Space_Attributes (
   SpaceID int(11),
@@ -162,15 +159,6 @@ CREATE TABLE IF NOT EXISTS Space_Attributes (
   PRIMARY KEY(SpaceID, AttributeID),
   FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID),
   FOREIGN KEY(AttributeID) REFERENCES Attributes(AttributeID));
-
-CREATE TABLE IF NOT EXISTS Attributes (
-  AttributeID int(11) NOT NULL auto_increment,
-  AttributeName varchar(50),
-  AttributeDescription varchar(200),
-  AttributeType int(5),
-  lft int(11) NOT NULL,
-  rght int(11) NOT NULL,
-  PRIMARY KEY(AttributeID));
 
 INSERT INTO Attributes (AttributeName, AttributeType) VALUES
   ('Retail/Industrial', 1),

@@ -70,7 +70,7 @@ View settings for more info. -->
 
       <!-- Registration tab -->
 			<form id="register" class="contentArea otherForm" method="post" action="login.php">
-        <?php include('errors.php'); ?>
+        <!-- <?php include('errors.php'); ?> -->
 				<div class="formHead">
 					<h1>Become a member!</h1>
 					<p>Register now</p>

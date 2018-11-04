@@ -76,7 +76,7 @@
 					$_SESSION['email'] = $rows['email'];
 				}
 				$_SESSION['success'] = "You are now logged in";
-				header('location: index.php');
+				header('location: warehouse.php');
 			}
 			else {
 				array_push($errors, "Wrong username/password combination");

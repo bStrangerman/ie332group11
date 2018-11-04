@@ -1,4 +1,4 @@
-TRUNCATE TABLE spaces;
+-- TRUNCATE TABLE spaces;
 INSERT INTO Spaces(WarehouseID, SpaceID, MonthlyPrice, YearlyPrice, SpaceSize) VALUES
 (1,1,12.69,1.06,'10400')
 ,(2,2,7,0.58,'8800')
@@ -105,9 +105,9 @@ INSERT INTO Spaces(WarehouseID, SpaceID, MonthlyPrice, YearlyPrice, SpaceSize) V
 ,(75,103,10.5,0.88,'4960')
 ,(75,104,6.25,0.52,'7040')
 ,(76,105,9.5,0.79,'7200')
-,(77,106,5.6,0.47,NULL)
+,(77,106,5.6,0.47,'')
 ,(78,107,14,1.17,'7976')
-,(79,108,5.6,0.47,NULL)
+,(79,108,5.6,0.47,'')
 ,(80,109,6.6,0.55,'28078')
 ,(81,110,5.25,0.44,'59064')
 ,(82,111,6.73,0.56,'5708')

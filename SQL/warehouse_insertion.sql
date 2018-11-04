@@ -1,4 +1,4 @@
-TRUNCATE TABLE Warehouses;
+-- TRUNCATE TABLE Warehouses;
 INSERT INTO Warehouses(WarehouseID, Address, City, State, BuildingSize, OwnerID) VALUES
 (1,'512 N Energy Dr.','Rock Springs','WY','10400',1)
 ,(2,'331 Lexington Ave.','Cheyenne','WY','15300',1)
@@ -110,6 +110,7 @@ INSERT INTO Warehouses(WarehouseID, Address, City, State, BuildingSize, OwnerID)
 ,(108,'631 State Route 15 N','Lake Hopatcong','NY','10400',1)
 ,(109,'79 Carlough Rd','Bohemia','NY','12500',1)
 ,(110,'1 Garvies Point Rd','Glen Cove','NY','85000',1)
+,(111,'46 Metropolitan Ave','Ridgewood','New York','35312',1)
 ,(112,'333 N Bedford Rd','Mount Kisco','NY','604095',1)
 ,(113,'57 Seaview Blvd','Port Washington','NY','130853',1)
 ,(114,'100 Wells Ave','Congers','NY','25000',1)
