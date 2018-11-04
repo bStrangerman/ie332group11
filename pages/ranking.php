@@ -9,16 +9,16 @@
 
 $sql = "SELECT *
 FROM Spaces
-LEFT JOIN Warehouse
-ON spaces.WarehouseID = Warehouse.WarehouseID";
+LEFT JOIN Warehouses
+ON spaces.WarehouseID = Warehouses.WarehouseID";
 
 $result = $conn -> query($sql);
 
 $address = array();
 $spaceID = array();
 while ($row = $result -> fetch_assoc()) {
-  array_push($spaceID, $row['spaceID']);
-  array_push($address, $row['address'] . " " . $row['city'] . " " . $row['state']);
+  array_push($spaceID, $row['SpaceID']);
+  array_push($address, $row['Address'] . " " . $row['City'] . " " . $row['State']);
 }
 
 if (isset($_GET['origin'])) {
@@ -142,15 +142,15 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
   FROM spaces
   WHERE spaceID NOT IN
   (SELECT spaceID FROM contracts
-    WHERE (NOT contracts.start_date > '$end_date' OR NOT contracts.start_date > '$start_date')
+    WHERE (NOT contracts.StartDate > '$end_date' OR NOT contracts.StartDate > '$start_date')
     AND
-    (NOT contracts.end_date < '$end_date' OR NOT contracts.end_date < '$start_date'))";
+    (NOT contracts.EndDate < '$end_date' OR NOT contracts.EndDate < '$start_date'))";
 
     $result = $conn -> query($sql);
 
     $spaces = array();
     while ($row = $result -> fetch_assoc()) {
-      array_push($spaces, $row['spaceID']);
+      array_push($spaces, $row['SpaceID']);
     }
     // echo "The following spaces are available during the dates " . $start_date . " and " . $end_date . ".<br>";
 
@@ -239,15 +239,15 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
   function singular_spaces ($spaceIDs, $size, $conn){
     $sql = "SELECT *
     FROM spaces
-    HAVING Size >= $size
-    ORDER BY Size ASC";
+    HAVING SpaceSize >= $size
+    ORDER BY SpaceSize ASC";
 
     $result = $conn -> query($sql);
 
     $out = array();
 
     while($row = $result -> fetch_assoc()){
-      array_push($out, $row['spaceID']);
+      array_push($out, $row['SpaceID']);
     }
     return $out;
   }
@@ -258,41 +258,43 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
     $sql = "SELECT *
     FROM spaces
     WHERE SpaceID IN (".implode(',',$spaceIDs).")
-    AND Size < $maxsize
-    ORDER BY Size ASC";
+    AND SpaceSize < $maxsize
+    ORDER BY SpaceSize ASC";
 
     $result = $conn -> query($sql);
 
     $spaces = array();
     $size = array();
     while($row = $result -> fetch_assoc()) {
-      array_push($spaces, $row['spaceID']);
-      array_push($size, $row['size']);
+      array_push($spaces, $row['SpaceID']);
+      array_push($size, $row['SpaceSize']);
     }
-
+    $warehousesPicked = array();
 
     for($i = 0; $i < count($spaces); $i++) {
       $currentSize = 0;
-      $warehousesPicked = array();
       echo "<br>Solution Number " . $i . ": ";
+      $innerwarehousesPicked = array();
 
       for ($j = $i; $j < count($spaces); $j++) {
         if($currentSize + $size[$j] <= $maxsize) {
           $currentSize += $size[$j];
-          array_push($warehousesPicked, $spaces[$j]);
+          array_push($innerwarehousesPicked, $spaces[$j]);
           echo $spaces[$j] . " ";
         }
         else {
           $currentSize += $size[$j];
-          array_push($warehousesPicked, $spaces[$j]);
+          array_push($innerwarehousesPicked, $spaces[$j]);
           echo $spaces[$j] . " ";
           break;
         }
       }
+      // array_print($innerwarehousesPicked);
+      $warehousesPicked[$i] = $innerwarehousesPicked;
       echo "<strong>" . $currentSize . "</strong>";
     }
   return $warehousesPicked;
 }
-  array_print(multi_spaces(getAvailableSpaces($start, $end, $conn), 35000, 1000, $conn));
+  multi_spaces(getAvailableSpaces($start, $end, $conn), 35000, 1000, $conn);
 
   ?>
