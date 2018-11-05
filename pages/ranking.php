@@ -84,6 +84,7 @@ for($i = 0; $i < $max_count; $i++){
 echo "</table>";
 
 $size = $_GET['size'];
+echo "Single Space Solutions for the date range " . $start . "-" . $end . " with a minimum size of " . $size . ", less than " . $max_Distance . " meters from " . $data[0]["Origin"] . ".";
 array_print(singular_spaces($data["Spaces"], $size, $conn));
 
 // multi_spaces(getAvailableSpaces($start, $end, $conn), 25000, 1000, $conn);
