@@ -1,8 +1,4 @@
 <?php
-// TODO: make functions that only output the spaceID's.  These functions are:
-// getting the distance and time between an origin and an array of destinations
-// sorting the
-
 
 // array_multisort(
 //   $data[1],
@@ -20,17 +16,7 @@ if(isset($_GET['origin'])){
   $origin = $_GET['origin'];
   $start = '2018-01-20';
   $end = '2018-11-31';
-  // if(!isset($_SESSION['spaces'])){
   $spaceInfo = getAvailableSpaces($start,$end,$conn);
-  // $_SESSION['spaces'] = $spaceInfo;
-  // echo "Storing<br>";
-  // }
-  // else {
-  // $spaceInfo = $_SESSION['spaces'];
-  // $_SESSION['origin'] = $_GET['origin'];
-  // echo "Getting<br>";
-  // }
-
 
   $address = array();
   $spaceID = array();
@@ -101,6 +87,4 @@ $size = $_GET['size'];
 array_print(singular_spaces($data["Spaces"], $size, $conn));
 
 // multi_spaces(getAvailableSpaces($start, $end, $conn), 25000, 1000, $conn);
-
-
 ?>
