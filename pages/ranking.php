@@ -22,7 +22,6 @@ if(isset($_GET['origin'])){
   $spaceID = array();
   $monthlyPrice = array();
 
-
   $i = 0;
   while ($i < count($spaceInfo)) {
     array_push($spaceID, $spaceInfo[$i]['SpaceID']);
@@ -58,10 +57,13 @@ echo "<table style='width:100%'>
 <th>Address</th>
 <th>Distance (Meters)</th>
 <th>Time (Seconds)</th>
+<th>Monthly Price</th>
+<th>D_Score + P_Score</th>
 </tr>";
 
 $max_Distance = $_GET['range'];
 $max_count = count($data["Spaces"]);
+$max_price = 1;
 for ($i = 0; $i < $max_count; $i++) {
   if ($data[0]["Distance"][$i] > $max_Distance) {
     unset($data[0]["Distance"][$i]);
@@ -79,12 +81,12 @@ unset($data["MonthlyPrice"][$max_count - 1]);
 
 for($i = 0; $i < $max_count; $i++){
   if(isset($data["Spaces"][$i]))
-    echo "<tr><td>" . $data["Spaces"][$i] . "<hr></td><td>" . $data["Addresses"][$i] . "<hr></td><td>" . $data[0]["Distance"][$i] . "<hr></td><td>" . $data[0]["Time"][$i] . "<hr></td></tr>";
+    echo "<tr><td>" . $data["Spaces"][$i] . "<hr></td><td>" . $data["Addresses"][$i] . "<hr></td><td>" . $data[0]["Distance"][$i] . "<hr></td><td>" . $data[0]["Time"][$i] . "<hr></td><td>" . $data['MonthlyPrice'][$i] . "<hr></td><td>" . (distance_score($max_Distance, $data[0]['Distance'][$i]) + price_score($data['MonthlyPrice'][$i], $max_price)) . "<hr></td></tr>";
 }
 echo "</table>";
 
 $size = $_GET['size'];
-echo "Single Space Solutions for the date range " . $start . "-" . $end . " with a minimum size of " . $size . ", less than " . $max_Distance . " meters from " . $data[0]["Origin"] . ".";
+echo "Single Space Solutions for the date range " . $start . " to " . $end . " with a minimum size of " . $size . ", less than " . $max_Distance . " meters from " . $data[0]["Origin"] . ".  The Max Price is $" . $max_price . " per square foot per month";
 array_print(singular_spaces($data["Spaces"], $size, $conn));
 
 // multi_spaces(getAvailableSpaces($start, $end, $conn), 25000, 1000, $conn);

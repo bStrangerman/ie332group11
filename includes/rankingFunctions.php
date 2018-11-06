@@ -249,18 +249,17 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
   }
 
 
-  function distance_score($result){
-    $scale = 100;
+  function distance_score($max_distance_wanted , $distance_away, $scale = 50){
     $distance_score = $scale - $scale / $max_distance_wanted * $distance_away;
+    return $distance_score;
   }
 
-  function price_score($result){
-    $scale = 100;
+  function price_score($space_price, $max_price, $min_price = 0, $scale = 50){
     $price_score = $scale - ($scale/($max_price - $min_price)) * ($space_price - $min_price);
+    return $price_score;
   }
 
-  function previousRatings($result){
-    $scale = 100;
+  function previousRatings($result, $scale = 50){
     $rating_range = 5;
     $rating_score = ($scale / $rating_range) * $rating;
   }
