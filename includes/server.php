@@ -8,7 +8,7 @@
 	// variable declaration
 	$username = "";
 	$email    = "";
-	$errors = array();
+	$register_Errors = array();
 	$_SESSION['success'] = "";
 	$_SESSION['UserID'] = "";
 
@@ -23,12 +23,27 @@
 		$psswd = mysqli_real_escape_string($db, $_POST['password']);
 
 		// form validation: ensure that the form is correctly filled
-		if (empty($username)) { array_push($errors, "Username is required"); }
-		if (empty($email)) { array_push($errors, "Email is required"); }
-		if (empty($psswd)) { array_push($errors, "Password is required"); }
+		if (empty($username)) { array_push($register_Errors, "Username is required"); }
+		if (empty($email)) { array_push($register_Errors, "Email is required"); }
+		if (empty($psswd)) { array_push($register_Errors, "Password is required"); }
+
+		// Check if Username and email is taken
+		$countOfUsername = "SELECT COUNT(*) AS count
+							FROM phprbac_users
+							WHERE username = '$username'";
+
+		$countOfEmail = "SELECT COUNT(*) AS count
+							FROM phprbac_users
+							WHERE email = '$email'";
+
+		$countUsernameResult = ($conn -> query($countOfUsername)) -> fetch_assoc();
+
+		$countEmailResult = ($conn -> query($countOfEmail)) -> fetch_assoc();
+		if ($countUsernameResult['count'] > 0) { array_push($register_Errors, "Username is taken"); }
+		if ($countEmailResult['count'] > 0) { array_push($register_Errors, "Email is already being used"); }
 
 		// register user if there are no errors in the form
-		if (count($errors) == 0) {
+		if (count($register_Errors) == 0) {
 			$psswd_insert = md5($psswd);//encrypt the password before saving in the database
 			$query = "INSERT INTO phprbac_users (username, email, password)
 					  VALUES('$username', '$email', '$psswd_insert')";
@@ -54,16 +69,18 @@
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$password = mysqli_real_escape_string($db, $_POST['password']);
 
-		// validates the user information is provided
+		$login_Errors = array();
+
+		// double validates the user information is provided
 		if (empty($username)) {
-			array_push($errors, "Username is required");
+			array_push($login_Errors, "Username is required");
 		}
 		if (empty($password)) {
-			array_push($errors, "Password is required");
+			array_push($login_Errors, "Password is required");
 		}
 
 		// validates the user is in the database and logs in the user
-		if (count($errors) == 0) {
+		if (count($login_Errors) == 0) {
 			$password = md5($password);
 			$query = "SELECT * FROM phprbac_users WHERE username='$username' AND password='$password'";
 			$results = mysqli_query($db, $query);
@@ -79,7 +96,7 @@
 				header('location: warehouse.php');
 			}
 			else {
-				array_push($errors, "Wrong username/password combination");
+				array_push($login_Errors, "Wrong username/password combination");
 			}
 		}
 	}

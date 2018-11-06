@@ -70,11 +70,14 @@ View settings for more info. -->
 
       <!-- Registration tab -->
 			<form id="register" class="contentArea otherForm" method="post" action="login.php">
-        <?php include('../includes/errors.php'); ?>
-				<div class="formHead">
+        <div class="formHead">
 					<h1>Become a member!</h1>
 					<p>Register now</p>
 				</div>
+        <?php
+        include_once('../includes/errors.php');
+        if(isset($register_Errors))
+        errors($register_Errors); ?>
 				<label class="formDiv">
 					<input type="text" placeholder=" " value="<?php echo $username; ?>" name="username">
 					<p>Username</p>
@@ -104,8 +107,11 @@ View settings for more info. -->
 					<h1>WELCOME BACK</h1>
 					<p>Login to continue</p>
 				</div>
-        <?php include('../includes/errors.php'); ?>
-				<label class="formDiv">
+        <?php
+        include_once('../includes/errors.php');
+        if(isset($login_Errors))
+          errors($login_Errors); ?>
+  				<label class="formDiv">
 					<input type="text" placeholder=" " name="username" required>
 					<p>Username</p>
 					<span class="border"></span>
