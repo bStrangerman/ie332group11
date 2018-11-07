@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS Notification_Types (
   FOREIGN KEY(TypeTypeID) REFERENCES Notification_Types_Types(TypeTypeID)
 );
 
-INSERT INTO `notification_types` (`TypeTypeID`, `TypeShortName`, `TypeName`, `TypeIcon`) VALUES
+INSERT INTO `Notification_Types` (`TypeTypeID`, `TypeShortName`, `TypeName`, `TypeIcon`) VALUES
 (1, 'approved', 'Approved Contract', 'fa-check'),
 (1, 'denied', 'Denied Contract', 'fa-times');
 
