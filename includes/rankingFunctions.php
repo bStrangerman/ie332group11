@@ -126,151 +126,161 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
         WHERE StatusName <> 'Approved'
         OR StatusName <> 'Pending'
         OR StatusName <> 'Reserved')))";
-    $result = $conn -> query($sql);
+        $result = $conn -> query($sql);
 
-    while($getAllSpaces[]=mysqli_fetch_array($result));
-    return $getAllSpaces;
-  }
-
-  /**
-  * Stylized array printing
-  * @param  [array] $array array to be formatted
-  * @return [void]        [None]
-  */
-  function array_print($array){
-    echo "<pre>";
-    print_r($array);
-    echo "</pre>";
-  }
-
-  /**
-  * [sortedAddressResults description]
-  * @param  [array] $origin [description]
-  * @param  [array] $spacesLocations [description]
-  * @return [array]         sorted array of spaces (ID, distance, tim) to destinationascending on distance, time, and spaceID
-  */
-  function sortedAddressResults ($origin, $spacesLocations, $returning = "array")
-  {
-    $address = array();
-    $spaceID = array();
-    array_push($spaceID, $spacesLocations['spaceID']);
-    array_push($address, $spacesLocations['address'] . " " . $spacesLocations['city'] . " " . $spacesLocations['state']);
-
-    $arr = array_chunk($address, 99);
-    $data_arr = array();
-    $distance = array();
-    $time = array();
-
-    for ($i = 0; $i < count($arr); $i++) {
-      $data_arr[$i] = distance($origin, $arr[$i]);
-      $distance = array_merge($distance, $data_arr[$i][1]);
-      $time = array_merge($time, $data_arr[$i][2]);
-    }
-
-    // if able to geocode the address
-    if ($data_arr)
-    $getorigin = $data_arr[0][0];
-
-    $sortedDestinations = array($spaceID,
-    $distance,
-    $time);
-
-    array_multisort(
-      $sortedDestinations[1],
-      SORT_ASC,
-      $sortedDestinations[2],
-      SORT_ASC,
-      $sortedDestinations[0],
-      SORT_ASC
-    );
-    return $sortedDestinations;
-  }
-
-  function singular_spaces ($spaceIDs, $size, $conn){
-    $sql = "SELECT *
-    FROM spaces
-    WHERE SpaceID IN (".implode(',',$spaceIDs).")
-    AND SpaceSize >= $size
-    ORDER BY SpaceSize ASC
-    ";
-    $result = $conn -> query($sql);
-
-    $out = array();
-
-    while($row = $result -> fetch_assoc()){
-      array_push($out, $row['SpaceID']);
-    }
-    return $out;
-  }
-
-
-  function multi_spaces ($spaceIDs, $maxsize, $maxNumOfSpaces, $conn) {
-    $sql = "SELECT *
-    FROM spaces
-    WHERE SpaceID IN (".implode(',',$spaceIDs).")
-    AND SpaceSize < $maxsize
-    ORDER BY SpaceSize ASC";
-
-    $result = $conn -> query($sql);
-
-    $spaces = array();
-    $size = array();
-    while($row = $result -> fetch_assoc()) {
-      array_push($spaces, $row['SpaceID']);
-      array_push($size, $row['SpaceSize']);
-    }
-    $warehousesPicked = array();
-
-    for($i = 0; $i < count($spaces); $i++) {
-      $currentSize = 0;
-      echo "<br>Solution Number " . $i . ": ";
-      $innerwarehousesPicked = array();
-
-      for ($j = $i; $j < count($spaces); $j++) {
-        if($currentSize + $size[$j] <= $maxsize) {
-          $currentSize += $size[$j];
-          array_push($innerwarehousesPicked, $spaces[$j]);
-          echo $spaces[$j] . " ";
-        }
-        else {
-          $currentSize += $size[$j];
-          array_push($innerwarehousesPicked, $spaces[$j]);
-          echo $spaces[$j] . " ";
-          break;
-        }
+        while($getAllSpaces[]=mysqli_fetch_array($result));
+        return $getAllSpaces;
       }
-      // array_print($innerwarehousesPicked);
-      $warehousesPicked[$i] = $innerwarehousesPicked;
-      echo "<strong>" . $currentSize . "</strong>";
-    }
-    return $warehousesPicked;
-  }
+
+      /**
+      * Stylized array printing
+      * @param  [array] $array array to be formatted
+      * @return [void]        [None]
+      */
+      function array_print($array){
+        echo "<pre>";
+        print_r($array);
+        echo "</pre>";
+      }
+
+      /**
+      * [sortedAddressResults description]
+      * @param  [array] $origin [description]
+      * @param  [array] $spacesLocations [description]
+      * @return [array]         sorted array of spaces (ID, distance, tim) to destinationascending on distance, time, and spaceID
+      */
+      function sortedAddressResults ($origin, $spacesLocations, $returning = "array")
+      {
+        $address = array();
+        $spaceID = array();
+        array_push($spaceID, $spacesLocations['spaceID']);
+        array_push($address, $spacesLocations['address'] . " " . $spacesLocations['city'] . " " . $spacesLocations['state']);
+
+        $arr = array_chunk($address, 99);
+        $data_arr = array();
+        $distance = array();
+        $time = array();
+
+        for ($i = 0; $i < count($arr); $i++) {
+          $data_arr[$i] = distance($origin, $arr[$i]);
+          $distance = array_merge($distance, $data_arr[$i][1]);
+          $time = array_merge($time, $data_arr[$i][2]);
+        }
+
+        // if able to geocode the address
+        if ($data_arr)
+        $getorigin = $data_arr[0][0];
+
+        $sortedDestinations = array($spaceID,
+        $distance,
+        $time);
+
+        array_multisort(
+          $sortedDestinations[1],
+          SORT_ASC,
+          $sortedDestinations[2],
+          SORT_ASC,
+          $sortedDestinations[0],
+          SORT_ASC
+        );
+        return $sortedDestinations;
+      }
+
+      function singular_spaces ($spaceIDs, $size, $conn){
+        $sql = "SELECT *
+        FROM spaces
+        WHERE SpaceID IN (".implode(',',$spaceIDs).")
+        AND SpaceSize >= $size
+        ORDER BY SpaceSize ASC
+        ";
+        $result = $conn -> query($sql);
+
+        $out = array();
+
+        while($row = $result -> fetch_assoc()){
+          array_push($out, $row['SpaceID']);
+        }
+        return $out;
+      }
 
 
-  function distance_score($max_distance_wanted , $distance_away, $scale = 33.3){
-    $distance_score = $scale * (1 - $distance_away / $max_distance_wanted);
-    return $distance_score;
-  }
+      function multi_spaces ($spaceIDs, $maxsize, $maxNumOfSpaces, $conn) {
+        $sql = "SELECT *
+        FROM spaces
+        WHERE SpaceID IN (".implode(',',$spaceIDs).")
+        AND SpaceSize < $maxsize
+        ORDER BY SpaceSize ASC";
 
-  function size_score($size_wanted, $space_size, $scale = 100){
-    $space_score = - $scale * (1 - $space_size / $size_wanted);
-    return $space_score;
-  }
+        $result = $conn -> query($sql);
 
-  function price_score($space_price, $max_price, $min_price = 0, $scale = 33.3){
-    $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
-    return $price_score;
-  }
+        $spaces = array();
+        $size = array();
+        while($row = $result -> fetch_assoc()) {
+          array_push($spaces, $row['SpaceID']);
+          array_push($size, $row['SpaceSize']);
+        }
+        $warehousesPicked = array();
 
-  function previousRatings($spaceID, $scale = 50){
-    $rating_range = 5;
-    $rating_score = ($scale / $rating_range) * $rating;
-  }
+        for($i = 0; $i < count($spaces); $i++) {
+          $currentSize = 0;
+          echo "<br>Solution Number " . $i . ": ";
+          $innerwarehousesPicked = array();
 
-  function ifMulti($result){
-    if(count($result) == 1){
-      $score = 100;
-    }
-    else
-    $score = 0;
-  }
+          for ($j = $i; $j < count($spaces); $j++) {
+            if($currentSize + $size[$j] <= $maxsize) {
+              $currentSize += $size[$j];
+              array_push($innerwarehousesPicked, $spaces[$j]);
+              echo $spaces[$j] . " ";
+            }
+            else {
+              $currentSize += $size[$j];
+              array_push($innerwarehousesPicked, $spaces[$j]);
+              echo $spaces[$j] . " ";
+              break;
+            }
+          }
+          // array_print($innerwarehousesPicked);
+          $warehousesPicked[$i] = $innerwarehousesPicked;
+          echo "<strong>" . $currentSize . "</strong>";
+        }
+        return $warehousesPicked;
+      }
+
+
+      function distance_score($max_distance_wanted , $distance_away, $scale = 33.3){
+        $distance_score = $scale * (1 - $distance_away / $max_distance_wanted);
+        return $distance_score;
+      }
+
+      function size_score($size_wanted, $space_size, $scale = 100){
+        // y = a(x – h)2 + k
+        if($space_size >= $size_wanted){
+          $a = (0 - $scale) / pow((0 - $size_wanted), 2);
+          $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
+        }
+        else
+          $space_score = 0;
+
+        if($space_score < 0)
+          $space_score = 0;
+        
+        return $space_score;
+      }
+
+      function price_score($space_price, $max_price, $min_price = 0, $scale = 33.3){
+        $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
+        return $price_score;
+      }
+
+      function previousRatings($spaceID, $scale = 50){
+        $rating_range = 5;
+        $rating_score = ($scale / $rating_range) * $rating;
+      }
+
+      function ifMulti($result){
+        if(count($result) == 1){
+          $score = 100;
+        }
+        else
+        $score = 0;
+      }
