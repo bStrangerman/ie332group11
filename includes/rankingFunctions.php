@@ -254,26 +254,16 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
 
       function size_score($size_wanted, $space_size, $max_size, $scale = 100 / 3){
         // y = a(x – h)2 + k
-        if($size_wanted >= $max_size){
-          $a = (0 - $scale) / pow((0 - $size_wanted), 2);
-          $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
+        if($size_wanted < $max_size)
+          $x = 0;
+        else
+          $x = $max_size;
 
-          if($space_size < $size_wanted){
-            $space_score = - $space_score;
-          }
-        }
-        else {
-          $a = (0 - $scale) / pow(($max_size - $size_wanted), 2);
-          $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
+        $a = (0 - $scale) / pow(($x - $size_wanted), 2);
+        $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
 
-          if($space_size < $size_wanted){
-            $space_score = - $space_score;
-          }
-        }
-
-        // if($space_score < 0)
-        //   $space_score = 0;
-        //   else
+        if($space_size < $size_wanted)
+          $space_score = -$space_score;
 
         return $space_score;
       }
