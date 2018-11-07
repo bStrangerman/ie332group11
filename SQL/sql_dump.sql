@@ -58,13 +58,13 @@ CREATE TABLE IF NOT EXISTS `phprbac_roles` (
   ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
 INSERT INTO `phprbac_roles` (`ID`, `Title`, `Description`, `Lft`, `Rght`, `OrderNumber`) VALUES
-  (1, 'root', 'root', 1, 10, ''),
-  (2, 'Warehouse', '', 2, 7, ''),
-  (3, 'Warehouse_Owner', '', 3, 4, 1),
-  (4, 'Warehouse_Employee', '', 5, 6, 2),
-  (5, 'Lessee', '', 8, 9, 3),
-  (91, 'no_roles', '', 99, 100, ''),
-  (99, 'need_setup', '', 199, 200, '');
+  (1, 'root', 'root', 1, 10, NULL),
+  (2, 'Warehouse', 'Warehouse', 2, 7, NULL),
+  (3, 'Warehouse_Owner', 'Warehouse Owner', 3, 4, 1),
+  (4, 'Warehouse_Employee', 'Warehouse Employee', 5, 6, 2),
+  (5, 'Lessee', 'Lessee', 8, 9, 3),
+  (91, 'no_roles', 'No Roles', 99, 100, NULL),
+  (99, 'need_setup', 'Account Needs Setup', 199, 200, NULL);
 
 CREATE TABLE IF NOT EXISTS `phprbac_userroles` (
   `UserID` int(11) NOT NULL,

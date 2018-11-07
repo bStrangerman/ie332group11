@@ -44,7 +44,7 @@ function getRecentInfo($TargetUser, $n, $conn)
   WHERE UserID = $TargetUser
   ORDER BY NotificationTime DESC
   LIMIT $n";
-
+  
   $result = $conn -> query($sql);
   $out = array();
   while($row = $result -> fetch_assoc())
