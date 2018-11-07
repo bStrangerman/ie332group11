@@ -112,20 +112,21 @@ function distance($origin, $destination)
 function getAvailableSpaces ($start_date, $end_date, $conn){
   $sql = "SELECT *
   FROM Spaces
-  LEFT JOIN Warehouses
-  ON Warehouses.warehouseID = Spaces.warehouseID
+  LEFT JOIN warehouses
+  ON warehouses.warehouseID = spaces.warehouseID
   WHERE spaceID NOT IN
   (SELECT DISTINCT spaceID
-    FROM Contracts
+    FROM contracts
     WHERE contractID IN
     (SELECT contractID
-      FROM Contract_Status
+      FROM Contract_status
       WHERE StatusID IN
       (SELECT StatusID
         FROM Status
         WHERE StatusName <> 'Approved'
         OR StatusName <> 'Pending'
         OR StatusName <> 'Reserved')))";
+
     $result = $conn -> query($sql);
 
     while($getAllSpaces[]=mysqli_fetch_array($result));
@@ -193,6 +194,7 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
     AND SpaceSize >= $size
     ORDER BY SpaceSize ASC
     ";
+
     $result = $conn -> query($sql);
 
     $out = array();

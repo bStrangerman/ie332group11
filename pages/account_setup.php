@@ -3,27 +3,23 @@
 require_once "../includes/main.php";
 include_once "../includes/contracts.php";
 
-echo $_SESSION['UserID'];
-$rbac->Users->assign('need_setup', $UserID = $_SESSION['UserID']);
-
 // forces only users who still need account setup
 if (isset($_SESSION['UserID'])) {
-  if (!$rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])) {
-    header('Location: index.php');
-  }
-  elseif (isset($_GET['submit'])) {
-    if ($_GET['submit']) {
-      // Submits user information into the database
-      $firstName = $_POST['firstName'];
-      $lastName = $_POST['lastName'];
-      $UserID = $_SESSION['UserID'];
-      $role = $_POST['role'];
+    if (!$rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])) {
+        header('Location: index.php');
+    } elseif (isset($_GET['submit'])) {
+        if ($_GET['submit']) {
+            // Submits user information into the database
+            $firstName = $_POST['firstName'];
+            $lastName = $_POST['lastName'];
+            $UserID = $_SESSION['UserID'];
+            $role = $_POST['role'];
 
-      $email = $_POST['email'];
-      $phonenumber = $_POST['PhoneNumber'];
-      $company = $_POST['company'];
+            $email = $_POST['email'];
+            $phonenumber = $_POST['PhoneNumber'];
+            $company = $_POST['company'];
 
-      $sql = "UPDATE phprbac_users
+            $sql = "UPDATE phprbac_users
       SET FirstName = '$firstName',
       LastName = '$lastName',
       email = '$email',
@@ -31,21 +27,21 @@ if (isset($_SESSION['UserID'])) {
       Company = '$company'
       WHERE UserID = $UserID;";
 
-      // changes the user role from need setup to the role that the user selected as their primary role
-      if (mysqli_query($conn, $sql)) {
-        $rbac->Users->assign($role, $UserID = $_SESSION['UserID']);
-        $rbac->Users->unassign('need_setup', $UserID = $_SESSION['UserID']);
-        if($role == "Warehouse_Owner")
-        header('Location: warehouse.php');
-        else
-        header('Location: index.php');
+            // changes the user role from need setup to the role that the user selected as their primary role
+            if (mysqli_query($conn, $sql)) {
+                $rbac->Users->assign($role, $UserID = $_SESSION['UserID']);
+                $rbac->Users->unassign('need_setup', $UserID = $_SESSION['UserID']);
+                if($role == "Warehouse_Owner")
+                  header('Location: warehouse.php');
+                else
+                  header('Location: index.php');
 
-      }
+            }
+        }
     }
-  }
 } else {
-  header('Location: index.php');
-  exit;
+    header('Location: index.php');
+    exit;
 }
 ?>
 
@@ -92,9 +88,9 @@ if (isset($_SESSION['UserID'])) {
 
         // output each user role
         while ($row = $result->fetch_assoc()) {
-          $shortname = $row['Description']; ?>
+            $shortname = $row['Description']; ?>
           <option value="<?php echo $row['RoleID']; ?>"><?php echo $shortname; ?></option>
-          <?php
+        <?php
         } ?>
       </select>
     </fieldset>

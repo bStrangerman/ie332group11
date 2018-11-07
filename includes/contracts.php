@@ -18,8 +18,7 @@ function set_contract_status ($contractID, $status, $conn)
     $getLesseeQuery = "SELECT LesseeID
     FROM contracts
     WHERE contracts.contractID = $contractID";
-    $getLesseeResult = $conn -> query($getLesseeQuery);
-    $getLessee = $getLesseeResult -> fetch_assoc();
+    $getLessee = ($conn -> query($getLesseeQuery)) -> fetch_assoc();
 
     $sql = "INSERT INTO Contract_status (contractID, statusID)
     SELECT $contractID, status.statusID
