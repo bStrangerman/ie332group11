@@ -247,27 +247,38 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
       }
 
 
-      function distance_score($max_distance_wanted , $distance_away, $scale = 33.3){
+      function distance_score($max_distance_wanted , $distance_away, $scale = 100 / 3){
         $distance_score = $scale * (1 - $distance_away / $max_distance_wanted);
         return $distance_score;
       }
 
-      function size_score($size_wanted, $space_size, $scale = 100){
+      function size_score($size_wanted, $space_size, $max_size, $scale = 100 / 3){
         // y = a(x – h)2 + k
-        if($space_size >= $size_wanted){
+        if($size_wanted >= $max_size){
           $a = (0 - $scale) / pow((0 - $size_wanted), 2);
           $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
-        }
-        else
-          $space_score = 0;
 
-        if($space_score < 0)
-          $space_score = 0;
-        
+          if($space_size < $size_wanted){
+            $space_score = - $space_score;
+          }
+        }
+        else {
+          $a = (0 - $scale) / pow(($max_size - $size_wanted), 2);
+          $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
+
+          if($space_size < $size_wanted){
+            $space_score = - $space_score;
+          }
+        }
+
+        // if($space_score < 0)
+        //   $space_score = 0;
+        //   else
+
         return $space_score;
       }
 
-      function price_score($space_price, $max_price, $min_price = 0, $scale = 33.3){
+      function price_score($space_price, $max_price, $min_price = 0, $scale = 100 / 3){
         $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
         return $price_score;
       }
@@ -279,7 +290,7 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
 
       function ifMulti($result){
         if(count($result) == 1){
-          $score = 100;
+          $score = 100 / 3;
         }
         else
         $score = 0;
