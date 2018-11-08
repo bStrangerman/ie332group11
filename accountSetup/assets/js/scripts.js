@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     /*
         Fullscreen background
     */
-    $.backstretch("http://www.ferraridrivingschool.com/wp-content/uploads/2015/07/warehouse.jpg");
+    $.backstretch("assets/warehouse.jpg");
 
     $('#top-navbar-1').on('shown.bs.collapse', function(){
     	$.backstretch("resize");
