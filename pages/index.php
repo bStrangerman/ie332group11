@@ -7,7 +7,59 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<script>
+// TODO: Move this into javascript file
+function initMap() {
+var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13
+    });
+var input = document.getElementById('search');
+map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
+var autocomplete = new google.maps.places.Autocomplete(input);
+autocomplete.bindTo('bounds', map);
+
+varinfowindow = new google.maps.InfoWindow();
+var marker = new google.maps.Marker({
+        map: map,
+anchorPoint: new google.maps.Point(0, -29)
+    });
+
+autocomplete.addListener('place_changed', function() {
+infowindow.close();
+marker.setVisible(false);
+var place = autocomplete.getPlace();
+        if (!place.geometry) {
+window.alert("Autocomplete's returned place contains no geometry");
+            return;
+        }
+
+        // If the place has a geometry, then present it on a map.
+        if (place.geometry.viewport) {
+map.fitBounds(place.geometry.viewport);
+        } else {
+map.setCenter(place.geometry.location);
+map.setZoom(17);
+        }
+marker.setIcon(({
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+scaledSize: new google.maps.Size(35, 35)
+        }));
+marker.setPosition(place.geometry.location);
+marker.setVisible(true);
+
+
+    });
+}
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key==Your-API-KEY&libraries=places&callback=initMap" async defer></script>
         <!--font-family-->
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -144,7 +196,7 @@
               <?php // TODO: add google api search bar ?>
 
 							<form action="index.php">
-								<input type="text" placeholder="Ex: new york, indianapolis, houston" />
+								<input type="text" id="search" placeholder="Ex: new york, indianapolis, houston" />
 							</form>
 							<div class="welcome-hero-form-icon">
 								<i class="flaticon-gps-fixed-indicator"></i>
