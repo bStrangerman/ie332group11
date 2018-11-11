@@ -61,7 +61,7 @@ function distance($origin, $destination)
   }
 
   // google map geocode api url
-  $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={$origin}&destinations={$destinationURL}&key=AIzaSyAMIMPJxBWxHe6H8OpZRH7dSSSYNosj2eY";
+  $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={$origin}&destinations={$destinationURL}&key=AIzaSyDdGKJ_S6C6zYyhJdmVmzHRD4vHo8t4j-s";
   // echo "<a href='" . $url . "'>" . $url . "</a><br>";
   // get the json response
   $resp_json = file_get_contents($url);
@@ -127,6 +127,7 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
         OR StatusName <> 'Pending'
         OR StatusName <> 'Reserved')))";
         $result = $conn -> query($sql);
+        echo $sql . "<br>";
 
         while($getAllSpaces[]=mysqli_fetch_array($result));
         return $getAllSpaces;
@@ -254,10 +255,10 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
 
       function size_score($size_wanted, $space_size, $max_size, $scale = 100 / 3){
         // y = a(x – h)2 + k
-        if($size_wanted < $max_size)
-          $x = 0;
-        else
+        if($size_wanted > $max_size)
           $x = $max_size;
+        else
+          $x = 0;
 
         $a = (0 - $scale) / pow(($x - $size_wanted), 2);
         $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
@@ -268,8 +269,11 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
         return $space_score;
       }
 
+
       function price_score($space_price, $max_price, $min_price = 0, $scale = 100 / 3){
         $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
+        if($space_price > $max_price)
+          $price_score = 0;
         return $price_score;
       }
 
