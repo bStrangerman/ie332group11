@@ -22,9 +22,9 @@ while ($i < count($spaceInfo)) {
 $data = array("Spaces" => $spaceID, "Addresses" => $address, getDistance($_GET['location'], $address), "MonthlyPrice" => $monthlyPrice, "SpaceSize" => $spaceSize);
 $max_count = count($data["Spaces"]);
 if(isset($_GET['range']))
-  $range = $_GET['range'];
+$range = $_GET['range'];
 else
-  $range = 20000;
+$range = 10000;
 
 for ($i = 0; $i < $max_count; $i++) {
   if ($data[0]["Distance"][$i] > $range) {
@@ -228,21 +228,29 @@ unset($data["SpaceSize"][$max_count - 1]);
 }?>
 </div>
 </div>
-
+<?php
+if(isset($_GET['page']))
+  $page = $_GET['page'];
+else
+  $page = 1;
+?>
 <div class="pagination justify-content-center">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
+      <?php $i = 2;
+      if($page > 1){ ?>
+        <li class="page-item">
+          <a class="page-link" href="?page=<?php echo $page - 1;?>" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item <?php echo ($page - 1 == $i) ? "active" : "" ?>"><a class="page-link" href="?page=<?php echo $page - 1;?>"><?php echo $page - 1;?></a></li>
+      <?php } ?>
+      <li class="page-item <?php echo ($page == $i) ? "active" : "" ?>"><a class="page-link" href="&page=<?php echo $page;?>"><?php echo $page;?></a></li>
+      <li class="page-item <?php echo ($page + 1 == $i) ? "active" : "" ?>"><a class="page-link" href="&page=<?php echo $page + 1;?>"><?php echo $page + 1;?></a></li>
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item active"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+        <a class="page-link" href="&page=<?php echo $page + 1;?>" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
