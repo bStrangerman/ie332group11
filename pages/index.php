@@ -158,23 +158,19 @@
 
       <!-- </p> -->
     </div>
+    <form action="" method="get">
     <div class="welcome-hero-serch-box">
       <div class="welcome-hero-form">
         <div class="single-welcome-hero-form">
           <h3>what?</h3>
-          <form action="index.php">
-            <input type="text" placeholder="Ex: climate-controlled, outdoors" />
-          </form>
+            <input type="text" name="description" placeholder="Ex: climate-controlled, outdoors" />
           <div class="welcome-hero-form-icon">
             <i class="flaticon-list-with-dots"></i>
           </div>
         </div>
         <div class="single-welcome-hero-form">
           <h3>location</h3>
-          <?php // TODO: add google api search bar ?>
-
-          <form action="index.php">
-              <input id="autocomplete" placeholder="Ex: new york, indianapolis, houston" onFocus="geolocate()" type="text"></input>
+              <input id="autocomplete" name="location" placeholder="Ex: new york, indianapolis, houston" onFocus="geolocate()" type="text"></input>
           </form>
           <div class="welcome-hero-form-icon">
             <i class="flaticon-gps-fixed-indicator"></i>
@@ -182,12 +178,13 @@
         </div>
       </div>
       <div class="welcome-hero-serch">
-        <button class="welcome-hero-btn" onclick="window.location.href='#'">
+        <button type="submit" class="welcome-hero-btn">
           search  <i data-feather="search"></i>
         </button>
       </div>
     </div>
   </div>
+</form>
 
 </section><!--/.welcome-hero-->
 <!--welcome-hero end -->
