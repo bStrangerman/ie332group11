@@ -1,3 +1,5 @@
+<?php // TODO: Organize this file into the proper layout (header.php, footer.php, etc.) ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -53,34 +55,34 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <style>
-        #locationField, #controls {
-          position: relative;
-          width: 480px;
-        }
+  #locationField, #controls {
+    position: relative;
+    width: 480px;
+  }
 
-        #address {
-          border: 1px solid #000090;
-          background-color: #f0f0ff;
-          width: 480px;
-          padding-right: 2px;
-        }
-        #address td {
-          font-size: 10pt;
-        }
-        .field {
-          width: 99%;
-        }
-        .slimField {
-          width: 80px;
-        }
-        .wideField {
-          width: 200px;
-        }
-        #locationField {
-          height: 20px;
-          margin-bottom: 2px;
-        }
-      </style>
+  #address {
+    border: 1px solid #000090;
+    background-color: #f0f0ff;
+    width: 480px;
+    padding-right: 2px;
+  }
+  #address td {
+    font-size: 10pt;
+  }
+  .field {
+    width: 99%;
+  }
+  .slimField {
+    width: 80px;
+  }
+  .wideField {
+    width: 200px;
+  }
+  #locationField {
+    height: 20px;
+    margin-bottom: 2px;
+  }
+  </style>
 
 </head>
 
@@ -158,23 +160,32 @@
 
       <!-- </p> -->
     </div>
-    <form action="" method="get">
-    <div class="welcome-hero-serch-box">
-      <div class="welcome-hero-form">
-        <div class="single-welcome-hero-form">
-          <h3>what?</h3>
+    <form action="category.php" method="get">
+      <div class="welcome-hero-serch-box">
+        <div class="welcome-hero-form">
+          <!-- <div class="single-welcome-hero-form">
+            <h3>what?</h3>
             <input type="text" name="description" placeholder="Ex: climate-controlled, outdoors" />
-          <div class="welcome-hero-form-icon">
-            <i class="flaticon-list-with-dots"></i>
+            <div class="welcome-hero-form-icon">
+              <i class="flaticon-list-with-dots"></i>
+            </div>
+          </div> -->
+          <div class="single-welcome-hero-form">
+            <h3>location</h3>
+            <input id="autocomplete" name="location" placeholder="Ex: new york, indianapolis, houston" onFocus="geolocate()" type="text"></input>
+            <div class="welcome-hero-form-icon">
+              <i class="flaticon-gps-fixed-indicator"></i>
+            </div>
           </div>
-        </div>
-        <div class="single-welcome-hero-form">
-          <h3>location</h3>
-              <input id="autocomplete" name="location" placeholder="Ex: new york, indianapolis, houston" onFocus="geolocate()" type="text"></input>
-          </form>
+          <div class="single-welcome-hero-form">
+            <h3>When?</h3>
+            <input name="startdate" placeholder="Start" type="date"></input>
+            <h3>to</h3>
+            <input name="enddate" placeholder="End" type="date"></input>
           <div class="welcome-hero-form-icon">
-            <i class="flaticon-gps-fixed-indicator"></i>
+            <i class="fa fa-calendar"></i>
           </div>
+        </form>
         </div>
       </div>
       <div class="welcome-hero-serch">
@@ -932,74 +943,74 @@
 
 
 <script>
-      // This example displays an address form, using the autocomplete feature
-      // of the Google Places API to help users fill in the information.
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
 
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-      var placeSearch, autocomplete;
-      var componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-      };
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
 
-      function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-            {types: ['geocode']});
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search to geographical
+  // location types.
+  autocomplete = new google.maps.places.Autocomplete(
+    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+    {types: ['geocode']});
 
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        autocomplete.addListener('place_changed', fillInAddress);
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', fillInAddress);
+  }
+
+  function fillInAddress() {
+    // Get the place details from the autocomplete object.
+    var place = autocomplete.getPlace();
+
+    for (var component in componentForm) {
+      document.getElementById(component).value = '';
+      document.getElementById(component).disabled = false;
+    }
+
+    // Get each component of the address from the place details
+    // and fill the corresponding field on the form.
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
       }
+    }
+  }
 
-      function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-
-        for (var component in componentForm) {
-          document.getElementById(component).value = '';
-          document.getElementById(component).disabled = false;
-        }
-
-        // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-          var addressType = place.address_components[i].types[0];
-          if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
-          }
-        }
-      }
-
-      // Bias the autocomplete object to the user's geographical location,
-      // as supplied by the browser's 'navigator.geolocation' object.
-      function geolocate() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var geolocation = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            var circle = new google.maps.Circle({
-              center: geolocation,
-              radius: position.coords.accuracy
-            });
-            autocomplete.setBounds(circle.getBounds());
-          });
-        }
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHEHS1YUJVmKDeZhK1zp-5bWFjK7l7Oi0&libraries=places&callback=initAutocomplete" async defer></script>
+  // Bias the autocomplete object to the user's geographical location,
+  // as supplied by the browser's 'navigator.geolocation' object.
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHEHS1YUJVmKDeZhK1zp-5bWFjK7l7Oi0&libraries=places&callback=initAutocomplete" async defer></script>
 
 </body>
 
