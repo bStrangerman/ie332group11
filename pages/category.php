@@ -3,45 +3,52 @@ require_once "../includes/main.php";
 require_once "../layouts/Calssimax/header.php";
 include "../includes/rankingFunctions.php";
 
-$start = $_GET['startdate'];
-$end = $_GET['enddate'];
-$spaceInfo = getAvailableSpaces($start,$end,$conn);
-$address = array();
-$spaceID = array();
-$monthlyPrice = array();
-$spaceSize = array();
+if(isset($_GET['startdate']) && isset($_GET['enddate']) && $_GET['startdate'] != "" && $_GET['enddate'] != ""){
+  $start = $_GET['startdate'];
+  $end = $_GET['enddate'];
 
-$i = 0;
-while ($i < count($spaceInfo)) {
-  array_push($spaceID, $spaceInfo[$i]['SpaceID']);
-  array_push($address, $spaceInfo[$i]['Address'] . " " . $spaceInfo[$i]['City'] . " " . $spaceInfo[$i]['State']);
-  array_push($monthlyPrice, $spaceInfo[$i]['MonthlyPrice']);
-  array_push($spaceSize, $spaceInfo[$i]['SpaceSize']);
-  $i++;
-}
-$data = array("Spaces" => $spaceID, "Addresses" => $address, getDistance($_GET['location'], $address), "MonthlyPrice" => $monthlyPrice, "SpaceSize" => $spaceSize);
-$max_count = count($data["Spaces"]);
-if(isset($_GET['range']))
-$range = $_GET['range'];
-else
-$range = 10000;
+  $spaceInfo = getAvailableSpaces($start,$end,$conn);
+  $address = array();
+  $spaceID = array();
+  $monthlyPrice = array();
+  $spaceSize = array();
 
-for ($i = 0; $i < $max_count; $i++) {
-  if ($data[0]["Distance"][$i] > $range) {
-    unset($data[0]["Distance"][$i]);
-    unset($data["Spaces"][$i]);
-    unset($data["Addresses"][$i]);
-    unset($data[0]["Time"][$i]);
-    unset($data["MonthlyPrice"][$i]);
-    unset($data["SpaceSize"][$i]);
+  $i = 0;
+  while ($i < count($spaceInfo)) {
+    array_push($spaceID, $spaceInfo[$i]['SpaceID']);
+    array_push($address, $spaceInfo[$i]['Address'] . " " . $spaceInfo[$i]['City'] . " " . $spaceInfo[$i]['State']);
+    array_push($monthlyPrice, $spaceInfo[$i]['MonthlyPrice']);
+    array_push($spaceSize, $spaceInfo[$i]['SpaceSize']);
+    $i++;
   }
+  $data = array("Spaces" => $spaceID, "Addresses" => $address, getDistance($_GET['location'], $address), "MonthlyPrice" => $monthlyPrice, "SpaceSize" => $spaceSize);
+  $max_count = count($data["Spaces"]);
+  if(isset($_GET['range']))
+    $range = $_GET['range'];
+  else
+    $range = 10000;
+
+  for ($i = 0; $i < $max_count; $i++) {
+    if ($data[0]["Distance"][$i] > $range) {
+      unset($data[0]["Distance"][$i]);
+      unset($data["Spaces"][$i]);
+      unset($data["Addresses"][$i]);
+      unset($data[0]["Time"][$i]);
+      unset($data["MonthlyPrice"][$i]);
+      unset($data["SpaceSize"][$i]);
+    }
+  }
+  unset($data[0]["Distance"][$max_count - 1]);
+  unset($data["Spaces"][$max_count - 1]);
+  unset($data["Addresses"][$max_count - 1]);
+  unset($data[0]["Time"][$max_count - 1]);
+  unset($data["MonthlyPrice"][$max_count - 1]);
+  unset($data["SpaceSize"][$max_count - 1]);
+  if(count($data["Spaces"]) == 0)
+    $err = "0 Results";
 }
-unset($data[0]["Distance"][$max_count - 1]);
-unset($data["Spaces"][$max_count - 1]);
-unset($data["Addresses"][$max_count - 1]);
-unset($data[0]["Time"][$max_count - 1]);
-unset($data["MonthlyPrice"][$max_count - 1]);
-unset($data["SpaceSize"][$max_count - 1]);
+else
+  $err = "Please enter a valid date range";
 ?>
 
 <section class="page-search">
@@ -78,10 +85,12 @@ unset($data["SpaceSize"][$max_count - 1]);
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        <?php if(!isset($err)){ ?>
         <div class="search-result bg-gray">
           <h2>Results For "<?php echo isset($_GET['location']) ? $_GET['location'] : "" ?>"</h2>
           <p><?php echo count($data['Spaces']); ?> Results on <?php echo date("F d, Y"); ?></p>
         </div>
+      <?php }?>
       </div>
     </div>
     <div class="row">
@@ -90,22 +99,33 @@ unset($data["SpaceSize"][$max_count - 1]);
           <div class="widget category-list">
             <h4 class="widget-header">All Category</h4>
             <ul class="category-list">
-              <li><a href="category.html">Laptops <span>93</span></a></li>
-              <li><a href="category.html">Iphone <span>233</span></a></li>
-              <li><a href="category.html">Microsoft  <span>183</span></a></li>
-              <li><a href="category.html">Monitors <span>343</span></a></li>
+              <?php
+              $sql = "SELECT AttributeName,
+                        (SELECT COUNT(*)
+                         FROM Space_Attributes
+                         WHERE Space_Attributes.AttributeID = Attributes.AttributeID) AS countof
+                      FROM Attributes
+                      WHERE AttributeType = 1
+                      LIMIT 6";
+              $result = $conn -> query($sql);
+              while($row = $result -> fetch_assoc()){ ?>
+                <li><a href="category.php?location=<?php echo $_GET['location'];?>&type=<?php echo $row['AttributeName']; ?>&startdate=<?php echo $start;?>&enddate=<?php echo $end;?>"><?php echo $row['AttributeName']; ?> <span><?php echo $row['countof']; ?></span></a></li>
+              <?php } ?>
             </ul>
           </div>
 
           <div class="widget category-list">
             <h4 class="widget-header">Nearby</h4>
             <ul class="category-list">
-              <li><a href="category.html">New York <span>93</span></a></li>
-              <li><a href="category.html">New Jersy <span>233</span></a></li>
-              <li><a href="category.html">Florida  <span>183</span></a></li>
-              <li><a href="category.html">California <span>120</span></a></li>
-              <li><a href="category.html">Texas <span>40</span></a></li>
-              <li><a href="category.html">Alaska <span>81</span></a></li>
+              <?php
+              $sql = "SELECT State, COUNT(*) AS countof
+                      FROM Warehouses
+                      GROUP BY State
+                      LIMIT 6";
+              $result = $conn -> query($sql);
+              while($row = $result -> fetch_assoc()){ ?>
+                <li><a href="category.php?location=<?php echo $row['State']; ?>&startdate=<?php echo $start;?>&enddate=<?php echo $end;?>"><?php echo $row['State']; ?> <span><?php echo $row['countof']; ?></span></a></li>
+              <?php } ?>
             </ul>
           </div>
 
@@ -188,6 +208,11 @@ unset($data["SpaceSize"][$max_count - 1]);
 <div class="product-grid-list">
   <div class="row mt-30">
     <?php
+    if(isset($err)) { ?>
+    <div class="col-sm-12 col-lg-12 col-md-12">
+      <?php echo "<h2 align='center'>" . $err . "</h2>"; ?>
+    </div>
+  <?php } else {
     for($i = 0; $i < count($spaceID); ++$i){
       if(isset($data["Spaces"][$i])) {?>
         <div class="col-sm-12 col-lg-12 col-md-12">
@@ -225,9 +250,11 @@ unset($data["SpaceSize"][$max_count - 1]);
     </div>
   </div>
 <?php }
-}?>
+}
+?>
 </div>
 </div>
+<?php // TODO: pagination is not complete.  see issue #24 ?>
 <?php
 if(isset($_GET['page']))
   $page = $_GET['page'];
@@ -250,7 +277,7 @@ else
       <li class="page-item <?php echo ($page == $i) ? "active" : "" ?>"><a class="page-link" href="&page=<?php echo $page;?>"><?php echo $page;?></a></li>
       <li class="page-item <?php echo ($page + 1 == $i) ? "active" : "" ?>"><a class="page-link" href="&page=<?php echo $page + 1;?>"><?php echo $page + 1;?></a></li>
       <li class="page-item">
-        <a class="page-link" href="&page=<?php echo $page + 1;?>" aria-label="Next">
+        <a class="page-link" href="&page=<?php echo $page + 1; ?>" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
@@ -258,8 +285,10 @@ else
     </ul>
   </nav>
 </div>
+<?php } ?>
 </div>
 </div>
 </div>
 </section>
-<?php require_once "../layouts/Calssimax/footer.php"; ?>
+<?php
+require_once "../layouts/Calssimax/footer.php"; ?>
