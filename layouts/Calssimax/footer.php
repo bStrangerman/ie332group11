@@ -10,7 +10,7 @@
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
-          <img src="../includes/images/logo-footer.png" alt="">
+          <h2><strong><span style="color:white">@</style><span style="color:red">Capacity</span></strong></h2>
           <!-- description -->
           <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>

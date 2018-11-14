@@ -74,7 +74,7 @@
         <div class="col-md-12">
           <nav class="navbar navbar-expand-lg  navigation">
             <a class="navbar-brand" href="index.php">
-              <img src="../includes/images/logo.png" alt="">
+              <h2><strong>@<span style="color:red">Capacity</span></strong></h2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -117,7 +117,7 @@
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
                 <li class="nav-item">
-                  <a class="nav-link login-button" href="index.php">Login</a>
+                  <a class="nav-link login-button" href="login.php">Login</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link add-button" href="#"><i class="fa fa-plus-circle"></i> Add Listing</a>

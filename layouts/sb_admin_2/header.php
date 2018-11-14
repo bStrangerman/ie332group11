@@ -47,7 +47,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="warehouse.php">@Capacity</a>
+                  <a class="navbar-brand" href="index.php"><span class="fa fa-arrow-circle-o-left"> Return Home</span></a>
               </div>
               <!-- /.navbar-header -->
 
