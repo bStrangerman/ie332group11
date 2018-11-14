@@ -14,7 +14,10 @@
 <!-- Metis Menu Plugin JavaScript -->
 <script src="../includes/vendor/metisMenu/metisMenu.min.js"></script>
 
-
+<!-- Morris Charts JavaScript -->
+<script src="../includes/vendor/raphael/raphael.min.js"></script>
+<script src="../includes/vendor/morrisjs/morris.min.js"></script>
+<script src="../includes/data/morris-data.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="../includes/dist/js/sb-admin-2.js"></script>
