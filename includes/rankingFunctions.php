@@ -124,8 +124,11 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
       (SELECT StatusID
         FROM Status
         WHERE StatusName <> 'Approved'
-        OR StatusName <> 'Pending'
-        OR StatusName <> 'Reserved')))";
+          OR StatusName <> 'Pending'
+          OR StatusName <> 'Reserved'))
+        AND (NOT Contracts.StartDate > '$end_date' OR NOT Contracts.StartDate > '$start_date')
+        AND (NOT Contracts.EndDate < '$end_date' OR NOT Contracts.EndDate < '$start_date'))";
+
         $result = $conn -> query($sql);
 
         while($getAllSpaces[]=mysqli_fetch_array($result));
