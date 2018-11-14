@@ -1,5 +1,9 @@
 <?php // TODO: Organize this file into the proper layout (header.php, footer.php, etc.)
 require_once "../includes/main.php";
+
+if(isset($_SESSION['UserID'])){
+  $hasAccount = $rbac->Users->roleCount($UserID = $_SESSION['UserID']);
+}
 ?>
 
 <!doctype html>
@@ -144,7 +148,11 @@ require_once "../includes/main.php";
             <li class=" scroll active"><a href="#home">home</a></li>
             <li class="scroll"><a href="#explore">explore</a></li>
             <li class="scroll"><a href="#reviews">review</a></li>
-            <li><a href="login.php">Login/Register</a></li>
+            <?php if($hasAccount > 0) {?>
+               <li><a href="warehouse.php">My Account</a></li>
+             <?php } else { ?>
+               <li><a href="login.php">Login/Register</a></li>
+             <?php } ?>
           </ul><!--/.nav -->
         </div><!-- /.navbar-collapse -->
       </div><!--/.container-->
@@ -573,8 +581,12 @@ require_once "../includes/main.php";
               <li class="scroll"><a href="#reviews">review</a></li>
               <li class="scroll"><a href="#blog">blog</a></li>
               <li class="scroll"><a href="#contact">contact</a></li>
-              <li class="scroll"><a href="#contact">my account</a></li>
-            </ul><!--/.nav -->
+              <?php if($hasAccount > 0) {?>
+                 <li><a href="warehouse.php">My Account</a></li>
+               <?php } else { ?>
+                 <li><a href="login.php">Login/Register</a></li>
+               <?php } ?>
+             </ul><!--/.nav -->
           </div>
         </div>
       </div>
