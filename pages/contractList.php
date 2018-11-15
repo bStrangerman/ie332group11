@@ -3,7 +3,6 @@ require_once "../includes/main.php";
 include_once "../includes/contracts.php";
 
 if (isset($_SESSION['UserID'])) {
-  echo "<br>" . $_SESSION['UserID'];
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
     header('Location: index.php');
   else
