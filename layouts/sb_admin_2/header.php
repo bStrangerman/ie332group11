@@ -255,6 +255,9 @@
                               <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
                           </li>
                           <li>
+                              <a href="contractList.php"><i class="fa fa-table fa-fw"></i> Contracts</a>
+                          </li>
+                          <li>
                               <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
                           </li>
                           <li>

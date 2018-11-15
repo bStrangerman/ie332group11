@@ -61,7 +61,7 @@ function distance($origin, $destination)
   }
 
   // google map geocode api url
-  $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={$origin}&destinations={$destinationURL}&key=AIzaSyAMIMPJxBWxHe6H8OpZRH7dSSSYNosj2eY";
+  $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={$origin}&destinations={$destinationURL}&key=AIzaSyDdGKJ_S6C6zYyhJdmVmzHRD4vHo8t4j-s";
   // echo "<a href='" . $url . "'>" . $url . "</a><br>";
   // get the json response
   $resp_json = file_get_contents($url);
@@ -124,8 +124,11 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
       (SELECT StatusID
         FROM Status
         WHERE StatusName <> 'Approved'
-        OR StatusName <> 'Pending'
-        OR StatusName <> 'Reserved')))";
+          OR StatusName <> 'Pending'
+          OR StatusName <> 'Reserved'))
+        AND (NOT Contracts.StartDate > '$end_date' OR NOT Contracts.StartDate > '$start_date')
+        AND (NOT Contracts.EndDate < '$end_date' OR NOT Contracts.EndDate < '$start_date'))";
+
         $result = $conn -> query($sql);
 
         while($getAllSpaces[]=mysqli_fetch_array($result));
