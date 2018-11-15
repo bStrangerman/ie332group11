@@ -4,6 +4,9 @@ require_once "../includes/main.php";
 if(isset($_SESSION['UserID'])){
   $hasAccount = $rbac->Users->roleCount($UserID = $_SESSION['UserID']);
 }
+else {
+  $hasAccount = 0;
+}
 ?>
 
 <!doctype html>
