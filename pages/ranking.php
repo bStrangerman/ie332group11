@@ -86,9 +86,10 @@ unset($data["SpaceSize"][$max_count - 1]);
 
 $size = $_GET['size'];
 
+$max_size = max($data["SpaceSize"]);
 for($i = 0; $i < $max_count; $i++){
   if(isset($data["Spaces"][$i]))
-    echo "<tr><td>" . $data["Spaces"][$i] . "<hr></td><td>" . $data["Addresses"][$i] . "<hr></td><td>" . $data[0]["Distance"][$i] . " (" . distance_score($max_Distance, $data[0]['Distance'][$i]) . ")<hr></td><td>" . $data[0]["Time"][$i] . "<hr></td><td>" . $data['MonthlyPrice'][$i] . "<hr></td><td>" . $data["SpaceSize"][$i] . " (" . size_score($size, $data['SpaceSize'][$i]) . ")<hr></td><td>" . ($data['MonthlyPrice'][$i] * $data['SpaceSize'][$i]) . " (" . price_score(($data['MonthlyPrice'][$i] * $data['SpaceSize'][$i]), $max_price) .  ")<hr></td><td>" . (distance_score($max_Distance, $data[0]['Distance'][$i]) + size_score($size, $data['SpaceSize'][$i]) + price_score(($data['MonthlyPrice'][$i] * $data['SpaceSize'][$i]), $max_price)) . "<hr></td></tr>";
+    echo "<tr><td>" . $data["Spaces"][$i] . "<hr></td><td>" . $data["Addresses"][$i] . "<hr></td><td>" . $data[0]["Distance"][$i] . " (" . distance_score($max_Distance, $data[0]['Distance'][$i]) . ")<hr></td><td>" . $data[0]["Time"][$i] . "<hr></td><td>" . $data['MonthlyPrice'][$i] . "<hr></td><td>" . $data["SpaceSize"][$i] . " (" . size_score($size, $data['SpaceSize'][$i], $max_size) . ")<hr></td><td>" . ($data['MonthlyPrice'][$i] * $data['SpaceSize'][$i]) . " (" . price_score(($data['MonthlyPrice'][$i] * $data['SpaceSize'][$i]), $max_price) .  ")<hr></td><td>" . (distance_score($max_Distance, $data[0]['Distance'][$i]) + size_score($size, $data['SpaceSize'][$i], $max_size) + price_score(($data['MonthlyPrice'][$i] * $data['SpaceSize'][$i]), $max_price)) . "<hr></td></tr>";
 }
 echo "</table>";
 
