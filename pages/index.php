@@ -151,7 +151,7 @@ else {
             <li class=" scroll active"><a href="#home">home</a></li>
             <li class="scroll"><a href="#explore">explore</a></li>
             <li class="scroll"><a href="#reviews">review</a></li>
-            <?php if($hasAccount > 0) {?>
+            <?php if(isset($_SESSION['UserID'])) {?>
                <li><a href="warehouse.php">My Account</a></li>
              <?php } else { ?>
                <li><a href="login.php">Login/Register</a></li>
@@ -176,7 +176,7 @@ else {
 
       <!-- </p> -->
     </div>
-    <form action="category.php" method="get">
+    <form action="results.php" method="get">
       <div class="welcome-hero-serch-box">
         <div class="welcome-hero-form">
           <!-- <div class="single-welcome-hero-form">
@@ -241,7 +241,7 @@ else {
                 <div class="single-list-topics-icon">
                   <i class="<?php echo $row['AttributeIcon']; ?>" style="font-size:48px"></i>
                 </div>
-                <h2><a href="category.php?type=<?php echo urlencode($row['AttributeName']); ?>"><?php echo $row['AttributeName']; ?></a></h2>
+                <h2><a href="results.php?type=<?php echo urlencode($row['AttributeName']); ?>"><?php echo $row['AttributeName']; ?></a></h2>
                 <p><?php echo $innerrow['CountOf']; ?> listings</p>
               </div>
             </li>

@@ -26,7 +26,7 @@ if(isset($_GET['origin'])){
   $i = 0;
   while ($i < count($spaceInfo)) {
     array_push($spaceID, $spaceInfo[$i]['SpaceID']);
-    array_push($address, $spaceInfo[$i]['Address'] . " " . $spaceInfo[$i]['City'] . " " . $spaceInfo[$i]['State']);
+    array_push($address, $spaceInfo[$i]['Address'] . " " . $spaceInfo[$i]['City'] . " " . $spaceInfo[$i]['State']) . " " . $spaceInfo['ZipCode'];
     array_push($monthlyPrice, $spaceInfo[$i]['MonthlyPrice']);
     array_push($spaceSize, $spaceInfo[$i]['SpaceSize']);
     $i++;

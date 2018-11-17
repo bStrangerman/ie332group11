@@ -95,7 +95,9 @@ table tr[data-href] {
                     default:
                     echo "";
                   }
+
                   ?>>
+
                   <td><?php echo $row['ContractID']; ?></td>
                   <td><?php echo $row['Address']; ?></td>
                   <td><?php echo $row['FirstName'] . " " . $row['LastName']; ?></td>

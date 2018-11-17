@@ -2,7 +2,7 @@
     'use strict';
 
     $(document).on('ready', function () {
-        
+
         // Nice Select
         $('select').niceSelect();
         // -----------------------------
@@ -63,7 +63,7 @@
         });
         /***ON-LOAD***/
         jQuery(window).on('load', function () {
-            
+
         });
 
     });
@@ -73,7 +73,7 @@
 
 
  $(document).ready(function() {
-  $('select:not(.ignore)').niceSelect();      
+  $('select:not(.ignore)').niceSelect();
 });
 
 
@@ -91,19 +91,16 @@ function initialize() {
     {
         "stylers": [
             {
-                "hue": "#ff61a6"
-            },
-            {
                 "visibility": "on"
             },
             {
-                "invert_lightness": true
+                "invert_lightness": false
             },
             {
-                "saturation": 40
+                "saturation": 0
             },
             {
-                "lightness": 10
+                "lightness": 0
             }
         ]
     }

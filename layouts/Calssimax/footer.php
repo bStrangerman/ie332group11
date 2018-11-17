@@ -86,8 +86,8 @@
 </footer>
 
 <!-- JAVASCRIPTS -->
-<script src="../includes/plugins/jquery/jquery.min.js"></script>
-<script src="../includes/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../includes/plugins/jquery/dist/jquery.min.js"></script>
+<script src="../includes/plugins/jquery/dist/jquery-ui/jquery-ui.min.js"></script>
 <script src="../includes/plugins/tether/js/tether.min.js"></script>
 <script src="../includes/plugins/raty/jquery.raty-fa.js"></script>
 <script src="../includes/plugins/bootstrap/dist/js/popper.min.js"></script>
@@ -98,7 +98,7 @@
 <script src="../includes/plugins/fancybox/jquery.fancybox.pack.js"></script>
 <script src="../includes/plugins/smoothscroll/SmoothScroll.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-<script src="js/search.js"></script>
+<script src="../includes/js/search.js"></script>
 
 
 <script>

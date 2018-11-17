@@ -1116,6 +1116,7 @@ CREATE TABLE IF NOT EXISTS Spaces (
   MonthlyPrice real,
   YearlyPrice real,
   Active BOOLEAN DEFAULT TRUE,
+  DateAdded datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(SpaceID),
   FOREIGN KEY(WarehouseID) REFERENCES Warehouses(WarehouseID));
 
