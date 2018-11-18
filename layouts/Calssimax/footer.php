@@ -97,7 +97,6 @@
 <script src="../includes/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 <script src="../includes/plugins/fancybox/jquery.fancybox.pack.js"></script>
 <script src="../includes/plugins/smoothscroll/SmoothScroll.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 <script src="../includes/js/search.js"></script>
 
 
