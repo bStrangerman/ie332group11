@@ -1,5 +1,35 @@
 <?php
 
+
+
+// TODO: If the search bar is a state or city in the search, only output those results without the need of the Google API.
+$location_error = "Please enter a location";
+$err = array();
+if((isset($_GET['location']) && $_GET['location'] == ""))
+array_push($err, $location_error);
+else if((isset($_GET['state']) && $_GET['state'] == ""))
+array_push($err, $location_error);
+else if(!isset($_GET['location']) && !isset($_GET['state']))
+array_push($err, $location_error);
+else if(isset($_GET['location']) && isset($_GET['state']))
+array_push($err, "Please try again");
+
+if((isset($_GET['startdate']) && $_GET['startdate'] == "") || !isset($_GET['startdate']))
+array_push($err, "Please enter a valid start date");
+
+if((isset($_GET['enddate']) && $_GET['enddate'] == "") || !isset($_GET['enddate']))
+array_push($err, "Please enter a valid end date");
+
+if(isset($_GET['startdate']))
+$start = $_SESSION['startdate'] = $_GET['startdate'];
+else
+$start = "";
+
+if(isset($_GET['enddate']))
+$end = $_SESSION['enddate'] = $_GET['enddate'];
+else
+$end = "";
+
 /**
 * Get all the spaces (no matter what), from the database
 * @param  [func] $conn [SQL Database connection]
@@ -109,12 +139,17 @@ function distance($origin, $destination)
 * @param  [function] $conn       [SQL database connection]
 * @return [array]            All the spaces that are available during the date range
 */
-function getAvailableSpaces ($start_date, $end_date, $conn){
+function getAvailableSpaces ($start_date, $end_date, $type, $conn){
   $sql = "SELECT *
   FROM Spaces
   LEFT JOIN Warehouses
   ON Warehouses.warehouseID = Spaces.warehouseID
-  WHERE spaceID NOT IN
+  LEFT JOIN Space_Attributes
+  ON Space_Attributes.SpaceID = Spaces.SpaceID
+  INNER JOIN Attributes
+  ON Attributes.AttributeID = Space_Attributes.AttributeID
+  WHERE Active = 1
+  AND Spaces.SpaceID NOT IN
   (SELECT DISTINCT spaceID
     FROM Contracts
     WHERE contractID IN
@@ -124,10 +159,12 @@ function getAvailableSpaces ($start_date, $end_date, $conn){
       (SELECT StatusID
         FROM Status
         WHERE StatusName <> 'Approved'
-          OR StatusName <> 'Pending'
-          OR StatusName <> 'Reserved'))
+        OR StatusName <> 'Pending'
+        OR StatusName <> 'Reserved'))
         AND (NOT Contracts.StartDate > '$end_date' OR NOT Contracts.StartDate > '$start_date')
         AND (NOT Contracts.EndDate < '$end_date' OR NOT Contracts.EndDate < '$start_date'))";
+
+        $sql .= ($type == array()) ? "" : " AND AttributeName IN ('".implode(',',$type)."')";
 
         $result = $conn -> query($sql);
 

@@ -132,6 +132,7 @@ require_once "../layouts/sb_admin_2/header.php";
         <!-- /.panel-heading -->
         <div class="panel-body">
           <h4><?php
+          
           $startdate = date("M d, Y", strtotime($mainSqlResult['StartDate']));
           $enddate = date("M d, Y", strtotime($mainSqlResult['EndDate']));
           echo $startdate . " to " . $enddate . "</h4>";

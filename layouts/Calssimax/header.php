@@ -117,7 +117,12 @@
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
                 <li class="nav-item">
+                  <?php if(isset($_SESSION['UserID'])) { ?>
+                    <a class="nav-link login-button" href="warehouse.php">My Account</a>
+                  <?php }
+                  else { ?>
                   <a class="nav-link login-button" href="login.php">Login</a>
+                  <?php } ?>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link add-button" href="#"><i class="fa fa-plus-circle"></i> Add Listing</a>
