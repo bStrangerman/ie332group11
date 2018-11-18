@@ -1105,6 +1105,8 @@ CREATE TABLE IF NOT EXISTS Warehouses (
   ZipCode varchar(5),
   City varchar(50),
   State varchar(2),
+  Latitude FLOAT( 10, 6 ) NOT NULL ,
+  Longitude FLOAT( 10, 6 ) NOT NULL ,
   BuildingSize real,
   PRIMARY KEY(WarehouseID),
   FOREIGN KEY(OwnerID) REFERENCES phprbac_users(UserID));
