@@ -93,7 +93,7 @@ View settings for more info. -->
 					<span class="border"></span>
 				</label>
 				<div class="formDiv">
-					<input type="submit" name="reg_user" value="Register"<?php if($email == NULL || $username == NULL || $psswd_insert == NULL)echo Please Complete Form?>>
+					<input type="submit" name="reg_user" value="Register">
 				</div>
 				<footer>
 					<p class="registerBtn">Back to login</p>
