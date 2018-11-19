@@ -78,6 +78,7 @@ View settings for more info. -->
         errors($register_Errors); ?>
 				<label class="formDiv">
 					<input type="text" placeholder=" " value="<?php echo $username; ?>" name="username">
+
 					<p>Username</p>
 					<span class="border"></span>
 				</label>
@@ -92,7 +93,7 @@ View settings for more info. -->
 					<span class="border"></span>
 				</label>
 				<div class="formDiv">
-					<input type="submit" name="reg_user" value="Register">
+					<input type="submit" name="reg_user" value="Register"<?php if($email == NULL || $username == NULL || $psswd_insert == NULL)echo Please Complete Form?>>
 				</div>
 				<footer>
 					<p class="registerBtn">Back to login</p>
