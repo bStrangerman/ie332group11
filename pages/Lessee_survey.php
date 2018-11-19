@@ -17,6 +17,29 @@
 <?php
 require_once "../includes/main.php";
 include_once "../includes/contracts.php";
+
+if(isset($_SESSION['UserID'])){
+  if(!$rbac->Users->hasRole('Lessee', $UserID = $_SESSION['UserID'])){
+    header('Location: warehouse.php');
+  }
+  else if (isset($_GET['contract'])){
+    $contract = $_GET['contract'];
+    $_SESSION['reviewContract'] = $contract;
+    $user = $_SESSION['UserID'];
+    $sql = "SELECT COUNT(*)
+            FROM Contracts
+            WHERE LesseeID = $user
+            AND ContractID = $contract";
+    if(count(($conn -> query($sql)) -> fetch_assoc()) < 0) {
+      header('Location: index.php');
+    }
+  }
+}
+else {
+  $_SESSION['redirect'] = 'Lessee_survey.php';
+  header('Location: login.php');
+}
+
 require_once "../layouts/sb_admin_2/header.php";
 ?>
 <div id="page-wrapper">
@@ -38,7 +61,7 @@ require_once "../layouts/sb_admin_2/header.php";
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form method="post" role="form">
+              <form method="post" action = "lessee_survey_submit.php" role="form">
 
 <!--==============
 =   LOAD SPACE   =
@@ -55,38 +78,38 @@ for Accuracy of Listing, Communication with Staff, Friendlyness of Staff, Locati
                 <div class="form-group">
                   <label>Overall Rating</label> <br>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+                    <input type="radio" name="ls_rating" id="optionsRadiosInline1" value="1" checked>1
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+                    <input type="radio" name="ls_rating" id="optionsRadiosInline2" value="2">2
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+                    <input type="radio" name="ls_rating" id="optionsRadiosInline3" value="3">3
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline4" value="option4">4
+                    <input type="radio" name="ls_rating" id="optionsRadiosInline4" value="4">4
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline5" value="option5">5
+                    <input type="radio" name="ls_rating" id="optionsRadiosInline5" value="5">5
                   </label>
                 </div>
                 <!-- Accuracy of Listing -->
                 <div class="form-group">
                   <label>Accuracy of Listing</label> <br>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+                    <input type="radio" name="ls_accuracy" id="optionsRadiosInline1" value="1" checked>1
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+                    <input type="radio" name="ls_accuracy" id="optionsRadiosInline2" value="2">2
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+                    <input type="radio" name="ls_accuracy" id="optionsRadiosInline3" value="3">3
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline4" value="option4">4
+                    <input type="radio" name="ls_accuracy" id="optionsRadiosInline4" value="4">4
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline5" value="option5">5
+                    <input type="radio" name="ls_accuracy" id="optionsRadiosInline5" value="5">5
                   </label>
                 </div>
 
@@ -94,19 +117,19 @@ for Accuracy of Listing, Communication with Staff, Friendlyness of Staff, Locati
                 <div class="form-group">
                   <label>Communication with Staff</label> <br>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+                    <input type="radio" name="ls_comm" id="optionsRadiosInline1" value="1" checked>1
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+                    <input type="radio" name="ls_comm" id="optionsRadiosInline2" value="2">2
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+                    <input type="radio" name="ls_comm" id="optionsRadiosInline3" value="3">3
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline4" value="option4">4
+                    <input type="radio" name="ls_comm" id="optionsRadiosInline4" value="4">4
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline5" value="option5">5
+                    <input type="radio" name="ls_comm" id="optionsRadiosInline5" value="5">5
                   </label>
                 </div>
 
@@ -114,19 +137,19 @@ for Accuracy of Listing, Communication with Staff, Friendlyness of Staff, Locati
                 <div class="form-group">
                   <label>Friendlyness of Staff</label> <br>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+                    <input type="radio" name="ls_friend" id="optionsRadiosInline1" value="1" checked>1
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+                    <input type="radio" name="ls_friend" id="optionsRadiosInline2" value="2">2
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+                    <input type="radio" name="ls_friend" id="optionsRadiosInline3" value="3">3
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline4" value="option4">4
+                    <input type="radio" name="ls_friend" id="optionsRadiosInline4" value="4">4
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline5" value="option5">5
+                    <input type="radio" name="ls_friend" id="optionsRadiosInline5" value="5">5
                   </label>
                 </div>
 
@@ -135,19 +158,19 @@ for Accuracy of Listing, Communication with Staff, Friendlyness of Staff, Locati
                 <div class="form-group">
                   <label>Location of Warehouse</label> <br>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+                    <input type="radio" name="ls_local" id="optionsRadiosInline1" value="1" checked>1
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+                    <input type="radio" name="ls_local" id="optionsRadiosInline2" value="2">2
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+                    <input type="radio" name="ls_local" id="optionsRadiosInline3" value="3">3
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline4" value="option4">4
+                    <input type="radio" name="ls_local" id="optionsRadiosInline4" value="4">4
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline5" value="option5">5
+                    <input type="radio" name="ls_local" id="optionsRadiosInline5" value="5">5
                   </label>
                 </div>
 
@@ -156,19 +179,19 @@ for Accuracy of Listing, Communication with Staff, Friendlyness of Staff, Locati
                 <div class="form-group">
                   <label>Value of Space</label> <br>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+                    <input type="radio" name="ls_value" id="optionsRadiosInline1" value="1" checked>1
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+                    <input type="radio" name="ls_value" id="optionsRadiosInline2" value="2">2
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+                    <input type="radio" name="ls_value" id="optionsRadiosInline3" value="3">3
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline4" value="option4">4
+                    <input type="radio" name="ls_value" id="optionsRadiosInline4" value="4">4
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline5" value="option5">5
+                    <input type="radio" name="ls_value" id="optionsRadiosInline5" value="5">5
                   </label>
                 </div>
                 <!-- END OF LYKERT -->
