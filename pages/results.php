@@ -6,19 +6,17 @@ include "../includes/rankingFunctions.php";
 
 
 if($err == array()){
-
   $type = array();
-
-  if(isset($_GET['type']))
-  array_push($type, urldecode($_GET['type']));
-
-
-  $spaceInfo = getAvailableSpaces($start,$end,$type,$conn);
-
   $address = array();
   $spaceID = array();
   $monthlyPrice = array();
   $spaceSize = array();
+  $latitude = array();
+  $longitude = array();
+
+  if(isset($_GET['type']))
+  array_push($type, urldecode($_GET['type']));
+  $spaceInfo = getAvailableSpaces($start, $end, $type, $conn);
 
   $i = 0;
   while ($i < count($spaceInfo)) {
@@ -26,50 +24,67 @@ if($err == array()){
     array_push($address, $spaceInfo[$i]['Address'] . " " . $spaceInfo[$i]['City'] . " " . $spaceInfo[$i]['State']) . ($spaceInfo[$i]['ZipCode'] != "") ? " " . $spaceInfo[$i]['ZipCode'] : "";
     array_push($monthlyPrice, $spaceInfo[$i]['MonthlyPrice']);
     array_push($spaceSize, $spaceInfo[$i]['SpaceSize']);
+    array_push($latitude, $spaceInfo[$i]['Latitude']);
+    array_push($longitude, $spaceInfo[$i]['Longitude']);
     $i++;
   }
 
-  if(isset($_GET['location'])){
-    $data = array("Spaces" => $spaceID, "Addresses" => $address, getDistance($_GET['location'], $address), "MonthlyPrice" => $monthlyPrice, "SpaceSize" => $spaceSize);
+  if(isset($_GET['location']) || isset($_GET['state'])){
+    echo "ARR";
+    if(isset($_GET['location'])){
+      $origin = $_GET['location'];
+      $origin_lat = 41.125847;
+      $origin_lon = -104.7571114;
+      $state = 0;
+    }
+    else if(isset($_GET['state'])){
+      $origin = $_GET['state'];
+      $state = 1;
+    }
 
-    $max_count = count($data["Spaces"]);
+
+    $data = array();
+    $max_count = count($spaceID);
+
+    for($i = 0; $i < $max_count; $i++){
+      if($latitude[$i] != 0 && $longitude[$i] != 0){
+        array_push($data, array("Spaces" => $spaceID[$i], "Latitude" => $latitude[$i], "Longitude" => $longitude[$i], "Addresses" => $address[$i], "Distance" => ($state == 0 ? distanceAlgorithm($origin_lat, $origin_lon, $latitude[$i], $longitude[$i]) : 0), "MonthlyPrice" => $monthlyPrice[$i], "SpaceSize" => $spaceSize[$i]));
+        // echo $latitude[$i] . ", " . $longitude[$i] . ": " . distanceAlgorithm(40, 30, $latitude[$i], $longitude[$i]) . "<br>";
+      }
+    }
+    array_print($data);
 
     if(isset($_GET['range']))
-    $range = $_GET['range'];
+      $range = $_GET['range'];
     else
-    $range = 10000;
+      $range = 9000;
 
+    $max_count = count($data);
     for ($i = 0; $i < $max_count; $i++) {
-      if ($data[0]["Distance"][$i] > $range) {
-        unset($data["Spaces"][$i]);
-        unset($data["Addresses"][$i]);
-        unset($data["MonthlyPrice"][$i]);
-        unset($data["SpaceSize"][$i]);
+      if ($data[$i]["Distance"] > $range) {
+        echo $data[$i]["Latitude"] . "<br>";
+        unset($data[$i]);
       }
     }
-    unset($data["Spaces"][$max_count - 1]);
-    unset($data["Addresses"][$max_count - 1]);
-    unset($data["MonthlyPrice"][$max_count - 1]);
-    unset($data["SpaceSize"][$max_count - 1]);
+    unset($data[$max_count - 1]);
   }
-  else if($_GET['state']){
-    $data = array("Spaces" => $spaceID, "Addresses" => $address, "MonthlyPrice" => $monthlyPrice, "SpaceSize" => $spaceSize);
-    for($i = 0; $i < count($spaceInfo); $i++){
-      if ($spaceInfo[$i]['State'] != $_GET['state']) {
-        unset($data["Spaces"][$i]);
-        unset($data["Addresses"][$i]);
-        unset($data["MonthlyPrice"][$i]);
-        unset($data["SpaceSize"][$i]);
-      }
-        unset($data["Spaces"][count($spaceInfo) - 1]);
-        unset($data["Addresses"][count($spaceInfo) - 1]);
-        unset($data["MonthlyPrice"][count($spaceInfo) - 1]);
-        unset($data["SpaceSize"][count($spaceInfo) - 1]);
+  // array_print($data);
+  if(count($data) == 0)
+  array_push($err, "0 Results");
+
+  $max_size = 0;
+   for($i = 0; $i < count($data); $i++){
+    if(isset($data[$i])){
+      if($data[$i]['SpaceSize'] > $max_size)
+      $max_size = $data[$i]["SpaceSize"];
     }
   }
 
-if(count($data["Spaces"]) == 0)
-array_push($err, "0 Results");
+  if(isset($_GET['size']))
+    $size = $_GET['size'];
+  else
+    $size = $max_size;
+
 }
 ?>
 
@@ -110,7 +125,7 @@ array_push($err, "0 Results");
         <?php if($err == array() || !in_array($location_error, $err)){ ?>
           <div class="search-result bg-gray">
             <h2>Results For "<?php echo isset($_GET['location']) ? $_GET['location'] : (isset($_GET['state']) ? $_GET['state'] : ""); ?>"</h2>
-            <p><?php echo (isset($data)) ? count($data['Spaces']) : "0" ?> Results on <?php echo date("F d, Y"); ?></p>
+            <p><?php echo (isset($data)) ? count($data) : "0" ?> Results on <?php echo date("F d, Y"); ?></p>
           </div>
         <?php }?>
       </div>
@@ -161,7 +176,7 @@ array_push($err, "0 Results");
             </select>
           </div>
 
-<?php // TODO: this is not that great of looking ?>
+          <?php // TODO: this is not that great of looking ?>
           <div class="widget price-range">
             <h4 class="widget-header">Price Range</h4>
             <div class="block">
@@ -231,19 +246,29 @@ array_push($err, "0 Results");
 <div class="product-grid-list">
   <div class="row mt-30">
     <?php
-    if($err != array()) { ?>
+
+
+
+    if($err != array()) {
+
+      ?>
       <div class="col-sm-12 col-lg-12 col-md-12">
         <?php
         for($i = 0; $i < count($err); $i++){
           echo "<h2 align='center'>" . $err[$i] . "</h2>"; } ?>
         </div>
       <?php } else {
+        $max_price = 10000;
+        $max_size = 3000;
         for($i = 0; $i < count($spaceID); ++$i){
-          if(isset($data["Spaces"][$i])) {?>
+          if(isset($data[$i]["Spaces"])) {
+            $score = round(distance_score($range, $data[$i]['Distance'], 100 * (1/6)) + price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (4/6)) + size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (1/6)));
+
+            ?>
             <div class="col-sm-12 col-lg-12 col-md-12">
               <!-- product card -->
               <div class="product-item bg-light">
-                <div class="card">
+                <div class="card" <?php echo ($score > 75) ? 'style="background:lightgreen"' : "" ?>>
                   <div class="thumb-content">
                     <!-- <div class="price">$200</div> -->
                     <!-- <a href="">
@@ -251,33 +276,33 @@ array_push($err, "0 Results");
                   </a> -->
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title"><a href="space.php?address=<?php echo urlencode($data['Addresses'][$i]); ?>&space=<?php echo $data['Spaces'][$i]; ?>"><?php echo $data['Addresses'][$i]; ?></a></h4>
+                  <h4 class="card-title"><a href="space.php?address=<?php echo urlencode($data[$i]['Addresses']); ?>&space=<?php echo $data[$i]['Spaces']; ?>&startdate=<?php echo $_GET['startdate']; ?>&enddate=<?php echo $_GET['enddate']; ?>"><?php echo $data[$i]['Addresses'] . " ..... " . $data[$i]['Distance']; ?></a></h4>
                   <ul class="list-inline product-meta">
                     <!-- <li class="list-inline-item">
                     <a href="spaces.php?spaceID=<?php echo $data['Spaces'][$i]; ?>"><i class="fa fa-folder-open-o"></i>Furnitures</a>
                   </li> -->
-                  <!-- <li class="list-inline-item">
-                  <a href=""><i class="fa fa-calendar"></i>26th December</a>
-                </li> -->
-              </ul>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-              <div class="product-ratings">
-                <ul class="list-inline">
-                  <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                  <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                  <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                  <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                  <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                  <li class="list-inline-item">
+                    <a href=""><strong><?php echo $score . "%</strong> match"; ?></a>
+                  </li>
                 </ul>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+                <div class="product-ratings">
+                  <ul class="list-inline">
+                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    <?php }
-  }
-  ?>
-</div>
+      <?php }
+    }
+    ?>
+  </div>
 </div>
 <?php // TODO: pagination is not complete.  see issue #24 ?>
 <?php

@@ -1,9 +1,7 @@
 <?php
 
 	// database and user authentication includes
-	include "db.php";
-	require_once 'PhpRbac/src/PhpRbac/Rbac.php';
-	$rbac = new \PhpRbac\Rbac();
+require_once "main.php";
 
 	// variable declaration
 	$username = "";
@@ -18,9 +16,9 @@
 	// REGISTER USER
 	if (isset($_POST['reg_user'])) {
 		// receive all input values from the form
-		$username = mysqli_real_escape_string($db, $_POST['username']);
-		$email = mysqli_real_escape_string($db, $_POST['email']);
-		$psswd = mysqli_real_escape_string($db, $_POST['password']);
+		$username = clean($_POST['username']);
+		$email = clean($_POST['email']);
+		$psswd = clean($_POST['password']);
 
 		// form validation: ensure that the form is correctly filled
 		if (empty($username)) { array_push($errors, "Username is required"); }
@@ -51,8 +49,8 @@
 
 	// LOGIN USER
 	if (isset($_POST['login_user'])) {
-		$username = mysqli_real_escape_string($db, $_POST['username']);
-		$password = mysqli_real_escape_string($db, $_POST['password']);
+		$username = clean($_POST['username']);
+		$password = clean($_POST['password']);
 
 		// validates the user information is provided
 		if (empty($username)) {

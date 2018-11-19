@@ -309,17 +309,13 @@ function getAvailableSpaces ($start_date, $end_date, $type, $conn){
         return $space_score;
       }
 
-// <<<<<<< HEAD
-//       function price_score($space_price, $max_price, $scale = 100 / 3, $min_price = 0){
-// =======
-//
-//       function price_score($space_price, $max_price, $min_price = 0, $scale = 100 / 3){
-// >>>>>>> a2fb9ea21097b6f2fff3cf850f86907c682c29fc
-//         $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
-//         if($space_price > $max_price)
-//           $price_score = 0;
-//         return $price_score;
-//       }
+      function price_score($space_price, $max_price, $min_price = 0, $scale = 100 / 3){
+        
+        $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
+        if($space_price > $max_price)
+          $price_score = 0;
+        return $price_score;
+      }
 
       function previousRatings($spaceID, $scale = 50){
         $rating_range = 5;

@@ -141,7 +141,7 @@ else {
             <i class="fa fa-bars"></i>
           </button>
           <a class="navbar-brand" href="index.php">@<span>Capacity</span></a>
-
+          <!-- <img src="../pictures/image1.jpg" height="42" width="42"> -->
         </div><!--/.navbar-header-->
         <!-- End Header Navigation -->
 
@@ -253,7 +253,7 @@ else {
   </section><!--/.list-topics-->
   <!--list-topics end-->
 
-
+<?php // TODO: base the following off of recommendations from the database ?>
   <!--explore start -->
   <section id="explore" class="explore">
     <div class="container">
