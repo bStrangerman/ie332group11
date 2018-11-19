@@ -167,6 +167,7 @@ function getAvailableSpaces ($start_date, $end_date, $type, $conn){
         $sql .= ($type == array()) ? "" : " AND AttributeName IN ('".implode(',',$type)."')";
 
         $result = $conn -> query($sql);
+        echo $sql . "<br>";
 
         while($getAllSpaces[]=mysqli_fetch_array($result));
         return $getAllSpaces;
@@ -294,34 +295,31 @@ function getAvailableSpaces ($start_date, $end_date, $type, $conn){
 
       function size_score($size_wanted, $space_size, $max_size, $scale = 100 / 3){
         // y = a(x – h)2 + k
-        if($size_wanted >= $max_size){
-          $a = (0 - $scale) / pow((0 - $size_wanted), 2);
-          $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
+        if($size_wanted > $max_size)
+          $x = $max_size;
+        else
+          $x = 0;
 
-          if($space_size < $size_wanted){
-            $space_score = - $space_score;
-          }
-        }
-        else {
-          $a = (0 - $scale) / pow(($max_size - $size_wanted), 2);
-          $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
+        $a = (0 - $scale) / pow(($x - $size_wanted), 2);
+        $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
 
-          if($space_size < $size_wanted){
-            $space_score = - $space_score;
-          }
-        }
-
-        // if($space_score < 0)
-        //   $space_score = 0;
-        //   else
+        if($space_size < $size_wanted)
+          $space_score = -$space_score;
 
         return $space_score;
       }
 
-      function price_score($space_price, $max_price, $scale = 100 / 3, $min_price = 0){
-        $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
-        return $price_score;
-      }
+// <<<<<<< HEAD
+//       function price_score($space_price, $max_price, $scale = 100 / 3, $min_price = 0){
+// =======
+//
+//       function price_score($space_price, $max_price, $min_price = 0, $scale = 100 / 3){
+// >>>>>>> a2fb9ea21097b6f2fff3cf850f86907c682c29fc
+//         $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
+//         if($space_price > $max_price)
+//           $price_score = 0;
+//         return $price_score;
+//       }
 
       function previousRatings($spaceID, $scale = 50){
         $rating_range = 5;
