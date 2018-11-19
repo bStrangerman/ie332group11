@@ -1141,6 +1141,12 @@ CREATE TABLE IF NOT EXISTS Status (
   StatusDescription varchar(200),
   PRIMARY KEY (StatusID));
 
+INSERT INTO `status` (`StatusID`, `StatusName`, `StatusDescription`) VALUES
+  (1, 'Reserved', NULL),
+  (2, 'Pending', NULL),
+  (3, 'Approved', NULL),
+  (4, 'Denied', NULL);
+
 CREATE TABLE IF NOT EXISTS Contract_Status (
   ContractID int(11) NOT NULL,
   StatusID int(11) NOT NULL,
