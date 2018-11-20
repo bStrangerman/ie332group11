@@ -16,24 +16,23 @@ $NotificationTypeTypeIcon = 7;
 * @param  [varchar] $Message The message that will be delivered to the selected user
 * @return [void]             none
 */
-function notify($TargetUser, $Type, $Message, $url, $conn)
+function notify($TargetUser, $Type, $Message, $url)
 {
   $sql = "INSERT INTO Notifications
   (UserID, Message, NotificationType, LinksTo)
   SELECT $TargetUser,'$Message', TypeID, '$url'
   FROM Notification_Types
   WHERE TypeShortName = '$Type'";
-  mysqli_query($conn, $sql);
+  mysqli_query($GLOBALS['conn'], $sql);
 }
 
 /**
 * [getRecentInfo description]
 * @param  [type] $TargetUser [description]
 * @param  [type] $n          [description]
-* @param  [type] $conn       [description]
 * @return [array]            Information to be displayed in the notification
 */
-function getRecentInfo($TargetUser, $n, $conn)
+function getRecentInfo($TargetUser, $n)
 {
   $sql = "SELECT *
   FROM Notifications
@@ -44,8 +43,8 @@ function getRecentInfo($TargetUser, $n, $conn)
   WHERE UserID = $TargetUser
   ORDER BY NotificationTime DESC
   LIMIT $n";
-  
-  $result = $conn -> query($sql);
+
+  $result = $GLOBALS['conn'] -> query($sql);
   $out = array();
   while($row = $result -> fetch_assoc())
   {

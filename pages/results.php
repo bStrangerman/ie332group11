@@ -15,7 +15,7 @@ if($err == array()){
   $longitude = array();
 
   if(isset($_GET['type']))
-  array_push($type, urldecode($_GET['type']));
+  array_push($type, clean(urldecode($_GET['type'])));
   $spaceInfo = getAvailableSpaces($start, $end, $type, $conn);
 
   $i = 0;
@@ -30,7 +30,6 @@ if($err == array()){
   }
 
   if(isset($_GET['location']) || isset($_GET['state'])){
-    echo "ARR";
     if(isset($_GET['location'])){
       $origin = $_GET['location'];
       $origin_lat = 41.125847;
@@ -52,7 +51,7 @@ if($err == array()){
         // echo $latitude[$i] . ", " . $longitude[$i] . ": " . distanceAlgorithm(40, 30, $latitude[$i], $longitude[$i]) . "<br>";
       }
     }
-    array_print($data);
+    // array_print($data);
 
     if(isset($_GET['range']))
       $range = $_GET['range'];
@@ -62,7 +61,6 @@ if($err == array()){
     $max_count = count($data);
     for ($i = 0; $i < $max_count; $i++) {
       if ($data[$i]["Distance"] > $range) {
-        echo $data[$i]["Latitude"] . "<br>";
         unset($data[$i]);
       }
     }
@@ -276,7 +274,7 @@ if($err == array()){
                   </a> -->
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title"><a href="space.php?address=<?php echo urlencode($data[$i]['Addresses']); ?>&space=<?php echo $data[$i]['Spaces']; ?>&startdate=<?php echo $_GET['startdate']; ?>&enddate=<?php echo $_GET['enddate']; ?>"><?php echo $data[$i]['Addresses'] . " ..... " . $data[$i]['Distance']; ?></a></h4>
+                  <h4 class="card-title"><a href="space.php?address=<?php echo urlencode($data[$i]['Addresses']); ?>&space=<?php echo $data[$i]['Spaces']; ?>&startdate=<?php echo $_GET['startdate']; ?>&enddate=<?php echo $_GET['enddate']; ?>"><?php echo $data[$i]['Addresses']; ?></a></h4>
                   <ul class="list-inline product-meta">
                     <!-- <li class="list-inline-item">
                     <a href="spaces.php?spaceID=<?php echo $data['Spaces'][$i]; ?>"><i class="fa fa-folder-open-o"></i>Furnitures</a>

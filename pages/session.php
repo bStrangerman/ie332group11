@@ -3,7 +3,7 @@ require_once "../includes/main.php";
 include "../includes/rankingFunctions.php";
 
 
-$str = "A 'quote' is <b>bold</b>";
+$str = "A 'quote' is <b>bold</b>;";
 //$str = "' or ''='";
 echo $str . "<br>";
 // Outputs: A 'quote' is <b>bold</b>
