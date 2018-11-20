@@ -59,7 +59,7 @@
                       <ul class="dropdown-menu dropdown-messages">
                         <?php
                         $n = 5;
-                        $alertInfo = getRecentInfo($_SESSION['UserID'], $n, $conn);
+                        $alertInfo = getRecentInfo($_SESSION['UserID'], $n);
                         $i=0;
                         while ($i < count($alertInfo)) {
                           $alert = $alertInfo[$i];
@@ -176,7 +176,7 @@
                           <?php
                           $n = 5;
                           $i = 0;
-                          $alertInfo = getRecentInfo($_SESSION['UserID'], $n, $conn);
+                          $alertInfo = getRecentInfo($_SESSION['UserID'], $n);
                           while ($i < count($alertInfo)) {
                             $alert = $alertInfo[$i];
                               echo "<li>
