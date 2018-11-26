@@ -1,10 +1,17 @@
 <?php
 require_once "../includes/main.php";
 
-if(!isset($_SESSION['UserID']) || !$rbac->check('can_lease', $UserID = $_SESSION['UserID'])){
-  // header("Location: login.php");
+if(!isset($_SESSION['UserID'])){
   $_SESSION['redirect'] = 'Location: ' . $_SERVER['REQUEST_URI'];
+  header("Location: login.php");
 }
+
+if(!$rbac->check('can_lease', $UserID = $_SESSION['UserID'])){
+  echo "You don't have the proper permissions to lease a location. This page will redirect in 10 seconds.";
+  header("Refresh: 10; index.php");
+  exit;
+}
+
 require_once "../layouts/Calssimax/header.php";
 
 if(isset($_GET['address']))
@@ -53,7 +60,7 @@ WHERE PictureID IN
   <!--==================================
   =            User Profile            =
   ===================================-->
-
+<!-- <button value="Return"></button> -->
   <section class="user-profile section">
 
   	<div class="container">
@@ -358,7 +365,7 @@ WHERE PictureID IN
 
                 var map = L.map('map')
                 .setView([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>], 15);
-                var marker = L.marker([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>]).addTo(map);
+                // var marker = L.marker([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>]).addTo(map);
                 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar'}).addTo(map);
                 </script>
 
