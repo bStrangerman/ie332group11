@@ -1,8 +1,7 @@
 <?php
 require_once "../includes/main.php";
-require_once "../layouts/Calssimax/header.php";
-include "../includes/rankingFunctions.php";
 
+require_once "../layouts/Calssimax/header.php";
 
 
 if($err == array()){
@@ -15,7 +14,8 @@ if($err == array()){
   $longitude = array();
 
   if(isset($_GET['type']))
-  array_push($type, clean(urldecode($_GET['type'])));
+    array_push($type, clean(urldecode($_GET['type'])));
+
   $spaceInfo = getAvailableSpaces($start, $end, $type, $conn);
 
   $i = 0;
@@ -32,8 +32,8 @@ if($err == array()){
   if(isset($_GET['location']) || isset($_GET['state'])){
     if(isset($_GET['location'])){
       $origin = $_GET['location'];
-      $origin_lat = 41.125847;
-      $origin_lon = -104.7571114;
+      $origin_lat = 44.33559;
+      $origin_lon = -105.52211;
       $state = 0;
     }
     else if(isset($_GET['state'])){
@@ -48,7 +48,6 @@ if($err == array()){
     for($i = 0; $i < $max_count; $i++){
       if($latitude[$i] != 0 && $longitude[$i] != 0){
         array_push($data, array("Spaces" => $spaceID[$i], "Latitude" => $latitude[$i], "Longitude" => $longitude[$i], "Addresses" => $address[$i], "Distance" => ($state == 0 ? distanceAlgorithm($origin_lat, $origin_lon, $latitude[$i], $longitude[$i]) : 0), "MonthlyPrice" => $monthlyPrice[$i], "SpaceSize" => $spaceSize[$i]));
-        // echo $latitude[$i] . ", " . $longitude[$i] . ": " . distanceAlgorithm(40, 30, $latitude[$i], $longitude[$i]) . "<br>";
       }
     }
     // array_print($data);
@@ -68,13 +67,13 @@ if($err == array()){
   }
   // array_print($data);
   if(count($data) == 0)
-  array_push($err, "0 Results");
+    array_push($err, "0 Results");
 
   $max_size = 0;
-   for($i = 0; $i < count($data); $i++){
+   for($i = 0; $i < $max_count; $i++){
     if(isset($data[$i])){
       if($data[$i]['SpaceSize'] > $max_size)
-      $max_size = $data[$i]["SpaceSize"];
+        $max_size = $data[$i]["SpaceSize"];
     }
   }
 
@@ -260,13 +259,19 @@ if($err == array()){
         $max_size = 3000;
         for($i = 0; $i < count($spaceID); ++$i){
           if(isset($data[$i]["Spaces"])) {
-            $score = round(distance_score($range, $data[$i]['Distance'], 100 * (1/6)) + price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (4/6)) + size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (1/6)));
+            $score[$i] = 0;
+            $score[$i] += Utilization($data[$i]['Spaces'], $start, $end, 100 * (6/9));
+            $score[$i] += distance_score($range, $data[$i]['Distance'], 100 * (2/9));
+            $score[$i] += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (1/9));
+            // FIXME: size score is not currently working
+            // $score[$i] += size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (1/9));
+            $score[$i] = round($score[$i]) > 100 ? 100 : round($score[$i]) ;
 
             ?>
             <div class="col-sm-12 col-lg-12 col-md-12">
               <!-- product card -->
               <div class="product-item bg-light">
-                <div class="card" <?php echo ($score > 75) ? 'style="background:lightgreen"' : "" ?>>
+                <div class="card" <?php echo ($score[$i] >= 75) ? 'style="background:lightgreen"' : "" ?>>
                   <div class="thumb-content">
                     <!-- <div class="price">$200</div> -->
                     <!-- <a href="">
@@ -280,7 +285,7 @@ if($err == array()){
                     <a href="spaces.php?spaceID=<?php echo $data['Spaces'][$i]; ?>"><i class="fa fa-folder-open-o"></i>Furnitures</a>
                   </li> -->
                   <li class="list-inline-item">
-                    <a href=""><strong><?php echo $score . "%</strong> match"; ?></a>
+                    <a href=""><strong><?php echo $score[$i] . "%</strong> match"; ?></a>
                   </li>
                 </ul>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>

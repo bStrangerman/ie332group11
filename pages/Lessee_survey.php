@@ -20,7 +20,7 @@ include_once "../includes/contracts.php";
 
 if(isset($_SESSION['UserID'])){
   if(!$rbac->Users->hasRole('Lessee', $UserID = $_SESSION['UserID'])){
-    header('Location: warehouse.php');
+    // header('Location: warehouse.php');
   }
   else if (isset($_GET['contract'])){
     $contract = $_GET['contract'];
@@ -30,14 +30,14 @@ if(isset($_SESSION['UserID'])){
             FROM Contracts
             WHERE LesseeID = $user
             AND ContractID = $contract";
-    if(count(($conn -> query($sql)) -> fetch_assoc()) < 0) {
-      header('Location: index.php');
-    }
+    // if(count(($conn -> query($sql)) -> fetch_assoc()) > 0) {
+    //   header('Location: index.php');
+    // }
   }
 }
 else {
   $_SESSION['redirect'] = 'Lessee_survey.php';
-  header('Location: login.php');
+  // header('Location: login.php');
 }
 
 require_once "../layouts/sb_admin_2/header.php";

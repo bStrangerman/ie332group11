@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS Notification_Types_Types (
   PRIMARY KEY(TypeTypeID)
 );
 
-INSERT INTO Notification_Types_Types (TypeTypeShortName, TypeTypeName, TypeTypeIcon)
-VALUES ('contract', 'Contract Update', 'fa-bell');
+INSERT INTO Notification_Types_Types (TypeTypeShortName, TypeTypeName, TypeTypeIcon) VALUES
+  ('contract', 'Contract Update', 'fa-bell');
 
 CREATE TABLE IF NOT EXISTS Notification_Types (
   TypeID int(11) AUTO_INCREMENT,
@@ -23,7 +23,9 @@ CREATE TABLE IF NOT EXISTS Notification_Types (
 
 INSERT INTO `Notification_Types` (`TypeTypeID`, `TypeShortName`, `TypeName`, `TypeIcon`) VALUES
 (1, 'approved', 'Approved Contract', 'fa-check'),
-(1, 'denied', 'Denied Contract', 'fa-times');
+(1, 'denied', 'Denied Contract', 'fa-times'),
+(1, 'pending', 'Pending Contract', 'fa-exclamation');
+(1, 'reserved', 'Reserved Contract', 'fa-clock-o');
 
 CREATE TABLE IF NOT EXISTS Notifications (
   NotificationID int(11) AUTO_INCREMENT,

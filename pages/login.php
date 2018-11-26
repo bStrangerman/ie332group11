@@ -1,23 +1,29 @@
 <?php
 // include the database and authentication information
-include('../includes/server.php');
+include_once('../includes/server.php');
 require_once '../includes/PhpRbac/src/PhpRbac/Rbac.php';
 $rbac = new \PhpRbac\Rbac();
 
-// redirects users that have a role
-if(isset($_SESSION['UserID'])){
-  if($rbac->Users->roleCount($UserID = $_SESSION['UserID'])){
+// redirects users that are logged in
+if(isset($_SESSION['UserID']) && $_SESSION['UserID'] != ""){
+  echo "Logged in" . "<br>";
+
+  if($rbac->Users->roleCount($UserID = $_SESSION['UserID']) > 0){
+    echo "has roles" . "<br>";
     // redirects to account_setup if user has the need setup role
     if($rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
+      echo "needs setup" . "<br>";
       header('Location: account_setup.php');
     }
     // redirects to index if user does not have the setup role
     else{
+      echo "redirecting" . "<br>";
       if(isset($_SESSION['redirect'])){
         $redirect = $_SESSION['redirect'];
-        unset($_SESSION['redirect']);
         header($redirect);
       }
+      else
+        header("Location: index.php");
     }
   }
 }

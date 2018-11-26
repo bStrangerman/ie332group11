@@ -3,12 +3,8 @@
 	// database and user authentication includes
 require_once "main.php";
 
-	// variable declaration
-	$username = "";
-	$email    = "";
+// variable declaration
 	$register_Errors = array();
-	$_SESSION['success'] = "";
-	$_SESSION['UserID'] = "";
 
 	// connect to database
 	$db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -80,18 +76,20 @@ require_once "main.php";
 		// validates the user is in the database and logs in the user
 		if (count($login_Errors) == 0) {
 			$password = md5($password);
-			$query = "SELECT * FROM phprbac_users WHERE username='$username' AND password='$password'";
-			$results = mysqli_query($db, $query);
+			$query = "SELECT * FROM phprbac_users WHERE Username='$username' AND Password='$password'";
+			$result = $conn -> query($query);
 
-
-			if (mysqli_num_rows($results) == 1) {
+			if ($result->num_rows == 1) {
 				$_SESSION['username'] = $username;
-				while($rows = $results -> fetch_assoc()){
-					$_SESSION['UserID'] = $rows['UserID'];
-					$_SESSION['email'] = $rows['email'];
+				while($row = $result -> fetch_assoc()){
+					$UserID = $row['UserID'];
+					$_SESSION['UserID'] = $UserID;
+					setcookie("username", $username, time() + 60 * 60 * 24);
+					setcookie("UserID", $UserID, time() + 60 * 60 * 24);
+					$_SESSION['email'] = $row['Email'];
 				}
 				$_SESSION['success'] = "You are now logged in";
-				header('location: warehouse.php');
+				header("Location: login.php");
 			}
 			else {
 				array_push($login_Errors, "Wrong username/password combination");

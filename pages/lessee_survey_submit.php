@@ -24,16 +24,16 @@ array_print($_SESSION);
 
 $sql = "";
 
-insertNumericRating($_SESSION['reviewContract'],"Overall", $_POST['ls_rating']);
-insertNumericRating($_SESSION['reviewContract'],"Accuracy", $_POST['ls_rating']);
-insertNumericRating($_SESSION['reviewContract'],"Communication", $_POST['ls_comm']);
-insertNumericRating($_SESSION['reviewContract'],"StaffFriend", $_POST['ls_friend']);
-insertNumericRating($_SESSION['reviewContract'],"Location", $_POST['ls_local']);
-insertNumericRating($_SESSION['reviewContract'],"SpaceValue", $_POST['ls_value']);
+insertNumericRating($_SESSION['reviewContract'],"Overall", clean($_POST['ls_rating']));
+insertNumericRating($_SESSION['reviewContract'],"Accuracy", clean($_POST['ls_rating']));
+insertNumericRating($_SESSION['reviewContract'],"Communication", clean($_POST['ls_comm']));
+insertNumericRating($_SESSION['reviewContract'],"StaffFriend", clean($_POST['ls_friend']));
+insertNumericRating($_SESSION['reviewContract'],"Location", clean($_POST['ls_local']));
+insertNumericRating($_SESSION['reviewContract'],"SpaceValue", clean($_POST['ls_value']));
 
-insertTextRating($_SESSION['reviewContract'],"Title", $_POST['ls_title']);
-insertTextRating($_SESSION['reviewContract'],"Body", $_POST['ls_body']);
-insertTextRating($_SESSION['reviewContract'],"Feedback", $_POST['ls_feedback']);
+insertTextRating($_SESSION['reviewContract'],"Title", clean($_POST['ls_title']));
+insertTextRating($_SESSION['reviewContract'],"Body", clean($_POST['ls_body']));
+insertTextRating($_SESSION['reviewContract'],"Feedback", clean($_POST['ls_feedback']));
 
 echo $sql;
 

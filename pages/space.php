@@ -1,13 +1,12 @@
 <?php
 require_once "../includes/main.php";
 require_once "../layouts/Calssimax/header.php";
-include "../includes/rankingFunctions.php";
 
 if(isset($_GET['address']))
 $address = urldecode($_GET['address']);
 
 if(isset($_GET['space']))
-$space = $_GET['space'];
+  $space = $_GET['space'];
 
 $sql = "SELECT *
 FROM Spaces
@@ -16,11 +15,6 @@ ON spaces.WarehouseID = Warehouses.WarehouseID
 LEFT JOIN phprbac_users
 ON phprbac_users.UserID = Warehouses.OwnerID
 WHERE Spaces.SpaceID = $space";
-
-// LEFT JOIN Warehouse_Pictures
-// ON Warehouse_Pictures.WarehouseID = Warehouses.WarehouseID
-// LEFT JOIN Pictures
-// ON Pictures.PictureID = Warehouse_Pictures.PictureID
 
 $result = $conn -> query($sql);
 while($spaceInfo[]=mysqli_fetch_array($result));
@@ -60,7 +54,7 @@ WHERE PictureID IN
             <form action="results.php?startdate=<?php echo $start; ?>&enddate=<?php echo $end; ?>" method="get">
               <div class="form-row">
                 <div class="form-group col-md-4">
-                  <input type="text" class="form-control" name="location" id="autocomplete" onFocus="geolocate()" value="<?php echo $address; ?>" placeholder="Location">
+                  <input type="text" class="form-control" name="location" id="autocomplete" onFocus="geolocate()" value="<?php echo (isset($address) ? $address : $spaceInfo[0]['Address'] . ", " . $spaceInfo[0]['City']); ?>" placeholder="Location">
                 </div>
                 <div class="form-group col-md-3">
                   <input type="date" class="form-control" name="startdate" id="inputdate4" value="<?php echo $start; ?>" placeholder="Start Date">
@@ -88,7 +82,7 @@ WHERE PictureID IN
         <!-- Left sidebar -->
         <div class="col-md-8">
           <div class="product-details">
-            <h1 class="product-title"><?php echo $spaceInfo[0]['Address']; ?></h1>
+            <h1 class="product-title"><?php echo $spaceInfo[0]['Address'] . ", " . $spaceInfo[0]['City']; ?></h1>
             <div class="product-meta">
               <ul class="list-inline">
                 <li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href=""><?php echo $spaceInfo[0]['Username']; ?></a></li>
@@ -137,7 +131,7 @@ WHERE PictureID IN
               <div class="content">
                 <ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Space Details</a>
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Property Details</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Specifications</a>
@@ -148,10 +142,21 @@ WHERE PictureID IN
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <h3 class="tab-title">Space Description</h3>
-                    <p></p>
-                    <p></p>
-                    <p></p>
+
+                    <?php if(($spaceInfo[0]['SpaceInformation']) != ""){ ?>
+                      <h3 class="tab-title">Space Description</h3>
+                      <p>
+                        <?php echo $spaceInfo[0]['SpaceInformation']; ?>
+                      </p>
+                    <?php } ?>
+
+                    <?php if(($spaceInfo[0]['WarehouseInformation']) != ""){ ?>
+                      <h3 class="tab-title">Warehouse Description</h3>
+                      <p>
+                        <?php echo $spaceInfo[0]['WarehouseInformation']; ?>
+                      </p>
+                    <?php } ?>
+
 
                   </div>
                   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -247,9 +252,11 @@ WHERE PictureID IN
               <div class="widget price text-center">
                 <h4>Price Per Month</h4>
                 <p>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize']); ?></p>
-                <a href="book.php" class="btn btn-transparent-white">Book Now</a>
+                <a href="book.php?space=<?php echo $space; ?>&start=<?php echo $start; ?>&end=<?php echo $end; ?>" class="btn btn-transparent-white">Book Now</a>
+                <h1></h1>
+                <a href="book.php?space=<?php echo $space; ?>&start=<?php echo $start; ?>&end=<?php echo $end; ?>&reserve=1" class="btn btn-transparent-white">Reserve</a>
               </div>
-              <?php // TODO: change the map dynamically based on warehouse address ?>
+
               <!-- Map Widget -->
               <style>
               /* Set the size of the div element that contains the map */
@@ -265,25 +272,13 @@ WHERE PictureID IN
                 <script>
 
                 var map = L.map('map')
-                    // .addLayer(mapboxTiles)
-                    .setView([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>], 15);
+                .setView([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>], 15);
                 var marker = L.marker([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>]).addTo(map);
                 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar'}).addTo(map);
                 </script>
 
 
               </div>
-
-              <!-- Coupon Widget -->
-              <div class="widget coupon text-center">
-                <!-- Coupon description -->
-                <p>Have a great product to post ? Share it with
-                  your fellow users.
-                </p>
-                <!-- Submii button -->
-                <a href="" class="btn btn-transparent-white">Submit Listing</a>
-              </div>
-
             </div>
           </div>
 
@@ -292,7 +287,5 @@ WHERE PictureID IN
       <!-- Container End -->
     </section>
 
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
 
-    <?php
-    require_once "../layouts/Calssimax/footer.php"; ?>
+    <?php require_once "../layouts/Calssimax/footer.php"; ?>

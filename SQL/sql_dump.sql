@@ -1,48 +1,28 @@
 CREATE TABLE IF NOT EXISTS `phprbac_permissions` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Title` char(64) COLLATE utf8_bin NOT NULL,
-  `Description` text COLLATE utf8_bin NOT NULL,
+  `Description` varchar(100) COLLATE utf8_bin NOT NULL,
   `Lft` int(11) NOT NULL,
   `Rght` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `Title` (`Title`),
   KEY `Lft` (`Lft`),
   KEY `Rght` (`Rght`)
-  ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;
 
 INSERT INTO `phprbac_permissions` (`ID`, `Title`, `Description`, `Lft`, `Rght`) VALUES
-  (1, 'root', 'root', 0, 1),
-  (2, 'add_warehouses', '', 0, 0),
-  (3, 'add_spaces', '', 0, 0),
-  (4, 'add_employees', '', 0, 0),
-  (5, 'accept_contract', '', 0, 0),
-  (6, 'deny_contract', '', 0, 0),
-  (7, 'remove_warehouse', '', 0, 0),
-  (8, 'remove_space', '', 0, 0),
-  (9, 'hide_warehouse', '', 0, 0),
-  (10, 'hide_space', '', 0, 0),
-  (11, 'remove_employee', '', 0, 0),
-  (12, 'can_lease', '', 0, 0);
-
-CREATE TABLE IF NOT EXISTS `phprbac_rolepermissions` (
-  `RoleID` int(11) NOT NULL,
-  `PermissionID` int(11) NOT NULL,
-  `AssignmentDate` int(11) NOT NULL,
-  `PermissionAssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`RoleID`,`PermissionID`),
-  KEY `PermissionID` (`PermissionID`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-INSERT INTO `phprbac_rolepermissions` (`RoleID`, `PermissionID`, `AssignmentDate`) VALUES
-  (3, 2, '2018-10-22 20:01:37'),
-  (3, 3, '2018-10-22 20:02:41'),
-  (3, 4, '2018-10-22 20:02:41'),
-  (3, 5, '2018-10-22 20:03:12'),
-  (3, 6, '2018-10-22 20:03:12'),
-  (3, 7, '2018-10-22 20:03:22'),
-  (3, 8, '2018-10-22 20:03:22'),
-  (3, 9, '2018-10-22 20:03:33'),
-  (3, 10, '2018-10-22 20:03:33');
+(1, 'root', 'Administrator', 0, 22),
+(2, 'add_warehouses', 'Can Add Warehouses', 1, 2),
+(3, 'add_spaces', 'Can Add Spaces', 3, 4),
+(4, 'add_employees', 'Can Add Warehouse Employees', 5, 6),
+(5, 'accept_contract', 'Can Accept Warehouse Contracts', 6, 7),
+(6, 'deny_contract', 'Can Deny Warehouse Contracts', 8, 9),
+(7, 'remove_warehouse', 'Can Remove Warehouses', 10, 11),
+(8, 'remove_space', 'Can Remove Spaces', 12, 13),
+(9, 'hide_warehouse', 'Can Hide Warehouses From Listings', 14, 15),
+(10, 'hide_space', 'Can Hide Spaces From Listings', 16, 17),
+(11, 'remove_employee', 'Can Remove Warehouse Employees', 18, 19),
+(12, 'can_lease', 'Can Lease Warehouses', 20, 21);
 
 CREATE TABLE IF NOT EXISTS `phprbac_roles` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -55,25 +35,63 @@ CREATE TABLE IF NOT EXISTS `phprbac_roles` (
   KEY `Title` (`Title`),
   KEY `Lft` (`Lft`),
   KEY `Rght` (`Rght`)
-  ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
 INSERT INTO `phprbac_roles` (`ID`, `Title`, `Description`, `Lft`, `Rght`, `OrderNumber`) VALUES
-  (1, 'root', 'root', 1, 10, NULL),
-  (2, 'Warehouse', 'Warehouse', 2, 7, NULL),
-  (3, 'Warehouse_Owner', 'Warehouse Owner', 3, 4, 1),
-  (4, 'Warehouse_Employee', 'Warehouse Employee', 5, 6, 2),
-  (5, 'Lessee', 'Lessee', 8, 9, 3),
-  (91, 'no_roles', 'No Roles', 99, 100, NULL),
-  (99, 'need_setup', 'Account Needs Setup', 199, 200, NULL);
+(1, 'root', 'root', 1, 10, NULL),
+(2, 'Warehouse', 'Warehouse', 2, 7, NULL),
+(3, 'Warehouse_Owner', 'Warehouse Owner', 3, 4, 1),
+(4, 'Warehouse_Employee', 'Warehouse Employee', 5, 6, NULL),
+(5, 'Lessee', 'Lessee', 8, 9, 3),
+(91, 'no_roles', 'No Roles', 99, 100, NULL),
+(99, 'need_setup', 'Account Needs Setup', 199, 200, NULL);
 
-CREATE TABLE IF NOT EXISTS `phprbac_userroles` (
-  `UserID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `phprbac_rolepermissions` (
   `RoleID` int(11) NOT NULL,
+  `PermissionID` int(11) NOT NULL,
   `AssignmentDate` int(11) NOT NULL,
-  `RoleAssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`UserID`,`RoleID`),
-  KEY `RoleID` (`RoleID`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `PermissionAssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`RoleID`,`PermissionID`),
+  FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE,
+  FOREIGN KEY (`PermissionID`) REFERENCES `phprbac_permissions` (`ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `phprbac_rolepermissions` (`RoleID`, `PermissionID`, `AssignmentDate`) VALUES
+(1, 1, '2018-10-22 20:01:37'),
+(1, 2, '2018-10-22 20:01:37'),
+(1, 3, '2018-10-22 20:01:37'),
+(1, 4, '2018-10-22 20:01:37'),
+(1, 5, '2018-10-22 20:01:37'),
+(1, 6, '2018-10-22 20:01:37'),
+(1, 7, '2018-10-22 20:01:37'),
+(1, 8, '2018-10-22 20:01:37'),
+(1, 9, '2018-10-22 20:01:37'),
+(1, 10, '2018-10-22 20:01:37'),
+(1, 11, '2018-10-22 20:01:37'),
+(1, 12, '2018-10-22 20:01:37'),
+(2, 2, '2018-10-22 20:01:37'),
+(2, 3, '2018-10-22 20:01:37'),
+(2, 4, '2018-10-22 20:01:37'),
+(2, 5, '2018-10-22 20:01:37'),
+(2, 6, '2018-10-22 20:01:37'),
+(2, 7, '2018-10-22 20:01:37'),
+(2, 8, '2018-10-22 20:01:37'),
+(2, 9, '2018-10-22 20:01:37'),
+(2, 10, '2018-10-22 20:01:37'),
+(2, 11, '2018-10-22 20:01:37'),
+(3, 2, '2018-10-22 20:01:37'),
+(3, 3, '2018-10-22 20:01:37'),
+(3, 4, '2018-10-22 20:01:37'),
+(3, 5, '2018-10-22 20:01:37'),
+(3, 6, '2018-10-22 20:01:37'),
+(3, 7, '2018-10-22 20:01:37'),
+(3, 8, '2018-10-22 20:01:37'),
+(3, 9, '2018-10-22 20:01:37'),
+(3, 10, '2018-10-22 20:01:37'),
+(3, 11, '2018-10-22 20:01:37'),
+(4, 5, '2018-10-22 20:01:37'),
+(4, 6, '2018-10-22 20:01:37'),
+(5, 12, '2018-10-22 20:01:37');
 
 CREATE TABLE IF NOT EXISTS `phprbac_users` (
   `UserID` int(11) NOT NULL AUTO_INCREMENT,
@@ -88,8 +106,24 @@ CREATE TABLE IF NOT EXISTS `phprbac_users` (
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `phprbac_userroles` (
+  `UserID` int(11) NOT NULL,
+  `RoleID` int(11) NOT NULL,
+  `AssignmentDate` int(11) NOT NULL,
+  `RoleAssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`UserID`,`RoleID`),
+  FOREIGN KEY (`UserID`) REFERENCES `phprbac_users` (`UserID`) ON DELETE CASCADE,
+  FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 INSERT INTO phprbac_users(Username,FirstName,LastName,Password,Email,PhoneNumber,Company) VALUES
-('tzysqaczefynx','ALFRED','GONZALEZ','6308d8858faef2e47b30c0e80bf3248e','ncztga@y.org',9343253675,'Stryker')
+  -- Root Password: th!sPwd!s4r00t
+('root','ROOT','ACCOUNT','f52bd9cbef6c83042f73d959789f9bd1','atCapacity@purdue.edu',5555555555,'@Capacity')
+-- Warehouse Owner Password: th!sPwd!s40wner
+,('owner','OWNER','ACCOUNT','f8f01808e127b869e76ae2ef9e046547','ncztga@y.org',9343253675,'Stryker')
+-- Lesse Password: th!sPwd!s4Le55ee
+,('lessee','LESSEE','ACCOUNT','878fcd3829462665ff1ad75ad0f9ca11','ncztga@y.org',9343253675,'Stryker')
+,('tzysqaczefynx','ALFRED','GONZALEZ','6308d8858faef2e47b30c0e80bf3248e','ncztga@y.org',9343253675,'Stryker')
 ,('gadzwnkor','GILBERT','WEAVER','b01464439410ee0cc2efb574782efa7f','yeop@xpkf.com',1657132174,'Republic Services')
 ,('xgudcejd','LUCIA','WILKERSON','d144ceb7dc9d2cdc99ff09a9cba265d2','jgm@vuqlimerkb.net',7685821496,'Computer Sciences')
 ,('bipqkmrijyqsc','DANA','PARK','d63e62a7d3bcb89760275e62dc963042','regxdiplas@mdovh.org',5844962894,'WESCO International')
@@ -1090,92 +1124,1072 @@ INSERT INTO phprbac_users(Username,FirstName,LastName,Password,Email,PhoneNumber
 ,('ngrmunyb','IRENE','DENNIS','4de59b0024cd09dd0df65ecdcf59aef6','b@oe.net',8325393658,'Genworth Financial')
 ,('ulethux','DORA','BURKE','f557b0ae1d30225b37194825b5eae35a','vjqhydie@tmxlrne.net',4131399827,'Dominion Energy');
 
-ALTER TABLE `phprbac_rolepermissions`
-  ADD CONSTRAINT `phprbac_rolepermissions_ibfk_1` FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phprbac_rolepermissions_ibfk_2` FOREIGN KEY (`PermissionID`) REFERENCES `phprbac_permissions` (`ID`) ON DELETE CASCADE;
-
-ALTER TABLE `phprbac_userroles`
-  ADD CONSTRAINT `phprbac_userroles_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `phprbac_users` (`UserID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phprbac_userroles_ibfk_2` FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE;
+INSERT INTO `phprbac_userroles` (UserID, RoleID) VALUES
+(1,1),
+(2,3),
+(4,3),
+(5,3),
+(6,3),
+(7,3),
+(8,3),
+(9,3),
+(10,3),
+(11,3),
+(12,3),
+(13,3),
+(14,3),
+(15,3),
+(16,3),
+(17,3),
+(18,3),
+(19,3),
+(20,3),
+(21,3),
+(22,3),
+(23,3),
+(3,5);
 
 CREATE TABLE IF NOT EXISTS Warehouses (
   WarehouseID int(11) NOT NULL auto_increment,
   OwnerID int(11) NOT NULL,
-  Address varchar(100),
+  Address varchar(100) NOT NULL,
   ZipCode varchar(5),
   City varchar(50),
-  State varchar(2),
+  State varchar(2) NOT NULL,
   Latitude FLOAT( 10, 6 ) NOT NULL ,
   Longitude FLOAT( 10, 6 ) NOT NULL ,
   BuildingSize real,
+  WarehouseInformation varchar(500),
   PRIMARY KEY(WarehouseID),
-  FOREIGN KEY(OwnerID) REFERENCES phprbac_users(UserID));
+  FOREIGN KEY(OwnerID) REFERENCES phprbac_users(UserID) ON DELETE CASCADE);
 
-CREATE TABLE IF NOT EXISTS Spaces (
-  SpaceID int(11) NOT NULL auto_increment,
-  WarehouseID int(11) NOT NULL,
-  SpaceSize real,
-  MonthlyPrice real,
-  YearlyPrice real,
-  Active BOOLEAN DEFAULT TRUE,
-  DateAdded datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY(SpaceID),
-  FOREIGN KEY(WarehouseID) REFERENCES Warehouses(WarehouseID));
+  CREATE TABLE IF NOT EXISTS Spaces (
+    SpaceID int(11) NOT NULL auto_increment,
+    WarehouseID int(11) NOT NULL,
+    SpaceSize real,
+    MonthlyPrice real,
+    YearlyPrice real,
+    Active BOOLEAN DEFAULT TRUE,
+    SpaceInformation varchar(500),
+    DateAdded datetime DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(SpaceID),
+    FOREIGN KEY(WarehouseID) REFERENCES Warehouses(WarehouseID) ON DELETE CASCADE);
 
-CREATE TABLE IF NOT EXISTS Contracts (
-  ContractID int(11) NOT NULL auto_increment,
-  SpaceID int(6) NOT NULL,
-  LesseeID int(11) NOT NULL,
-  StartDate timestamp NOT NULL,
-  EndDate timestamp NOT NULL,
-  AmountCharged real NOT NULL,
-  ContractInformation varchar(400),
-  ContractText varchar(400),
-  PRIMARY KEY(ContractID),
-  FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID) ON DELETE CASCADE,
-  FOREIGN KEY(LesseeID) REFERENCES phprbac_users(UserID));
+    CREATE TABLE IF NOT EXISTS Contracts (
+      ContractID int(11) NOT NULL auto_increment,
+      SpaceID int(6) NOT NULL,
+      LesseeID int(11) NOT NULL,
+      StartDate timestamp NOT NULL,
+      EndDate timestamp NOT NULL,
+      AmountCharged real NOT NULL,
+      ContractInformation varchar(400),
+      ContractText varchar(400),
+      PRIMARY KEY(ContractID),
+      FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID) ON DELETE RESTRICT,
+      FOREIGN KEY(LesseeID) REFERENCES phprbac_users(UserID) ON DELETE RESTRICT);
 
-CREATE TABLE IF NOT EXISTS Status (
-  StatusID int(11) NOT NULL AUTO_INCREMENT,
-  StatusName varchar(50),
-  StatusDescription varchar(200),
-  PRIMARY KEY (StatusID));
+      CREATE TABLE IF NOT EXISTS Status (
+        StatusID int(11) NOT NULL AUTO_INCREMENT,
+        StatusName varchar(50),
+        StatusDescription varchar(200),
+        PRIMARY KEY (StatusID));
 
-INSERT INTO `status` (`StatusID`, `StatusName`, `StatusDescription`) VALUES
-  (1, 'Reserved', NULL),
-  (2, 'Pending', NULL),
-  (3, 'Approved', NULL),
-  (4, 'Denied', NULL);
+        INSERT INTO `status` (`StatusID`, `StatusName`, `StatusDescription`) VALUES
+        (1, 'Reserved', 'This contract is marked as Reserved for a specific length of time by a potential lessee.'),
+        (2, 'Pending', 'This contract is marked as Pending, awaiting for the approval of the warehouse.'),
+        (3, 'Approved', 'This contract is marked as Approved by the warehouse.'),
+        (4, 'Denied', 'This contract is Denied by the warehouse.');
 
-CREATE TABLE IF NOT EXISTS Contract_Status (
-  ContractID int(11) NOT NULL,
-  StatusID int(11) NOT NULL,
-  StatusTime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (ContractID, StatusID),
-  FOREIGN KEY (ContractID) REFERENCES Contracts(ContractID),
-  FOREIGN KEY (StatusID) REFERENCES Status(StatusID));
+        CREATE TABLE IF NOT EXISTS Contract_Status (
+          ContractID int(11) NOT NULL,
+          StatusID int(11) NOT NULL,
+          StatusTime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          PRIMARY KEY (ContractID, StatusID),
+          FOREIGN KEY (ContractID) REFERENCES Contracts(ContractID) ON DELETE CASCADE,
+          FOREIGN KEY (StatusID) REFERENCES Status(StatusID) ON DELETE RESTRICT);
 
-  CREATE TABLE IF NOT EXISTS Attributes (
-    AttributeID int(11) NOT NULL auto_increment,
-    AttributeName varchar(50),
-    AttributeDescription varchar(200),
-    AttributeType int(5),
-    lft int(11) NOT NULL,
-    rght int(11) NOT NULL,
-    PRIMARY KEY(AttributeID));
+          CREATE TABLE IF NOT EXISTS Attributes (
+            AttributeID int(11) NOT NULL auto_increment,
+            AttributeName varchar(50),
+            AttributeDescription varchar(200),
+            AttributeType int(5),
+            lft int(11) NOT NULL,
+            rght int(11) NOT NULL,
+            AttributeIcon varchar(75),
+            PRIMARY KEY(AttributeID));
 
-CREATE TABLE IF NOT EXISTS Space_Attributes (
-  SpaceID int(11),
-  AttributeID int(11),
-  PRIMARY KEY(SpaceID, AttributeID),
-  FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID),
-  FOREIGN KEY(AttributeID) REFERENCES Attributes(AttributeID));
+            CREATE TABLE IF NOT EXISTS Space_Attributes (
+              SpaceID int(11),
+              AttributeID int(11),
+              PRIMARY KEY(SpaceID, AttributeID),
+              FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID) ON DELETE CASCADE,
+              FOREIGN KEY(AttributeID) REFERENCES Attributes(AttributeID) ON DELETE RESTRICT);
 
-INSERT INTO Attributes (AttributeName, AttributeType) VALUES
-  ('Retail/Industrial', 1),
-  ('Office/Industrial', 1),
-  ('Industrial', 1),
-  ('Fencing', 2),
-  ('Floor Drains', 2),
-  ('Yard', 2),
-  ('Loading Dock', 2);
+              INSERT INTO Attributes (AttributeName, AttributeType, AttributeDescription, AttributeIcon) VALUES
+              ('Retail/Industrial', 1, 'This location is ideal for retail use.', 'fas fa-store-alt'),
+              ('Office/Industrial', 1, 'This location is ideal for office use.', 'fas fa-building'),
+              ('Industrial', 1, 'This location is ideal for industrial use.', 'fa fa-industry'),
+              ('Fencing', 2, 'This location has an outdoor fenced area.', ''),
+              ('Floor Drains', 2, 'This location has indoor floor drains.', 'fa fa-truck'),
+              ('Yard', 2, 'This location has an exterior yard.', ''),
+              ('Loading Dock', 2, 'This location has a loading dock and bay doors, perfect for moving in and out.', 'fas fa-temperature-low');
+
+              INSERT INTO `warehouses` (`WarehouseID`, `OwnerID`, `Address`, `ZipCode`, `City`, `State`, `BuildingSize`, `Latitude`, `Longitude`, `WarehouseInformation`) VALUES
+              (1, 2, '512 N Energy Dr.', '82901', 'Rock Springs', 'WY', 10400, 41.593910, -109.218040, 'Tires'),
+              (2, 2, '331 Lexington Ave.', '82007', 'Cheyenne', 'WY', 15300, 41.125847, -104.757111, ''),
+              (3, 2, '311 Progress Cir.', '82007', 'Cheyenne', 'WY', 21112, 41.129181, -104.739792, ''),
+              (4, 2, '220 Evelyn St', '82007', 'Cheyenne', 'WY', 79767, 41.118847, -104.847015, ''),
+              (5, 2, '217 W 5th St.', '82007', 'Cheyenne', 'WY', 1960, 41.122398, -104.809509, ''),
+              (6, 2, '1451 Buiness Cir.', '82716', 'Gillette', 'WY', 7344, 44.335594, -105.522110, ''),
+              (7, 2, '2700 N US Hwy 14', '53545', 'Gillette', 'WY', 16740, 42.718220, -88.989586, ''),
+              (8, 2, '1938 Wyott Dr.', '82007', 'Cheyenne', 'WY', 210518, 41.110703, -104.833420, 'Tires'),
+              (9, 2, '2632 Industry Dr.', '82007', 'Cheyenne', 'WY', 14520, 41.139729, -104.703697, ''),
+              (10, 2, '1010 Falcon Ave', '82604', 'Mills', 'WY', 28390, 42.845985, -106.383080, ''),
+              (11, 2, '1120 Logan Ave', '82001', 'Cheyenne', 'WY', 2600, 41.135948, -104.794067, ''),
+              (12, 2, '1920 Missile Dr.', '82001', 'Cheyenne', 'WY', 12600, 41.131065, -104.830460, ''),
+              (13, 2, '1800 Opportunity Blvd', '82601', 'Casper', 'WY', 11000, 42.863728, -106.350189, ''),
+              (14, 3, '802-810 N Foster Rd', '82601', 'Casper', 'WY', 7500, 42.858768, -106.339653, ''),
+              (15, 4, '1733 E Yellowstone Hwy', '82601', 'Casper', 'WY', 7700, 42.853069, -106.301994, ''),
+              (16, 5, '190 S College Dr.', '82007', 'Cheyenne', 'WY', 12000, 41.115818, -104.768700, ''),
+              (17, 6, '518 N US Highway 14-16', NULL, 'Gillette', 'WY', 11800, 0.000000, 0.000000, ''),
+              (18, 7, '3851 E Collins Rd', '82718', 'GIllette', 'WY', 8860, 44.290333, -105.447006, ''),
+              (19, 8, '620 N US Highway 14-16', '82716', 'Gillette', 'WY', 18000, 44.299118, -105.528252, ''),
+              (20, 9, '612 N US Highway 14-16', '82716', 'Gillette', 'WY', 14800, 44.293152, -105.511284, ''),
+              (21, 10, '1935 Cooper St', NULL, 'Missoula', 'MT', 2400, 0.000000, 0.000000, ''),
+              (22, 11, '2601 Overland Ave.', NULL, 'Billings', 'MT', 4403, 0.000000, 0.000000, ''),
+              (23, 11, '5360 Southgate Dr.', NULL, 'Billings', 'MT', 25000, 0.000000, 0.000000, ''),
+              (24, 12, '54 Ginger Bear Ln', '59718', 'Bozeman', 'MT', 3600, 45.706242, -111.187134, ''),
+              (25, 13, '7201 Expressway', '59808', 'Missoula', 'MT', 20000, 46.932110, -114.097092, ''),
+              (26, 14, '1943 Main St', NULL, 'Billings', 'MT', 10060, 0.000000, 0.000000, ''),
+              (27, 15, '610 W Griffin Dr.', '59715', 'Bozeman', 'MT', 8000, 45.700050, -111.044319, ''),
+              (28, 15, '330-334 Fuller Ave', '59601', 'Helena', 'MT', 2300, 46.590309, -112.039192, ''),
+              (29, 16, '706 Daniels St', '59101', 'Billings', 'MT', 119757, 45.757915, -108.555382, ''),
+              (30, 17, '5 Wall St', '59634', 'Montana City', 'MT', 11200, 46.538433, -111.946648, ''),
+              (31, 93, '2330 N Frontae Rd', '59101', 'Billings', 'MT', 13200, 45.809185, -108.426964, ''),
+              (32, 93, '3102 W Broadway St', NULL, 'Missoula', 'MT', 11872, 0.000000, 0.000000, ''),
+              (33, 93, 'Yukon Ln', NULL, 'Belgrade', 'MT', 19100, 0.000000, 0.000000, ''),
+              (34, 93, '311 N Grove St', '59804', 'Missoula', 'MT', 10000, 46.872513, -114.042450, ''),
+              (35, 93, '1922 Airport Ct', '59404', 'Great Falls', 'MT', 5950, 47.487305, -111.351524, ''),
+              (36, 93, '8462 Highway 200', NULL, 'Bonner', 'MT', 587800, 0.000000, 0.000000, ''),
+              (37, 93, '3750 Wise Ln', '59101', 'Billings', 'MT', 19200, 45.702271, -108.622192, ''),
+              (38, 93, '5229 King Ave W', '59106', 'Billings', 'MT', 40800, 45.755714, -108.651138, ''),
+              (39, 93, '12211 Spring Brook Dr', NULL, 'Eagle River', 'AK', 4360, 0.000000, 0.000000, ''),
+              (40, 93, '7613 W Buttercup Dr', '99623', 'Wasilla', 'AK', 6622, 61.576134, -149.642075, ''),
+              (41, 93, '4721 E Bogard Rd', NULL, 'Wasilla', 'AK', 10800, 0.000000, 0.000000, ''),
+              (42, 93, '2125 E 79th ave', NULL, 'Anchorage', 'AK', 56945, 0.000000, 0.000000, ''),
+              (43, 93, '3201 International St', '99701', 'Fairbanks', 'AK', 8000, 64.818634, -147.750244, ''),
+              (44, 93, '250 N Post Rd', NULL, 'Anchorage', 'AK', 10300, 0.000000, 0.000000, ''),
+              (45, 93, '6200 A St', NULL, 'Anchorage', 'AK', 3504, 0.000000, 0.000000, ''),
+              (46, 93, '8001Petersburg St', NULL, 'Anchorage', 'AK', 29550, 0.000000, 0.000000, ''),
+              (47, 93, '4025 W 50th Ave', NULL, 'Anchorage', 'AK', 23487, 0.000000, 0.000000, ''),
+              (48, 93, '34995 Kustatan St', '99669', 'Kenai', 'AK', 6304, 60.487690, -151.193893, ''),
+              (49, 93, '000 Halliburton Dr', NULL, 'Nikiski', 'AK', 9204, 0.000000, 0.000000, ''),
+              (50, 93, '1220-1320 E 68th Ave', NULL, 'Anchorage', 'AK', 29872, 0.000000, 0.000000, ''),
+              (51, 93, '40902 Kalifornsky Beach Rd', '99611', 'Kenai', 'AK', 3600, 60.515038, -151.193649, ''),
+              (52, 93, '1549 Davison St', '99705', 'Fairbanks', 'AK', 4500, 64.798264, -147.549210, ''),
+              (53, 93, '351 E 104th Ave', NULL, 'Anchorage', 'AK', 59252, 0.000000, 0.000000, ''),
+              (54, 93, '1101 Well St', '99701', 'Fairbanks', 'AK', 25000, 64.849152, -147.726089, ''),
+              (55, 93, '550 W 64th Ave', NULL, 'Anchorage', 'AK', 62668, 0.000000, 0.000000, ''),
+              (56, 93, '2799 Rampart Dr', NULL, 'Anchorage', 'AK', 10500, 0.000000, 0.000000, ''),
+              (57, 93, '1910 1st Ave N', NULL, 'Fargo', 'ND', 14169, 0.000000, 0.000000, ''),
+              (58, 93, '10285 3rd St SW', NULL, 'Killdeer', 'ND', 10000, 0.000000, 0.000000, ''),
+              (59, 93, '601 Gilbertson St SE', '58852', 'Tioga', 'ND', 7000, 48.387325, -102.934570, ''),
+              (60, 93, '4946 Hwy 85', NULL, 'Williston', 'ND', 19240, 0.000000, 0.000000, ''),
+              (61, 93, '4942 Highway 85', NULL, 'Williston', 'ND', 12000, 0.000000, 0.000000, ''),
+              (62, 93, '5072 Bennett Loop', NULL, 'Williston', 'ND', 11900, 0.000000, 0.000000, ''),
+              (63, 93, '2530 132nd Ave NW', NULL, 'Arnegard', 'ND', 10000, 0.000000, 0.000000, ''),
+              (64, 93, '5302 22nd Ave W', NULL, 'Williston', 'ND', 12151, 0.000000, 0.000000, ''),
+              (65, 93, '896 22nd Ave N', '58075', 'Wahpeton', 'ND', 38250, 46.292015, -96.611626, ''),
+              (66, 93, '1910 50th St W', NULL, 'Williston', 'ND', 39000, 0.000000, 0.000000, ''),
+              (67, 93, '205 42nd St SE', NULL, 'Minot', 'ND', 279328, 0.000000, 0.000000, ''),
+              (68, 93, '1150 S 46th St', '58201', 'Grand Forks', 'ND', 40026, 47.910103, -97.097023, ''),
+              (69, 93, '3804 NE 17th Ave', NULL, 'Watford City', 'ND', 11300, 0.000000, 0.000000, ''),
+              (70, 93, '3217 111th Ave SW', NULL, 'Dickinson', 'ND', 10000, 0.000000, 0.000000, ''),
+              (71, 93, '6416 Wilckum Rd', '58801', 'Williston', 'ND', 17850, 48.145279, -103.612892, ''),
+              (72, 93, '629 20th Ave', '58701', 'Minot', 'ND', 10500, 48.211964, -101.283073, ''),
+              (73, 93, '5806 Baldwin ln', NULL, 'Williston', 'ND', 14000, 0.000000, 0.000000, ''),
+              (74, 93, '4001 32nd St N', '58102', 'Fargo', 'ND', 293496, 46.933960, -96.829338, ''),
+              (75, 93, '3911 37th Ave S', NULL, 'Fargo', 'ND', 26000, 0.000000, 0.000000, ''),
+              (76, 93, '16 Heidi Ln', NULL, 'Ross', 'ND', 7200, 0.000000, 0.000000, ''),
+              (77, 93, '2655 6th Ave S', '33712', 'Saint Petersburg', 'FL', NULL, 27.764833, -82.669586, ''),
+              (78, 93, '1825 Sunset Point Rd', '33765', 'Clearwater', 'FL', 8000, 27.989691, -82.762177, ''),
+              (79, 93, '2655 6th Ave S', '33712', 'Saint Petersburg', 'FL', NULL, 27.764833, -82.669586, ''),
+              (80, 93, '3749 Wd Judge Rd', '32808', 'Orlando', 'FL', 110400, 28.563120, -81.421272, ''),
+              (81, 93, '408 Brookmeade Dr', '32539', 'Crestview', 'FL', 59086, 30.738317, -86.562630, ''),
+              (82, 93, '5814 Merritt Brown Rd', '32404', 'Panama City', 'FL', 5708, 30.238726, -85.557953, ''),
+              (83, 93, '8286 Western Way Cir', NULL, 'Jacksonville', 'FL', 54000, 0.000000, 0.000000, ''),
+              (84, 93, '2815 Mercury Rd', NULL, 'Jacksonville', 'FL', 8400, 0.000000, 0.000000, ''),
+              (85, 93, '13907 Arnold Rhoden Rd', '32087', 'Sanderson', 'FL', 113546, 30.251339, -82.255013, ''),
+              (86, 93, '115 S 2nd St', '32034', 'Fernandina Beach', 'FL', 18699, 30.669357, -81.464546, ''),
+              (87, 93, '4541 St Augustine Rd', NULL, 'Jacksonville', 'FL', 55000, 0.000000, 0.000000, ''),
+              (88, 93, '904 S 20th St', NULL, 'Tampa', 'FL', 59498, 0.000000, 0.000000, ''),
+              (89, 93, '1020 Holland Dr', '33487', 'Boca Raton', 'FL', 36410, 26.406157, -80.107872, ''),
+              (90, 93, '8601 NW 54th St', '33166', 'Doral', 'FL', 16000, 25.823162, -80.336540, ''),
+              (91, 93, '14501 58th St N', '33760', 'Clearwater', 'FL', 26000, 27.903803, -82.712204, ''),
+              (92, 93, '1736 E Main St', '34748', 'Leesburg', 'FL', 14400, 28.816748, -81.847122, ''),
+              (93, 93, '4140 SW 30th Ave', NULL, 'Fort Lauderdale', 'FL', 135000, 0.000000, 0.000000, ''),
+              (94, 93, '51 Hypoluxo Rd', '33462', 'Latana', 'FL', 56382, 26.570902, -80.054314, ''),
+              (95, 93, '2222 NW 14th St', NULL, 'Miami', 'FL', 4920, 0.000000, 0.000000, ''),
+              (96, 93, '6942 NW 7 Ave', NULL, 'Miami', 'FL', 14690, 0.000000, 0.000000, ''),
+              (97, 93, '5800 NW 163rd St', '33014', 'Miami Lakes', 'FL', 108507, 25.920933, -80.294983, ''),
+              (98, 93, '1312 Randall Ave', NULL, 'Bronx', 'NY', 10000, 0.000000, 0.000000, ''),
+              (99, 93, '2115 Jericho Tpke', NULL, 'New Hyde Park', 'NY', 20980, 0.000000, 0.000000, ''),
+              (100, 93, '10 Ludlow St', NULL, 'Yonkers', 'NY', 6880, 0.000000, 0.000000, ''),
+              (101, 93, '5000 Airport Executive Park', '10954', 'Nanuet', 'NY', 40000, 41.108418, -74.028114, ''),
+              (102, 93, '157 21st St', NULL, 'Bronx', 'NY', 5000, 0.000000, 0.000000, ''),
+              (103, 93, '146 Hanse Ave', NULL, 'Freeport', 'NY', 82717, 0.000000, 0.000000, ''),
+              (104, 93, '45 Ryan Ave', NULL, 'Port Chester', 'NY', 16400, 0.000000, 0.000000, ''),
+              (105, 93, '1404 Portland Ave', NULL, 'Rochester', 'NY', 3260, 0.000000, 0.000000, ''),
+              (106, 93, '295 W Main', '13820', 'Oneonta', 'NY', 20280, 42.455551, -75.060188, ''),
+              (107, 93, '2070 Route 52', NULL, 'Hopewell Junction', 'NY', 371480, 0.000000, 0.000000, ''),
+              (108, 93, '631 State Route 15 N', NULL, 'Lake Hopatcong', 'NY', 10400, 0.000000, 0.000000, ''),
+              (109, 93, '79 Carlough Rd', NULL, 'Bohemia', 'NY', 12500, 0.000000, 0.000000, ''),
+              (110, 93, '93 Garvies Point Rd', '11542', 'Glen Cove', 'NY', 85000, 40.859833, -73.642502, ''),
+              (111, 93, '46 Metropolitan Ave', NULL, 'Ridgewood', 'Ne', 35312, 0.000000, 0.000000, ''),
+              (112, 93, '333 N Bedford Rd', NULL, 'Mount Kisco', 'NY', 604095, 0.000000, 0.000000, ''),
+              (113, 93, '57 Seaview Blvd', NULL, 'Port Washington', 'NY', 130853, 0.000000, 0.000000, ''),
+              (114, 93, '100 Wells Ave', NULL, 'Congers', 'NY', 25000, 0.000000, 0.000000, ''),
+              (115, 93, '1538 Old country Rd', NULL, 'Plainview', 'NY', 10000, 0.000000, 0.000000, ''),
+              (116, 93, '230 Richardson St', NULL, 'Brooklyn', 'NY', 2500, 0.000000, 0.000000, ''),
+              (117, 93, '1600 E Orangethorpe Ave', '92831', 'Fullerton', 'CA', 200162, 33.858635, -117.899452, ''),
+              (118, 93, '5960 Franklin Blvd', NULL, 'Sacramento', 'CA', 14900, 0.000000, 0.000000, ''),
+              (119, 93, '308 Palm', '93101', 'Santa Barbara', 'CA', 3078, 34.418926, -119.689819, ''),
+              (120, 93, '2413 Amsler', '90505', 'Torrance', 'CA', 17000, 33.801975, -118.326096, ''),
+              (121, 93, '16253 Gale ave', '91745', 'City of Industry', 'CA', 124282, 34.009094, -117.951622, ''),
+              (122, 93, '1690 Brandywine ave', '91911', 'Chula Vista', 'CA', 69960, 32.595921, -117.030304, ''),
+              (123, 93, '912 E 1st street', NULL, 'Pomona', 'CA', 20200, 0.000000, 0.000000, ''),
+              (124, 93, '3440 Airway drive', '95403', 'Santa Rosa', 'CA', 21925, 38.475594, -122.737648, ''),
+              (125, 93, '9685 Distribution Ave', NULL, 'San Diego', 'CA', 34834, 0.000000, 0.000000, ''),
+              (126, 93, '1201 Minnesota Drive', NULL, 'San Fransisco', 'CA', 40000, 0.000000, 0.000000, ''),
+              (127, 93, '29816 Avienda de las Banderas', '92688', 'Rancho Santa Margarita', 'CA', 6180, 33.627609, -117.609558, ''),
+              (128, 93, '1201 46th Ave', NULL, 'Oakland', 'CA', 26048, 0.000000, 0.000000, ''),
+              (129, 93, '1611 17th St', NULL, 'Oakland', 'CA', 17862, 0.000000, 0.000000, ''),
+              (130, 93, '745 8th Ave', '94606', 'Oakland', 'CA', 41535, 37.791065, -122.254829, ''),
+              (131, 93, '1450 W 228th St', NULL, 'Torrance', 'CA', 12238, 0.000000, 0.000000, ''),
+              (132, 93, '2325 Charter', NULL, 'Stockton', 'CA', 13250, 0.000000, 0.000000, ''),
+              (133, 93, '22815 Frampton', NULL, 'Torrance', 'CA', 13442, 0.000000, 0.000000, ''),
+              (134, 93, '3555 W Lomita Blvd', '90505', 'Torrance', 'CA', 7650, 33.816254, -118.346649, ''),
+              (135, 93, '2610 Columbia St', '90503', 'Torrance', 'CA', 51023, 33.843353, -118.335419, ''),
+              (136, 93, '9909 Hibert St', NULL, 'San Diego', 'CA', 1920, 0.000000, 0.000000, ''),
+              (137, 93, '4888 Ronson Ct', NULL, 'San Diego', 'CA', 1300, 0.000000, 0.000000, ''),
+              (138, 93, '6231 E Stassney Ln', '78744', 'Austin', 'TX', 130002, 30.199549, -97.717674, ''),
+              (139, 93, '13802 Turbine Dr', NULL, 'Austin', 'TX', 15920, 0.000000, 0.000000, ''),
+              (140, 93, '1912 Smith Rd', NULL, 'Austin', 'TX', 13000, 0.000000, 0.000000, ''),
+              (141, 93, '10751 Mapleridge Dr', NULL, 'Dallas', 'TX', 10100, 0.000000, 0.000000, ''),
+              (142, 93, '2931 Irving Blvd', '75247', 'Dallas', 'TX', 32068, 32.809975, -96.853432, ''),
+              (143, 93, '2930 Ladybird Ln', NULL, 'Dallas', 'TX', 50000, 0.000000, 0.000000, ''),
+              (144, 93, '530 Portwall St', NULL, 'Houston', 'TX', 144620, 0.000000, 0.000000, ''),
+              (145, 93, '8303 Knight Rd', NULL, 'Houston', 'TX', 90000, 0.000000, 0.000000, ''),
+              (146, 93, '3522 Bacor', NULL, 'Houston', 'TX', 8000, 0.000000, 0.000000, ''),
+              (147, 93, '9600 Technology Blvd', NULL, 'Fort Worth', 'TX', 20160, 0.000000, 0.000000, ''),
+              (148, 93, '500 Rainhead Rd', NULL, 'Fort Worth', 'TX', 35213, 0.000000, 0.000000, ''),
+              (149, 93, '7333 N Jack Newell Blvd', NULL, 'Fort Worth', 'TX', 37320, 0.000000, 0.000000, ''),
+              (150, 93, '2921 Suffolk Dr', NULL, 'Fort Worth', 'TX', 3000, 0.000000, 0.000000, ''),
+              (151, 93, '415 Texas Ave', NULL, 'Texas City', 'TX', 5200, 0.000000, 0.000000, ''),
+              (152, 93, '312 31st St', NULL, 'Texas City', 'TX', 12100, 0.000000, 0.000000, ''),
+              (153, 93, '3700 Thompson St', NULL, 'Austin', 'TX', 9000, 0.000000, 0.000000, ''),
+              (154, 93, '12112 Anderson Mill Rd', NULL, 'Austin', 'TX', 6000, 0.000000, 0.000000, ''),
+              (155, 93, '4018 Caven Rd', NULL, 'Austin', 'TX', 17600, 0.000000, 0.000000, ''),
+              (156, 93, '1718 N Fry Rd', NULL, 'Houston', 'TX', 18330, 0.000000, 0.000000, ''),
+              (157, 132, '827 W 34th St', NULL, 'Houston', 'TX', 5500, 0.000000, 0.000000, '');
+
+              INSERT INTO `spaces` (`SpaceID`, `WarehouseID`, `SpaceSize`, `YearlyPrice`, `MonthlyPrice`, `Active`, `DateAdded`, `SpaceInformation`) VALUES
+              (1, 1, 10400, 12.69, 1.06, 1, '2018-11-16 23:28:32', ''),
+              (2, 2, 8800, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (3, 3, 5500, 6.98, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (4, 4, 8080, 6.35, 0.53, 1, '2018-11-16 23:28:32', ''),
+              (5, 4, 9161, 6.35, 0.53, 1, '2018-11-16 23:28:32', ''),
+              (6, 4, 17246, 5.95, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (7, 5, 1920, 6.5, 0.54, 1, '2018-11-16 23:28:32', ''),
+              (8, 6, 7344, 9.8, 0.82, 1, '2018-11-16 23:28:32', 'Tires'),
+              (9, 7, 16740, 7.59, 0.63, 1, '2018-11-16 23:28:32', ''),
+              (10, 8, 3300, 7.75, 0.65, 1, '2018-11-16 23:28:32', ''),
+              (11, 8, 3300, 7.75, 0.65, 1, '2018-11-16 23:28:32', ''),
+              (12, 8, 3300, 7.75, 0.65, 1, '2018-11-16 23:28:32', ''),
+              (13, 8, 12700, 5, 0.42, 1, '2018-11-16 23:28:32', ''),
+              (14, 8, 20100, 5, 0.42, 1, '2018-11-16 23:28:32', ''),
+              (15, 8, 16900, 4.5, 0.38, 1, '2018-11-16 23:28:32', ''),
+              (16, 8, 50500, 4.5, 0.38, 1, '2018-11-16 23:28:32', ''),
+              (17, 8, 16600, 4.5, 0.38, 1, '2018-11-16 23:28:32', ''),
+              (18, 8, 33600, 4.5, 0.38, 1, '2018-11-16 23:28:32', ''),
+              (19, 8, 7500, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (20, 9, 14520, 10.25, 0.85, 1, '2018-11-16 23:28:32', ''),
+              (21, 10, 10700, 9, 0.75, 1, '2018-11-16 23:28:32', ''),
+              (22, 11, 1600, 14.96, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (23, 11, 1000, 11.94, 1, 1, '2018-11-16 23:28:32', ''),
+              (24, 12, 2300, 6.57, 0.55, 1, '2018-11-16 23:28:32', ''),
+              (25, 12, 3040, 6.51, 0.54, 1, '2018-11-16 23:28:32', ''),
+              (26, 13, 11000, 10, 0.83, 1, '2018-11-16 23:28:32', ''),
+              (27, 14, 2500, 10, 0.83, 1, '2018-11-16 23:28:32', ''),
+              (28, 15, 3150, 6.86, 0.57, 1, '2018-11-16 23:28:32', ''),
+              (29, 16, 9000, 10, 0.83, 1, '2018-11-16 23:28:32', ''),
+              (30, 17, 2040, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (31, 17, 2040, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (32, 18, 8800, 14.49, 1.21, 1, '2018-11-16 23:28:32', ''),
+              (33, 19, 3000, 12.5, 1.04, 1, '2018-11-16 23:28:32', ''),
+              (34, 20, 3360, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (35, 21, 2400, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (36, 22, 4403, 9.75, 0.81, 1, '2018-11-16 23:28:32', ''),
+              (37, 23, 25000, 6.5, 0.54, 1, '2018-11-16 23:28:32', ''),
+              (38, 24, 3600, 9.5, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (39, 25, 20000, 9.5, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (40, 26, 1330, 9.485, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (41, 26, 800, 9.485, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (42, 26, 2500, 9.485, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (43, 26, 3500, 9.485, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (44, 26, 1800, 9.485, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (45, 27, 2650, 11.32, 0.94, 1, '2018-11-16 23:28:32', ''),
+              (46, 28, 500, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (47, 28, 500, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (48, 28, 500, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (49, 28, 500, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (50, 29, 20000, 9, 0.75, 1, '2018-11-16 23:28:32', ''),
+              (51, 29, 1000, 9, 0.75, 1, '2018-11-16 23:28:32', ''),
+              (52, 30, 11200, 5.04, 0.42, 1, '2018-11-16 23:28:32', ''),
+              (53, 31, 13200, 10.24, 0.85, 1, '2018-11-16 23:28:32', ''),
+              (54, 32, 2173, 10.46, 0.87, 1, '2018-11-16 23:28:32', ''),
+              (55, 33, 12275, 10, 0.83, 1, '2018-11-16 23:28:32', ''),
+              (56, 34, 5000, 7.25, 0.6, 1, '2018-11-16 23:28:32', ''),
+              (57, 35, 3725, 5, 0.42, 1, '2018-11-16 23:28:32', ''),
+              (58, 36, 22000, 4.5, 0.38, 1, '2018-11-16 23:28:32', ''),
+              (59, 37, 19200, 1, 0.08, 1, '2018-11-16 23:28:32', ''),
+              (60, 38, 2400, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (61, 38, 2400, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (62, 38, 2400, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (63, 39, 4360, 27.6, 2.3, 1, '2018-11-16 23:28:32', ''),
+              (64, 40, 5912, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (65, 41, 6320, 14.7, 1.23, 1, '2018-11-16 23:28:32', ''),
+              (66, 42, 34984, 13.2, 1.1, 1, '2018-11-16 23:28:32', ''),
+              (67, 43, 6000, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (68, 44, 10300, 13.8, 1.15, 1, '2018-11-16 23:28:32', ''),
+              (69, 45, 3500, 15, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (70, 46, 29550, 11.88, 0.99, 1, '2018-11-16 23:28:32', ''),
+              (71, 47, 3127, 15, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (72, 48, 6304, 7.44, 0.62, 1, '2018-11-16 23:28:32', ''),
+              (73, 49, 9204, 12.72, 1.06, 1, '2018-11-16 23:28:32', ''),
+              (74, 50, 1952, 14.1, 1.18, 1, '2018-11-16 23:28:32', ''),
+              (75, 51, 3600, 17.4, 1.45, 1, '2018-11-16 23:28:32', ''),
+              (76, 52, 4500, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (77, 53, 59252, 15.24, 1.27, 1, '2018-11-16 23:28:32', ''),
+              (78, 54, 7500, 8.4, 0.7, 1, '2018-11-16 23:28:32', ''),
+              (79, 55, 62668, 13.2, 1.1, 1, '2018-11-16 23:28:32', ''),
+              (80, 56, 10500, 13.8, 1.15, 1, '2018-11-16 23:28:32', ''),
+              (81, 57, 14169, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (82, 58, 10000, 9.75, 0.81, 1, '2018-11-16 23:28:32', ''),
+              (83, 59, 7000, 15, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (84, 60, 19240, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (85, 61, 12000, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (86, 62, 9900, 13.5, 1.13, 1, '2018-11-16 23:28:32', ''),
+              (87, 62, 2000, 13.5, 1.13, 1, '2018-11-16 23:28:32', ''),
+              (88, 63, 10000, 12.96, 1.08, 1, '2018-11-16 23:28:32', ''),
+              (89, 64, 12151, 15, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (90, 65, 38000, 5.25, 0.44, 1, '2018-11-16 23:28:32', ''),
+              (91, 66, 3500, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (92, 66, 3500, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (93, 66, 3500, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (94, 67, 7200, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (95, 68, 40026, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (96, 69, 11300, 18, 1.5, 1, '2018-11-16 23:28:32', ''),
+              (97, 70, 5000, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (98, 71, 4000, 18, 1.5, 1, '2018-11-16 23:28:32', ''),
+              (99, 72, 4000, 4.57, 0.38, 1, '2018-11-16 23:28:32', ''),
+              (100, 73, 5000, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (101, 74, 54500, 5.5, 0.46, 1, '2018-11-16 23:28:32', ''),
+              (102, 75, 14000, 5.9, 0.49, 1, '2018-11-16 23:28:32', ''),
+              (103, 75, 4960, 10.5, 0.88, 1, '2018-11-16 23:28:32', ''),
+              (104, 75, 7040, 6.25, 0.52, 1, '2018-11-16 23:28:32', ''),
+              (105, 76, 7200, 9.5, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (106, 77, 0, 5.6, 0.47, 1, '2018-11-16 23:28:32', ''),
+              (107, 78, 7976, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (108, 79, 0, 5.6, 0.47, 1, '2018-11-16 23:28:32', ''),
+              (109, 80, 28078, 6.6, 0.55, 1, '2018-11-16 23:28:32', ''),
+              (110, 81, 59064, 5.25, 0.44, 1, '2018-11-16 23:28:32', ''),
+              (111, 82, 5708, 6.73, 0.56, 1, '2018-11-16 23:28:32', ''),
+              (112, 83, 5400, 7.75, 0.65, 1, '2018-11-16 23:28:32', ''),
+              (113, 83, 2700, 7.75, 0.65, 1, '2018-11-16 23:28:32', ''),
+              (114, 83, 2700, 7.75, 0.65, 1, '2018-11-16 23:28:32', ''),
+              (115, 84, 8400, 7.5, 0.63, 1, '2018-11-16 23:28:32', ''),
+              (116, 85, 113546, 3.25, 0.27, 1, '2018-11-16 23:28:32', ''),
+              (117, 86, 6315, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (118, 87, 2200, 7.9, 0.66, 1, '2018-11-16 23:28:32', ''),
+              (119, 88, 24722, 5.95, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (120, 88, 14007, 5.95, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (121, 89, 1108, 19, 1.58, 1, '2018-11-16 23:28:32', ''),
+              (122, 89, 1108, 19, 1.58, 1, '2018-11-16 23:28:32', ''),
+              (123, 89, 2119, 19, 1.58, 1, '2018-11-16 23:28:32', ''),
+              (124, 90, 1000, 15, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (125, 91, 26000, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (126, 92, 14400, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (127, 93, 41200, 9, 0.75, 1, '2018-11-16 23:28:32', ''),
+              (128, 93, 21880, 9, 0.75, 1, '2018-11-16 23:28:32', ''),
+              (129, 94, 56382, 7.95, 0.66, 1, '2018-11-16 23:28:32', ''),
+              (130, 95, 1220, 11.5, 0.96, 1, '2018-11-16 23:28:32', ''),
+              (131, 96, 14690, 14.88, 1.24, 1, '2018-11-16 23:28:32', ''),
+              (132, 97, 18005, 9.5, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (133, 98, 5000, 18, 1.5, 1, '2018-11-16 23:28:32', ''),
+              (134, 99, 10000, 25, 2.08, 1, '2018-11-16 23:28:32', ''),
+              (135, 99, 3900, 25, 2.08, 1, '2018-11-16 23:28:32', ''),
+              (136, 99, 2880, 25, 2.08, 1, '2018-11-16 23:28:32', ''),
+              (137, 99, 4200, 25, 2.08, 1, '2018-11-16 23:28:32', ''),
+              (138, 100, 6880, 13, 1.08, 1, '2018-11-16 23:28:32', ''),
+              (139, 101, 2310, 13, 1.08, 1, '2018-11-16 23:28:32', ''),
+              (140, 102, 5000, 29.5, 2.46, 1, '2018-11-16 23:28:32', ''),
+              (141, 103, 39614, 9.5, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (142, 104, 16400, 17.41, 1.45, 1, '2018-11-16 23:28:32', ''),
+              (143, 105, 988, 23, 1.92, 1, '2018-11-16 23:28:32', ''),
+              (144, 106, 1200, 9, 0.75, 1, '2018-11-16 23:28:32', ''),
+              (145, 107, 304514, 8, 0.67, 1, '2018-11-16 23:28:32', ''),
+              (146, 108, 4000, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (147, 108, 6200, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (148, 109, 12500, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (149, 110, 2800, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (150, 111, 1000, 23.385, 1.95, 1, '2018-11-16 23:28:32', ''),
+              (151, 111, 1400, 23.385, 1.95, 1, '2018-11-16 23:28:32', ''),
+              (152, 111, 800, 23.385, 1.95, 1, '2018-11-16 23:28:32', ''),
+              (153, 112, 55000, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (154, 112, 45258, 14, 1.17, 1, '2018-11-16 23:28:32', ''),
+              (155, 113, 130853, 11.5, 0.96, 1, '2018-11-16 23:28:32', ''),
+              (156, 114, 12500, 10, 0.83, 1, '2018-11-16 23:28:32', ''),
+              (157, 114, 2500, 10, 0.83, 1, '2018-11-16 23:28:32', ''),
+              (158, 115, 6500, 10.5, 0.88, 1, '2018-11-16 23:28:32', ''),
+              (159, 115, 6477, 10.5, 0.88, 1, '2018-11-16 23:28:32', ''),
+              (160, 116, 1800, 40, 3.33, 1, '2018-11-16 23:28:32', ''),
+              (161, 117, 15017, 15, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (162, 118, 14900, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (163, 119, 3078, 22.2, 1.85, 1, '2018-11-16 23:28:32', ''),
+              (164, 120, 5000, 13.8, 1.15, 1, '2018-11-16 23:28:32', ''),
+              (165, 121, 13526, 13.8, 1.15, 1, '2018-11-16 23:28:32', ''),
+              (166, 122, 43942, 9.48, 0.79, 1, '2018-11-16 23:28:32', ''),
+              (167, 123, 18719, 6.6, 0.55, 1, '2018-11-16 23:28:32', ''),
+              (168, 124, 8000, 48, 4, 1, '2018-11-16 23:28:32', ''),
+              (169, 125, 6512, 11.88, 0.99, 1, '2018-11-16 23:28:32', ''),
+              (170, 126, 20000, 18, 1.5, 1, '2018-11-16 23:28:32', ''),
+              (171, 127, 6180, 15, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (172, 128, 4000, 24, 2, 1, '2018-11-16 23:28:32', ''),
+              (173, 129, 10000, 15, 1.25, 1, '2018-11-16 23:28:32', ''),
+              (174, 130, 20000, 10.68, 0.89, 1, '2018-11-16 23:28:32', ''),
+              (175, 131, 6300, 10.92, 0.91, 1, '2018-11-16 23:28:32', ''),
+              (176, 132, 61250, 6.6, 0.55, 1, '2018-11-16 23:28:32', ''),
+              (177, 133, 12000, 10.08, 0.84, 1, '2018-11-16 23:28:32', ''),
+              (178, 134, 7650, 16.2, 1.35, 1, '2018-11-16 23:28:32', ''),
+              (179, 135, 25000, 10.56, 0.88, 1, '2018-11-16 23:28:32', ''),
+              (180, 136, 1920, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (181, 137, 1000, 17.4, 1.45, 1, '2018-11-16 23:28:32', ''),
+              (182, 138, 21600, 7.64, 0.64, 1, '2018-11-16 23:28:32', ''),
+              (183, 139, 10320, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (184, 140, 3100, 12, 1, 1, '2018-11-16 23:28:32', ''),
+              (185, 141, 10100, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (186, 142, 8949, 7.5, 0.63, 1, '2018-11-16 23:28:32', ''),
+              (187, 143, 15000, 4.5, 0.38, 1, '2018-11-16 23:28:32', ''),
+              (188, 144, 144620, 3.24, 0.27, 1, '2018-11-16 23:28:32', ''),
+              (189, 145, 60000, 6, 0.5, 1, '2018-11-16 23:28:32', ''),
+              (190, 146, 3000, 9.6, 0.8, 1, '2018-11-16 23:28:32', ''),
+              (191, 147, 10000, 4.46, 0.37, 1, '2018-11-16 23:28:32', ''),
+              (192, 148, 9521, 6.25, 0.52, 1, '2018-11-16 23:28:32', ''),
+              (193, 149, 23342, 4.95, 0.41, 1, '2018-11-16 23:28:32', ''),
+              (194, 150, 3000, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
+              (195, 151, 5200, 7.62, 0.64, 1, '2018-11-16 23:28:32', ''),
+              (196, 152, 12100, 8.43, 0.7, 1, '2018-11-16 23:28:32', ''),
+              (197, 153, 3000, 14.8, 1.23, 1, '2018-11-16 23:28:32', ''),
+              (198, 154, 2000, 13.8, 1.15, 1, '2018-11-16 23:28:32', ''),
+              (199, 155, 17600, 9, 0.75, 1, '2018-11-16 23:28:32', ''),
+              (200, 156, 3313, 13, 1.08, 1, '2018-11-16 23:28:32', ''),
+              (201, 157, 2500, 12, 1, 1, '2018-11-16 23:28:32', '');
+
+              INSERT INTO Space_Attributes(SpaceID,AttributeID) VALUES
+               (1,3)
+              ,(2,3)
+              ,(3,3)
+              ,(4,3)
+              ,(5,3)
+              ,(6,3)
+              ,(7,3)
+              ,(8,3)
+              ,(9,3)
+              ,(10,3)
+              ,(11,3)
+              ,(12,3)
+              ,(13,3)
+              ,(14,3)
+              ,(15,3)
+              ,(16,3)
+              ,(17,3)
+              ,(18,3)
+              ,(19,2)
+              ,(20,3)
+              ,(21,2)
+              ,(22,2)
+              ,(23,3)
+              ,(24,3)
+              ,(25,3)
+              ,(26,3)
+              ,(27,3)
+              ,(28,2)
+              ,(29,3)
+              ,(30,3)
+              ,(31,3)
+              ,(32,3)
+              ,(33,3)
+              ,(34,3)
+              ,(35,3)
+              ,(36,3)
+              ,(37,3)
+              ,(38,3)
+              ,(39,3)
+              ,(40,3)
+              ,(41,3)
+              ,(42,1)
+              ,(43,2)
+              ,(44,2)
+              ,(45,3)
+              ,(46,3)
+              ,(47,3)
+              ,(48,3)
+              ,(49,3)
+              ,(50,3)
+              ,(51,3)
+              ,(52,3)
+              ,(53,3)
+              ,(54,3)
+              ,(55,3)
+              ,(56,3)
+              ,(57,3)
+              ,(58,3)
+              ,(59,3)
+              ,(60,3)
+              ,(61,3)
+              ,(62,3)
+              ,(63,3)
+              ,(64,3)
+              ,(65,3)
+              ,(66,3)
+              ,(67,3)
+              ,(68,3)
+              ,(69,3)
+              ,(70,3)
+              ,(71,3)
+              ,(72,3)
+              ,(73,3)
+              ,(74,2)
+              ,(75,3)
+              ,(76,3)
+              ,(77,3)
+              ,(78,3)
+              ,(79,3)
+              ,(80,3)
+              ,(81,3)
+              ,(82,3)
+              ,(83,3)
+              ,(84,3)
+              ,(85,3)
+              ,(86,3)
+              ,(87,3)
+              ,(88,3)
+              ,(89,3)
+              ,(90,3)
+              ,(91,3)
+              ,(92,3)
+              ,(93,3)
+              ,(94,3)
+              ,(95,3)
+              ,(96,3)
+              ,(97,3)
+              ,(98,3)
+              ,(99,3)
+              ,(100,3)
+              ,(101,3)
+              ,(102,3)
+              ,(103,3)
+              ,(104,3)
+              ,(105,3)
+              ,(106,3)
+              ,(107,3)
+              ,(108,3)
+              ,(109,3)
+              ,(110,3)
+              ,(111,3)
+              ,(112,3)
+              ,(113,3)
+              ,(114,3)
+              ,(115,3)
+              ,(116,3)
+              ,(117,3)
+              ,(118,3)
+              ,(119,3)
+              ,(120,3)
+              ,(121,3)
+              ,(122,3)
+              ,(123,3)
+              ,(124,3)
+              ,(125,3)
+              ,(126,3)
+              ,(127,3)
+              ,(128,3)
+              ,(129,3)
+              ,(130,3)
+              ,(131,3)
+              ,(132,3)
+              ,(133,3)
+              ,(134,3)
+              ,(135,3)
+              ,(136,3)
+              ,(137,3)
+              ,(138,3)
+              ,(139,3)
+              ,(140,3)
+              ,(141,3)
+              ,(142,3)
+              ,(143,3)
+              ,(144,3)
+              ,(145,3)
+              ,(146,3)
+              ,(147,3)
+              ,(148,3)
+              ,(149,3)
+              ,(150,3)
+              ,(151,3)
+              ,(152,3)
+              ,(153,3)
+              ,(154,3)
+              ,(155,3)
+              ,(156,3)
+              ,(157,3)
+              ,(158,3)
+              ,(159,3)
+              ,(160,3)
+              ,(161,3)
+              ,(162,3)
+              ,(163,3)
+              ,(164,3)
+              ,(165,3)
+              ,(166,3)
+              ,(167,3)
+              ,(168,3)
+              ,(169,3)
+              ,(170,3)
+              ,(171,3)
+              ,(172,3)
+              ,(176,3)
+              ,(177,3)
+              ,(178,3)
+              ,(179,3)
+              ,(180,3)
+              ,(181,3)
+              ,(182,3)
+              ,(183,3)
+              ,(184,3)
+              ,(185,3)
+              ,(186,3)
+              ,(187,3)
+              ,(188,3)
+              ,(189,3)
+              ,(190,3)
+              ,(191,3)
+              ,(192,3)
+              ,(193,3)
+              ,(194,3)
+              ,(195,3)
+              ,(196,3)
+              ,(197,3)
+              ,(198,3)
+              ,(199,3)
+              ,(200,3)
+              ,(201,3);
+
+              CREATE TABLE IF NOT EXISTS Pictures(
+                PictureID int(11) AUTO_INCREMENT,
+                FileName varchar(200) UNIQUE NOT NULL,
+                PRIMARY KEY(PictureID)
+              );
+
+              CREATE TABLE IF NOT EXISTS Warehouse_Pictures(
+                PictureID int(11),
+                WarehouseID int(11),
+                PRIMARY KEY(PictureID, WarehouseID),
+                FOREIGN KEY(PictureID) REFERENCES Pictures(PictureID),
+                FOREIGN KEY(WarehouseID) REFERENCES Warehouses(WarehouseID)
+              );
+
+
+              INSERT INTO Pictures (FileName, PictureID) VALUES
+               ('image1.jpg',1)
+              ,('image2.jpg',2)
+              ,('image3.jpg',3)
+              ,('image4.jpg',4)
+              ,('image5.jpg',5)
+              ,('image6.jpg',6)
+              ,('image7.jpg',7)
+              ,('image8.jpg',8)
+              ,('image9.jpg',9)
+              ,('image10.jpg',10)
+              ,('image11.jpg',11)
+              ,('image12.jpg',12)
+              ,('image13.jpg',13)
+              ,('image14.jpg',14)
+              ,('image15.jpg',15)
+              ,('image16.jpg',16)
+              ,('image17.jpg',17)
+              ,('image18.jpg',18)
+              ,('image19.jpg',19)
+              ,('image20.jpg',20)
+              ,('image21.jpg',21)
+              ,('image22.jpg',22)
+              ,('image23.jpg',23)
+              ,('image24.jpg',24)
+              ,('image25.jpg',25)
+              ,('image26.jpg',26)
+              ,('image27.jpg',27)
+              ,('image28.jpg',28)
+              ,('image29.jpg',29)
+              ,('image30.jpg',30)
+              ,('image31.jpg',31)
+              ,('image32.jpg',32)
+              ,('image33.jpg',33)
+              ,('image34.jpg',34)
+              ,('image35.jpg',35)
+              ,('image36.jpg',36)
+              ,('image37.jpg',37)
+              ,('image38.jpg',38)
+              ,('image39.jpg',39)
+              ,('image40.jpg',40)
+              ,('image41.jpg',41)
+              ,('image42.jpg',42)
+              ,('image43.jpg',43)
+              ,('image44.jpg',44)
+              ,('image45.jpg',45)
+              ,('image46.jpg',46)
+              ,('image47.jpg',47)
+              ,('image48.jpg',48)
+              ,('image49.jpg',49)
+              ,('image50.jpg',50)
+              ,('image51.jpg',51)
+              ,('image52.jpg',52)
+              ,('image53.jpg',53)
+              ,('image54.jpg',54)
+              ,('image55.jpg',55)
+              ,('image56.jpg',56)
+              ,('image57.jpg',57)
+              ,('image58.jpg',58)
+              ,('image59.jpg',59)
+              ,('image60.jpg',60)
+              ,('image61.jpg',61)
+              ,('image62.jpg',62)
+              ,('image63.jpg',63)
+              ,('image64.jpg',64)
+              ,('image65.jpg',65)
+              ,('image66.jpg',66)
+              ,('image67.jpg',67)
+              ,('image68.jpg',68)
+              ,('image69.jpg',69)
+              ,('image70.jpg',70)
+              ,('image71.jpg',71)
+              ,('image72.jpg',72)
+              ,('image73.jpg',73)
+              ,('image74.jpg',74)
+              ,('image75.jpg',75)
+              ,('image76.jpg',76)
+              ,('image77.jpg',77)
+              ,('image78.jpg',78)
+              ,('image79.jpg',79)
+              ,('image80.jpg',80)
+              ,('image81.jpg',81)
+              ,('image82.jpg',82)
+              ,('image83.jpg',83)
+              ,('image84.jpg',84)
+              ,('image85.jpg',85)
+              ,('image86.jpg',86)
+              ,('image87.jpg',87)
+              ,('image88.jpg',88)
+              ,('image89.jpg',89)
+              ,('image90.jpg',90)
+              ,('image91.jpg',91)
+              ,('image92.jpg',92)
+              ,('image93.jpg',93)
+              ,('image94.jpg',94)
+              ,('image95.jpg',95)
+              ,('image96.jpg',96)
+              ,('image97.jpg',97)
+              ,('image98.jpg',98)
+              ,('image99.jpg',99)
+              ,('image100.jpg',100)
+              ,('image101.jpg',101)
+              ,('image102.jpg',102)
+              ,('image103.jpg',103)
+              ,('image104.jpg',104)
+              ,('image105.jpg',105)
+              ,('image106.jpg',106)
+              ,('image107.jpg',107)
+              ,('image108.jpg',108)
+              ,('image109.jpg',109)
+              ,('image110.jpg',110)
+              ,('image111.jpg',111)
+              ,('image112.jpg',112)
+              ,('image113.jpg',113)
+              ,('image114.jpg',114)
+              ,('image115.jpg',115)
+              ,('image116.jpg',116)
+              ,('image117.jpg',117)
+              ,('image118.jpg',118)
+              ,('image119.jpg',119)
+              ,('image120.jpg',120)
+              ,('image121.jpg',121)
+              ,('image122.jpg',122)
+              ,('image123.jpg',123)
+              ,('image124.jpg',124)
+              ,('image125.jpg',125)
+              ,('image126.jpg',126)
+              ,('image127.jpg',127)
+              ,('image128.jpg',128)
+              ,('image129.jpg',129)
+              ,('image130.jpg',130)
+              ,('image131.jpg',131)
+              ,('image132.jpg',132)
+              ,('image133.jpg',133)
+              ,('image134.jpg',134)
+              ,('image135.jpg',135)
+              ,('image136.jpg',136)
+              ,('image137.jpg',137)
+              ,('image138.jpg',138)
+              ,('image139.jpg',139)
+              ,('image140.jpg',140)
+              ,('image141.jpg',141)
+              ,('image142.jpg',142)
+              ,('image143.jpg',143)
+              ,('image144.jpg',144)
+              ,('image145.jpg',145)
+              ,('image146.jpg',146)
+              ,('image147.jpg',147)
+              ,('image148.jpg',148)
+              ,('image149.jpg',149)
+              ,('image150.jpg',150);
+
+              INSERT INTO Warehouse_Pictures(WarehouseID,PictureID) VALUES
+               (1,1)
+              ,(1,2)
+              ,(2,3)
+              ,(3,4)
+              ,(3,5)
+              ,(4,6)
+              ,(4,7)
+              ,(5,8)
+              ,(6,9)
+              ,(6,10)
+              ,(6,11)
+              ,(7,12)
+              ,(7,13)
+              ,(8,14)
+              ,(9,15)
+              ,(9,16)
+              ,(10,17)
+              ,(10,18)
+              ,(11,19)
+              ,(11,20)
+              ,(11,21)
+              ,(11,22)
+              ,(12,23)
+              ,(13,24)
+              ,(13,25)
+              ,(14,26)
+              ,(14,27)
+              ,(15,28)
+              ,(15,29)
+              ,(15,30)
+              ,(16,31)
+              ,(16,32)
+              ,(16,33)
+              ,(17,34)
+              ,(17,35)
+              ,(17,36)
+              ,(17,37)
+              ,(18,38)
+              ,(18,39)
+              ,(19,40)
+              ,(19,41)
+              ,(20,42)
+              ,(21,43)
+              ,(22,44)
+              ,(22,45)
+              ,(22,46)
+              ,(22,47)
+              ,(23,48)
+              ,(24,49)
+              ,(24,50)
+              ,(24,51)
+              ,(25,52)
+              ,(25,53)
+              ,(25,54)
+              ,(25,55)
+              ,(25,56)
+              ,(26,57)
+              ,(26,58)
+              ,(27,59)
+              ,(27,60)
+              ,(28,61)
+              ,(28,62)
+              ,(28,63)
+              ,(29,64)
+              ,(29,65)
+              ,(29,66)
+              ,(30,67)
+              ,(30,68)
+              ,(31,69)
+              ,(31,70)
+              ,(31,71)
+              ,(32,72)
+              ,(33,73)
+              ,(33,74)
+              ,(33,75)
+              ,(33,76)
+              ,(34,77)
+              ,(34,78)
+              ,(35,79)
+              ,(35,80)
+              ,(35,81)
+              ,(36,82)
+              ,(37,83)
+              ,(37,84)
+              ,(38,85)
+              ,(38,86)
+              ,(38,87)
+              ,(39,88)
+              ,(39,89)
+              ,(40,90)
+              ,(40,91)
+              ,(41,92)
+              ,(41,93)
+              ,(41,94)
+              ,(42,95)
+              ,(42,96)
+              ,(42,97)
+              ,(43,98)
+              ,(44,99)
+              ,(44,100)
+              ,(44,101)
+              ,(45,102)
+              ,(45,103)
+              ,(46,104)
+              ,(46,105)
+              ,(46,106)
+              ,(47,107)
+              ,(47,108)
+              ,(47,109)
+              ,(48,110)
+              ,(48,111)
+              ,(48,112)
+              ,(49,113)
+              ,(49,114)
+              ,(49,115)
+              ,(50,116)
+              ,(51,117)
+              ,(51,118)
+              ,(51,119)
+              ,(51,120)
+              ,(52,121)
+              ,(52,122)
+              ,(53,123)
+              ,(53,124)
+              ,(53,125)
+              ,(54,126)
+              ,(55,127)
+              ,(55,128)
+              ,(56,129)
+              ,(57,130)
+              ,(57,131)
+              ,(57,132)
+              ,(58,133)
+              ,(58,134)
+              ,(58,135)
+              ,(59,136)
+              ,(59,137)
+              ,(60,138)
+              ,(60,139)
+              ,(61,140)
+              ,(61,141)
+              ,(61,142)
+              ,(61,143)
+              ,(62,144)
+              ,(63,145)
+              ,(63,146)
+              ,(64,147)
+              ,(64,148)
+              ,(64,149)
+              ,(64,150)
+              ,(65,124)
+              ,(65,125)
+              ,(66,126)
+              ,(67,127)
+              ,(67,128)
+              ,(68,129)
+              ,(69,130)
+              ,(60,131)
+              ,(70,132)
+              ,(70,133)
+              ,(70,134)
+              ,(70,135)
+              ,(71,136)
+              ,(71,137)
+              ,(72,138)
+              ,(72,139)
+              ,(72,140)
+              ,(72,141)
+              ,(72,142);
+
+              -- Needs more structure and thought processing
+
+              CREATE TABLE IF NOT EXISTS Notification_Types_Types (
+                TypeTypeID int(11) AUTO_INCREMENT,
+                TypeTypeShortName varchar(12) UNIQUE,
+                TypeTypeName varchar(30),
+                TypeTypeIcon varchar(30),
+                PRIMARY KEY(TypeTypeID)
+              );
+
+              INSERT INTO Notification_Types_Types (TypeTypeShortName, TypeTypeName, TypeTypeIcon) VALUES
+                ('contract', 'Contract Update', 'fa-bell');
+
+              CREATE TABLE IF NOT EXISTS Notification_Types (
+                TypeID int(11) AUTO_INCREMENT,
+                TypeTypeID int(11),
+                TypeShortName varchar(12) UNIQUE,
+                TypeName varchar(30),
+                TypeIcon varchar(30),
+                PRIMARY KEY(TypeID),
+                FOREIGN KEY(TypeTypeID) REFERENCES Notification_Types_Types(TypeTypeID)
+              );
+
+              INSERT INTO `Notification_Types` (`TypeTypeID`, `TypeShortName`, `TypeName`, `TypeIcon`) VALUES
+              (1, 'approved', 'Approved Contract', 'fa-check'),
+              (1, 'denied', 'Denied Contract', 'fa-times'),
+              (1, 'pending', 'Pending Contract', 'fa-exclamation'),
+              (1, 'reserved', 'Reserved Contract', 'fa-clock-o');
+
+              CREATE TABLE IF NOT EXISTS Notifications (
+                NotificationID int(11) AUTO_INCREMENT,
+                UserID int(11),
+                NotificationType int(11),
+                Message varchar(200),
+                NotificationTime timestamp DEFAULT CURRENT_TIMESTAMP,
+                LinksTo varchar(100),
+                PRIMARY KEY(NotificationID),
+                FOREIGN KEY(UserID) REFERENCES phprbac_users(UserID),
+                FOREIGN KEY(NotificationType) REFERENCES Notification_Types(TypeID)
+              );
+
+              CREATE TABLE IF NOT EXISTS Notification_Status (
+                NotificationStatusID int(11) AUTO_INCREMENT,
+                NotificationStatusName varchar(30),
+                PRIMARY KEY(NotificationStatusID)
+              );
+
+              INSERT INTO Notification_Status (NotificationStatusName) VALUES
+              ('New'),
+              ('Read');
+
+              CREATE TABLE IF NOT EXISTS Notification_Status_Time (
+                NotificationID int(11),
+                NotificationStatusID int(11),
+                NotificationStatusTime timestamp DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY(NotificationID, NotificationStatusID),
+                FOREIGN KEY(NotificationID) REFERENCES Notifications(NotificationID),
+                FOREIGN KEY(NotificationStatusID) REFERENCES Notification_Status(NotificationStatusID)
+              );

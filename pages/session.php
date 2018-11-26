@@ -1,6 +1,6 @@
 <?php
 require_once "../includes/main.php";
-include "../includes/rankingFunctions.php";
+array_print($_COOKIE);
 
 
 $str = "A 'quote' is <b>bold</b>;";
@@ -15,4 +15,8 @@ echo mysqli_real_escape_string($GLOBALS['conn'],$str) . "<br>";
 echo clean($str);
 
 array_print($_SESSION);
+echo clean("th!sPwd!s4Le55ee") . "<br>";
+echo md5("th!sPwd!s4Le55ee") . "<br>";
+echo "878fcd3829462665ff1ad75ad0f9ca11";
+
 ?>

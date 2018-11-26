@@ -247,7 +247,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     background-position:center;
     background-size:cover;
     text-align: center;
-    height:800px;
+    height:500px;
     z-index: 1;
 }
 .welcome-hero:before{
@@ -260,7 +260,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     background:rgba(65,73,89,.65);
     z-index: -1;
 }
-.welcome-hero-txt { padding-top: 155px;}
+.welcome-hero-txt { padding-top: 65px;}
 
 .welcome-hero-txt h2 {
     font-size: 48px;
@@ -276,7 +276,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     margin-top: 25px;
 }
 
-.welcome-hero-serch-box{margin-top: 78px;display: flex;}
+.welcome-hero-serch-box{margin-top: 55px;display: flex;}
 .welcome-hero-form {
     display: flex;
     background: #fff;
@@ -911,7 +911,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     display: none;
     width: 40px;
     line-height: 40px;
-    height: 40px;
+    height: 43px;
     text-align: center;
     font-size: 20px;
     cursor: pointer;

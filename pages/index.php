@@ -3,9 +3,13 @@ require_once "../includes/main.php";
 
 if(isset($_SESSION['UserID'])){
   $hasAccount = $rbac->Users->roleCount($UserID = $_SESSION['UserID']);
+  $warehouseRole = $rbac->Users->hasRole("Warehouse_Owner", $UserID = $_SESSION['UserID']);
+  $LesseeRole = $rbac->Users->hasRole("Lessee", $UserID = $_SESSION['UserID']);
 }
 else {
   $hasAccount = 0;
+  $warehouseRole = 0;
+  $LesseeRole = 0;
 }
 ?>
 
@@ -149,13 +153,15 @@ else {
         <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
           <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
             <li class=" scroll active"><a href="#home">home</a></li>
-            <li class="scroll"><a href="#explore">explore</a></li>
+            <li class="scroll"><a href="#nearby">nearby</a></li>
             <li class="scroll"><a href="#reviews">review</a></li>
-            <?php if(isset($_SESSION['UserID'])) {?>
-               <li><a href="warehouse.php">My Account</a></li>
-             <?php } else { ?>
-               <li><a href="login.php">Login/Register</a></li>
-             <?php } ?>
+            <?php if($warehouseRole) {?>
+              <li><a href="warehouse.php">My Account</a></li>
+            <?php } else if($LesseeRole) {?>
+              <li><a href="index.php">My Account</a></li>
+            <?php } else { ?>
+              <li><a href="login.php">Login/Register</a></li>
+            <?php } ?>
           </ul><!--/.nav -->
         </div><!-- /.navbar-collapse -->
       </div><!--/.container-->
@@ -221,7 +227,7 @@ else {
   <div class="container">
     <div class="list-topics-content">
       <ul>
-        <?php // TODO: do this
+        <?php
         $sql = "SELECT AttributeID, AttributeName, AttributeIcon
         FROM Attributes
         WHERE AttributeType = 1";
@@ -253,13 +259,12 @@ else {
   </section><!--/.list-topics-->
   <!--list-topics end-->
 
-<?php // TODO: base the following off of recommendations from the database ?>
-  <!--explore start -->
-  <section id="explore" class="explore">
+  <!--nearby start -->
+  <section id="nearby" class="explore">
     <div class="container">
       <div class="section-header">
-        <h2>explore</h2>
-        <p>Explore New place, food, culture around the world and many more</p>
+        <h2>nearby</h2>
+        <p>Explore nearby and recommended locations</p>
       </div><!--/.section-header-->
       <div class="explore-content">
 
@@ -268,461 +273,517 @@ else {
         while($results <= 6){?>
           <div class="row">
             <?php
-            $j = 1;
-            while($j <= 3 & $results <= 7){ ?>
+            $spaceInfo = getAllSpaces();
+
+            if(isset($_COOKIE['Latitude']))
+              $latitude = $_COOKIE['Latitude'];
+            else
+              $latitude = FALSE;
+
+            if(isset($_COOKIE['Longitude']))
+              $longitude = $_COOKIE['Longitude'];
+            else
+              $longitude = FALSE;
+// TODO: javascript to adapt this on load
+            if($latitude && $longitude){
+              for($i = 0; $i < count($spaceInfo); $i++){
+                $spaceInfo[$i]["Distance"] = distanceAlgorithm($spaceInfo[$i]["Latitude"], $spaceInfo[$i]["Longitude"], $latitude, $longitude);
+                $spaceInfo[$i]["Utilization"] = Utilization($spaceInfo[$i]['SpaceID'], time(), time(), 100);
+              }
+              foreach($spaceInfo as $key => $value) {
+                $distance[$key] = $value['Distance'];
+                $Utilization[$key] = $value['Utilization'];
+              }
+              array_multisort($distance, SORT_ASC, $Utilization, SORT_DESC, $spaceInfo);
+            }
+            else{
+              for($i = 0; $i < count($spaceInfo); $i++){
+                $spaceInfo[$i]["Utilization"] = Utilization($spaceInfo[$i]['SpaceID'], time(), time(), 100);
+              }
+              foreach($spaceInfo as $key => $value) {
+                $Utilization[$key] = $value['Utilization'];
+              }
+              array_multisort($Utilization, SORT_DESC, $spaceInfo);
+            }
+
+
+            for($i = 0; $i < 6; $i++){
+              $warehouseID = $spaceInfo[$i]['WarehouseID'];
+              $SpaceID = $spaceInfo[$i]['SpaceID'];
+              $sql = "SELECT *
+              FROM Warehouse_Pictures
+              LEFT JOIN Pictures
+              ON Pictures.PictureID = Warehouse_Pictures.PictureID
+              WHERE WarehouseID = $warehouseID
+              ORDER BY Pictures.PictureID
+              LIMIT 1";
+
+              $picture = ($conn -> query($sql)) -> fetch_assoc();
+
+              $sql = "SELECT *
+              FROM Space_Attributes
+              LEFT JOIN Attributes
+              ON Attributes.AttributeID = Space_Attributes.AttributeID
+              WHERE SpaceID = $SpaceID
+              AND AttributeType = 1
+              LIMIT 1";
+
+              $attributes = ($conn -> query($sql)) -> fetch_assoc();
+              ?>
               <div class=" col-md-4 col-sm-6">
                 <div class="single-explore-item">
                   <div class="single-explore-img">
-                    <img src="../includes/images/explore/e1.jpg" alt="explore image">
-                    <div class="single-explore-img-info">
-                      <button onclick="window.location.href='#'">best rated</button>
-                      <div class="single-explore-image-icon-box">
-                        <ul>
-                          <li>
-                            <div class="single-explore-image-icon">
-                              <i class="fa fa-arrows-alt"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="single-explore-image-icon">
-                              <i class="fa fa-bookmark-o"></i>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+                    <img src="../pictures/<?php echo $picture['FileName']; ?>" alt="explore image">
+                    <!-- <?php if($i == 0){ ?>
+                      <div class="single-explore-img-info">
+                        <button onclick="window.location.href='space.php?space=<?php echo $spaceInfo[$i]['SpaceID']; ?>'">Closest</button>
+                      </div> <?php } ?> -->
                     </div>
-                  </div>
-                  <div class="single-explore-txt bg-theme-1">
-                    <h2><a href="#">tommy helfinger bar</a></h2>
-                    <p class="explore-rating-price">
-                      <span class="explore-rating">5.0</span>
-                      <a href="#"> <?php echo $results; ?> ratings</a>
-                      <span class="explore-price-box">
-                        form
-                        <span class="explore-price">5$-300$</span>
-                      </span>
-                      <a href="#">resturent</a>
-                    </p>
-                    <div class="explore-person">
-                      <div class="row">
-                        <div class="col-sm-2">
+                    <div class="single-explore-txt bg-theme-1">
+                      <h2><a href="space.php?space=<?php echo $spaceInfo[$i]['SpaceID']; ?>"><?php echo $spaceInfo[$i]['Address'] . ", " . $spaceInfo[$i]['City'] . " " . $spaceInfo[$i]['State']; ?></a></h2>
+                      <p class="explore-rating-price">
+                        <span class="explore-rating">5.0</span>
+                        <a href="space.php?space=<?php echo $spaceInfo[$i]['SpaceID']; ?>"> <?php echo $results; ?> ratings</a>
+                        <span class="explore-price-box">
+                          From
+                          <span class="explore-price">$<?php echo $spaceInfo[$i]['MonthlyPrice']; ?>/sqft/mo</span>
+                        </span>
+                        <a href="space.php?space=<?php echo $spaceInfo[$i]['SpaceID']; ?>"><?php echo $attributes['AttributeName']; ?></a>
+                      </p>
+                      <div class="explore-person">
+                        <div class="row">
+                          <!-- <div class="col-sm-2">
                           <div class="explore-person-img">
-                            <a href="#">
-                              <img src="../includes/images/explore/person.png" alt="explore person">
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-sm-10">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid ut labore et dolore magna aliqua....
-                          </p>
-                        </div>
+                          <a href="#">
+                          <img src="../includes/images/explore/person.png" alt="explore person">
+                        </a>
                       </div>
-                    </div>
-                    <div class="explore-open-close-part">
-                      <div class="row">
-                        <div class="col-sm-5">
-                          <button class="close-btn" onclick="window.location.href='#'">close now</button>
-                        </div>
-                        <div class="col-sm-7">
-                          <div class="explore-map-icon">
-                            <a href="#"><i data-feather="map-pin"></i></a>
-                            <a href="#"><i data-feather="upload"></i></a>
-                            <a href="#"><i data-feather="heart"></i></a>
-                          </div>
-                        </div>
-                      </div>
+                    </div> -->
+                    <div class="col-sm-12">
+                      <p>
+                        <?php
+                        $lines = 2;
+                        $charactersPerLine = 50;
+                        if(isset($spaceInfo[$i]['SpaceInformation']))
+                        $spaceInfoPrint = limitTextLength($spaceInfo[$i]['SpaceInformation'], $lines * $charactersPerLine - strlen($spaceInfo[$i]['SpaceInformation']) - 3);
+                        else
+                        $spaceInfoPrint = "";
+
+                        if(isset($spaceInfo[$i]['WarehouseInformation']))
+                        $warehouseInfoPrint = limitTextLength($spaceInfo[$i]['WarehouseInformation'], $lines * $charactersPerLine - 3);
+                        else
+                        $warehouseInfoPrint = "";
+
+                        echo $warehouseInfoPrint . "<br>" . $spaceInfoPrint;
+                        echo (strlen($spaceInfo[$i]['SpaceInformation']) + strlen($spaceInfo[$i]['WarehouseInformation'])) > ($lines * $charactersPerLine - 3) ? " ...." : "";  ?>
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <?php  $j++;
-              $results++;
-            }
-          }
-          ?>
-        </div>
-      </div>
-    </div><!--/.container-->
-
-  </section><!--/.explore-->
-  <!--explore end -->
-
-  <!--reviews start -->
-  <section id="reviews" class="reviews">
-    <div class="section-header">
-      <h2>clients reviews</h2>
-      <p>What our client say about us</p>
-    </div><!--/.section-header-->
-    <div class="reviews-content">
-      <div class="testimonial-carousel">
-        <div class="single-testimonial-box">
-          <div class="testimonial-description">
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img src="../includes/images/clients/c1.png" alt="clients">
-              </div><!--/.testimonial-img-->
-              <div class="testimonial-person">
-                <h2>Tom Leakar</h2>
-                <h4>london, UK</h4>
-                <div class="testimonial-person-star">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div><!--/.testimonial-person-->
-            </div><!--/.testimonial-info-->
-            <div class="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
-              </p>
-            </div><!--/.testimonial-comment-->
-          </div><!--/.testimonial-description-->
-        </div><!--/.single-testimonial-box-->
-        <div class="single-testimonial-box">
-          <div class="testimonial-description">
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img src="../includes/images/clients/c2.png" alt="clients">
-              </div><!--/.testimonial-img-->
-              <div class="testimonial-person">
-                <h2>monirul islam</h2>
-                <h4>london, UK</h4>
-                <div class="testimonial-person-star">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div><!--/.testimonial-person-->
-            </div><!--/.testimonial-info-->
-            <div class="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
-              </p>
-            </div><!--/.testimonial-comment-->
-          </div><!--/.testimonial-description-->
-        </div><!--/.single-testimonial-box-->
-        <div class="single-testimonial-box">
-          <div class="testimonial-description">
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img src="../includes/images/clients/c3.png" alt="clients">
-              </div><!--/.testimonial-img-->
-              <div class="testimonial-person">
-                <h2>Shohrab Hossain</h2>
-                <h4>london, UK</h4>
-                <div class="testimonial-person-star">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div><!--/.testimonial-person-->
-            </div><!--/.testimonial-info-->
-            <div class="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
-              </p>
-            </div><!--/.testimonial-comment-->
-          </div><!--/.testimonial-description-->
-        </div><!--/.single-testimonial-box-->
-        <div class="single-testimonial-box">
-          <div class="testimonial-description">
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img src="../includes/images/clients/c4.png" alt="clients">
-              </div><!--/.testimonial-img-->
-              <div class="testimonial-person">
-                <h2>Tom Leakar</h2>
-                <h4>london, UK</h4>
-                <div class="testimonial-person-star">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div><!--/.testimonial-person-->
-            </div><!--/.testimonial-info-->
-            <div class="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
-              </p>
-            </div><!--/.testimonial-comment-->
-          </div><!--/.testimonial-description-->
-        </div><!--/.single-testimonial-box-->
-        <div class="single-testimonial-box">
-          <div class="testimonial-description">
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img src="../includes/images/clients/c1.png" alt="clients">
-              </div><!--/.testimonial-img-->
-              <div class="testimonial-person">
-                <h2>Tom Leakar</h2>
-                <h4>london, UK</h4>
-                <div class="testimonial-person-star">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div><!--/.testimonial-person-->
-            </div><!--/.testimonial-info-->
-            <div class="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
-              </p>
-            </div><!--/.testimonial-comment-->
-          </div><!--/.testimonial-description-->
-        </div><!--/.single-testimonial-box-->
-        <div class="single-testimonial-box">
-          <div class="testimonial-description">
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img src="../includes/images/clients/c2.png" alt="clients">
-              </div><!--/.testimonial-img-->
-              <div class="testimonial-person">
-                <h2>monirul islam</h2>
-                <h4>london, UK</h4>
-                <div class="testimonial-person-star">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div><!--/.testimonial-person-->
-            </div><!--/.testimonial-info-->
-            <div class="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
-              </p>
-            </div><!--/.testimonial-comment-->
-          </div><!--/.testimonial-description-->
-        </div><!--/.single-testimonial-box-->
-        <div class="single-testimonial-box">
-          <div class="testimonial-description">
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img src="../includes/images/clients/c3.png" alt="clients">
-              </div><!--/.testimonial-img-->
-              <div class="testimonial-person">
-                <h2>Shohrab Hossain</h2>
-                <h4>london, UK</h4>
-                <div class="testimonial-person-star">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div><!--/.testimonial-person-->
-            </div><!--/.testimonial-info-->
-            <div class="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
-              </p>
-            </div><!--/.testimonial-comment-->
-          </div><!--/.testimonial-description-->
-        </div><!--/.single-testimonial-box-->
-        <div class="single-testimonial-box">
-          <div class="testimonial-description">
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img src="../includes/images/clients/c4.png" alt="clients">
-              </div><!--/.testimonial-img-->
-              <div class="testimonial-person">
-                <h2>Tom Leakar</h2>
-                <h4>london, UK</h4>
-                <div class="testimonial-person-star">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div><!--/.testimonial-person-->
-            </div><!--/.testimonial-info-->
-            <div class="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
-              </p>
-            </div><!--/.testimonial-comment-->
-          </div><!--/.testimonial-description-->
-        </div><!--/.single-testimonial-box-->
-      </div>
-    </div>
-
-  </section><!--/.reviews-->
-  <!--reviews end -->
-
-
-
-
-
-
-
-  <!--footer start-->
-  <footer id="footer"  class="footer">
-    <div class="container">
-      <div class="footer-menu">
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="index.php">@<span>Capacity</span></a>
-            </div><!--/.navbar-header-->
-          </div>
-          <div class="col-sm-9">
-            <ul class="footer-menu-item">
-              <li class="scroll"><a href="#explore">explore</a></li>
-              <li class="scroll"><a href="#reviews">review</a></li>
-              <li class="scroll"><a href="#blog">blog</a></li>
-              <li class="scroll"><a href="#contact">contact</a></li>
-              <?php if($hasAccount > 0) {?>
-                 <li><a href="warehouse.php">My Account</a></li>
-               <?php } else { ?>
-                 <li><a href="login.php">Login/Register</a></li>
-               <?php } ?>
-             </ul><!--/.nav -->
-          </div>
-        </div>
-      </div>
-      <div class="hm-footer-copyright">
-        <div class="row">
-          <div class="col-sm-5">
-            <p>
-              &copy;copyright. designed and developed by <a href="https://www.themesine.com/">themesine</a>
-            </p><!--/p-->
-          </div>
-          <div class="col-sm-7">
-            <div class="footer-social">
-              <span><i class="fa fa-phone"> +1  (123) 456 7890</i></span>
-              <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-              <a href="#"><i class="fa fa-google-plus"></i></a> -->
             </div>
           </div>
-        </div>
-
-      </div><!--/.hm-footer-copyright-->
-    </div><!--/.container-->
-
-    <div id="scroll-Top">
-      <div class="return-to-top">
-        <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
-      </div>
-
-    </div><!--/.scroll-Top-->
-
-  </footer><!--/.footer-->
-  <!--footer end-->
-
-  <!-- Include all js compiled plugins (below), or include individual files as needed -->
-
-  <script src="../includes/js/jquery.js"></script>
-
-  <!--modernizr.min.js-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
-  <!--bootstrap.min.js-->
-  <script src="../includes/js/bootstrap.min.js"></script>
-
-  <!-- bootsnav js -->
-  <script src="../includes/js/bootsnav.js"></script>
-
-  <!--feather.min.js-->
-  <script  src="../includes/js/feather.min.js"></script>
-
-  <!-- counter js -->
-  <script src="../includes/js/jquery.counterup.min.js"></script>
-  <script src="../includes/js/waypoints.min.js"></script>
-
-  <!--slick.min.js-->
-  <script src="../includes/js/slick.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-
-  <!--Custom JS-->
-  <script src="../includes/js/custom.js"></script>
-
-
-  <script>
-  // This example displays an address form, using the autocomplete feature
-  // of the Google Places API to help users fill in the information.
-
-  // This example requires the Places library. Include the libraries=places
-  // parameter when you first load the API. For example:
-  // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-  var placeSearch, autocomplete;
-  var componentForm = {
-    street_number: 'short_name',
-    route: 'long_name',
-    locality: 'long_name',
-    administrative_area_level_1: 'short_name',
-    country: 'long_name',
-    postal_code: 'short_name'
-  };
-
-  function initAutocomplete() {
-    // Create the autocomplete object, restricting the search to geographical
-    // location types.
-    autocomplete = new google.maps.places.Autocomplete(
-      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-      {types: ['geocode']});
-
-      // When the user selects an address from the dropdown, populate the address
-      // fields in the form.
-      autocomplete.addListener('place_changed', fillInAddress);
-    }
-
-    function fillInAddress() {
-      // Get the place details from the autocomplete object.
-      var place = autocomplete.getPlace();
-
-      for (var component in componentForm) {
-        document.getElementById(component).value = '';
-        document.getElementById(component).disabled = false;
-      }
-
-      // Get each component of the address from the place details
-      // and fill the corresponding field on the form.
-      for (var i = 0; i < place.address_components.length; i++) {
-        var addressType = place.address_components[i].types[0];
-        if (componentForm[addressType]) {
-          var val = place.address_components[i][componentForm[addressType]];
-          document.getElementById(addressType).value = val;
+          <?php
+          $results++;
         }
       }
+      ?>
+    </div>
+  </div>
+</div><!--/.container-->
+
+</section><!--/.explore-->
+<!--explore end -->
+
+<!--reviews start -->
+<section id="reviews" class="reviews">
+  <div class="section-header">
+    <h2>clients reviews</h2>
+    <p>What our client say about us</p>
+  </div><!--/.section-header-->
+  <div class="reviews-content">
+    <div class="testimonial-carousel">
+      <div class="single-testimonial-box">
+        <div class="testimonial-description">
+          <div class="testimonial-info">
+            <div class="testimonial-img">
+              <img src="../includes/images/clients/c1.png" alt="clients">
+            </div><!--/.testimonial-img-->
+            <div class="testimonial-person">
+              <h2>Tom Leakar</h2>
+              <h4>london, UK</h4>
+              <div class="testimonial-person-star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div><!--/.testimonial-person-->
+          </div><!--/.testimonial-info-->
+          <div class="testimonial-comment">
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+            </p>
+          </div><!--/.testimonial-comment-->
+        </div><!--/.testimonial-description-->
+      </div><!--/.single-testimonial-box-->
+      <div class="single-testimonial-box">
+        <div class="testimonial-description">
+          <div class="testimonial-info">
+            <div class="testimonial-img">
+              <img src="../includes/images/clients/c2.png" alt="clients">
+            </div><!--/.testimonial-img-->
+            <div class="testimonial-person">
+              <h2>monirul islam</h2>
+              <h4>london, UK</h4>
+              <div class="testimonial-person-star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div><!--/.testimonial-person-->
+          </div><!--/.testimonial-info-->
+          <div class="testimonial-comment">
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+            </p>
+          </div><!--/.testimonial-comment-->
+        </div><!--/.testimonial-description-->
+      </div><!--/.single-testimonial-box-->
+      <div class="single-testimonial-box">
+        <div class="testimonial-description">
+          <div class="testimonial-info">
+            <div class="testimonial-img">
+              <img src="../includes/images/clients/c3.png" alt="clients">
+            </div><!--/.testimonial-img-->
+            <div class="testimonial-person">
+              <h2>Shohrab Hossain</h2>
+              <h4>london, UK</h4>
+              <div class="testimonial-person-star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div><!--/.testimonial-person-->
+          </div><!--/.testimonial-info-->
+          <div class="testimonial-comment">
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+            </p>
+          </div><!--/.testimonial-comment-->
+        </div><!--/.testimonial-description-->
+      </div><!--/.single-testimonial-box-->
+      <div class="single-testimonial-box">
+        <div class="testimonial-description">
+          <div class="testimonial-info">
+            <div class="testimonial-img">
+              <img src="../includes/images/clients/c4.png" alt="clients">
+            </div><!--/.testimonial-img-->
+            <div class="testimonial-person">
+              <h2>Tom Leakar</h2>
+              <h4>london, UK</h4>
+              <div class="testimonial-person-star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div><!--/.testimonial-person-->
+          </div><!--/.testimonial-info-->
+          <div class="testimonial-comment">
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+            </p>
+          </div><!--/.testimonial-comment-->
+        </div><!--/.testimonial-description-->
+      </div><!--/.single-testimonial-box-->
+      <div class="single-testimonial-box">
+        <div class="testimonial-description">
+          <div class="testimonial-info">
+            <div class="testimonial-img">
+              <img src="../includes/images/clients/c1.png" alt="clients">
+            </div><!--/.testimonial-img-->
+            <div class="testimonial-person">
+              <h2>Tom Leakar</h2>
+              <h4>london, UK</h4>
+              <div class="testimonial-person-star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div><!--/.testimonial-person-->
+          </div><!--/.testimonial-info-->
+          <div class="testimonial-comment">
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+            </p>
+          </div><!--/.testimonial-comment-->
+        </div><!--/.testimonial-description-->
+      </div><!--/.single-testimonial-box-->
+      <div class="single-testimonial-box">
+        <div class="testimonial-description">
+          <div class="testimonial-info">
+            <div class="testimonial-img">
+              <img src="../includes/images/clients/c2.png" alt="clients">
+            </div><!--/.testimonial-img-->
+            <div class="testimonial-person">
+              <h2>monirul islam</h2>
+              <h4>london, UK</h4>
+              <div class="testimonial-person-star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div><!--/.testimonial-person-->
+          </div><!--/.testimonial-info-->
+          <div class="testimonial-comment">
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+            </p>
+          </div><!--/.testimonial-comment-->
+        </div><!--/.testimonial-description-->
+      </div><!--/.single-testimonial-box-->
+      <div class="single-testimonial-box">
+        <div class="testimonial-description">
+          <div class="testimonial-info">
+            <div class="testimonial-img">
+              <img src="../includes/images/clients/c3.png" alt="clients">
+            </div><!--/.testimonial-img-->
+            <div class="testimonial-person">
+              <h2>Shohrab Hossain</h2>
+              <h4>london, UK</h4>
+              <div class="testimonial-person-star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div><!--/.testimonial-person-->
+          </div><!--/.testimonial-info-->
+          <div class="testimonial-comment">
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+            </p>
+          </div><!--/.testimonial-comment-->
+        </div><!--/.testimonial-description-->
+      </div><!--/.single-testimonial-box-->
+      <div class="single-testimonial-box">
+        <div class="testimonial-description">
+          <div class="testimonial-info">
+            <div class="testimonial-img">
+              <img src="../includes/images/clients/c4.png" alt="clients">
+            </div><!--/.testimonial-img-->
+            <div class="testimonial-person">
+              <h2>Tom Leakar</h2>
+              <h4>london, UK</h4>
+              <div class="testimonial-person-star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div><!--/.testimonial-person-->
+          </div><!--/.testimonial-info-->
+          <div class="testimonial-comment">
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+            </p>
+          </div><!--/.testimonial-comment-->
+        </div><!--/.testimonial-description-->
+      </div><!--/.single-testimonial-box-->
+    </div>
+  </div>
+
+</section><!--/.reviews-->
+<!--reviews end -->
+
+
+
+
+
+
+
+<!--footer start-->
+<footer id="footer"  class="footer">
+  <div class="container">
+    <div class="footer-menu">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="index.php">@<span>Capacity</span></a>
+          </div><!--/.navbar-header-->
+        </div>
+        <div class="col-sm-9">
+          <ul class="footer-menu-item">
+            <li class="scroll"><a href="#explore">explore</a></li>
+            <li class="scroll"><a href="#reviews">review</a></li>
+            <li class="scroll"><a href="#blog">blog</a></li>
+            <li class="scroll"><a href="#contact">contact</a></li>
+            <?php if($hasAccount > 0) {?>
+              <li><a href="warehouse.php">My Account</a></li>
+            <?php } else { ?>
+              <li><a href="login.php">Login/Register</a></li>
+            <?php } ?>
+          </ul><!--/.nav -->
+        </div>
+      </div>
+    </div>
+    <div class="hm-footer-copyright">
+      <div class="row">
+        <div class="col-sm-5">
+          <p>
+            &copy;copyright. designed and developed by <a href="https://www.themesine.com/">themesine</a>
+          </p><!--/p-->
+        </div>
+        <div class="col-sm-7">
+          <div class="footer-social">
+            <span><i class="fa fa-phone"> +1  (123) 456 7890</i></span>
+            <!-- <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-google-plus"></i></a> -->
+          </div>
+        </div>
+      </div>
+
+    </div><!--/.hm-footer-copyright-->
+  </div><!--/.container-->
+
+  <div id="scroll-Top">
+    <div class="return-to-top">
+      <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+    </div>
+
+  </div><!--/.scroll-Top-->
+
+</footer><!--/.footer-->
+<!--footer end-->
+
+<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+<script src="../includes/js/jquery.js"></script>
+
+<!--modernizr.min.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+<!--bootstrap.min.js-->
+<script src="../includes/js/bootstrap.min.js"></script>
+
+<!-- bootsnav js -->
+<script src="../includes/js/bootsnav.js"></script>
+
+<!--feather.min.js-->
+<script  src="../includes/js/feather.min.js"></script>
+
+<!-- counter js -->
+<script src="../includes/js/jquery.counterup.min.js"></script>
+<script src="../includes/js/waypoints.min.js"></script>
+
+<!--slick.min.js-->
+<script src="../includes/js/slick.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+<!--Custom JS-->
+<script src="../includes/js/custom.js"></script>
+
+
+<script>
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search to geographical
+  // location types.
+  autocomplete = new google.maps.places.Autocomplete(
+    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+    {types: ['geocode']});
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', fillInAddress);
+  }
+
+  function fillInAddress() {
+    // Get the place details from the autocomplete object.
+    var place = autocomplete.getPlace();
+
+    for (var component in componentForm) {
+      document.getElementById(component).value = '';
+      document.getElementById(component).disabled = false;
     }
 
-    // Bias the autocomplete object to the user's geographical location,
-    // as supplied by the browser's 'navigator.geolocation' object.
-    function geolocate() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var geolocation = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          var circle = new google.maps.Circle({
-            center: geolocation,
-            radius: position.coords.accuracy
-          });
-          autocomplete.setBounds(circle.getBounds());
-        });
+    // Get each component of the address from the place details
+    // and fill the corresponding field on the form.
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
       }
     }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHEHS1YUJVmKDeZhK1zp-5bWFjK7l7Oi0&libraries=places&callback=initAutocomplete" async defer></script>
+  }
 
-  </body>
+  // Bias the autocomplete object to the user's geographical location,
+  // as supplied by the browser's 'navigator.geolocation' object.
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHEHS1YUJVmKDeZhK1zp-5bWFjK7l7Oi0&libraries=places&callback=initAutocomplete" async defer></script>
 
-  </html>
+</body>
+
+</html>
+<?php
+function limitTextLength($string, $length){
+  $string = strip_tags($string);
+  if (strlen($string) > $length) {
+    // truncate string
+    $stringCut = substr($string, 0, $length);
+    $endPoint = strrpos($stringCut, ' ');
+
+    //if the string doesn't contain any space then it will cut without word basis.
+    $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+  }
+  return $string;
+}
+?>
