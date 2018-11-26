@@ -253,8 +253,6 @@ WHERE PictureID IN
                 <h4>Price Per Month</h4>
                 <p>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize']); ?></p>
                 <a href="book.php?space=<?php echo $space; ?>&start=<?php echo $start; ?>&end=<?php echo $end; ?>" class="btn btn-transparent-white">Book Now</a>
-                <h1></h1>
-                <a href="book.php?space=<?php echo $space; ?>&start=<?php echo $start; ?>&end=<?php echo $end; ?>&reserve=1" class="btn btn-transparent-white">Reserve</a>
               </div>
 
               <!-- Map Widget -->

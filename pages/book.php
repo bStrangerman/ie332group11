@@ -60,12 +60,16 @@ WHERE PictureID IN
   		<div class="row">
         <div class="col-lg-12">
           <h1 align="center">Lease Details</h1>
+          <h6 align="center">A confirmation page will be displayed on the following page with all the finalized lease details.</h6><hr>
         </div>
       </div>
   		<div class="row">
   			<div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
   				<div class="sidebar">
   					<!-- User Widget -->
+  					<div class="widget user-dashboard-profile" style="background: #F0F0F0">
+              <h1 align="center" style="color: green; padding: 0px"><strong>$19290</strong><span style="color:black; font-size:50%"> /Month</span></h1>
+            </div>
   					<div class="widget user-dashboard-profile">
   						<!-- User Image -->
   						<div class="profile-thumb">
@@ -82,7 +86,6 @@ WHERE PictureID IN
 
                   <div id="map"></div>
                   <script>
-
                   var map = L.map('map')
                   .setView([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>], 15);
                   var marker = L.marker([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>]).addTo(map);
@@ -111,52 +114,17 @@ WHERE PictureID IN
   						<!-- End Date -->
   						<div class="col-lg-6 form-group">
   						    <label for="end-date">End Date</label>
-  						    <input type="date" class="form-control" id="end-date" required>
+  						    <input type="date" <?php if(isset($_GET['enddate']) && ($_GET['enddate'] != "")){ echo "value='" . $_GET['enddate'] . "'"; }?> class="form-control" id="end-date" required>
+  						</div>
   						</div>
             </div>
             </div>
-  						<!-- Submit button -->
-  						<button class="btn btn-transparent">Submit Lessee Application</button>
-  					</form>
   				<!-- Change Password -->
   				<div class="widget change-password">
-  					<h3 class="widget-header user">Edit Password</h3>
-  					<form action="#">
-  						<!-- Current Password -->
-  						<div class="form-group">
-  						    <label for="current-password">Current Password</label>
-  						    <input type="password" class="form-control" id="current-password">
-  						</div>
-  						<!-- New Password -->
-  						<div class="form-group">
-  						    <label for="new-password">New Password</label>
-  						    <input type="password" class="form-control" id="new-password">
-  						</div>
-  						<!-- Confirm New Password -->
-  						<div class="form-group">
-  						    <label for="confirm-password">Confirm New Password</label>
-  						    <input type="password" class="form-control" id="confirm-password">
-  						</div>
-  						<!-- Submit Button -->
-  						<button class="btn btn-transparent">Change Password</button>
-  					</form>
-  				</div>
-  				<!-- Change Email Address -->
-  				<div class="widget change-email mb-0">
-  					<h3 class="widget-header user">Edit Email Address</h3>
-  					<form action="#">
-  						<!-- Current Password -->
-  						<div class="form-group">
-  						    <label for="current-email">Current Email</label>
-  						    <input type="email" class="form-control" id="current-email">
-  						</div>
-  						<!-- New email -->
-  						<div class="form-group">
-  						    <label for="new-email">New email</label>
-  						    <input type="email" class="form-control" id="new-email">
-  						</div>
-  						<!-- Submit Button -->
-  						<button class="btn btn-transparent">Change email</button>
+  					<h3 class="widget-header user">What will you be using this space for?</h3>
+              <!-- Submit button -->
+                <textarea name="contractInformation" id="review" rows="2" cols="69" maxlength="400" placeholder="Ex: I will be storing new unpublished books in this space."></textarea>
+              <button class="btn btn-transparent">Submit Lessee Application</button>
   					</form>
   				</div>
   			</div>

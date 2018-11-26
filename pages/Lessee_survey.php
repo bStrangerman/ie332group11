@@ -16,7 +16,6 @@
 
 <?php
 require_once "../includes/main.php";
-include_once "../includes/contracts.php";
 
 if(isset($_SESSION['UserID'])){
   if(!$rbac->Users->hasRole('Lessee', $UserID = $_SESSION['UserID'])){
@@ -26,10 +25,20 @@ if(isset($_SESSION['UserID'])){
     $contract = $_GET['contract'];
     $_SESSION['reviewContract'] = $contract;
     $user = $_SESSION['UserID'];
-    $sql = "SELECT COUNT(*)
+    $sql = "SELECT WarehouseID
             FROM Contracts
+            LEFT JOIN Spaces
+            ON Spaces.SpaceID = Contracts.SpaceID
+            LEFT JOIN Warehouses
+            ON Warehouses.WarehouseID = Spaces.SpaceID
             WHERE LesseeID = $user
             AND ContractID = $contract";
+
+            $result = $GLOBALS['conn'] -> query($sql);
+
+            while($contractInfo[]=mysqli_fetch_array($result));
+
+
     // if(count(($conn -> query($sql)) -> fetch_assoc()) > 0) {
     //   header('Location: index.php');
     // }

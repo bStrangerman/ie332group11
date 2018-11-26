@@ -306,7 +306,6 @@ else {
               array_multisort($Utilization, SORT_DESC, $spaceInfo);
             }
 
-
             for($i = 0; $i < 6; $i++){
               $warehouseID = $spaceInfo[$i]['WarehouseID'];
               $SpaceID = $spaceInfo[$i]['SpaceID'];
