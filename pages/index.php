@@ -159,6 +159,8 @@ else {
               <li><a href="warehouse.php">My Account</a></li>
             <?php } else if($LesseeRole) {?>
               <li><a href="index.php">My Account</a></li>
+            <?php } else if(isset($_SESSION['UserID'])){ ?>
+              <li><a href="index.php">My Account</a></li>
             <?php } else { ?>
               <li><a href="login.php">Login/Register</a></li>
             <?php } ?>
