@@ -70,7 +70,7 @@ require_once "../layouts/sb_admin_2/header.php";
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form method="post" action = "lessee_survey_submit.php" role="form">
+              <form method="post" action = "../includes/lessee_survey_submit.php" role="form">
 
 <!--==============
 =   LOAD SPACE   =

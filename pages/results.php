@@ -12,6 +12,8 @@ if($err == array()){
   $spaceSize = array();
   $latitude = array();
   $longitude = array();
+  $spaceInformation = array();
+  $state = array();
 
   if(isset($_GET['type']))
     array_push($type, clean(urldecode($_GET['type'])));
@@ -23,9 +25,11 @@ if($err == array()){
     array_push($spaceID, $spaceInfo[$i]['SpaceID']);
     array_push($address, $spaceInfo[$i]['Address'] . " " . $spaceInfo[$i]['City'] . " " . $spaceInfo[$i]['State']) . ($spaceInfo[$i]['ZipCode'] != "") ? " " . $spaceInfo[$i]['ZipCode'] : "";
     array_push($monthlyPrice, $spaceInfo[$i]['MonthlyPrice']);
+    array_push($state, $spaceInfo[$i]['State']);
     array_push($spaceSize, $spaceInfo[$i]['SpaceSize']);
     array_push($latitude, $spaceInfo[$i]['Latitude']);
     array_push($longitude, $spaceInfo[$i]['Longitude']);
+    array_push($spaceInformation, $spaceInfo[$i]['SpaceInformation']);
     $i++;
   }
 
@@ -34,37 +38,44 @@ if($err == array()){
       $origin = $_GET['location'];
       $origin_lat = 44.33559;
       $origin_lon = -105.52211;
-      $state = 0;
+      $stateBoolean = 0;
     }
     else if(isset($_GET['state'])){
       $origin = $_GET['state'];
-      $state = 1;
+      $stateBoolean = 1;
     }
-
 
     $data = array();
     $max_count = count($spaceID);
 
     for($i = 0; $i < $max_count; $i++){
-      if($latitude[$i] != 0 && $longitude[$i] != 0){
-        array_push($data, array("Spaces" => $spaceID[$i], "Latitude" => $latitude[$i], "Longitude" => $longitude[$i], "Addresses" => $address[$i], "Distance" => ($state == 0 ? distanceAlgorithm($origin_lat, $origin_lon, $latitude[$i], $longitude[$i]) : 0), "MonthlyPrice" => $monthlyPrice[$i], "SpaceSize" => $spaceSize[$i]));
+      if($stateBoolean == 0 && $latitude[$i] != 0 && $longitude[$i] != 0){
+        array_push($data, array("Spaces" => $spaceID[$i], "Latitude" => $latitude[$i], "Longitude" => $longitude[$i], "Addresses" => $address[$i], "Distance" => distanceAlgorithm($origin_lat, $origin_lon, $latitude[$i], $longitude[$i]), "MonthlyPrice" => $monthlyPrice[$i], "SpaceSize" => $spaceSize[$i], "SpaceInformation" => $spaceInformation[$i]));
+      }
+      else if($stateBoolean == 1 && $state[$i] == $_GET['state']){
+        array_push($data, array("Spaces" => $spaceID[$i], "Latitude" => $latitude[$i], "Longitude" => $longitude[$i], "Addresses" => $address[$i], "Distance" => 0, "MonthlyPrice" => $monthlyPrice[$i], "SpaceSize" => $spaceSize[$i], "SpaceInformation" => $spaceInformation[$i]));
       }
     }
     // array_print($data);
 
-    if(isset($_GET['range']))
-      $range = $_GET['range'];
-    else
-      $range = 9000;
-
-    $max_count = count($data);
-    for ($i = 0; $i < $max_count; $i++) {
-      if ($data[$i]["Distance"] > $range) {
-        unset($data[$i]);
+    if($stateBoolean == 0) {
+      if(isset($_GET['range'])) {
+        $range = $_GET['range'];
       }
+      else {
+        $range = 9000;
+      }
+
+      $max_count = count($data);
+      for ($i = 0; $i < $max_count; $i++) {
+        if ($data[$i]["Distance"] > $range) {
+          unset($data[$i]);
+        }
+      }
+      unset($data[$max_count - 1]);
     }
-    unset($data[$max_count - 1]);
   }
+
   // array_print($data);
   if(count($data) == 0)
     array_push($err, "0 Results");
@@ -261,7 +272,11 @@ if($err == array()){
           if(isset($data[$i]["Spaces"])) {
             $score[$i] = 0;
             $score[$i] += Utilization($data[$i]['Spaces'], $start, $end, 100 * (6/9));
-            $score[$i] += distance_score($range, $data[$i]['Distance'], 100 * (2/9));
+            if($stateBoolean == 0)
+            {
+              $score[$i] += distance_score($range, $data[$i]['Distance'], 100 * (2/9));
+            }
+
             $score[$i] += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (1/9));
             // FIXME: size score is not currently working
             // $score[$i] += size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (1/9));
@@ -288,7 +303,7 @@ if($err == array()){
                     <a href=""><strong><?php echo $score[$i] . "%</strong> match"; ?></a>
                   </li>
                 </ul>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+                <p class="card-text"><?php echo $data[$i]['SpaceInformation']; ?></p>
                 <div class="product-ratings">
                   <ul class="list-inline">
                     <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
@@ -303,42 +318,10 @@ if($err == array()){
           </div>
         </div>
       <?php }
-    }
+    }}
     ?>
   </div>
 </div>
-<?php // TODO: pagination is not complete.  see issue #24 ?>
-<?php
-if(isset($_GET['page']))
-$page = $_GET['page'];
-else
-$page = 1;
-?>
-<div class="pagination justify-content-center">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <?php $i = 2;
-      if($page > 1){ ?>
-        <li class="page-item">
-          <a class="page-link" href="?page=<?php echo $page - 1;?>" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item <?php echo ($page - 1 == $i) ? "active" : "" ?>"><a class="page-link" href="?page=<?php echo $page - 1;?>"><?php echo $page - 1;?></a></li>
-      <?php } ?>
-      <li class="page-item <?php echo ($page == $i) ? "active" : "" ?>"><a class="page-link" href="&page=<?php echo $page;?>"><?php echo $page;?></a></li>
-      <li class="page-item <?php echo ($page + 1 == $i) ? "active" : "" ?>"><a class="page-link" href="&page=<?php echo $page + 1;?>"><?php echo $page + 1;?></a></li>
-      <li class="page-item">
-        <a class="page-link" href="&page=<?php echo $page + 1; ?>" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div>
-<?php } ?>
 </div>
 </div>
 </div>
