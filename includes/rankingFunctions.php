@@ -1,7 +1,4 @@
 <?php
-
-
-
 // TODO: If the search bar is a state or city in the search, only output those results without the need of the Google API.
 $location_error = "Please enter a location";
 $err = array();
@@ -221,7 +218,7 @@ function getAvailableSpaces ($start_date, $end_date, $type){
                 $Utilization = $timePast / $contractLength;
               }
               else
-                $Utilization = 0;
+              $Utilization = 0;
             }
           }
         }
@@ -337,34 +334,34 @@ function getAvailableSpaces ($start_date, $end_date, $type){
       }
 
 
-      function distance_score($max_distance_wanted , $distance_away, $scale = 100 / 3){
+      function distance_score($max_distance_wanted , $distance_away, $scale = 100){
         $distance_score = $scale * (1 - $distance_away / $max_distance_wanted);
         return $distance_score;
       }
 
-      function size_score($size_wanted, $space_size, $max_size, $scale = 100 / 3){
+      function size_score($size_wanted, $space_size, $max_size, $scale = 100){
         // y = a(x – h)2 + k
         if($size_wanted < $max_size)
-          $x = $max_size;
+        $x = $max_size;
         else
-          $x = 0;
-          echo $x;
+        $x = 0;
+        echo $x;
 
         $a = (0 - $scale) / pow(($x - $size_wanted), 2);
         $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
 
         if($space_size < $size_wanted)
-          $space_score = - $space_score;
+        $space_score = - $space_score;
 
         if($space_score > $scale)
-          $space_score = $scale;
+        $space_score = $scale;
         else if($space_score < 0)
-          $space_score = 0;
+        $space_score = 0;
 
         return $space_score;
       }
 
-      function price_score($space_price, $max_price, $min_price = 0, $scale = 100 / 3){
+      function price_score($space_price, $max_price, $min_price = 0, $scale = 100){
 
         $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
         if($space_price > $max_price)
@@ -373,7 +370,7 @@ function getAvailableSpaces ($start_date, $end_date, $type){
       }
 
 
-      function previousRatings($spaceID, $scale = 50){
+      function previousRatings($spaceID, $scale = 100){
         $rating_range = 5;
         $rating_score = ($scale / $rating_range) * $rating;
       }
@@ -403,3 +400,4 @@ function getAvailableSpaces ($start_date, $end_date, $type){
         //echo '<br/>'.$km;
         return ($km * 1000);
       }
+      ?>

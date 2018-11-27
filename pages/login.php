@@ -1,28 +1,35 @@
 <?php
 // include the database and authentication information
-include_once('../includes/server.php');
-require_once '../includes/PhpRbac/src/PhpRbac/Rbac.php';
-$rbac = new \PhpRbac\Rbac();
+require_once "../includes/main.php";
 
-// redirects users that are logged in
-if(isset($_SESSION['UserID']) && $_SESSION['UserID'] != ""){
-  // redirects to account_setup if user has the need setup role
-  if($rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
-    header('Location: account_setup.php');
-  }
-  // redirects to index if user does not have the setup role
-  else{
-    if(isset($_SESSION['redirect'])){
-      $redirect = $_SESSION['redirect'];
-      header($redirect);
+// is the user signed in
+if(isset($_SESSION['UserID'])){
+  // Is the user id not NULL
+  if($_SESSION['UserID'] != ""){
+    // redirects to account_setup if user has the need setup role
+    if($rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
+      header('Location: account_setup.php');
+      exit;
     }
-    else
-    header("Location: index.php");
+    // redirects to other pages otherwise
+    else{
+      // is the redirect session variable set?
+      if(isset($_SESSION['redirect']) && $_SESSION['redirect'] != ""){
+        $redirect = $_SESSION['redirect'];
+        $_SESSION['redirect'] = "";
+        unsset($_SESSION['redirect']);
+        header($redirect);
+        exit;
+      }
+      // redirect to index.php
+      else {
+        header('Location: index.php');
+        exit;
+      }
+    }
   }
 }
-// }
 ?>
-
 <!-- The below code was found on https://codepen.io/Gibbu/pen/mxGKjP and modified -->
 <!DOCTYPE html>
 <html>

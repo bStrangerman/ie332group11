@@ -16,8 +16,6 @@
 
 <?php
 require_once "../includes/main.php";
-include_once "../includes/rankingFunctions.php";
-include_once "../includes/notifications.php";
 
 array_print($_POST);
 array_print($_SESSION);

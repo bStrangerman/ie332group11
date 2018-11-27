@@ -11,11 +11,10 @@ if(isset($_GET['space']))
 $sql = "SELECT *
 FROM Spaces
 LEFT JOIN Warehouses
-ON spaces.WarehouseID = Warehouses.WarehouseID
+ON Spaces.WarehouseID = Warehouses.WarehouseID
 LEFT JOIN phprbac_users
 ON phprbac_users.UserID = Warehouses.OwnerID
 WHERE Spaces.SpaceID = $space";
-
 $result = $conn -> query($sql);
 while($spaceInfo[]=mysqli_fetch_array($result));
 
@@ -252,7 +251,7 @@ WHERE PictureID IN
               <div class="widget price text-center">
                 <h4>Price Per Month</h4>
                 <p>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize']); ?></p>
-                <a href="book.php?space=<?php echo $space; ?>&start=<?php echo $start; ?>&end=<?php echo $end; ?>" class="btn btn-transparent-white">Book Now</a>
+                <a href="book.php?space=<?php echo $space; ?>&startdate=<?php echo $start; ?>&enddate=<?php echo $end; ?>" class="btn btn-transparent-white">Book Now</a>
               </div>
 
               <!-- Map Widget -->

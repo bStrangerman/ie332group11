@@ -5,8 +5,7 @@ if(!isset($_SESSION['UserID'])){
   $_SESSION['redirect'] = 'Location: ' . $_SERVER['REQUEST_URI'];
   header("Location: login.php");
 }
-
-if(!$rbac->check('can_lease', $UserID = $_SESSION['UserID'])){
+else if (!$rbac->check('can_lease', $UserID = $_SESSION['UserID'])){
   echo "You don't have the proper permissions to lease a location. This page will redirect in 10 seconds.";
   header("Refresh: 10; index.php");
   exit;
@@ -23,11 +22,10 @@ if(isset($_GET['space']))
 $sql = "SELECT *
 FROM Spaces
 LEFT JOIN Warehouses
-ON spaces.WarehouseID = Warehouses.WarehouseID
+ON Spaces.WarehouseID = Warehouses.WarehouseID
 LEFT JOIN phprbac_users
 ON phprbac_users.UserID = Warehouses.OwnerID
 WHERE Spaces.SpaceID = $space";
-
 $result = $conn -> query($sql);
 while($spaceInfo[]=mysqli_fetch_array($result));
 
@@ -42,7 +40,6 @@ WHERE PictureID IN
   FROM Warehouse_Pictures
   WHERE WarehouseID = $warehouseID)
   ORDER BY PictureID";
-
   $result = $conn -> query($sql);
 
   while($row = $result -> fetch_assoc()){
@@ -75,7 +72,13 @@ WHERE PictureID IN
   				<div class="sidebar">
   					<!-- User Widget -->
   					<div class="widget user-dashboard-profile" style="background: #F0F0F0">
-              <h1 align="center" style="color: green; padding: 0px"><strong>$19290</strong><span style="color:black; font-size:50%"> /Month</span></h1>
+              <?php
+              if((isset($_GET['startdate']) && $_GET['startdate'] != "") && (isset($_GET['enddate']) && $_GET['enddate'] != "")) { ?>
+                <h1 align="center" style="color: green; padding: 0px"><strong>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize'] * date_diff(date_create($_GET['startdate']), date_create($_GET['enddate']), FALSE)->format("%m"));?></strong></h1>
+              <?php }
+              else { ?>
+                <h1 align="center" style="color: green; padding: 0px"><strong>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize']);?></strong><span style="color:black; font-size:50%"> /Month</span></h1>
+              <?php } ?>
             </div>
   					<div class="widget user-dashboard-profile">
   						<!-- User Image -->

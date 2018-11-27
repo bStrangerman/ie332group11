@@ -3,7 +3,7 @@ require_once "../includes/main.php";
 array_print($_COOKIE);
 
 
-$str = "A 'quote' is <b>bold</b>;";
+$str = "' OR 1 = 1;/*";
 //$str = "' or ''='";
 echo $str . "<br>";
 // Outputs: A 'quote' is <b>bold</b>

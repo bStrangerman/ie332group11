@@ -70,6 +70,30 @@ else {
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <!-- Get user's latitude and longitude from broweser's GPS location -->
+  <script>
+  window.onload = getLocation;
+  var geo = navigator.geolocation;     /*     Here we will check if the browser supports the Geolocation API; if exists, then we will display the location     */
+  function getLocation() {
+    if( geo ) {
+      geo.getCurrentPosition( CookieLocation );
+    }
+    else  { alert( "Oops, Geolocation API is not supported"); }
+  }
+  /*     This function gets the latitude and longitude when the browser has a location.     */
+  function CookieLocation( position ) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    // if there is no cookie for latitude, set the cookie
+    <?php if(!isset($_COOKIE['Latitude'])){ ?>
+      document.cookie = "Latitude=" + latitude;
+    <?php } ?>
+    // if there is no cookie for Longitude, set the cookie
+    <?php if(!isset($_COOKIE['Longitude'])){ ?>
+      document.cookie = "Longitude=" + longitude;
+    <?php } ?>
+  }
+  </script>
   <style>
   #locationField, #controls {
     position: relative;
@@ -239,9 +263,9 @@ else {
         while($row = $result -> fetch_assoc()){
           $ID = $row['AttributeID'];
           $innerSQL = "SELECT COUNT(*) AS CountOf
-          FROM space_attributes
+          FROM Space_Attributes
           WHERE AttributeID = $ID";
-          $innerresult = $conn -> query($innerSQL);
+          $innerresult = ($conn -> query($innerSQL));
           while($innerrow = $innerresult -> fetch_assoc()){
             ?>
             <li>
@@ -319,7 +343,8 @@ else {
               ORDER BY Pictures.PictureID
               LIMIT 1";
 
-              $picture = ($conn -> query($sql)) -> fetch_assoc();
+              $picResult = ($conn -> query($sql));
+              $picture = $picResult -> fetch_assoc();
 
               $sql = "SELECT *
               FROM Space_Attributes
@@ -329,7 +354,8 @@ else {
               AND AttributeType = 1
               LIMIT 1";
 
-              $attributes = ($conn -> query($sql)) -> fetch_assoc();
+              $attResult = ($conn -> query($sql));
+              $attributes = $attResult -> fetch_assoc();
               ?>
               <div class=" col-md-4 col-sm-6">
                 <div class="single-explore-item">

@@ -1,5 +1,4 @@
 <?php
-include_once "../includes/timeago.php";
 
 $NotificationTypeLongName = 0;
 $NotificationTimeElapsed = 1;

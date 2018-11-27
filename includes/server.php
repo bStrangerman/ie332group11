@@ -1,8 +1,4 @@
 <?php
-
-	// database and user authentication includes
-require_once "main.php";
-
 // variable declaration
 	$register_Errors = array();
 
@@ -30,9 +26,11 @@ require_once "main.php";
 							FROM phprbac_users
 							WHERE email = '$email'";
 
-		$countUsernameResult = ($conn -> query($countOfUsername)) -> fetch_assoc();
+		$countUsernameMIDResult = ($conn -> query($countOfUsername));
+		$countUsernameResult = $$countUsernameMIDResult-> fetch_assoc();
 
-		$countEmailResult = ($conn -> query($countOfEmail)) -> fetch_assoc();
+		$countEmailMIDResult = ($conn -> query($countOfEmail));
+		$countEmailResult = $countEmailMIDResult -> fetch_assoc();
 		if ($countUsernameResult['count'] > 0) { array_push($register_Errors, "Username is taken"); }
 		if ($countEmailResult['count'] > 0) { array_push($register_Errors, "Email is already being used"); }
 
@@ -53,8 +51,8 @@ require_once "main.php";
 			// sets the user information into the session
 			$_SESSION['username'] = $username;
 			$_SESSION['email'] = $email;
-			$_SESSION['success'] = "You are now logged in"	;
-			header('location: account_setup.php');  // redirects to the account setup page
+			header('Location: account_setup.php');  // redirects to the account setup page
+			exit;
 		}
 	}
 
@@ -84,12 +82,10 @@ require_once "main.php";
 				while($row = $result -> fetch_assoc()){
 					$UserID = $row['UserID'];
 					$_SESSION['UserID'] = $UserID;
-					setcookie("username", $username, time() + 60 * 60 * 24);
-					setcookie("UserID", $UserID, time() + 60 * 60 * 24);
-					$_SESSION['email'] = $row['Email'];
+					$_SESSION['Email'] = $row['Email'];
 				}
-				$_SESSION['success'] = "You are now logged in";
-				header("Location: login.php");
+				header("Location: index.php");
+				exit;
 			}
 			else {
 				array_push($login_Errors, "Wrong username/password combination");
