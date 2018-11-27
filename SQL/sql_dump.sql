@@ -1171,7 +1171,7 @@ CREATE TABLE IF NOT EXISTS Warehouses (
     YearlyPrice real,
     Active BOOLEAN DEFAULT TRUE,
     SpaceInformation varchar(500),
-    DateAdded datetime DEFAULT CURRENT_TIMESTAMP,
+    DateAdded TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(SpaceID),
     FOREIGN KEY(WarehouseID) REFERENCES Warehouses(WarehouseID) ON DELETE CASCADE);
 
@@ -1194,7 +1194,7 @@ CREATE TABLE IF NOT EXISTS Warehouses (
         StatusDescription varchar(200),
         PRIMARY KEY (StatusID));
 
-        INSERT INTO `status` (`StatusID`, `StatusName`, `StatusDescription`) VALUES
+        INSERT INTO `Status` (`StatusID`, `StatusName`, `StatusDescription`) VALUES
         (1, 'Reserved', 'This contract is marked as Reserved for a specific length of time by a potential lessee.'),
         (2, 'Pending', 'This contract is marked as Pending, awaiting for the approval of the warehouse.'),
         (3, 'Approved', 'This contract is marked as Approved by the warehouse.'),
@@ -1234,7 +1234,7 @@ CREATE TABLE IF NOT EXISTS Warehouses (
               ('Yard', 2, 'This location has an exterior yard.', ''),
               ('Loading Dock', 2, 'This location has a loading dock and bay doors, perfect for moving in and out.', 'fas fa-temperature-low');
 
-              INSERT INTO `warehouses` (`WarehouseID`, `OwnerID`, `Address`, `ZipCode`, `City`, `State`, `BuildingSize`, `Latitude`, `Longitude`, `WarehouseInformation`) VALUES
+              INSERT INTO `Warehouses` (`WarehouseID`, `OwnerID`, `Address`, `ZipCode`, `City`, `State`, `BuildingSize`, `Latitude`, `Longitude`, `WarehouseInformation`) VALUES
               (1, 2, '512 N Energy Dr.', '82901', 'Rock Springs', 'WY', 10400, 41.593910, -109.218040, 'Tires'),
               (2, 2, '331 Lexington Ave.', '82007', 'Cheyenne', 'WY', 15300, 41.125847, -104.757111, ''),
               (3, 2, '311 Progress Cir.', '82007', 'Cheyenne', 'WY', 21112, 41.129181, -104.739792, ''),
@@ -1393,7 +1393,7 @@ CREATE TABLE IF NOT EXISTS Warehouses (
               (156, 93, '1718 N Fry Rd', NULL, 'Houston', 'TX', 18330, 0.000000, 0.000000, ''),
               (157, 132, '827 W 34th St', NULL, 'Houston', 'TX', 5500, 0.000000, 0.000000, '');
 
-              INSERT INTO `spaces` (`SpaceID`, `WarehouseID`, `SpaceSize`, `YearlyPrice`, `MonthlyPrice`, `Active`, `DateAdded`, `SpaceInformation`) VALUES
+              INSERT INTO `Spaces` (`SpaceID`, `WarehouseID`, `SpaceSize`, `YearlyPrice`, `MonthlyPrice`, `Active`, `DateAdded`, `SpaceInformation`) VALUES
               (1, 1, 10400, 12.69, 1.06, 1, '2018-11-16 23:28:32', ''),
               (2, 2, 8800, 7, 0.58, 1, '2018-11-16 23:28:32', ''),
               (3, 3, 5500, 6.98, 0.58, 1, '2018-11-16 23:28:32', ''),

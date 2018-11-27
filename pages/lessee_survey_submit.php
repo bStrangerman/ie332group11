@@ -16,13 +16,11 @@
 
 <?php
 require_once "../includes/main.php";
-include_once "../includes/rankingFunctions.php";
-include_once "../includes/notifications.php";
 
 array_print($_POST);
 array_print($_SESSION);
 
-$sql = "";
+$RatingsSQL = "";
 
 insertNumericRating($_SESSION['reviewContract'],"Overall", clean($_POST['ls_rating']));
 insertNumericRating($_SESSION['reviewContract'],"Accuracy", clean($_POST['ls_rating']));
@@ -35,21 +33,27 @@ insertTextRating($_SESSION['reviewContract'],"Title", clean($_POST['ls_title']))
 insertTextRating($_SESSION['reviewContract'],"Body", clean($_POST['ls_body']));
 insertTextRating($_SESSION['reviewContract'],"Feedback", clean($_POST['ls_feedback']));
 
-echo $sql;
+echo $RatingsSQL;
 
 function insertNumericRating ($contract, $name, $score){
   if(isset($score) && $score != ""){
-    $GLOBALS['sql'] .= "INSERT INTO Numeric_Ratings (ContractID, Numeric_Rating_Name, Score) VALUES ($contract, $name, $score);<br>";
+    $GLOBALS['RatingsSQL'] .= "INSERT INTO Numeric_Contract_Ratings (ContractID, Numeric_Rating_Name, RatingResult)
+                               SELECT($contract, NumericContractID, $score)
+                               FROM Numeric_Rating_Types
+                               WHERE RatingShortName = '$name';<br>";
   }
 }
 
 function insertTextRating ($contract, $name, $text){
   if(isset($text) && $text != ""){
-    $GLOBALS['sql'] .= "INSERT INTO Text_Ratings (ContractID, Text_Rating_Name, Score) VALUES ($contract, $name, '$text');<br>";
+    $GLOBALS['RatingsSQL'] .= "INSERT INTO Text_Contract_Ratings (ContractID, Text_Rating_Name, RatingResult)
+                               SELECT($contract, TextContractID, $score)
+                               FROM Text_Rating_Types
+                               WHERE RatingShortName = '$name';<br>";
   }
 }
 
-$sql = "SELECT OwnerID
+$RatingsSQL = "SELECT OwnerID
         FROM Warehouses
         WHERE WarehouseID IN(
           SELECT WarehouseID
@@ -60,5 +64,5 @@ $sql = "SELECT OwnerID
             WHERE ContractID = $contract
           )
         )";
-        echo $sql;
+        echo $RatingsSQL;
 // notify($owner, , $Message, $url, $conn);

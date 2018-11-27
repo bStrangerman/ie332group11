@@ -1,10 +1,16 @@
 <?php
 require_once "../includes/main.php";
 
-if(!isset($_SESSION['UserID']) || !$rbac->check('can_lease', $UserID = $_SESSION['UserID'])){
-  // header("Location: login.php");
+if(!isset($_SESSION['UserID'])){
   $_SESSION['redirect'] = 'Location: ' . $_SERVER['REQUEST_URI'];
+  header("Location: login.php");
 }
+else if (!$rbac->check('can_lease', $UserID = $_SESSION['UserID'])){
+  echo "You don't have the proper permissions to lease a location. This page will redirect in 10 seconds.";
+  header("Refresh: 10; index.php");
+  exit;
+}
+
 require_once "../layouts/Calssimax/header.php";
 
 if(isset($_GET['address']))
@@ -16,11 +22,10 @@ if(isset($_GET['space']))
 $sql = "SELECT *
 FROM Spaces
 LEFT JOIN Warehouses
-ON spaces.WarehouseID = Warehouses.WarehouseID
+ON Spaces.WarehouseID = Warehouses.WarehouseID
 LEFT JOIN phprbac_users
 ON phprbac_users.UserID = Warehouses.OwnerID
 WHERE Spaces.SpaceID = $space";
-
 $result = $conn -> query($sql);
 while($spaceInfo[]=mysqli_fetch_array($result));
 
@@ -35,7 +40,6 @@ WHERE PictureID IN
   FROM Warehouse_Pictures
   WHERE WarehouseID = $warehouseID)
   ORDER BY PictureID";
-
   $result = $conn -> query($sql);
 
   while($row = $result -> fetch_assoc()){
@@ -53,19 +57,29 @@ WHERE PictureID IN
   <!--==================================
   =            User Profile            =
   ===================================-->
-
+<!-- <button value="Return"></button> -->
   <section class="user-profile section">
 
   	<div class="container">
   		<div class="row">
         <div class="col-lg-12">
           <h1 align="center">Lease Details</h1>
+          <h6 align="center">A confirmation page will be displayed on the following page with all the finalized lease details.</h6><hr>
         </div>
       </div>
   		<div class="row">
   			<div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
   				<div class="sidebar">
   					<!-- User Widget -->
+  					<div class="widget user-dashboard-profile" style="background: #F0F0F0">
+              <?php
+              if((isset($_GET['startdate']) && $_GET['startdate'] != "") && (isset($_GET['enddate']) && $_GET['enddate'] != "")) { ?>
+                <h1 align="center" style="color: green; padding: 0px"><strong>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize'] * date_diff(date_create($_GET['startdate']), date_create($_GET['enddate']), FALSE)->format("%m"));?></strong></h1>
+              <?php }
+              else { ?>
+                <h1 align="center" style="color: green; padding: 0px"><strong>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize']);?></strong><span style="color:black; font-size:50%"> /Month</span></h1>
+              <?php } ?>
+            </div>
   					<div class="widget user-dashboard-profile">
   						<!-- User Image -->
   						<div class="profile-thumb">
@@ -82,7 +96,6 @@ WHERE PictureID IN
 
                   <div id="map"></div>
                   <script>
-
                   var map = L.map('map')
                   .setView([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>], 15);
                   var marker = L.marker([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>]).addTo(map);
@@ -111,52 +124,17 @@ WHERE PictureID IN
   						<!-- End Date -->
   						<div class="col-lg-6 form-group">
   						    <label for="end-date">End Date</label>
-  						    <input type="date" class="form-control" id="end-date" required>
+  						    <input type="date" <?php if(isset($_GET['enddate']) && ($_GET['enddate'] != "")){ echo "value='" . $_GET['enddate'] . "'"; }?> class="form-control" id="end-date" required>
+  						</div>
   						</div>
             </div>
             </div>
-  						<!-- Submit button -->
-  						<button class="btn btn-transparent">Submit Lessee Application</button>
-  					</form>
   				<!-- Change Password -->
   				<div class="widget change-password">
-  					<h3 class="widget-header user">Edit Password</h3>
-  					<form action="#">
-  						<!-- Current Password -->
-  						<div class="form-group">
-  						    <label for="current-password">Current Password</label>
-  						    <input type="password" class="form-control" id="current-password">
-  						</div>
-  						<!-- New Password -->
-  						<div class="form-group">
-  						    <label for="new-password">New Password</label>
-  						    <input type="password" class="form-control" id="new-password">
-  						</div>
-  						<!-- Confirm New Password -->
-  						<div class="form-group">
-  						    <label for="confirm-password">Confirm New Password</label>
-  						    <input type="password" class="form-control" id="confirm-password">
-  						</div>
-  						<!-- Submit Button -->
-  						<button class="btn btn-transparent">Change Password</button>
-  					</form>
-  				</div>
-  				<!-- Change Email Address -->
-  				<div class="widget change-email mb-0">
-  					<h3 class="widget-header user">Edit Email Address</h3>
-  					<form action="#">
-  						<!-- Current Password -->
-  						<div class="form-group">
-  						    <label for="current-email">Current Email</label>
-  						    <input type="email" class="form-control" id="current-email">
-  						</div>
-  						<!-- New email -->
-  						<div class="form-group">
-  						    <label for="new-email">New email</label>
-  						    <input type="email" class="form-control" id="new-email">
-  						</div>
-  						<!-- Submit Button -->
-  						<button class="btn btn-transparent">Change email</button>
+  					<h3 class="widget-header user">What will you be using this space for?</h3>
+              <!-- Submit button -->
+                <textarea name="contractInformation" id="review" rows="2" cols="69" maxlength="400" placeholder="Ex: I will be storing new unpublished books in this space."></textarea>
+              <button class="btn btn-transparent">Submit Lessee Application</button>
   					</form>
   				</div>
   			</div>
@@ -390,7 +368,7 @@ WHERE PictureID IN
 
                 var map = L.map('map')
                 .setView([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>], 15);
-                var marker = L.marker([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>]).addTo(map);
+                // var marker = L.marker([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>]).addTo(map);
                 var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar'}).addTo(map);
                 </script>
 

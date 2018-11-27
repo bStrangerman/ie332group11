@@ -1,6 +1,4 @@
 <?php
-include_once "../includes/notifications.php";
-
 function set_contract_status ($contractID, $status)
 {
   if($status == "Undo"){
