@@ -56,9 +56,9 @@ function insertNumericRating ($contract, $name, $score){
   }
 }
 
-function insertPictureRating ($contract, $FileName){
+function insertPictureRating ($contract, $FileName, $Description = ""){
   if(isset($FileName) && $FileName != ""){
-    $RatingsSQL = "INSERT INTO Ratings_Pictures VALUES ($contract, $FileName);";
+    $RatingsSQL = "INSERT INTO Ratings_Pictures VALUES ($contract, '$FileName', '$Description');";
   }
   if (mysqli_query($GLOBALS['conn'], $RatingsSQL)) {
   }

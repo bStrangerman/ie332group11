@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS Numeric_Contract_Ratings (
 CREATE TABLE IF NOT EXISTS Ratings_Pictures (
   ContractID int(11),
   FileName varchar(50) UNIQUE,
+  Description varchar(400),
   PRIMARY KEY(ContractID, FileName),
   FOREIGN KEY(ContractID) REFERENCES Contracts(ContractID) ON DELETE CASCADE,
 );
