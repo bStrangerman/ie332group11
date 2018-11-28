@@ -1,17 +1,15 @@
 <?php
 require_once "../includes/main.php";
-$_SESSION['UserID'] = 1;
-$contract = 1;
-$userID = $_SESSION['UserID'];
+$_SESSION['UserID'] = 3;
+$UserID = $_SESSION['UserID'];
 
 if(isset($_SESSION['UserID'])){
-  if($rbac->Users->hasRole('Lessee', $UserID = $_SESSION['UserID'])){
-    // header('Location: warehouse.php');
+  if(!$rbac->Users->hasRole('Lessee', $UserID = $_SESSION['UserID'])){
+    header('Location: warehouse.php');
   }
   else if (isset($_GET['contract'])){
     $contract = $_GET['contract'];
-    $_SESSION['reviewContract'] = $contract;
-    $user = $_SESSION['UserID'];
+
     // Getting Contract and Warehouse address
     $sql = "SELECT *
     FROM Contracts
@@ -19,12 +17,18 @@ if(isset($_SESSION['UserID'])){
     ON Spaces.SpaceID =Contracts.SpaceID
     LEFT JOIN warehouses
     ON Warehouses.WarehouseID = Spaces.SpaceID
+    LEFT JOIN phprbac_users
+    ON phprbac_users.UserID = Contracts.LesseeID
     WHERE LesseeID = $UserID
     AND ContractID = $contract";
 
     $results = $GLOBALS ['conn'] -> query($sql);
     while($contractInfo[]=mysqli_fetch_array($results));
 
+    if(count($contractInfo) <= 1){
+      header("Location: index.php");
+      exit;
+    }
 
     // $contractInfo['City']
     $warehouseID = $contractInfo[0]['WarehouseID'];
@@ -37,7 +41,8 @@ if(isset($_SESSION['UserID'])){
     WHERE WarehouseID = $warehouseID
     ORDER BY Pictures.PictureID
     LIMIT 1";
-    $picture = ($conn -> query($sql)) -> fetch_assoc();
+    $pictureResult = ($conn -> query($sql));
+    $picture = $pictureResult -> fetch_assoc();
   }
   // END OF GETTING PICTURE
   //
@@ -50,7 +55,8 @@ if(isset($_SESSION['UserID'])){
 }
 
 else {
-  $_SESSION['redirect'] = 'Lessee_survey.php';
+  echo "Not Logged In";
+  $_SESSION['redirect'] = 'Lessee_Survey_2.php?contract=' . $_GET['contract'];
   // header('Location: login.php');
 }
 require_once "../layouts/Calssimax/header.php";
@@ -114,11 +120,29 @@ require_once "../layouts/Calssimax/header.php";
         </div>
       </div>
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-
-        <form action="book.php" method="post">
+        <?php
+        $ownerID = $contractInfo[0]['OwnerID'];
+        $ownerSQL = "SELECT *
+                     FROM phprbac_users
+                     WHERE UserID = $ownerID";
+        $ownerResult = $conn -> query($ownerSQL);
+        while($ownerInfo[]=mysqli_fetch_array($ownerResult));
+        ?>
+        <form action = "../includes/lessee_survey_submit.php" method="post">
           <!-- Edit Leese Info -->
+          <input type="hidden" id="contract" name="contract" value="<?php echo $contract; ?>">
+          <input type="hidden" id="owner" name="owner" value="<?php echo $ownerInfo[0]['UserID']; ?>">
+          <input type="hidden" id="lesseeFirstName" name="lesseeFirstName" value="<?php echo $ownerInfo[0]['FirstName']; ?>">
+          <input type="hidden" id="lesseeLastName" name="lesseeLastName" value="<?php echo $ownerInfo[0]['LastName']; ?>">
           <div class="widget personal-info">
-            <h1 class="widget-header user">Verify the dates of the leese</h1>
+            <h1 class="widget-header user">Lease Details</h1>
+            <p><strong>Warehouse Owner:</strong> <?php echo $ownerInfo[0]['FirstName'] . " " . $ownerInfo[0]['LastName']; ?></p>
+            <p><strong>Company:</strong> <?php echo $ownerInfo[0]['Company']; ?></p>
+            <p><strong>Contract Dates:</strong> <?php echo $contractInfo[0]['StartDate'] . " to " . $contractInfo[0]['EndDate']; ?></p>
+
+          </div>
+          <div class="widget personal-info">
+            <h1 class="widget-header user">Numerical Ratings</h1>
             <div class="row">
               <!-- Start Date -->
               <!--===================
@@ -166,56 +190,12 @@ require_once "../layouts/Calssimax/header.php";
                 </label>
               </div>
             </div>
-            <!-- End Date -->
-            <div class="col-lg-6 form-group">
-              <label for="end-date">End Date</label>
-              <input type="date" class="form-control" id="end-date" required>
-            </div>
           </div>
-        </div>
         <!-- Submit button -->
         <button class="btn btn-transparent">Submit Lessee Application</button>
       </form>
-      <!-- Change Password -->
-      <div class="widget change-password">
-        <h3 class="widget-header user">Edit Password</h3>
-        <form action="#">
-          <!-- Current Password -->
-          <div class="form-group">
-            <label for="current-password">Current Password</label>
-            <input type="password" class="form-control" id="current-password">
-          </div>
-          <!-- New Password -->
-          <div class="form-group">
-            <label for="new-password">New Password</label>
-            <input type="password" class="form-control" id="new-password">
-          </div>
-          <!-- Confirm New Password -->
-          <div class="form-group">
-            <label for="confirm-password">Confirm New Password</label>
-            <input type="password" class="form-control" id="confirm-password">
-          </div>
-          <!-- Submit Button -->
-          <button class="btn btn-transparent">Change Password</button>
-        </form>
-      </div>
-      <!-- Change Email Address -->
-      <div class="widget change-email mb-0">
-        <h3 class="widget-header user">Edit Email Address</h3>
-        <form action="#">
-          <!-- Current Password -->
-          <div class="form-group">
-            <label for="current-email">Current Email</label>
-            <input type="email" class="form-control" id="current-email">
-          </div>
-          <!-- New email -->
-          <div class="form-group">
-            <label for="new-email">New email</label>
-            <input type="email" class="form-control" id="new-email">
-          </div>
-          <!-- Submit Button -->
-          <button class="btn btn-transparent">Change email</button>
-        </form>
+    </div>
+    </div>
       </div>
     </div>
   </div>

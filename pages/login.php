@@ -17,7 +17,7 @@ if(isset($_SESSION['UserID'])){
       if(isset($_SESSION['redirect']) && $_SESSION['redirect'] != ""){
         $redirect = $_SESSION['redirect'];
         $_SESSION['redirect'] = "";
-        unsset($_SESSION['redirect']);
+        unset($_SESSION['redirect']);
         header($redirect);
         exit;
       }

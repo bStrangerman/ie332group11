@@ -18,51 +18,62 @@
 require_once "../includes/main.php";
 
 array_print($_POST);
-array_print($_SESSION);
 
 $RatingsSQL = "";
 
-insertNumericRating($_SESSION['reviewContract'],"Overall", clean($_POST['ls_rating']));
-insertNumericRating($_SESSION['reviewContract'],"Accuracy", clean($_POST['ls_rating']));
-insertNumericRating($_SESSION['reviewContract'],"Communication", clean($_POST['ls_comm']));
-insertNumericRating($_SESSION['reviewContract'],"StaffFriend", clean($_POST['ls_friend']));
-insertNumericRating($_SESSION['reviewContract'],"Location", clean($_POST['ls_local']));
-insertNumericRating($_SESSION['reviewContract'],"SpaceValue", clean($_POST['ls_value']));
+if(isset($_POST['ls_rating']))
+  insertNumericRating($_POST['contract'],"Overall", clean($_POST['ls_rating']));
+if(isset($_POST['ls_rating']))
+  insertNumericRating($_POST['contract'],"Accuracy", clean($_POST['ls_accuracy']));
+if(isset($_POST['ls_comm']))
+  insertNumericRating($_POST['contract'],"Communication", clean($_POST['ls_comm']));
+if(isset($_POST['ls_friend']))
+  insertNumericRating($_POST['contract'],"StaffFriend", clean($_POST['ls_friend']));
+if(isset($_POST['ls_local']))
+  insertNumericRating($_POST['contract'],"Location", clean($_POST['ls_local']));
+if(isset($_POST['ls_value']))
+  insertNumericRating($_POST['contract'],"SpaceValue", clean($_POST['ls_value']));
 
-insertTextRating($_SESSION['reviewContract'],"Title", clean($_POST['ls_title']));
-insertTextRating($_SESSION['reviewContract'],"Body", clean($_POST['ls_body']));
-insertTextRating($_SESSION['reviewContract'],"Feedback", clean($_POST['ls_feedback']));
+if(isset($_POST['ls_title']))
+  insertTextRating($_POST['contract'],"Title", clean($_POST['ls_title']));
+if(isset($_POST['ls_body']))
+  insertTextRating($_POST['contract'],"Body", clean($_POST['ls_body']));
+if(isset($_POST['ls_feedback']))
+  insertTextRating($_POST['contract'],"Feedback", clean($_POST['ls_feedback']));
 
-echo $RatingsSQL;
 
 function insertNumericRating ($contract, $name, $score){
+  $NumericRatingID_SQL = "SELECT NumericRatingID FROM Numeric_Rating_Types WHERE RatingShortName = '$name'";
+  $NumericRatingID_Result = $GLOBALS['conn'] -> query($NumericRatingID_SQL);
+  while($NumericRatingID_Row[]=mysqli_fetch_array($NumericRatingID_Result));
+  $NumericRatingID = $NumericRatingID_Row[0]['NumericRatingID'];
+
   if(isset($score) && $score != ""){
-    $GLOBALS['RatingsSQL'] .= "INSERT INTO Numeric_Contract_Ratings (ContractID, Numeric_Rating_Name, RatingResult)
-                               SELECT($contract, NumericContractID, $score)
-                               FROM Numeric_Rating_Types
-                               WHERE RatingShortName = '$name';<br>";
+    $RatingsSQL = "INSERT INTO Numeric_Contract_Ratings VALUES ($contract, $NumericRatingID, $score);";
   }
+  if (mysqli_query($GLOBALS['conn'], $RatingsSQL)) {
+  }
+  else {
+      echo "Error: " . $RatingsSQL . "<br>" . mysqli_error($GLOBALS['conn']);
+  }
+
 }
 
 function insertTextRating ($contract, $name, $text){
-  if(isset($text) && $text != ""){
-    $GLOBALS['RatingsSQL'] .= "INSERT INTO Text_Contract_Ratings (ContractID, Text_Rating_Name, RatingResult)
-                               SELECT($contract, TextContractID, $score)
-                               FROM Text_Rating_Types
-                               WHERE RatingShortName = '$name';<br>";
+  $TextRatingID_SQL = "SELECT TextRatingID FROM Text_Rating_Types WHERE RatingShortName = '$name'";
+  $TextRatingID_Result = $GLOBALS['conn'] -> query($TextRatingID_SQL);
+  while($TextRatingID_Row[]=mysqli_fetch_array($TextRatingID_Result));
+  $TextRatingID = $TextRatingID_Row[0]['TextRatingID'];
+
+  if(isset($score) && $score != ""){
+    $RatingsSQL = "INSERT INTO Text_Contract_Ratings VALUES ($contract, $TextRatingID, $score);";
+  }
+  if (mysqli_query($GLOBALS['conn'], $RatingsSQL)) {
+  }
+  else {
+      echo "Error: " . $RatingsSQL . "<br>" . mysqli_error($GLOBALS['conn']);
   }
 }
 
-$RatingsSQL = "SELECT OwnerID
-        FROM Warehouses
-        WHERE WarehouseID IN(
-          SELECT WarehouseID
-          FROM Spaces
-          WHERE SpaceID IN(
-            SELECT SpaceID
-            FROM Contracts
-            WHERE ContractID = $contract
-          )
-        )";
-        echo $RatingsSQL;
-// notify($owner, , $Message, $url, $conn);
+
+notify($_POST['owner'], 'new_review', $_POST['lesseeFirstName'] . " " . $_POST['lesseeLastName'] . "has been created!", 'contract.php?contract=' . $_POST['contract']);
