@@ -1141,6 +1141,11 @@ CREATE TABLE IF NOT EXISTS Status (
   StatusDescription varchar(200),
   PRIMARY KEY (StatusID));
 
+INSERT INTO Status (StatusID, StatusName, Status Description) VALUES
+  ('2','pending','The lessee has requested a deal on the warehouse.')
+  ('3','approved', 'The warehouse owner has approved the lessee contract.')
+  ('4', 'denied', 'The warehouse owner has denied the lessee contract.')
+
 CREATE TABLE IF NOT EXISTS Contract_Status (
   ContractID int(11) NOT NULL,
   StatusID int(11) NOT NULL,
@@ -1149,14 +1154,33 @@ CREATE TABLE IF NOT EXISTS Contract_Status (
   FOREIGN KEY (ContractID) REFERENCES Contracts(ContractID),
   FOREIGN KEY (StatusID) REFERENCES Status(StatusID));
 
-  CREATE TABLE IF NOT EXISTS Attributes (
-    AttributeID int(11) NOT NULL auto_increment,
-    AttributeName varchar(50),
-    AttributeDescription varchar(200),
-    AttributeType int(5),
-    lft int(11) NOT NULL,
-    rght int(11) NOT NULL,
-    PRIMARY KEY(AttributeID));
+CREATE TABLE IF NOT EXISTS Attributes (
+  AttributeID int(11) NOT NULL auto_increment,
+  AttributeName varchar(50),
+  AttributeDescription varchar(200),
+  AttributeType int(5),
+  lft int(11) NOT NULL,
+  rght int(11) NOT NULL,
+  PRIMARY KEY(AttributeID));
+
+INSERT INTO Attributes (AttributeName, AttributeType) VALUES
+  ('Retail/Industrial', 1),
+  ('Office/Industrial', 1),
+  ('Industrial', 1),
+  ('Yard', 2),
+  ('Fence', 2)
+  ('Loading Dock', 2)
+  ('Sprinkler', 2)
+  ('Bathroom', 2)
+  ('Customizable', 2)
+  ('Power', 2)
+  ('Crane', 2)
+  ('Floor Drains', 2)
+  ('Mezzanine', 2)
+  ('Kitchen', 2)
+  ('Air Conditioning', 2)
+  ('Security', 2)
+  ('Auto Service', 2)
 
 CREATE TABLE IF NOT EXISTS Space_Attributes (
   SpaceID int(11),
@@ -1164,12 +1188,3 @@ CREATE TABLE IF NOT EXISTS Space_Attributes (
   PRIMARY KEY(SpaceID, AttributeID),
   FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID),
   FOREIGN KEY(AttributeID) REFERENCES Attributes(AttributeID));
-
-INSERT INTO Attributes (AttributeName, AttributeType) VALUES
-  ('Retail/Industrial', 1),
-  ('Office/Industrial', 1),
-  ('Industrial', 1),
-  ('Fencing', 2),
-  ('Floor Drains', 2),
-  ('Yard', 2),
-  ('Loading Dock', 2);
