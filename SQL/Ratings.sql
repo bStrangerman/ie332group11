@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS Ratings_Pictures (
   FileName varchar(50) UNIQUE,
   Description varchar(400),
   PRIMARY KEY(ContractID, FileName),
-  FOREIGN KEY(ContractID) REFERENCES Contracts(ContractID) ON DELETE CASCADE,
+  FOREIGN KEY(ContractID) REFERENCES Contracts(ContractID) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Text_Contract_Ratings (
