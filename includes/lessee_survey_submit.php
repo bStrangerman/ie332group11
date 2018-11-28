@@ -17,8 +17,6 @@
 <?php
 require_once "../includes/main.php";
 
-array_print($_POST);
-
 $RatingsSQL = "";
 
 if(isset($_POST['ls_rating']))
