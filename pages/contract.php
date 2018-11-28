@@ -35,7 +35,7 @@ function getContractInfo($contractID, $UserID){
 }
 
 // if the session changed
-$contractID = $_GET['contract'];  // stored for local use
+$contractID = clean($_GET['contract']);  // stored for local use
 
 // input the status into the database iff the contract number DID NOT change
 if(isset($_POST['status'])){

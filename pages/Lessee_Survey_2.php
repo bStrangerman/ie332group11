@@ -24,7 +24,7 @@ if(isset($_SESSION['UserID'])){
     header('Location: warehouse.php');
   }
   else if (isset($_GET['contract'])){
-    $contract = $_GET['contract'];
+    $contract = clean($_GET['contract']);
 
     // Getting Contract and Warehouse address
     $sql = "SELECT *
@@ -72,7 +72,7 @@ if(isset($_SESSION['UserID'])){
 
 else {
   echo "Not Logged In";
-  $_SESSION['redirect'] = 'Lessee_Survey_2.php?contract=' . $_GET['contract'];
+  $_SESSION['redirect'] = 'Lessee_Survey_2.php?contract=' . clean($_GET['contract']);
   // header('Location: login.php');
 }
 require_once "../layouts/Calssimax/header.php";

@@ -16,10 +16,10 @@ else if (!$rbac->check('can_lease', $UserID = $_SESSION['UserID'])){
 require_once "../layouts/Calssimax/header.php";
 
 if(isset($_GET['address']))
-$address = urldecode($_GET['address']);
+$address = clean(urldecode($_GET['address']));
 
 if(isset($_GET['space']))
-$space = $_GET['space'];
+$space = clean($_GET['space']);
 
 $sql = "SELECT *
 FROM Spaces
@@ -76,8 +76,8 @@ WHERE PictureID IN
             <!-- User Widget -->
             <div class="widget user-dashboard-profile" style="background: #F0F0F0">
               <?php
-              if((isset($_GET['startdate']) && $_GET['startdate'] != "") && (isset($_GET['enddate']) && $_GET['enddate'] != "")) { ?>
-                <h1 align="center" style="color: green; padding: 0px"><strong>$<?php echo ($feeRate * $spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize'] * (1 + date_diff(date_create($_GET['startdate']), date_create($_GET['enddate']), FALSE)->format("%m")));?></strong></h1>
+              if((isset($_GET['startdate']) && clean($_GET['startdate']) != "") && (isset($_GET['enddate']) && clean($_GET['enddate']) != "")) { ?>
+                <h1 align="center" style="color: green; padding: 0px"><strong>$<?php echo ($feeRate * $spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize'] * (1 + date_diff(date_create(clean($_GET['startdate'])), date_create(clean($_GET['enddate'])), FALSE)->format("%m")));?></strong></h1>
               <?php }
               else { ?>
                 <h1 align="center" style="color: green; padding: 0px"><strong>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize']);?></strong><span style="color:black; font-size:50%"> /Month</span></h1>
@@ -130,12 +130,12 @@ WHERE PictureID IN
                 <!-- Start Date -->
                 <div class="col-lg-6 form-group">
                   <label for="start-date">Start Date</label>
-                  <input type="date" name="StartDate" <?php if(isset($_GET['startdate']) && ($_GET['startdate'] != "")){ echo "value='" . $_GET['startdate'] . "'"; }?> class="form-control" id="start-date" required>
+                  <input type="date" name="StartDate" <?php if(isset($_GET['startdate']) && (clean($_GET['startdate']) != "")){ echo "value='" . clean($_GET['startdate']) . "'"; }?> class="form-control" id="start-date" required>
                 </div>
                 <!-- End Date -->
                 <div class="col-lg-6 form-group">
                   <label for="end-date">End Date</label>
-                  <input type="date" name="EndDate" <?php if(isset($_GET['enddate']) && ($_GET['enddate'] != "")){ echo "value='" . $_GET['enddate'] . "'"; }?> class="form-control" id="end-date" required>
+                  <input type="date" name="EndDate" <?php if(isset($_GET['enddate']) && (clean($_GET['enddate']) != "")){ echo "value='" . clean($_GET['enddate']) . "'"; }?> class="form-control" id="end-date" required>
                 </div>
               </div>
             </div>
