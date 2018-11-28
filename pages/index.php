@@ -27,7 +27,7 @@ else {
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- title of site -->
-  <title>Directory Landing Page</title>
+  <title>@Capacitys</title>
 
   <!-- For favicon png -->
   <link rel="shortcut icon" type="image/icon" href="../includes/logo/favicon.png"/>
@@ -37,6 +37,9 @@ else {
 
   <!--linear icon css-->
   <link rel="stylesheet" href="../includes/css/linearicons.css">
+
+  <!-- Font Awesome -->
+  <link href="../includes/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
   <!--animate.css-->
   <link rel="stylesheet" href="../includes/css/animate.css">
@@ -71,6 +74,7 @@ else {
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <!-- Get user's latitude and longitude from broweser's GPS location -->
+
   <script>
   window.onload = getLocation;
   var geo = navigator.geolocation;     /*     Here we will check if the browser supports the Geolocation API; if exists, then we will display the location     */
@@ -457,9 +461,9 @@ else {
         <div class="col-sm-7">
           <div class="footer-social">
             <span><i class="fa fa-phone"> +1  (123) 456 7890</i></span>
-            <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a class="fa fa-facebook" href="https://www.facebook.com/AtCapacity-339587599924715"></a>
+            <a class="fa fa-twitter" href="https://twitter.com/capacity_332"></a>
+            <!-- <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#"><i class="fa fa-google-plus"></i></a> -->
           </div>
         </div>
