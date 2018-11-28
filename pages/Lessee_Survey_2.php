@@ -1,3 +1,19 @@
+<!--====================================
+=            TABLE OF NAMES            =
+========================================
+= ls_title -> title of the review      =
+= ls_body -> Body of the review        =
+= ls_feedback -> Feedback to owner     =
+= ls_files -> Review pictures          =
+= ls_rating -> overall Rating          =
+= ls_accuracy -> accuracy of listing   =
+= ls_comm -> communication with owner  =
+= ls_friend -> Friendlyness            =
+= ls_local -> location of warehouse    =
+= ls_val -> Value of Space             =
+======================================-->
+<!-- The variables for the out of 5 ratings arent in the code. -->
+
 <?php
 require_once "../includes/main.php";
 $_SESSION['UserID'] = 3;
@@ -141,19 +157,18 @@ require_once "../layouts/Calssimax/header.php";
             <p><strong>Contract Dates:</strong> <?php echo $contractInfo[0]['StartDate'] . " to " . $contractInfo[0]['EndDate']; ?></p>
 
           </div>
+
+<!--===================
+=     LYKERT SCALES   =
+=======================
+for Accuracy of Listing, Communication with Staff, Friendlyness of Staff, Location of Warehouse, Value of Space -->
+
           <div class="widget personal-info">
             <h1 class="widget-header user">Numerical Ratings</h1>
-            <div class="row">
-              <!-- Start Date -->
-              <!--===================
-              =     LYKERT SCALES   =
-              =======================
-              for Accuracy of Listing, Communication with Staff, Friendlyness of Staff, Location of Warehouse, Value of Space -->
-
-              <div class="col-lg-12 row form-group">
-                <label>Overall Rating     </label> <br>
+<!--Overall Rating-->
+                <p><strong>Overall Rating</strong> <br>
                 <label class="radio-inline">
-                  <input type="radio" name="ls_rating" id="optionsRadiosInline1" value="1" checked>1
+                  <input type="radio" name="ls_rating" id="optionsRadiosInline1" value="1">1
                 </label>
                 <label class="radio-inline">
                   <input type="radio" name="ls_rating" id="optionsRadiosInline2" value="2">2
@@ -166,15 +181,13 @@ require_once "../layouts/Calssimax/header.php";
                 </label>
                 <label class="radio-inline">
                   <input type="radio" name="ls_rating" id="optionsRadiosInline5" value="5">5
-                </label>
-              </div>
-            </div>
-            <div class="row">
+                </label></p>
+
+
               <!-- Accuracy of Listing -->
-              <div class="col-lg-12 row form-group">
-                <label>Accuracy of Listing     </label> <br>
+                <p><strong>Accuracy of Listing</strong> <br>
                 <label class="radio-inline">
-                  <input type="radio" name="ls_accuracy" id="optionsRadiosInline1" value="1" checked>1
+                  <input type="radio" name="ls_accuracy" id="optionsRadiosInline1" value="1">1
                 </label>
                 <label class="radio-inline">
                   <input type="radio" name="ls_accuracy" id="optionsRadiosInline2" value="2">2
@@ -187,10 +200,125 @@ require_once "../layouts/Calssimax/header.php";
                 </label>
                 <label class="radio-inline">
                   <input type="radio" name="ls_accuracy" id="optionsRadiosInline5" value="5">5
+                </label></p>
+
+            <!-- Communication with Staff-->
+                <p><strong>Communication with Staff</strong> <br>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_comm" id="optionsRadiosInline1" value="1">1
                 </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_comm" id="optionsRadiosInline2" value="2">2
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_comm" id="optionsRadiosInline3" value="3">3
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_comm" id="optionsRadiosInline4" value="4">4
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_comm" id="optionsRadiosInline5" value="5">5
+                </label></p>
+
+            <!-- Friendlyness of Staff-->
+                <p><strong>Friendlyness of Staff</strong> <br>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_friend" id="optionsRadiosInline1" value="1">1
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_friend" id="optionsRadiosInline2" value="2">2
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_friend" id="optionsRadiosInline3" value="3">3
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_friend" id="optionsRadiosInline4" value="4">4
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_friend" id="optionsRadiosInline5" value="5">5
+                </label></p>
+
+            <!-- Location of Warehouse-->
+                <p><strong>Location of Warehouse</strong> <br>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_local" id="optionsRadiosInline1" value="1">1
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_local" id="optionsRadiosInline2" value="2">2
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_local" id="optionsRadiosInline3" value="3">3
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_local" id="optionsRadiosInline4" value="4">4
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_local" id="optionsRadiosInline5" value="5">5
+                </label></p>
+
+            <!-- Value of Space-->
+                <p><strong>Value of Space</strong> <br>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_value" id="optionsRadiosInline1" value="1">1
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_value" id="optionsRadiosInline2" value="2">2
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_value" id="optionsRadiosInline3" value="3">3
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_value" id="optionsRadiosInline4" value="4">4
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="ls_value" id="optionsRadiosInline5" value="5">5
+                </label></p>
+          </div>
+<!-- END OF LYKERT -->
+
+<!--==================
+=   WRTITEN REVIEWS  =
+===================-->
+            <div class="widget personal-info">
+              <h1 class="widget-header user">Written Review</h1>
+              <div class="form-group">
+                <label>Title of your review</label>
+                <input class="form-control" placeholder="What's important to know?" name="ls_title">
+              </div>
+
+                <!-- Experience with warehouse -->
+                <div class="form-group">
+                  <label>Share with the community your warehouse experience</label>
+                  <textarea class="form-control" placeholder="How was your warehouse experience?  What did you like or dislike?" name="ls_body"></textarea>
+                </div>
+                <!-- END OF Experience -->
+
+                <!-- Private Feedback to Space Owner -->
+                <div class="form-group">
+                  <label>Share with the community your warehouse experience</label>
+                  <textarea class="form-control" placeholder="How can this warehouse owner improve? Only the owner will see this section."  name="ls_feedback"></textarea>
+                </div>
+              </div>
+                <!-- END OF PRIVATE FEEDBACK -->
+<!--END OF TEXT FEEDBACK-->
+
+<!--==================
+=   FILE SUBMISSION  =
+===================-->
+            <div class="widget personal-info">
+              <h1 class="widget-header user">File Upload</h1>
+              <div class="form-group">
+                <label>Add a photo or video</label>
+                <input type="file" name="ls_files">
               </div>
             </div>
-          </div>
+<!-- END OF SUBMISSION -->
+
+<!--================
+=   SUBMIT BUTTON  =
+=================-->
+
+
         <!-- Submit button -->
         <button class="btn btn-transparent">Submit Lessee Application</button>
       </form>
