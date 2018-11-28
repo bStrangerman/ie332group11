@@ -54,7 +54,17 @@ function insertNumericRating ($contract, $name, $score){
   else {
       echo "Error: " . $RatingsSQL . "<br>" . mysqli_error($GLOBALS['conn']);
   }
+}
 
+function insertPictureRating ($contract, $FileName){
+  if(isset($FileName) && $FileName != ""){
+    $RatingsSQL = "INSERT INTO Ratings_Pictures VALUES ($contract, $FileName);";
+  }
+  if (mysqli_query($GLOBALS['conn'], $RatingsSQL)) {
+  }
+  else {
+      echo "Error: " . $RatingsSQL . "<br>" . mysqli_error($GLOBALS['conn']);
+  }
 }
 
 function insertTextRating ($contract, $name, $text){
