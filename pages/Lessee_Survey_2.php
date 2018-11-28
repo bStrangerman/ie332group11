@@ -308,11 +308,25 @@ for Accuracy of Listing, Communication with Staff, Friendlyness of Staff, Locati
             <div class="widget personal-info">
               <h1 class="widget-header user">File Upload</h1>
               <div class="form-group">
-                <label>Add a photo or video</label>
-                <input type="file" name="ls_files">
+                <label>Add an image </label>
+                <input type="file" accept= "image/*" name="ls_files" id="file_submit">
               </div>
             </div>
+
+<!--Size Checker-->
+<script>
+var uploadField = document.getElementById("file_submit");
+
+uploadField.onchange = function() {
+    if(this.files[0].size > 2200000){
+       alert("File is too big!");
+       this.value = "";
+    };
+};
+</script>
 <!-- END OF SUBMISSION -->
+
+
 
 <!--================
 =   SUBMIT BUTTON  =
