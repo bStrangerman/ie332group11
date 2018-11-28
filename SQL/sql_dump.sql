@@ -1126,7 +1126,10 @@ INSERT INTO phprbac_users(Username,FirstName,LastName,Password,Email,PhoneNumber
 
 INSERT INTO `phprbac_userroles` (UserID, RoleID) VALUES
 (1,1),
+(1,2),
+(1,3),
 (2,3),
+(3,5),
 (4,3),
 (5,3),
 (6,3),
@@ -1146,8 +1149,7 @@ INSERT INTO `phprbac_userroles` (UserID, RoleID) VALUES
 (20,3),
 (21,3),
 (22,3),
-(23,3),
-(3,5);
+(23,3);
 
 CREATE TABLE IF NOT EXISTS Warehouses (
   WarehouseID int(11) NOT NULL auto_increment,
