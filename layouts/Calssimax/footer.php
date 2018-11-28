@@ -169,6 +169,7 @@ function initAutocomplete() {
   }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHEHS1YUJVmKDeZhK1zp-5bWFjK7l7Oi0&libraries=places&callback=initAutocomplete" async defer></script>
+  <script src="../includes/dateCheck.js"></script>
 
 
 

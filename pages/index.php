@@ -27,7 +27,7 @@ else {
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- title of site -->
-  <title>@Capacitys</title>
+  <title>@Capacity</title>
 
   <!-- For favicon png -->
   <link rel="shortcut icon" type="image/icon" href="../includes/logo/favicon.png"/>
@@ -212,7 +212,7 @@ else {
 
       <!-- </p> -->
     </div>
-    <form action="results.php" method="get">
+    <form action="results.php" method="get" onsubmit="return checkEnteredDates(stdateval, endateval)">
       <div class="welcome-hero-serch-box">
         <div class="welcome-hero-form">
           <!-- <div class="single-welcome-hero-form">
@@ -231,9 +231,9 @@ else {
       </div>
       <div class="single-welcome-hero-form">
         <h3>When?</h3>
-        <input name="startdate" placeholder="Start" type="date"></input>
+        <input name="startdate" id="stdateval" placeholder="Start" type="date"></input>
         <h3>to</h3>
-        <input name="enddate" placeholder="End" type="date"></input>
+        <input name="enddate" id="endateval" placeholder="End" type="date"></input>
         <div class="welcome-hero-form-icon">
           <i class="fa fa-calendar" style="font-size:24px"></i>
         </div>
@@ -425,7 +425,13 @@ else {
 
 </section><!--/.explore-->
 <!--explore end -->
-
+<div class="row">
+  <div class="col-lg-3" align="center">
+  </div>
+  <div class="col-lg-6" align="center">
+<!-- Twitter timeline -->
+<a class="twitter-timeline" data-width="300" data-height="300" href="https://twitter.com/Capacity_332?ref_src=twsrc%5Etfw">Tweets by Capacity_332</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+</div>
 <!--footer start-->
 <footer id="footer"  class="footer">
   <div class="container">
@@ -580,6 +586,7 @@ function initAutocomplete() {
   }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHEHS1YUJVmKDeZhK1zp-5bWFjK7l7Oi0&libraries=places&callback=initAutocomplete" async defer></script>
+  <script src="../includes/dateCheck.js"></script>
 
 </body>
 
