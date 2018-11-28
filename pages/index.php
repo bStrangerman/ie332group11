@@ -71,6 +71,7 @@ else {
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <!-- Get user's latitude and longitude from broweser's GPS location -->
+
   <script>
   window.onload = getLocation;
   var geo = navigator.geolocation;     /*     Here we will check if the browser supports the Geolocation API; if exists, then we will display the location     */
