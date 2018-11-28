@@ -19,89 +19,46 @@ else {
 function getContractInfo($contractID, $UserID){
   return "SELECT *
   FROM phprbac_users
-  INNER JOIN contracts
-  ON contracts.LesseeID = phprbac_users.UserID
-  INNER JOIN spaces
-  ON contracts.SpaceID = spaces.SpaceID
-  INNER JOIN warehouses
-  ON warehouses.warehouseID = spaces.warehouseID
-  INNER JOIN Contract_status
+  LEFT JOIN Contracts
+  ON Contracts.LesseeID = phprbac_users.UserID
+  LEFT JOIN Spaces
+  ON Contracts.SpaceID = Spaces.SpaceID
+  LEFT JOIN Warehouses
+  ON Warehouses.WarehouseID = Spaces.WarehouseID
+  LEFT JOIN Contract_Status
   ON Contract_Status.ContractID = Contracts.ContractID
-  INNER JOIN status
-  ON status.StatusID = Contract_Status.StatusID
-  WHERE contracts.contractID = $contractID
-  AND warehouses.OwnerID = $UserID
+  LEFT JOIN Status
+  ON Status.StatusID = Contract_Status.StatusID
+  WHERE Contracts.ContractID = $contractID
+  AND Warehouses.OwnerID = $UserID
   ORDER BY StatusTime DESC";
 }
 
+// if the session changed
+$contractID = $_GET['contract'];  // stored for local use
 
-if(isset($_GET['contract'])){  // checks if the customer is searching a contract
-  // echo "<h1>URL has a contract ID in it. " . $_GET['contract'] . "</h1><br>";
-
-  if(isset($_SESSION['contractID'])){  // checks if a contract is in the session
-    // echo "<h1>Session has a contractID already in it. " . $_SESSION['contractID'] . "</h1><br>";
-
-    if($_SESSION['contractID'] != $_GET['contract']){  // checks if the sessioned contract is the same as the search
-      // echo "<h1>current contractID not in session. I am storing new contract info</h1><br>";
-
-      // if the session changed
-      $_SESSION['contractID'] = $_GET['contract'];  // saves the new contract into the session
-      $contractID = $_SESSION['contractID'];  // stored for local use
-      // sql query for new contract info
-
-      $mainSqlResult = ($conn -> query(getContractInfo($contractID, $UserID)) -> fetch_assoc());
-      $_SESSION['contractInfo'] = $mainSqlResult;  // store the results into the session
-      if($mainSqlResult['StatusName'])
-      $contractStatus = $mainSqlResult['StatusName'];
-    }
-    else {
-      // echo "<h1>current contractID is in session. </h1><br>";
-
-      // if the contract and session did not change
-      $contractID = $_SESSION['contractID'];  // retrieve the contract ID from the session
-      $mainSqlResult = $_SESSION['contractInfo'];  // retrieve the contract info from the session
-
-      // input the status into the database iff the contract number DID NOT change
-      if(isset($_POST['status'])){
-        set_contract_status($contractID, $_POST['status'], $conn);
-        $mainSqlResult = ($conn -> query(getContractInfo($contractID, $UserID)) -> fetch_assoc());
-      }
-
-
-      // prevents the accept cotract button from showing if it has already been approved or denied
-      if($mainSqlResult['StatusName'])
-      $contractStatus = $mainSqlResult['StatusName'];
-    }
-  }
-  else {
-    // echo "<h1>Session does not have a contractID. Storing contract info.</h1><br>";
-    // Initial page setup
-
-    // configure the contract ID's
-    $_SESSION['contractID'] = $_GET['contract'];
-    $contractID = $_SESSION['contractID'];
-
-    // sql query for new contract info
-    $mainSqlResult = ($conn -> query(getContractInfo($contractID, $UserID))) -> fetch_assoc();
-
-    $_SESSION['contractInfo'] = $mainSqlResult;  // store the results into the session
-
-    // prevents the accept cotract button from showing if it has already been approved or denied
-    if($mainSqlResult['StatusName'])
-      $contractStatus = $mainSqlResult['StatusName'];
-  }
-
-  // redirects if the user has no contract with that number
-  // header('Location: warehouse.php');
-  // if(!$mainSqlResult['countof']){
-  // }
-
-
-
-
-
-
+// input the status into the database iff the contract number DID NOT change
+if(isset($_POST['status'])){
+  set_contract_status($contractID, $_POST['status']);
 }
+
+// sql query for new contract info
+$mainSqlMidResult = ($conn -> query(getContractInfo($contractID, $UserID)));
+$mainSqlResult = $mainSqlMidResult -> fetch_assoc();
+
+if($mainSqlResult['StatusName'])
+  $contractStatus = $mainSqlResult['StatusName'];
+
+// prevents the accept cotract button from showing if it has already been approved or denied
+if($mainSqlResult['StatusName'])
+$contractStatus = $mainSqlResult['StatusName'];
+
+
+// redirects if the user has no contract with that number
+// header('Location: warehouse.php');
+// if(!$mainSqlResult['countof']){
+// }
+
 require_once "../layouts/sb_admin_2/header.php";
 
 ?>
@@ -132,7 +89,7 @@ require_once "../layouts/sb_admin_2/header.php";
         <!-- /.panel-heading -->
         <div class="panel-body">
           <h4><?php
-          
+
           $startdate = date("M d, Y", strtotime($mainSqlResult['StartDate']));
           $enddate = date("M d, Y", strtotime($mainSqlResult['EndDate']));
           echo $startdate . " to " . $enddate . "</h4>";
@@ -147,7 +104,7 @@ require_once "../layouts/sb_admin_2/header.php";
 
           // get the number of contracts (of any status) for this customer
           $getCustomerPreviousCount = "SELECT COUNT(*) as COUNT
-          FROM contracts
+          FROM Contracts
           WHERE LesseeID = $lesseeID";
 
           echo "<h4>Important Client Information</h4>";

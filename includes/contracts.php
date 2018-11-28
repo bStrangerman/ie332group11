@@ -24,7 +24,7 @@ function set_contract_status ($contractID, $status)
     FROM status
     WHERE status.StatusName = '$status'";
     mysqli_query($GLOBALS['conn'], $sql);
-
+    
     notify($getLessee['LesseeID'], $status, "Contract " . $contractID . " was " . $status, 'contract.php?contract=' . $contractID);
   }
 
