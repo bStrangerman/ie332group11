@@ -33,12 +33,14 @@ function get_client_ip() {
 
     return $ipaddress;
 }
-$ip = "23.237.120.42";
-echo $ip . "<br>";
 
-//API from ipstack.com
-$geoIP  = json_decode(file_get_contents("http://api.ipstack.com/$ip?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
-
+$ip = get_client_ip();
+//API from ipstack.com This makes the cookie for the IP LATS
+if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
+  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/$ip?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
+  setcookie("IP_Latitude", $geoIP["latitude"]);  //set LAT
+  setcookie("IP_Longitude", $geoIP["longitude"]);  //set Lon
+}
 ?>
 
 <!doctype html>
@@ -103,7 +105,8 @@ $geoIP  = json_decode(file_get_contents("http://api.ipstack.com/$ip?access_key=d
   <![endif]-->
   <!-- Get user's latitude and longitude from broweser's GPS location -->
 
-  <?php if(!isset($_COOKIE['Latitude']) && !isset($_COOKIE['Latitude'])){ ?>
+
+<?php if(!isset($_COOKIE['Latitude']) && !isset($_COOKIE['Latitude'])){ ?>
   <script>
   window.onload = getLocation;
   var geo = navigator.geolocation;     /*     Here we will check if the browser supports the Geolocation API; if exists, then we will display the location     */
@@ -124,6 +127,8 @@ $geoIP  = json_decode(file_get_contents("http://api.ipstack.com/$ip?access_key=d
   }
   </script>
 <?php } ?>
+
+
   <style>
   #locationField, #controls {
     position: relative;
@@ -333,11 +338,15 @@ $geoIP  = json_decode(file_get_contents("http://api.ipstack.com/$ip?access_key=d
 
             if(isset($_COOKIE['Latitude']))
               $latitude = $_COOKIE['Latitude'];
+            elseif(isset($_COOKIE['IP_Latitude']))
+              $latitude = $_COOKIE['IP_Latitude'];
             else
               $latitude = FALSE;
 
             if(isset($_COOKIE['Longitude']))
               $longitude = $_COOKIE['Longitude'];
+            elseif(isset($_COOKIE['IP_Longitude']))
+              $longitude = $_COOKIE['IP_Longitude'];
             else
               $longitude = FALSE;
 // TODO: javascript to adapt this on load
