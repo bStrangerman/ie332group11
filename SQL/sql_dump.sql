@@ -1347,7 +1347,7 @@ CREATE TABLE IF NOT EXISTS Warehouses (
               (108, 93, '631 State Route 15 N', NULL, 'Lake Hopatcong', 'New York', 10400, 0.000000, 0.000000, ''),
               (109, 93, '79 Carlough Rd', NULL, 'Bohemia', 'New York', 12500, 0.000000, 0.000000, ''),
               (110, 93, '93 Garvies Point Rd', '11542', 'Glen Cove', 'New York', 85000, 40.859833, -73.642502, ''),
-              (111, 93, '46 Metropolitan Ave', NULL, 'Ridgewood', 'Ne', 35312, 0.000000, 0.000000, ''),
+              (111, 93, '46 Metropolitan Ave', NULL, 'Ridgewood', 'New York', 35312, 0.000000, 0.000000, ''),
               (112, 93, '333 N Bedford Rd', NULL, 'Mount Kisco', 'New York', 604095, 0.000000, 0.000000, ''),
               (113, 93, '57 Seaview Blvd', NULL, 'Port Washington', 'New York', 130853, 0.000000, 0.000000, ''),
               (114, 93, '100 Wells Ave', NULL, 'Congers', 'New York', 25000, 0.000000, 0.000000, ''),
