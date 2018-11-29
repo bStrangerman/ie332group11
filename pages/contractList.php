@@ -2,6 +2,8 @@
 require_once "../includes/main.php";
 include_once "../includes/contracts.php";
 
+$feeRate = 1.05;
+
 if (isset($_SESSION['UserID'])) {
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
     header('Location: index.php');
@@ -74,7 +76,7 @@ table tr[data-href] {
                 <th>Location</th>
                 <th>Client</th>
                 <th>Dates</th>
-                <th>Revenue</th>
+                <th>Profit</th>
               </tr>
             </thead>
             <tbody>
@@ -102,12 +104,13 @@ table tr[data-href] {
                   <td><?php echo $row['Address']; ?></td>
                   <td><?php echo $row['FirstName'] . " " . $row['LastName']; ?></td>
                   <td><?php echo date("m-d-Y", strtotime($row['StartDate'])) . " to " . date("m-d-Y", strtotime($row['EndDate'])); ?></td>
-                  <td><?php echo "$" . $row['AmountCharged']; ?></td>
+                  <td><?php echo "$" . ($row['AmountCharged'] / $feeRate); ?></td>
                 </tr>
               <?php $i++;
             } ?>
           </tbody>
         </table>
+        <h5 align="right">Current Fee Rate is <?php echo (($feeRate - 1) * 100); ?>%.  This has already been removed from your Profit.</h5>
         <!-- /.table-responsive -->
       </div>
       <!-- /.panel-body -->
