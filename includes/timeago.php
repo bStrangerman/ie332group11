@@ -1,5 +1,5 @@
-<!-- The below code was found on this website: https://phpdevtips.com/2011/06/the-php-time-ago-function/ -->
 <?php
+// The below code was found on this website: https://phpdevtips.com/2011/06/the-php-time-ago-function/
 
 function time_ago( $date )
 {

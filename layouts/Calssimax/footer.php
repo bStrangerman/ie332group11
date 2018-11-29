@@ -70,8 +70,8 @@
       <div class="col-sm-6 col-12">
         <!-- Social Icons -->
         <ul class="social-media-icons text-right">
-          <li><a class="fa fa-facebook" href=""></a></li>
-          <li><a class="fa fa-twitter" href=""></a></li>
+          <li><a class="fa fa-facebook" href="https://www.facebook.com/AtCapacity-339587599924715"></a></li>
+          <li><a class="fa fa-twitter" href="https://twitter.com/capacity_332"></a></li>
           <li><a class="fa fa-pinterest-p" href=""></a></li>
           <li><a class="fa fa-vimeo" href=""></a></li>
         </ul>
@@ -169,6 +169,7 @@ function initAutocomplete() {
   }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHEHS1YUJVmKDeZhK1zp-5bWFjK7l7Oi0&libraries=places&callback=initAutocomplete" async defer></script>
+  <script src="../includes/dateCheck.js"></script>
 
 
 

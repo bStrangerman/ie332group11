@@ -16,28 +16,37 @@
 
 <?php
 require_once "../includes/main.php";
-include_once "../includes/contracts.php";
 
 if(isset($_SESSION['UserID'])){
   if(!$rbac->Users->hasRole('Lessee', $UserID = $_SESSION['UserID'])){
-    header('Location: warehouse.php');
+    // header('Location: warehouse.php');
   }
   else if (isset($_GET['contract'])){
     $contract = $_GET['contract'];
     $_SESSION['reviewContract'] = $contract;
     $user = $_SESSION['UserID'];
-    $sql = "SELECT COUNT(*)
+    $sql = "SELECT WarehouseID
             FROM Contracts
+            LEFT JOIN Spaces
+            ON Spaces.SpaceID = Contracts.SpaceID
+            LEFT JOIN Warehouses
+            ON Warehouses.WarehouseID = Spaces.SpaceID
             WHERE LesseeID = $user
             AND ContractID = $contract";
-    if(count(($conn -> query($sql)) -> fetch_assoc()) < 0) {
-      header('Location: index.php');
-    }
+
+            $result = $GLOBALS['conn'] -> query($sql);
+
+            while($contractInfo[]=mysqli_fetch_array($result));
+
+
+    // if(count(($conn -> query($sql)) -> fetch_assoc()) > 0) {
+    //   header('Location: index.php');
+    // }
   }
 }
 else {
   $_SESSION['redirect'] = 'Lessee_survey.php';
-  header('Location: login.php');
+  // header('Location: login.php');
 }
 
 require_once "../layouts/sb_admin_2/header.php";
@@ -61,7 +70,7 @@ require_once "../layouts/sb_admin_2/header.php";
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form method="post" action = "lessee_survey_submit.php" role="form">
+              <form method="post" action = "../includes/lessee_survey_submit.php" role="form">
 
 <!--==============
 =   LOAD SPACE   =

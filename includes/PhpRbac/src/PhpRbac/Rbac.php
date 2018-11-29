@@ -53,5 +53,4 @@ class Rbac
         return Jf::$Rbac->tablePrefix();
     }
 }
-
 /** @} */ // End group phprbac */

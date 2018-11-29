@@ -8,30 +8,62 @@ INSERT INTO RatingFor VALUES
 (1,'Lessee'),
 (2,'Space'),
 (3,'Warehouse'),
-(4,'Owner');
+(4,'Owner'),
+(5,'Our Company');
 
--- TODO might want to foreign key 'rating for' to Role Id
-CREATE TABLE IF NOT EXISTS Rating_Types (
-  RatingID int(11) AUTO_INCREMENT,
-  RatingLongName VARCHAR(150) NOT NULL,
+CREATE TABLE IF NOT EXISTS Numeric_Rating_Types (
+  NumericRatingID int(11) AUTO_INCREMENT,
+  RatingShortName VARCHAR(15) NOT NULL UNIQUE,
   RatingResultDescription varchar(150) NOT NULL,
   RatingFor int(11) NOT NULL,
-  RatingType varchar(12),
-  Value int(4),
-  PRIMARY KEY(RatingID),
-  FOREIGN KEY(RatingFor) REFERENCES RatingFor(RatingForID)
+  PRIMARY KEY(NumericRatingID),
+  FOREIGN KEY(RatingFor) REFERENCES RatingFor(RatingForID) ON DELETE RESTRICT
 );
 
--- TODO numeric vs text responses
-INSERT INTO Rating_Types (RatingLongName, RatingResultDescription, RatingFor) VALUES
-('The space was how messey?', 'The messiness that the lessee left the space after their use', )
+INSERT INTO Numeric_Rating_Types (RatingShortName, RatingResultDescription, RatingFor) VALUES
+  ('Overall', '','2'),
+  ('Accuracy', '','2'),
+  ('Communication', '','2'),
+  ('StaffFriend', '','2'),
+  ('Location', '','2'),
+  ('SpaceValue', '','2');
 
-CREATE TABLE IF NOT EXISTS Contract_Ratings_Text (
+CREATE TABLE IF NOT EXISTS Text_Rating_Types (
+  TextRatingID int(11) AUTO_INCREMENT,
+  RatingShortName VARCHAR(15) NOT NULL UNIQUE,
+  RatingResultDescription varchar(150) NOT NULL,
+  RatingFor int(11) NOT NULL,
+  PRIMARY KEY(TextRatingID),
+  FOREIGN KEY(RatingFor) REFERENCES RatingFor(RatingForID) ON DELETE RESTRICT
+);
+
+INSERT INTO Text_Rating_Types (RatingShortName, RatingResultDescription, RatingFor) VALUES
+  ('Title', '', '2'),
+  ('Body', '', '2'),
+  ('Feedback', '', '2');
+
+CREATE TABLE IF NOT EXISTS Numeric_Contract_Ratings (
   ContractID int(11),
-  RatingID int(11),
-  RatingResult varchar(500),
-  PositivityRating real DEFAULT NULL,
-  PRIMARY KEY(contractID, RatingID),
-  FOREIGN KEY(ContractID) REFERENCES Contracts(ContractID),
-  FOREIGN KEY(ContractID) REFERENCES Rating_(RatingID)
-)
+  NumericRatingID int(11),
+  RatingResult int(5),
+  PRIMARY KEY(ContractID, NumericRatingID),
+  FOREIGN KEY(ContractID) REFERENCES Contracts(ContractID) ON DELETE CASCADE,
+  FOREIGN KEY(NumericRatingID) REFERENCES Numeric_Rating_Types(NumericRatingID) ON DELETE RESTRICT
+);
+
+CREATE TABLE IF NOT EXISTS Ratings_Pictures (
+  ContractID int(11),
+  FileName varchar(50) UNIQUE,
+  Description varchar(400),
+  PRIMARY KEY(ContractID, FileName),
+  FOREIGN KEY(ContractID) REFERENCES Contracts(ContractID) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Text_Contract_Ratings (
+  ContractID int(11),
+  TextRatingID int(11),
+  RatingResult int(5),
+  PRIMARY KEY(ContractID, TextRatingID),
+  FOREIGN KEY(ContractID) REFERENCES Contracts(ContractID) ON DELETE CASCADE,
+  FOREIGN KEY(TextRatingID) REFERENCES Text_Rating_Types(TextRatingID) ON DELETE RESTRICT
+);

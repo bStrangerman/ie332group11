@@ -1,27 +1,20 @@
 <?php
 require_once "../includes/main.php";
 require_once "../layouts/Calssimax/header.php";
-include "../includes/rankingFunctions.php";
 
 if(isset($_GET['address']))
 $address = urldecode($_GET['address']);
 
 if(isset($_GET['space']))
-$space = $_GET['space'];
+  $space = $_GET['space'];
 
 $sql = "SELECT *
 FROM Spaces
 LEFT JOIN Warehouses
-ON spaces.WarehouseID = Warehouses.WarehouseID
+ON Spaces.WarehouseID = Warehouses.WarehouseID
 LEFT JOIN phprbac_users
 ON phprbac_users.UserID = Warehouses.OwnerID
 WHERE Spaces.SpaceID = $space";
-
-// LEFT JOIN Warehouse_Pictures
-// ON Warehouse_Pictures.WarehouseID = Warehouses.WarehouseID
-// LEFT JOIN Pictures
-// ON Pictures.PictureID = Warehouse_Pictures.PictureID
-
 $result = $conn -> query($sql);
 while($spaceInfo[]=mysqli_fetch_array($result));
 
@@ -48,13 +41,9 @@ WHERE PictureID IN
   <link href="../includes/plugins/slick-carousel/slick/slick.css" rel="stylesheet">
   <link href="../includes/plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-    crossorigin=""></script>
-    
+  <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+
   <section class="page-search">
     <div class="container">
       <div class="row">
@@ -64,7 +53,7 @@ WHERE PictureID IN
             <form action="results.php?startdate=<?php echo $start; ?>&enddate=<?php echo $end; ?>" method="get">
               <div class="form-row">
                 <div class="form-group col-md-4">
-                  <input type="text" class="form-control" name="location" id="autocomplete" onFocus="geolocate()" value="<?php echo $address; ?>" placeholder="Location">
+                  <input type="text" class="form-control" name="location" id="autocomplete" onFocus="geolocate()" value="<?php echo (isset($address) ? $address : $spaceInfo[0]['Address'] . ", " . $spaceInfo[0]['City']); ?>" placeholder="Location">
                 </div>
                 <div class="form-group col-md-3">
                   <input type="date" class="form-control" name="startdate" id="inputdate4" value="<?php echo $start; ?>" placeholder="Start Date">
@@ -92,7 +81,7 @@ WHERE PictureID IN
         <!-- Left sidebar -->
         <div class="col-md-8">
           <div class="product-details">
-            <h1 class="product-title"><?php echo $spaceInfo[0]['Address']; ?></h1>
+            <h1 class="product-title"><?php echo $spaceInfo[0]['Address'] . ", " . $spaceInfo[0]['City']; ?></h1>
             <div class="product-meta">
               <ul class="list-inline">
                 <li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href=""><?php echo $spaceInfo[0]['Username']; ?></a></li>
@@ -141,7 +130,7 @@ WHERE PictureID IN
               <div class="content">
                 <ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Space Details</a>
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Property Details</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Specifications</a>
@@ -152,12 +141,21 @@ WHERE PictureID IN
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <h3 class="tab-title">Space Description</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laudantium beatae quod perspiciatis, neque dolores eos rerum, ipsa iste cum culpa numquam amet provident eveniet pariatur, sunt repellendus quas voluptate dolor cumque autem molestias. Ab quod quaerat molestias culpa eius, perferendis facere vitae commodi maxime qui numquam ex voluptatem voluptate, fuga sequi, quasi! Accusantium eligendi vitae unde iure officia amet molestiae velit assumenda, quidem beatae explicabo dolore laboriosam mollitia quod eos, eaque voluptas enim fuga laborum, error provident labore nesciunt ad. Libero reiciendis necessitatibus voluptates ab excepturi rem non, nostrum aut aperiam? Itaque, aut. Quas nulla perferendis neque eveniet ullam?</p>
 
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/LUH7njvhydE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                    <p></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam sed, officia reiciendis necessitatibus obcaecati eum, quaerat unde illo suscipit placeat nihil voluptatibus ipsa omnis repudiandae, excepturi! Id aperiam eius perferendis cupiditate exercitationem, mollitia numquam fuga, inventore quam eaque cumque fugiat, neque repudiandae dolore qui itaque iste asperiores ullam ut eum illum aliquam dignissimos similique! Aperiam aut temporibus optio nulla numquam molestias eum officia maiores aliquid laborum et officiis pariatur, delectus sapiente molestiae sit accusantium a libero, eligendi vero eius laboriosam minus. Nemo quibusdam nesciunt doloribus repellendus expedita necessitatibus velit vero?</p>
+                    <?php if(($spaceInfo[0]['SpaceInformation']) != ""){ ?>
+                      <h3 class="tab-title">Space Description</h3>
+                      <p>
+                        <?php echo $spaceInfo[0]['SpaceInformation']; ?>
+                      </p>
+                    <?php } ?>
+
+                    <?php if(($spaceInfo[0]['WarehouseInformation']) != ""){ ?>
+                      <h3 class="tab-title">Warehouse Description</h3>
+                      <p>
+                        <?php echo $spaceInfo[0]['WarehouseInformation']; ?>
+                      </p>
+                    <?php } ?>
+
 
                   </div>
                   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -253,9 +251,9 @@ WHERE PictureID IN
               <div class="widget price text-center">
                 <h4>Price Per Month</h4>
                 <p>$<?php echo ($spaceInfo[0]['MonthlyPrice'] * $spaceInfo[0]['SpaceSize']); ?></p>
-                <a href="book.php" class="btn btn-transparent-white">Book Now</a>
+                <a href="book.php?space=<?php echo $space; ?>&startdate=<?php echo $start; ?>&enddate=<?php echo $end; ?>" class="btn btn-transparent-white">Book Now</a>
               </div>
-              <?php // TODO: change the map dynamically based on warehouse address ?>
+
               <!-- Map Widget -->
               <style>
               /* Set the size of the div element that contains the map */
@@ -266,30 +264,18 @@ WHERE PictureID IN
               </style>
 
               <div class="widget map">
-                <style>
-                #mapid { height: 180px; }
-                </style>
-                <div id="mapid"></div>
+
+                <div id="map"></div>
                 <script>
-                var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-                }
+
+                var map = L.map('map')
+                .setView([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>], 15);
+                var marker = L.marker([<?php echo $spaceInfo[0]['Latitude']; ?>, <?php echo $spaceInfo[0]['Longitude']; ?>]).addTo(map);
+                var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar'}).addTo(map);
                 </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdGKJ_S6C6zYyhJdmVmzHRD4vHo8t4j-s&callback=initMap"
-                async defer></script>
 
 
               </div>
-
-              <!-- Coupon Widget -->
-              <div class="widget coupon text-center">
-                <!-- Coupon description -->
-                <p>Have a great product to post ? Share it with
-                  your fellow users.
-                </p>
-                <!-- Submii button -->
-                <a href="" class="btn btn-transparent-white">Submit Listing</a>
-              </div>
-
             </div>
           </div>
 
@@ -298,7 +284,5 @@ WHERE PictureID IN
       <!-- Container End -->
     </section>
 
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
 
-    <?php
-    require_once "../layouts/Calssimax/footer.php"; ?>
+    <?php require_once "../layouts/Calssimax/footer.php"; ?>

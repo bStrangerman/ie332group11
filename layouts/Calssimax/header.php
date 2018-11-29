@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calssimax</title>
+  <title>@Capacity</title>
 
   <!-- PLUGINS CSS STYLE -->
   <link href="../includes/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -87,12 +87,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="dashboard.html">Dashboard</a>
                 </li>
-                <li class="nav-item dropdown dropdown-slide">
+                <!-- <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Pages <span><i class="fa fa-angle-down"></i></span>
-                  </a>
+                  </a> -->
                   <!-- Dropdown list -->
-                  <div class="dropdown-menu dropdown-menu-right">
+                  <!-- <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="category.html">Category</a>
                     <a class="dropdown-item" href="single.html">Single Page</a>
                     <a class="dropdown-item" href="store-single.html">Store Single</a>
@@ -106,14 +106,14 @@
                 <li class="nav-item dropdown dropdown-slide">
                   <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Listing <span><i class="fa fa-angle-down"></i></span>
-                  </a>
+                  </a> -->
                   <!-- Dropdown list -->
-                  <div class="dropdown-menu dropdown-menu-right">
+                  <!-- <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                   </div>
-                </li>
+                </li> -->
               </ul>
               <ul class="navbar-nav ml-auto mt-10">
                 <li class="nav-item">

@@ -1,159 +1,159 @@
 -- TRUNCATE TABLE Warehouses;
-INSERT INTO Warehouses(WarehouseID, Address, City, State, BuildingSize, OwnerID) VALUES
-(1,'512 N Energy Dr.','Rock Springs','WY','10400',1)
-,(2,'331 Lexington Ave.','Cheyenne','WY','15300',1)
-,(3,'311 Progress Cir.','Cheyenne','WY','21112',1)
-,(4,'220 Evelyn St','Cheyenne','WY','79767',1)
-,(5,'217 W 5th St.','Cheyenne','WY','1960',1)
-,(6,'1451 Buiness Cir.','Gillette','WY','7344',1)
-,(7,'2700 N US Hwy 14','Gillette','WY','16740',1)
-,(8,'1938 Wyott Dr.','Cheyenne','WY','210518',1)
-,(9,'2632 Industry Dr.','Cheyenne','WY','14520',1)
-,(10,'1010 Falcon Ave','Mills','WY','28390',1)
-,(11,'1120 Logan Ave','Cheyenne','WY','2600',1)
-,(12,'1920 Missile Dr.','Cheyenne','WY','12600',1)
-,(13,'1800 Opportunity Blvd','Casper','WY','11000',1)
-,(14,'802-810 N Foster Rd','Casper','WY','7500',1)
-,(15,'1733 E Yellowstone Hwy','Casper','WY','7700',1)
-,(16,'190 S College Dr.','Cheyenne','WY','12000',1)
-,(17,'518 N US Highway 14-16','Gillette','WY','11800',1)
-,(18,'3851 E Collins Rd','GIllette','WY','8860',1)
-,(19,'620 N US Highway 14-16','Gillette','WY','18000',1)
-,(20,'612 N US Highway 14-16','Gillette','WY','14800',1)
-,(21,'1935 Cooper St','Missoula','MT','2400',1)
-,(22,'2601 Overland Ave.','Billings','MT','4403',1)
-,(23,'5360 Southgate Dr.','Billings','MT','25000',1)
-,(24,'54 Ginger Bear Ln','Bozeman','MT','3600',1)
-,(25,'7201 Expressway','Missoula','MT','20000',1)
-,(26,'1943 Main St','Billings','MT','10060',1)
-,(27,'610 W Griffin Dr.','Bozeman','MT','8000',1)
-,(28,'330-334 Fuller Ave','Helena','MT','2300',1)
-,(29,'706 Daniels St','Billings','MT','119757',1)
-,(30,'5 Wall St','Montana City','MT','11200',1)
-,(31,'2330 N Frontae Rd','Billings','MT','13200',1)
-,(32,'3102 W Broadway St','Missoula','MT','11872',1)
-,(33,'Yukon Ln','Belgrade','MT','19100',1)
-,(34,'311 N Grove St','Missoula','MT','10000',1)
-,(35,'1922 Airport Ct','Great Falls','MT','5950',1)
-,(36,'8462 Highway 200','Bonner','MT','587800',1)
-,(37,'3750 Wise Ln','Billings','MT','19200',1)
-,(38,'5229 King Ave W','Billings','MT','40800',1)
-,(39,'12211 Spring Brook Dr','Eagle River','AK','4360',1)
-,(40,'7613 W Buttercup Dr','Wasilla','AK','6622',1)
-,(41,'4721 E Bogard Rd','Wasilla','AK','10800',1)
-,(42,'2125 E 79th ave','Anchorage','AK','56945',1)
-,(43,'3201 International St','Fairbanks','AK','8000',1)
-,(44,'250 N Post Rd','Anchorage','AK','10300',1)
-,(45,'6200 A St','Anchorage','AK','3504',1)
-,(46,'8001Petersburg St','Anchorage','AK','29550',1)
-,(47,'4025 W 50th Ave','Anchorage','AK','23487',1)
-,(48,'34995 Kustatan St','Kenai','AK','6304',1)
-,(49,'000 Halliburton Dr','Nikiski','AK','9204',1)
-,(50,'1220-1320 E 68th Ave','Anchorage','AK','29872',1)
-,(51,'40902 Kalifornsky Beach Rd','Kenai','AK','3600',1)
-,(52,'1549 Davison St','Fairbanks','AK','4500',1)
-,(53,'351 E 104th Ave','Anchorage','AK','59252',1)
-,(54,'1101 Well St','Fairbanks','AK','25000',1)
-,(55,'550 W 64th Ave','Anchorage','AK','62668',1)
-,(56,'2799 Rampart Dr','Anchorage','AK','10500',1)
-,(57,'1910 1st Ave N','Fargo','ND','14169',1)
-,(58,'10285 3rd St SW','Killdeer','ND','10000',1)
-,(59,'601 Gilbertson St SE','Tioga','ND','7000',1)
-,(60,'4946 Hwy 85','Williston','ND','19240',1)
-,(61,'4942 Highway 85','Williston','ND','12000',1)
-,(62,'5072 Bennett Loop','Williston','ND','11900',1)
-,(63,'2530 132nd Ave NW','Arnegard','ND','10000',1)
-,(64,'5302 22nd Ave W','Williston','ND','12151',1)
-,(65,'896 22nd Ave N','Wahpeton','ND','38250',1)
-,(66,'1910 50th St W','Williston','ND','39000',1)
-,(67,'205 42nd St SE','Minot','ND','279328',1)
-,(68,'1150 S 46th St','Grand Forks','ND','40026',1)
-,(69,'3804 NE 17th Ave','Watford City','ND','11300',1)
-,(70,'3217 111th Ave SW','Dickinson','ND','10000',1)
-,(71,'6416 Wilckum Rd','Williston','ND','17850',1)
-,(72,'629 20th Ave','Minot','ND','10500',1)
-,(73,'5806 Baldwin ln','Williston','ND','14000',1)
-,(74,'4001 32nd St N','Fargo','ND','293496',1)
-,(75,'3911 37th Ave S','Fargo','ND','26000',1)
-,(76,'16 Heidi Ln','Ross','ND','7200',1)
-,(77,'2655 6th Ave S','Saint Petersburg','FL',NULL,1)
-,(78,'1825 Sunset Point Rd','Clearwater','FL','8000',1)
-,(79,'2655 6th Ave S','Saint Petersburg','FL',NULL,1)
-,(80,'3749 Wd Judge Rd','Orlando','FL','110400',1)
-,(81,'408 Brookmeade Dr','Crestview','FL','59086',1)
-,(82,'5814 Merritt Brown Rd','Panama City','FL','5708',1)
-,(83,'8286 Western Way Cir','Jacksonville','FL','54000',1)
-,(84,'2815 Mercury Rd','Jacksonville','FL','8400',1)
-,(85,'13907 Arnold Rhoden Rd','Sanderson','FL','113546',1)
-,(86,'115 S 2nd St','Fernandina Beach','FL','18699',1)
-,(87,'4541 St Augustine Rd','Jacksonville','FL','55000',1)
-,(88,'904 S 20th St','Tampa','FL','59498',1)
-,(89,'1020 Holland Dr','Boca Raton','FL','36410',1)
-,(90,'8601 NW 54th St','Doral','FL','16000',1)
-,(91,'14501 58th St N','Clearwater','FL','26000',1)
-,(92,'1736 E Main St','Leesburg','FL','14400',1)
-,(93,'4140 SW 30th Ave','Fort Lauderdale','FL','135000',1)
-,(94,'51 Hypoluxo Rd','Latana','FL','56382',1)
-,(95,'2222 NW 14th St','Miami','FL','4920',1)
-,(96,'6942 NW 7 Ave','Miami','FL','14690',1)
-,(97,'5800 NW 163rd St','Miami Lakes','FL','108507',1)
-,(98,'1312 Randall Ave','Bronx','NY','10000',1)
-,(99,'2115 Jericho Tpke','New Hyde Park','NY','20980',1)
-,(100,'10 Ludlow St','Yonkers','NY','6880',1)
-,(101,'5000 Airport Executive Park','Nanuet','NY','40000',1)
-,(102,'157 21st St','Bronx','NY','5000',1)
-,(103,'146 Hanse Ave','Freeport','NY','82717',1)
-,(104,'45 Ryan Ave','Port Chester','NY','16400',1)
-,(105,'1404 Portland Ave','Rochester','NY','3260',1)
-,(106,'295 W Main','Oneonta','NY','20280',1)
-,(107,'2070 Route 52','Hopewell Junction','NY','371480',1)
-,(108,'631 State Route 15 N','Lake Hopatcong','NY','10400',1)
-,(109,'79 Carlough Rd','Bohemia','NY','12500',1)
-,(110,'1 Garvies Point Rd','Glen Cove','NY','85000',1)
-,(111,'46 Metropolitan Ave','Ridgewood','New York','35312',1)
-,(112,'333 N Bedford Rd','Mount Kisco','NY','604095',1)
-,(113,'57 Seaview Blvd','Port Washington','NY','130853',1)
-,(114,'100 Wells Ave','Congers','NY','25000',1)
-,(115,'1538 Old country Rd','Plainview','NY','10000',1)
-,(116,'230 Richardson St','Brooklyn','NY','2500',1)
-,(117,'1600 E Orangethorpe Ave','Fullerton','CA','200162',1)
-,(118,'5960 Franklin Blvd','Sacramento','CA','14900',1)
-,(119,'308 Palm','Santa Barbara','CA','3078',1)
-,(120,'2413 Amsler','Torrance','CA','17000',1)
-,(121,'16253 Gale ave','City of Industry','CA','124282',1)
-,(122,'1690 Brandywine ave','Chula Vista','CA','69960',1)
-,(123,'912 E 1st street','Pomona','CA','20200',1)
-,(124,'3440 Airway drive','Santa Rosa','CA','21925',1)
-,(125,'9685 Distribution Ave','San Diego','CA','34834',1)
-,(126,'1201 Minnesota Drive','San Fransisco','CA','40000',1)
-,(127,'29816 Avienda de las Banderas','Rancho Santa Margarita','CA','6180',1)
-,(128,'1201 46th Ave','Oakland','CA','26048',1)
-,(129,'1611 17th St','Oakland','CA','17862',1)
-,(130,'745 8th Ave','Oakland','CA','41535',1)
-,(131,'1450 W 228th St','Torrance','CA','12238',1)
-,(132,'2325 Charter','Stockton','CA','13250',1)
-,(133,'22815 Frampton','Torrance','CA','13442',1)
-,(134,'3555 W Lomita Blvd','Torrance','CA','7650',1)
-,(135,'2610 Columbia St','Torrance','CA','51023',1)
-,(136,'9909 Hibert St','San Diego','CA','1920',1)
-,(137,'4888 Ronson Ct','San Diego','CA','1300',1)
-,(138,'6231 E Stassney Ln','Austin','TX','130002',1)
-,(139,'13802 Turbine Dr','Austin','TX','15920',1)
-,(140,'1912 Smith Rd','Austin','TX','13000',1)
-,(141,'10751 Mapleridge Dr','Dallas','TX','10100',1)
-,(142,'2931 Irving Blvd','Dallas','TX','32068',1)
-,(143,'2930 Ladybird Ln','Dallas','TX','50000',1)
-,(144,'530 Portwall St','Houston','TX','144620',1)
-,(145,'8303 Knight Rd','Houston','TX','90000',1)
-,(146,'3522 Bacor','Houston','TX','8000',1)
-,(147,'9600 Technology Blvd','Fort Worth','TX','20160',1)
-,(148,'500 Rainhead Rd','Fort Worth','TX','35213',1)
-,(149,'7333 N Jack Newell Blvd','Fort Worth','TX','37320',1)
-,(150,'2921 Suffolk Dr','Fort Worth','TX','3000',1)
-,(151,'415 Texas Ave','Texas City','TX','5200',1)
-,(152,'312 31st St','Texas City','TX','12100',1)
-,(153,'3700 Thompson St','Austin','TX','9000',1)
-,(154,'12112 Anderson Mill Rd','Austin','TX','6000',1)
-,(155,'4018 Caven Rd','Austin','TX','17600',1)
-,(156,'1718 N Fry Rd','Houston','TX','18330',1)
-,(157,'827 W 34th St','Houston','TX','5500',1);
+INSERT INTO `warehouses` (`WarehouseID`, `OwnerID`, `Address`, `ZipCode`, `City`, `State`, `BuildingSize`, `Latitude`, `Longitude`, `WarehouseInformation`) VALUES
+(1, 2, '512 N Energy Dr.', '82901', 'Rock Springs', 'WY', 10400, 41.593910, -109.218040, 'Tires'),
+(2, 2, '331 Lexington Ave.', '82007', 'Cheyenne', 'WY', 15300, 41.125847, -104.757111, ''),
+(3, 2, '311 Progress Cir.', '82007', 'Cheyenne', 'WY', 21112, 41.129181, -104.739792, ''),
+(4, 2, '220 Evelyn St', '82007', 'Cheyenne', 'WY', 79767, 41.118847, -104.847015, ''),
+(5, 2, '217 W 5th St.', '82007', 'Cheyenne', 'WY', 1960, 41.122398, -104.809509, ''),
+(6, 2, '1451 Buiness Cir.', '82716', 'Gillette', 'WY', 7344, 44.335594, -105.522110, ''),
+(7, 2, '2700 N US Hwy 14', '53545', 'Gillette', 'WY', 16740, 42.718220, -88.989586, ''),
+(8, 2, '1938 Wyott Dr.', '82007', 'Cheyenne', 'WY', 210518, 41.110703, -104.833420, 'Tires'),
+(9, 2, '2632 Industry Dr.', '82007', 'Cheyenne', 'WY', 14520, 41.139729, -104.703697, ''),
+(10, 2, '1010 Falcon Ave', '82604', 'Mills', 'WY', 28390, 42.845985, -106.383080, ''),
+(11, 2, '1120 Logan Ave', '82001', 'Cheyenne', 'WY', 2600, 41.135948, -104.794067, ''),
+(12, 2, '1920 Missile Dr.', '82001', 'Cheyenne', 'WY', 12600, 41.131065, -104.830460, ''),
+(13, 2, '1800 Opportunity Blvd', '82601', 'Casper', 'WY', 11000, 42.863728, -106.350189, ''),
+(14, 3, '802-810 N Foster Rd', '82601', 'Casper', 'WY', 7500, 42.858768, -106.339653, ''),
+(15, 4, '1733 E Yellowstone Hwy', '82601', 'Casper', 'WY', 7700, 42.853069, -106.301994, ''),
+(16, 5, '190 S College Dr.', '82007', 'Cheyenne', 'WY', 12000, 41.115818, -104.768700, ''),
+(17, 6, '518 N US Highway 14-16', NULL, 'Gillette', 'WY', 11800, 0.000000, 0.000000, ''),
+(18, 7, '3851 E Collins Rd', '82718', 'GIllette', 'WY', 8860, 44.290333, -105.447006, ''),
+(19, 8, '620 N US Highway 14-16', '82716', 'Gillette', 'WY', 18000, 44.299118, -105.528252, ''),
+(20, 9, '612 N US Highway 14-16', '82716', 'Gillette', 'WY', 14800, 44.293152, -105.511284, ''),
+(21, 10, '1935 Cooper St', NULL, 'Missoula', 'MT', 2400, 0.000000, 0.000000, ''),
+(22, 11, '2601 Overland Ave.', NULL, 'Billings', 'MT', 4403, 0.000000, 0.000000, ''),
+(23, 11, '5360 Southgate Dr.', NULL, 'Billings', 'MT', 25000, 0.000000, 0.000000, ''),
+(24, 12, '54 Ginger Bear Ln', '59718', 'Bozeman', 'MT', 3600, 45.706242, -111.187134, ''),
+(25, 13, '7201 Expressway', '59808', 'Missoula', 'MT', 20000, 46.932110, -114.097092, ''),
+(26, 14, '1943 Main St', NULL, 'Billings', 'MT', 10060, 0.000000, 0.000000, ''),
+(27, 15, '610 W Griffin Dr.', '59715', 'Bozeman', 'MT', 8000, 45.700050, -111.044319, ''),
+(28, 15, '330-334 Fuller Ave', '59601', 'Helena', 'MT', 2300, 46.590309, -112.039192, ''),
+(29, 16, '706 Daniels St', '59101', 'Billings', 'MT', 119757, 45.757915, -108.555382, ''),
+(30, 17, '5 Wall St', '59634', 'Montana City', 'MT', 11200, 46.538433, -111.946648, ''),
+(31, 93, '2330 N Frontae Rd', '59101', 'Billings', 'MT', 13200, 45.809185, -108.426964, ''),
+(32, 93, '3102 W Broadway St', NULL, 'Missoula', 'MT', 11872, 0.000000, 0.000000, ''),
+(33, 93, 'Yukon Ln', NULL, 'Belgrade', 'MT', 19100, 0.000000, 0.000000, ''),
+(34, 93, '311 N Grove St', '59804', 'Missoula', 'MT', 10000, 46.872513, -114.042450, ''),
+(35, 93, '1922 Airport Ct', '59404', 'Great Falls', 'MT', 5950, 47.487305, -111.351524, ''),
+(36, 93, '8462 Highway 200', NULL, 'Bonner', 'MT', 587800, 0.000000, 0.000000, ''),
+(37, 93, '3750 Wise Ln', '59101', 'Billings', 'MT', 19200, 45.702271, -108.622192, ''),
+(38, 93, '5229 King Ave W', '59106', 'Billings', 'MT', 40800, 45.755714, -108.651138, ''),
+(39, 93, '12211 Spring Brook Dr', NULL, 'Eagle River', 'AK', 4360, 0.000000, 0.000000, ''),
+(40, 93, '7613 W Buttercup Dr', '99623', 'Wasilla', 'AK', 6622, 61.576134, -149.642075, ''),
+(41, 93, '4721 E Bogard Rd', NULL, 'Wasilla', 'AK', 10800, 0.000000, 0.000000, ''),
+(42, 93, '2125 E 79th ave', NULL, 'Anchorage', 'AK', 56945, 0.000000, 0.000000, ''),
+(43, 93, '3201 International St', '99701', 'Fairbanks', 'AK', 8000, 64.818634, -147.750244, ''),
+(44, 93, '250 N Post Rd', NULL, 'Anchorage', 'AK', 10300, 0.000000, 0.000000, ''),
+(45, 93, '6200 A St', NULL, 'Anchorage', 'AK', 3504, 0.000000, 0.000000, ''),
+(46, 93, '8001Petersburg St', NULL, 'Anchorage', 'AK', 29550, 0.000000, 0.000000, ''),
+(47, 93, '4025 W 50th Ave', NULL, 'Anchorage', 'AK', 23487, 0.000000, 0.000000, ''),
+(48, 93, '34995 Kustatan St', '99669', 'Kenai', 'AK', 6304, 60.487690, -151.193893, ''),
+(49, 93, '000 Halliburton Dr', NULL, 'Nikiski', 'AK', 9204, 0.000000, 0.000000, ''),
+(50, 93, '1220-1320 E 68th Ave', NULL, 'Anchorage', 'AK', 29872, 0.000000, 0.000000, ''),
+(51, 93, '40902 Kalifornsky Beach Rd', '99611', 'Kenai', 'AK', 3600, 60.515038, -151.193649, ''),
+(52, 93, '1549 Davison St', '99705', 'Fairbanks', 'AK', 4500, 64.798264, -147.549210, ''),
+(53, 93, '351 E 104th Ave', NULL, 'Anchorage', 'AK', 59252, 0.000000, 0.000000, ''),
+(54, 93, '1101 Well St', '99701', 'Fairbanks', 'AK', 25000, 64.849152, -147.726089, ''),
+(55, 93, '550 W 64th Ave', NULL, 'Anchorage', 'AK', 62668, 0.000000, 0.000000, ''),
+(56, 93, '2799 Rampart Dr', NULL, 'Anchorage', 'AK', 10500, 0.000000, 0.000000, ''),
+(57, 93, '1910 1st Ave N', NULL, 'Fargo', 'ND', 14169, 0.000000, 0.000000, ''),
+(58, 93, '10285 3rd St SW', NULL, 'Killdeer', 'ND', 10000, 0.000000, 0.000000, ''),
+(59, 93, '601 Gilbertson St SE', '58852', 'Tioga', 'ND', 7000, 48.387325, -102.934570, ''),
+(60, 93, '4946 Hwy 85', NULL, 'Williston', 'ND', 19240, 0.000000, 0.000000, ''),
+(61, 93, '4942 Highway 85', NULL, 'Williston', 'ND', 12000, 0.000000, 0.000000, ''),
+(62, 93, '5072 Bennett Loop', NULL, 'Williston', 'ND', 11900, 0.000000, 0.000000, ''),
+(63, 93, '2530 132nd Ave NW', NULL, 'Arnegard', 'ND', 10000, 0.000000, 0.000000, ''),
+(64, 93, '5302 22nd Ave W', NULL, 'Williston', 'ND', 12151, 0.000000, 0.000000, ''),
+(65, 93, '896 22nd Ave N', '58075', 'Wahpeton', 'ND', 38250, 46.292015, -96.611626, ''),
+(66, 93, '1910 50th St W', NULL, 'Williston', 'ND', 39000, 0.000000, 0.000000, ''),
+(67, 93, '205 42nd St SE', NULL, 'Minot', 'ND', 279328, 0.000000, 0.000000, ''),
+(68, 93, '1150 S 46th St', '58201', 'Grand Forks', 'ND', 40026, 47.910103, -97.097023, ''),
+(69, 93, '3804 NE 17th Ave', NULL, 'Watford City', 'ND', 11300, 0.000000, 0.000000, ''),
+(70, 93, '3217 111th Ave SW', NULL, 'Dickinson', 'ND', 10000, 0.000000, 0.000000, ''),
+(71, 93, '6416 Wilckum Rd', '58801', 'Williston', 'ND', 17850, 48.145279, -103.612892, ''),
+(72, 93, '629 20th Ave', '58701', 'Minot', 'ND', 10500, 48.211964, -101.283073, ''),
+(73, 93, '5806 Baldwin ln', NULL, 'Williston', 'ND', 14000, 0.000000, 0.000000, ''),
+(74, 93, '4001 32nd St N', '58102', 'Fargo', 'ND', 293496, 46.933960, -96.829338, ''),
+(75, 93, '3911 37th Ave S', NULL, 'Fargo', 'ND', 26000, 0.000000, 0.000000, ''),
+(76, 93, '16 Heidi Ln', NULL, 'Ross', 'ND', 7200, 0.000000, 0.000000, ''),
+(77, 93, '2655 6th Ave S', '33712', 'Saint Petersburg', 'FL', NULL, 27.764833, -82.669586, ''),
+(78, 93, '1825 Sunset Point Rd', '33765', 'Clearwater', 'FL', 8000, 27.989691, -82.762177, ''),
+(79, 93, '2655 6th Ave S', '33712', 'Saint Petersburg', 'FL', NULL, 27.764833, -82.669586, ''),
+(80, 93, '3749 Wd Judge Rd', '32808', 'Orlando', 'FL', 110400, 28.563120, -81.421272, ''),
+(81, 93, '408 Brookmeade Dr', '32539', 'Crestview', 'FL', 59086, 30.738317, -86.562630, ''),
+(82, 93, '5814 Merritt Brown Rd', '32404', 'Panama City', 'FL', 5708, 30.238726, -85.557953, ''),
+(83, 93, '8286 Western Way Cir', NULL, 'Jacksonville', 'FL', 54000, 0.000000, 0.000000, ''),
+(84, 93, '2815 Mercury Rd', NULL, 'Jacksonville', 'FL', 8400, 0.000000, 0.000000, ''),
+(85, 93, '13907 Arnold Rhoden Rd', '32087', 'Sanderson', 'FL', 113546, 30.251339, -82.255013, ''),
+(86, 93, '115 S 2nd St', '32034', 'Fernandina Beach', 'FL', 18699, 30.669357, -81.464546, ''),
+(87, 93, '4541 St Augustine Rd', NULL, 'Jacksonville', 'FL', 55000, 0.000000, 0.000000, ''),
+(88, 93, '904 S 20th St', NULL, 'Tampa', 'FL', 59498, 0.000000, 0.000000, ''),
+(89, 93, '1020 Holland Dr', '33487', 'Boca Raton', 'FL', 36410, 26.406157, -80.107872, ''),
+(90, 93, '8601 NW 54th St', '33166', 'Doral', 'FL', 16000, 25.823162, -80.336540, ''),
+(91, 93, '14501 58th St N', '33760', 'Clearwater', 'FL', 26000, 27.903803, -82.712204, ''),
+(92, 93, '1736 E Main St', '34748', 'Leesburg', 'FL', 14400, 28.816748, -81.847122, ''),
+(93, 93, '4140 SW 30th Ave', NULL, 'Fort Lauderdale', 'FL', 135000, 0.000000, 0.000000, ''),
+(94, 93, '51 Hypoluxo Rd', '33462', 'Latana', 'FL', 56382, 26.570902, -80.054314, ''),
+(95, 93, '2222 NW 14th St', NULL, 'Miami', 'FL', 4920, 0.000000, 0.000000, ''),
+(96, 93, '6942 NW 7 Ave', NULL, 'Miami', 'FL', 14690, 0.000000, 0.000000, ''),
+(97, 93, '5800 NW 163rd St', '33014', 'Miami Lakes', 'FL', 108507, 25.920933, -80.294983, ''),
+(98, 93, '1312 Randall Ave', NULL, 'Bronx', 'NY', 10000, 0.000000, 0.000000, ''),
+(99, 93, '2115 Jericho Tpke', NULL, 'New Hyde Park', 'NY', 20980, 0.000000, 0.000000, ''),
+(100, 93, '10 Ludlow St', NULL, 'Yonkers', 'NY', 6880, 0.000000, 0.000000, ''),
+(101, 93, '5000 Airport Executive Park', '10954', 'Nanuet', 'NY', 40000, 41.108418, -74.028114, ''),
+(102, 93, '157 21st St', NULL, 'Bronx', 'NY', 5000, 0.000000, 0.000000, ''),
+(103, 93, '146 Hanse Ave', NULL, 'Freeport', 'NY', 82717, 0.000000, 0.000000, ''),
+(104, 93, '45 Ryan Ave', NULL, 'Port Chester', 'NY', 16400, 0.000000, 0.000000, ''),
+(105, 93, '1404 Portland Ave', NULL, 'Rochester', 'NY', 3260, 0.000000, 0.000000, ''),
+(106, 93, '295 W Main', '13820', 'Oneonta', 'NY', 20280, 42.455551, -75.060188, ''),
+(107, 93, '2070 Route 52', NULL, 'Hopewell Junction', 'NY', 371480, 0.000000, 0.000000, ''),
+(108, 93, '631 State Route 15 N', NULL, 'Lake Hopatcong', 'NY', 10400, 0.000000, 0.000000, ''),
+(109, 93, '79 Carlough Rd', NULL, 'Bohemia', 'NY', 12500, 0.000000, 0.000000, ''),
+(110, 93, '93 Garvies Point Rd', '11542', 'Glen Cove', 'NY', 85000, 40.859833, -73.642502, ''),
+(111, 93, '46 Metropolitan Ave', NULL, 'Ridgewood', 'Ne', 35312, 0.000000, 0.000000, ''),
+(112, 93, '333 N Bedford Rd', NULL, 'Mount Kisco', 'NY', 604095, 0.000000, 0.000000, ''),
+(113, 93, '57 Seaview Blvd', NULL, 'Port Washington', 'NY', 130853, 0.000000, 0.000000, ''),
+(114, 93, '100 Wells Ave', NULL, 'Congers', 'NY', 25000, 0.000000, 0.000000, ''),
+(115, 93, '1538 Old country Rd', NULL, 'Plainview', 'NY', 10000, 0.000000, 0.000000, ''),
+(116, 93, '230 Richardson St', NULL, 'Brooklyn', 'NY', 2500, 0.000000, 0.000000, ''),
+(117, 93, '1600 E Orangethorpe Ave', '92831', 'Fullerton', 'CA', 200162, 33.858635, -117.899452, ''),
+(118, 93, '5960 Franklin Blvd', NULL, 'Sacramento', 'CA', 14900, 0.000000, 0.000000, ''),
+(119, 93, '308 Palm', '93101', 'Santa Barbara', 'CA', 3078, 34.418926, -119.689819, ''),
+(120, 93, '2413 Amsler', '90505', 'Torrance', 'CA', 17000, 33.801975, -118.326096, ''),
+(121, 93, '16253 Gale ave', '91745', 'City of Industry', 'CA', 124282, 34.009094, -117.951622, ''),
+(122, 93, '1690 Brandywine ave', '91911', 'Chula Vista', 'CA', 69960, 32.595921, -117.030304, ''),
+(123, 93, '912 E 1st street', NULL, 'Pomona', 'CA', 20200, 0.000000, 0.000000, ''),
+(124, 93, '3440 Airway drive', '95403', 'Santa Rosa', 'CA', 21925, 38.475594, -122.737648, ''),
+(125, 93, '9685 Distribution Ave', NULL, 'San Diego', 'CA', 34834, 0.000000, 0.000000, ''),
+(126, 93, '1201 Minnesota Drive', NULL, 'San Fransisco', 'CA', 40000, 0.000000, 0.000000, ''),
+(127, 93, '29816 Avienda de las Banderas', '92688', 'Rancho Santa Margarita', 'CA', 6180, 33.627609, -117.609558, ''),
+(128, 93, '1201 46th Ave', NULL, 'Oakland', 'CA', 26048, 0.000000, 0.000000, ''),
+(129, 93, '1611 17th St', NULL, 'Oakland', 'CA', 17862, 0.000000, 0.000000, ''),
+(130, 93, '745 8th Ave', '94606', 'Oakland', 'CA', 41535, 37.791065, -122.254829, ''),
+(131, 93, '1450 W 228th St', NULL, 'Torrance', 'CA', 12238, 0.000000, 0.000000, ''),
+(132, 93, '2325 Charter', NULL, 'Stockton', 'CA', 13250, 0.000000, 0.000000, ''),
+(133, 93, '22815 Frampton', NULL, 'Torrance', 'CA', 13442, 0.000000, 0.000000, ''),
+(134, 93, '3555 W Lomita Blvd', '90505', 'Torrance', 'CA', 7650, 33.816254, -118.346649, ''),
+(135, 93, '2610 Columbia St', '90503', 'Torrance', 'CA', 51023, 33.843353, -118.335419, ''),
+(136, 93, '9909 Hibert St', NULL, 'San Diego', 'CA', 1920, 0.000000, 0.000000, ''),
+(137, 93, '4888 Ronson Ct', NULL, 'San Diego', 'CA', 1300, 0.000000, 0.000000, ''),
+(138, 93, '6231 E Stassney Ln', '78744', 'Austin', 'TX', 130002, 30.199549, -97.717674, ''),
+(139, 93, '13802 Turbine Dr', NULL, 'Austin', 'TX', 15920, 0.000000, 0.000000, ''),
+(140, 93, '1912 Smith Rd', NULL, 'Austin', 'TX', 13000, 0.000000, 0.000000, ''),
+(141, 93, '10751 Mapleridge Dr', NULL, 'Dallas', 'TX', 10100, 0.000000, 0.000000, ''),
+(142, 93, '2931 Irving Blvd', '75247', 'Dallas', 'TX', 32068, 32.809975, -96.853432, ''),
+(143, 93, '2930 Ladybird Ln', NULL, 'Dallas', 'TX', 50000, 0.000000, 0.000000, ''),
+(144, 93, '530 Portwall St', NULL, 'Houston', 'TX', 144620, 0.000000, 0.000000, ''),
+(145, 93, '8303 Knight Rd', NULL, 'Houston', 'TX', 90000, 0.000000, 0.000000, ''),
+(146, 93, '3522 Bacor', NULL, 'Houston', 'TX', 8000, 0.000000, 0.000000, ''),
+(147, 93, '9600 Technology Blvd', NULL, 'Fort Worth', 'TX', 20160, 0.000000, 0.000000, ''),
+(148, 93, '500 Rainhead Rd', NULL, 'Fort Worth', 'TX', 35213, 0.000000, 0.000000, ''),
+(149, 93, '7333 N Jack Newell Blvd', NULL, 'Fort Worth', 'TX', 37320, 0.000000, 0.000000, ''),
+(150, 93, '2921 Suffolk Dr', NULL, 'Fort Worth', 'TX', 3000, 0.000000, 0.000000, ''),
+(151, 93, '415 Texas Ave', NULL, 'Texas City', 'TX', 5200, 0.000000, 0.000000, ''),
+(152, 93, '312 31st St', NULL, 'Texas City', 'TX', 12100, 0.000000, 0.000000, ''),
+(153, 93, '3700 Thompson St', NULL, 'Austin', 'TX', 9000, 0.000000, 0.000000, ''),
+(154, 93, '12112 Anderson Mill Rd', NULL, 'Austin', 'TX', 6000, 0.000000, 0.000000, ''),
+(155, 93, '4018 Caven Rd', NULL, 'Austin', 'TX', 17600, 0.000000, 0.000000, ''),
+(156, 93, '1718 N Fry Rd', NULL, 'Houston', 'TX', 18330, 0.000000, 0.000000, ''),
+(157, 132, '827 W 34th St', NULL, 'Houston', 'TX', 5500, 0.000000, 0.000000, '');
