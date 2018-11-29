@@ -1,0 +1,51 @@
+<?php
+  $mysqli=new mysqli($dbhost, $dbuser, $dbpass, $dbname)
+  if die die
+
+
+
+
+?>
+<script>
+//assigns the amount charged data into myData
+var myData=[<?php
+while($info=mysqi_fetch_array($data))
+  echo $info['AmountCharged'].',';
+  ?>];
+//Grabs total money earned by space and spaceID
+  <?php
+  $data=mysqui_query($mysqli,"SELECT SUM(AmountCharged), SpaceID, *
+  FROM Contract
+  RIGHT JOIN Spaces
+  ON Spaces.spaceID=contracts.SpaceID
+  RIGHT JOIN warehouses
+  ON Warehouses.warehouseID=spaceID=WarehouseID")
+?>
+//assigns 
+var myLabels=[<?php
+while($info=mysqi_fetch_array($data)
+echo '"'.$info['SpaceID'].'",';
+?>];
+</script>
+]
+window.onload=function(){
+zingchart.render({
+    id:"myChart",
+    width:"100%",
+    height:400,
+    data:{
+    "type":"bar",
+    "title":{
+        "text":"Total Earnings by Warehouse"
+    },
+    "scale-x":{
+        "labels":myLabels
+    },
+    "series":[
+        {
+            "values":myData
+        }
+]
+}
+});
+};
