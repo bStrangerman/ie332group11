@@ -75,6 +75,7 @@ else {
   <![endif]-->
   <!-- Get user's latitude and longitude from broweser's GPS location -->
 
+  <?php if(!isset($_COOKIE['Latitude']) && !isset($_COOKIE['Latitude'])){ ?>
   <script>
   window.onload = getLocation;
   var geo = navigator.geolocation;     /*     Here we will check if the browser supports the Geolocation API; if exists, then we will display the location     */
@@ -89,15 +90,12 @@ else {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
     // if there is no cookie for latitude, set the cookie
-    <?php if(!isset($_COOKIE['Latitude'])){ ?>
       document.cookie = "Latitude=" + latitude;
-    <?php } ?>
     // if there is no cookie for Longitude, set the cookie
-    <?php if(!isset($_COOKIE['Longitude'])){ ?>
       document.cookie = "Longitude=" + longitude;
-    <?php } ?>
   }
   </script>
+<?php } ?>
   <style>
   #locationField, #controls {
     position: relative;
@@ -207,7 +205,7 @@ else {
 <section id="home" class="welcome-hero">
   <div class="container">
     <div class="welcome-hero-txt">
-      <h2>best place to find and lease <br> warehouses that you need </h2>
+      <h2>best place to find and lease <br> warehouses </h2>
       <!-- <p> -->
 
       <!-- </p> -->
