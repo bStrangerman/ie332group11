@@ -12,8 +12,47 @@ if (isset($_SESSION['UserID'])) {
   $UserID = $_SESSION['UserID'];
 }
 else {
-  $_SESSION['redirect'] = 'Location: locations.php';
+  $_SESSION['redirect'] = 'Location: ' . $_SERVER['REQUEST_URI'];
   header('Location: login.php');
+}
+
+// check if a location is selected
+if (isset($_GET['warehouse'])) {
+  $warehouseID = clean($_GET['warehouse']);
+
+  // Checks if this user owns this warehouse
+  $warehouseExistsSQL = "SELECT COUNT(*) AS CountOF
+                         FROM Warehouses
+                         WHERE Warehouses.WarehouseID = $warehouseID
+                         AND Warehouses.OwnerID = $UserID";
+                         echo $warehouseExistsSQL;
+  $warehouseExistsResult = $conn -> query($warehouseExistsSQL);
+  while ($warehouseExists = $warehouseExistsResult -> fetch_assoc()) {
+    if($warehouseExists['CountOF'] == 0){
+      header('Location: locations.php');
+    }
+  }
+}
+else if (isset($_GET['space'])){
+  $spaceID = clean($_GET['space']);
+
+  // Checks if this user owns this space
+  $spaceExistsSQL = "SELECT COUNT(*) AS CountOF
+  FROM Spaces
+  LEFT JOIN Warehouses
+  ON Warehouses.WarehouseID = Spaces.SpaceID
+  WHERE Warehouses.WarehouseID = $spaceID
+  AND Warehouses.OwnerID = $UserID";
+
+  $spaceExistsResult = $conn -> query($spaceExistsSQL);
+  while ($spaceExists = $spaceExistsResult -> fetch_assoc()) {
+    if($spaceExists['CountOF'] == 0){
+      header('Location: locations.php');
+    }
+  }
+}
+else {
+  header('Location: locations.php');
 }
 
 /**
@@ -40,7 +79,7 @@ require_once "../layouts/sb_admin_2/header.php";
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Locatons</h1>
+      <h1 class="page-header">Locations</h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
@@ -49,7 +88,7 @@ require_once "../layouts/sb_admin_2/header.php";
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Locations
+          Spaces at this Warehouse
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
