@@ -1226,15 +1226,6 @@ CREATE TABLE IF NOT EXISTS Warehouses (
               FOREIGN KEY(SpaceID) REFERENCES Spaces(SpaceID) ON DELETE CASCADE,
               FOREIGN KEY(AttributeID) REFERENCES Attributes(AttributeID) ON DELETE RESTRICT);
 
-              INSERT INTO Attributes (AttributeName, AttributeType, AttributeDescription, AttributeIcon) VALUES
-              ('Retail/Industrial', 1, 'This location is ideal for retail use.', 'fas fa-store-alt'),
-              ('Office/Industrial', 1, 'This location is ideal for office use.', 'fas fa-building'),
-              ('Industrial', 1, 'This location is ideal for industrial use.', 'fa fa-industry'),
-              ('Fencing', 2, 'This location has an outdoor fenced area.', ''),
-              ('Floor Drains', 2, 'This location has indoor floor drains.', 'fa fa-truck'),
-              ('Yard', 2, 'This location has an exterior yard.', ''),
-              ('Loading Dock', 2, 'This location has a loading dock and bay doors, perfect for moving in and out.', 'fas fa-temperature-low');
-
               INSERT INTO `Warehouses` (`WarehouseID`, `OwnerID`, `Address`, `ZipCode`, `City`, `State`, `BuildingSize`, `Latitude`, `Longitude`, `WarehouseInformation`) VALUES
               (1, 2, '512 N Energy Dr.', '82901', 'Rock Springs', 'Wyoming', 10400, 41.593910, -109.218040, 'Tires'),
               (2, 2, '331 Lexington Ave.', '82007', 'Cheyenne', 'Wyoming', 15300, 41.125847, -104.757111, ''),
@@ -8339,24 +8330,26 @@ CREATE TABLE IF NOT EXISTS Attributes (
   rght int(11) NOT NULL,
   PRIMARY KEY(AttributeID));
 
-INSERT INTO Attributes (AttributeName, AttributeType) VALUES
-  ('Retail/Industrial', 1),
-  ('Office/Industrial', 1),
-  ('Industrial', 1),
-  ('Yard', 2),
-  ('Fence', 2)
-  ('Loading Dock', 2)
-  ('Sprinkler', 2)
-  ('Bathroom', 2)
-  ('Customizable', 2)
-  ('Power', 2)
-  ('Crane', 2)
-  ('Floor Drains', 2)
-  ('Mezzanine', 2)
-  ('Kitchen', 2)
-  ('Air Conditioning', 2)
-  ('Security', 2)
-  ('Auto Service', 2)
+               INSERT INTO Attributes (AttributeName, AttributeType, AttributeDescription, AttributeIcon) VALUES
+              ('Retail/Industrial', 1, 'This location is ideal for retail use.', 'fas fa-store-alt'),
+              ('Office/Industrial', 1, 'This location is ideal for office use.', 'fas fa-building'),
+              ('Industrial', 1, 'This location is ideal for industrial use.', 'fa fa-industry'),
+              ('Yard', 2, 'This location has an exterior yard.', ''),
+              ('Fencing', 2, 'This location has an outdoor fenced area.', ''),
+              ('Loading Dock', 2, 'This location has a loading dock and bay doors, perfect for moving in and out.', 'fas fa-temperature-low'),
+              ('Floor Drains', 2, 'This location has indoor floor drains.', 'fa fa-truck'),
+              ('Sprinkler', 2, '', ''),
+              ('Bathroom', 2, '', ''),
+              ('Customizable', 2, '', '')
+              ('Power', 2, '', ''),
+              ('Crane', 2, '', ''),
+              ('Mezzanine', 2, '', ''),
+              ('Kitchen', 2, '', ''),
+              ('Air Conditioning', 2, '', ''),
+              ('Security', 2, '', ''),
+              ('Auto Service', 2, '', '');
+              
+              
 
 
               INSERT INTO Notification_Status (NotificationStatusName) VALUES
