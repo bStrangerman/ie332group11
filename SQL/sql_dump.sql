@@ -1893,7 +1893,6 @@ CREATE TABLE IF NOT EXISTS Spaces (
   WarehouseID int(11) NOT NULL,
   SpaceSize real,
   MonthlyPrice real,
-  YearlyPrice real,
   Active BOOLEAN DEFAULT TRUE,
   DateAdded datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(SpaceID),
