@@ -2,15 +2,16 @@
 require_once "../includes/main.php";
 include_once "../includes/contracts.php";
 
+$feeRate = 1.05;
 
 if (isset($_SESSION['UserID'])) {
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
-  header('Location: index.php');
+    header('Location: index.php');
   else
-  $UserID = $_SESSION['UserID'];
+    $UserID = $_SESSION['UserID'];
 }
 else {
-  $_SESSION['redirect'] = 'Location: pages/contractList.php';
+  $_SESSION['redirect'] = 'Location: contractList.php';
   header('Location: login.php');
 }
 // FIXME: currently an error with  Notice: Undefined index: contractInfo in C:\xampp\htdocs\ie332group11\pages\contract.php on line 44
@@ -75,7 +76,7 @@ table tr[data-href] {
                 <th>Location</th>
                 <th>Client</th>
                 <th>Dates</th>
-                <th>Revenue</th>
+                <th>Profit</th>
               </tr>
             </thead>
             <tbody>
@@ -96,17 +97,20 @@ table tr[data-href] {
                     default:
                     echo "";
                   }
+
                   ?>>
+
                   <td><?php echo $row['ContractID']; ?></td>
                   <td><?php echo $row['Address']; ?></td>
-                  <td><?php echo $row['LesseeID'] ?></td>
+                  <td><?php echo $row['FirstName'] . " " . $row['LastName']; ?></td>
                   <td><?php echo date("m-d-Y", strtotime($row['StartDate'])) . " to " . date("m-d-Y", strtotime($row['EndDate'])); ?></td>
-                  <td><?php echo "$" . $row['AmountCharged']; ?></td>
+                  <td><?php echo "$" . ($row['AmountCharged'] / $feeRate); ?></td>
                 </tr>
               <?php $i++;
             } ?>
           </tbody>
         </table>
+        <h5 align="right">Current Fee Rate is <?php echo (($feeRate - 1) * 100); ?>%.  This has already been removed from your Profit.</h5>
         <!-- /.table-responsive -->
       </div>
       <!-- /.panel-body -->
@@ -115,12 +119,6 @@ table tr[data-href] {
   </div>
   <!-- /.col-lg-12 -->
 
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header"><?php echo $UserID; ?></h1>
-    </div>
-    <!-- /.col-lg-12 -->
-  </div>
   <div class="row">
 
   </div>

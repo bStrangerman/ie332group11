@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Multi Step Checkout Form (HTML5 & CSS3)</title>
+  
+  
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Economica:700,400italic'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <body>
+
+        <div class="react-home react-checkout">
+            <div class="react-input-box">
+
+                <div class="container"><!-- step wizard -->
+                    <div class="stepwizard col-md-offset-3 col-sm-offset-1 col-xs-offset-1">
+                        <div class="step-row setup-panel" id="wizardControl">
+                            <div class="step">
+                                <a href="#step-1" type="button" class="btn btn-primary button-no-gradient btn-circle btn-step">1</a>
+                                <p>Details</p>
+                            </div>
+                            <div class="step">
+                                <a href="#step-2" type="button" class="btn btn-default button-no-gradient btn-circle" disabled="disabled">2</a>
+                                <p>Summary</p>
+                            </div>
+                            <div class="step">
+                                <a href="#step-3" type="button" class="btn btn-default button-no-gradient btn-circle" disabled="disabled">3</a>
+                                <p>Approval</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end step wizard -->
+
+                <div class="container"><!-- row A-->
+
+                    <form role="form" action="" method="post">
+
+                        <div class="row setup-content well" id="step-1">
+
+                            <div class="row">
+
+                                <div class="col-md-3 text-center" id="building-details"><!-- details panel -->
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">Review Building Details</div>
+                                            <div class="panel-body">
+                                                <div class="table-responsive project-list">
+                                                    <table class="table table-striped"><tbody  style="background:#fff!important;outline:none!important;border:none!important;"><tr style="background:#fff!important;outline:none!important;border:none!important;">
+                                                        <td style="background:#fff!important;outline:none!important;border:none!important;">TOTAL</td>
+                                                            <td style="background:#fff!important;outline:none!important;border:none!important;"><strong>$11,200.00</strong></td>
+                                                    </tr>
+                                                    <tr style="background:#fff!important;">
+                                                        <td>DEPOSIT</td>
+                                                            <td style="color:green!important;background:#fff!important;"><strong>$1,120.00</strong></td>
+                                                    </tr></tbody></table>
+                                                </div>
+                                            </div>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item list-group-item-info">
+                                                        <div class="table-responsive"><table class="table"><thead><tr>
+                                                            <td>width</td>
+                                                            <td>length</td>
+                                                            <td>height</td>
+                                                        </tr></thead><tbody>
+                                                        <tr>
+                                                            <td>40'</td>
+                                                            <td>40'</td>
+                                                            <td>15'</td>
+                                                        </tr></tbody></table></div>
+                                                    </li>
+                                                    <li class="list-group-item">Square footage <span class="badge">1600</span></li>
+                                                    <li class="list-group-item">Pitch <span class="badge">1:12</span></li>
+                                                    <li class="list-group-item">Walls <span class="badge user-color" id="color">COLOR$</span></li>
+                                                    <li class="list-group-item">Trim <span class="badge user-color" id="color">COLOR$</span></li>
+                                                    <li class="list-group-item">Roof <span class="badge user-color" id="color">COLOR$</span></li>
+                                                </ul>
+                                    </div>
+                                </div><!-- end details panel -->
+
+                                <div class="col-md-3 text-center"><!-- building standards panel -->
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">Building Standards</div>
+                                        <div class="panel-body text-left">
+                                          <ul>
+                                            <li>Engineered structural blueprints</li>
+                                            <li>Local structural buildings codes</li>
+                                            <li>Bolt together construction</li>
+                                            <li>Galvanized secondary</li>
+                                            <li>Life time warranty onfasteners</li>
+                                            <li>20 year panel paint warranty</li>
+                                            <li>Dedicated project management</li>
+                                        </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- end building standards panel -->
+
+                                <div class="col-md-6"><!-- building details section -->
+
+                                    <div class="col-md-12"><h4>Building Details</h4></div>
+
+                                    <div class="col-md-6">
+                                        <div class="section form-group">
+                                            <label for="timeframe" class="field-label control-label">Business type *</label>
+                                            <label class="field select">
+                                               <select name="industry" tabindex="9" required="required">
+                                                  <option value="" selected="selected">- select -</option>
+                                                  <option value="Agricultural">Agricultural</option>
+                                                  <option value="Aviation">Aviation</option>
+                                                  <option value="Commercial">Commercial</option>
+                                                  <option value="Equestrian">Equestrian</option>
+                                                  <option value="Government/Military">Government/Military</option>
+                                                  <option value="Industrial">Industrial</option>
+                                                  <option value="Institutional/Church">Institutional/Church</option>
+                                                  <option value="Manufacturing">Manufacturing</option>
+                                                  <option value="Marina/Boat">Marina/Boat</option>
+                                                  <option value="Mining">Mining</option>
+                                                  <option value="Recreational">Recreational</option>
+                                                  <option value="Residential">Residential</option>
+                                                  <option value="Storage">Storage</option>
+                                                  <option value="Workshop">Workshop</option>
+                                                  <option value="Other">Other</option>
+                                               </select>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="section form-group">
+                                            <label class="field-label control-label">Timeframe *</label>
+                                            <label class="field select">
+                                                <select name="LEADCF6" class="field-label control-label" required="required">
+                                                    <option value="" selected="selected">- select -</option>
+                                                    <option value="ASAP">ASAP</option>
+                                                    <option value="1-3 Months">1-3 Months</option>
+                                                    <option value="3-6 Months">3-6 Months</option>
+                                                    <option value="6-12 Months">6-12 Months</option>
+                                                    <option value="12+ Months">12+ Months</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="section form-group">
+                                            <label class="field-label control-label">Company</label>
+                                            <input type="text" class="form-control" placeholder="Company" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="section form-group">
+                                            <label class="field-label control-label">Zipcode *</label>
+                                            <input min="5" type="text" class="form-control" placeholder="12345" required="required" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="section form-group">
+                                            <label class="control-label">First Name *</label>
+                                            <input type="text" class="form-control" placeholder="Enter First Name" required="required" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="section form-group">
+                                            <label class="field-label control-label">Last Name *</label>
+                                            <input type="text" class="form-control" placeholder="Enter Last Name" required="required" />
+                                        </div>
+                                    </div>
+
+                                </div><!-- end building details section -->
+
+                            </div>
+
+                          <button class="pull-right btn nextBtn next" aria-label="Right Align" type="button">Next
+                              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+                          <button class="pull-right btn save" type="button">Save</button>
+
+                        </div><!-- end of step one -->
+
+                        <div class="row setup-content well" id="step-2">
+
+                          <div class="row">
+
+                            <div class="col-md-3 text-center" id="building-details"><!-- details panel -->
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">Review Building Details</div>
+                                        <div class="panel-body">
+                                            <div class="table-responsive project-list">
+                                                <table class="table table-striped"><tbody  style="background:#fff!important;outline:none!important;border:none!important;"><tr style="background:#fff!important;outline:none!important;border:none!important;">
+                                                    <td style="background:#fff!important;outline:none!important;border:none!important;">TOTAL</td>
+                                                        <td style="background:#fff!important;outline:none!important;border:none!important;"><strong>$11,200.00</strong></td>
+                                                </tr>
+                                                <tr style="background:#fff!important;">
+                                                    <td>DEPOSIT</td>
+                                                        <td style="color:green!important;background:#fff!important;"><strong>$1,120.00</strong></td>
+                                                </tr></tbody></table>
+                                            </div>
+                                        </div>
+                                            <ul class="list-group">
+                                                <li class="list-group-item list-group-item-info">
+                                                    <div class="table-responsive"><table class="table"><thead><tr>
+                                                        <td>width</td>
+                                                        <td>length</td>
+                                                        <td>height</td>
+                                                    </tr></thead><tbody>
+                                                    <tr>
+                                                        <td>40'</td>
+                                                        <td>40'</td>
+                                                        <td>15'</td>
+                                                    </tr></tbody></table></div>
+                                                </li>
+                                                <li class="list-group-item">Square footage <span class="badge">1600</span></li>
+                                                <li class="list-group-item">Pitch <span class="badge">1:12</span></li>
+                                                <li class="list-group-item">Walls <span class="badge user-color" id="color">COLOR$</span></li>
+                                                <li class="list-group-item">Trim <span class="badge user-color" id="color">COLOR$</span></li>
+                                                <li class="list-group-item">Roof <span class="badge user-color" id="color">COLOR$</span></li>
+                                            </ul>
+                                </div>
+                            </div><!-- end details panel -->
+
+                            <div class="col-md-3"><!-- options panel -->
+                                <div class="panel panel-info" id="selected-options">
+                                    <div class="panel-heading text-center">Selected Options</div>
+                                    <div class="panel-body list">
+                                        <div class="table-responsive project-list">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                <tr>
+                                                    <td><strong>Openings</strong><br/>
+                                                        <small>1 Door</small><br/>
+                                                        <small>1 Window</small>
+                                                    </td>
+                                                    <td>$30.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Lean-tos</strong><br/>
+                                                        <small>40' X 15'</small><br/>
+                                                        <small>20' X 15'</small>
+                                                    </td>
+                                                    <td>$0.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Gutters/Downspouts</strong>
+                                                    </td>
+                                                    <td>$0.00</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end options panel -->
+
+                            <div class="col-md-6">
+
+                              <div class="col-md-12"><h4>Your Information</h4></div>
+
+                              <div class="col-md-6">
+                                  <div class="section form-group">
+                                      <label class="field-label control-label">Email *</label>
+                                      <input type="email" class="form-control" placeholder="your@email.com" required="required" />
+                                  </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                  <div class="section form-group">
+                                      <label class="field-label control-label">Phone *</label>
+                                      <input type="number" name="phone" class="form-control" placeholder="(•••) ••• ••••" required="required"  />
+                                  </div>
+                              </div>
+
+                              <div class="col-md-12"><h4>Delivery Address</h4></div>
+
+                              <div class="col-md-6">
+                                  <div class="section form-group">
+                                      <label class="field-label control-label">Street Address *</label>
+                                      <input type="text" class="form-control" placeholder="Enter Street Address" required="required" />
+                                  </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                  <div class="section form-group">
+                                      <label class="field-label control-label">Suite</label>
+                                      <input type="text" class="form-control" placeholder="Street Address Continued" />
+                                  </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                  <div class="section form-group">
+                                      <label class="field-label control-label">City *</label>
+                                      <input type="text" class="form-control" placeholder="Enter City" required="required" />
+                                  </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                  <div class="section form-group">
+                                      <label class="field-label control-label">Country</label>
+                                      <input type="text" class="form-control" placeholder="Enter Country" />
+                                  </div>
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                          <button class="pull-right btn nextBtn next" aria-label="Right Align" type="button">Next <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+                          <button class="pull-right btn save" type="button">Save</button>
+                          <button class="pull-right btn save" type="button">Edit</button>
+                          <button class="pull-right btn prevBtn prev" aria-label="Left Align" type="button">
+                              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
+
+                        </div><!-- end step 2 -->
+
+                        <div class="row setup-content well" id="step-3">
+
+                          <div class="row">
+
+                              <div class="col-md-6">
+
+                                  <div class="col-md-6 text-center" id="building-details"><!-- details panel -->
+                                      <div class="panel panel-info">
+                                          <div class="panel-heading">Review Building Details</div>
+                                              <div class="panel-body">
+                                                  <div class="table-responsive project-list">
+                                                      <table class="table table-striped"><tbody  style="background:#fff!important;outline:none!important;border:none!important;"><tr style="background:#fff!important;outline:none!important;border:none!important;">
+                                                          <td style="background:#fff!important;outline:none!important;border:none!important;">TOTAL</td>
+                                                              <td style="background:#fff!important;outline:none!important;border:none!important;"><strong>$11,200.00</strong></td>
+                                                      </tr>
+                                                      <tr style="background:#fff!important;">
+                                                          <td>DEPOSIT</td>
+                                                              <td style="color:green!important;background:#fff!important;"><strong>$1,120.00</strong></td>
+                                                      </tr></tbody></table>
+                                                  </div>
+                                              </div>
+                                                  <ul class="list-group">
+                                                      <li class="list-group-item list-group-item-info">
+                                                          <div class="table-responsive"><table class="table"><thead><tr>
+                                                              <td>width</td>
+                                                              <td>length</td>
+                                                              <td>height</td>
+                                                          </tr></thead><tbody>
+                                                          <tr>
+                                                              <td>40'</td>
+                                                              <td>40'</td>
+                                                              <td>15'</td>
+                                                          </tr></tbody></table></div>
+                                                      </li>
+                                                      <li class="list-group-item">Square footage <span class="badge">1600</span></li>
+                                                      <li class="list-group-item">Pitch <span class="badge">1:12</span></li>
+                                                      <li class="list-group-item">Walls <span class="badge user-color" id="color">COLOR$</span></li>
+                                                      <li class="list-group-item">Trim <span class="badge user-color" id="color">COLOR$</span></li>
+                                                      <li class="list-group-item">Roof <span class="badge user-color" id="color">COLOR$</span></li>
+                                                  </ul>
+                                      </div>
+                                  </div><!-- end details panel -->
+
+                                  <div class="col-md-6"><!-- options panel -->
+                                      <div class="panel panel-info"  id="selected-options">
+                                          <div class="panel-heading text-center">Selected Options</div>
+                                          <div class="panel-body list">
+                                              <div class="table-responsive project-list">
+                                                  <table class="table table-striped">
+                                                      <tbody>
+                                                      <tr>
+                                                          <td><strong>Openings</strong><br/>
+                                                              <small>1 Door</small><br/>
+                                                              <small>1 Window</small>
+                                                          </td>
+                                                          <td>$30.00</td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td><strong>Lean-tos</strong><br/>
+                                                              <small>40' X 15'</small><br/>
+                                                              <small>20' X 15'</small>
+                                                          </td>
+                                                          <td>$0.00</td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td><strong>Gutters/Downspouts</strong>
+                                                          </td>
+                                                          <td>$0.00</td>
+                                                      </tr>
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    
+                                      <div class="panel panel-info">
+                                          <div class="panel-heading">Building Standards</div>
+                                          <div class="panel-body text-left">
+                                              <ul>
+                                                 <li>Engineered structural blueprints</li>
+                                                 <li>Local structural buildings codes</li>
+                                                 <li>Bolt together construction</li>
+                                                 <li>Galvanized secondary</li>
+                                                 <li>Lifetime warranty onfasteners</li>
+                                                 <li>20 year panel paint warranty</li>
+                                                 <li>Dedicated project management</li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                    
+                                  </div><!-- end options and standards panel -->
+                              </div>
+
+                              <div class="col-md-6">
+
+                                  <div class="col-md-6"><!-- step 3, column 1 -->
+
+                                      <h4>Review and Submit</h4>
+
+                                      <p>
+                                        <b>John Smith<br />
+                                        XYZ, Inc.<br />
+                                        123 Broward Blvd, Suite #101<br />
+                                        Fort Lauderdale, FL 33301 USA<br />
+                                        email@address.com<br />
+                                        +1.954.333.4444</b>
+                                      </p>
+
+                                      <p>
+                                        <b>Time frame</b>:  1-3 months<br />
+                                        <b>Business type</b>:  Marina/Boat
+                                      </p>
+
+                                      <div>
+                                        <input type="checkbox" checked>  Billing Address Same
+                                      </div>
+
+                                  </div><!-- end step 3, column 1 -->
+
+                                  <div class="col-md-6"><!-- step 3, column 2 -->
+
+                                      <h4>Payment Information</h4>
+
+                                      <div class="section form-group">
+                                          <label class="field-label control-label">Credit Card Number *</label>
+                                          <input type="number" class="form-control" placeholder="•••• •••• •••• ••••" required="required" autofocus />
+                                      </div>
+
+                                      <div class="section form-group">
+                                          <label class="field-label control-label">Expiration *</label>
+                                          <input type="text" class="form-control" placeholder="01/16" required="required" />
+                                      </div>
+
+                                      <div class="section form-group">
+                                          <label class="field-label control-label">CVC *</label>
+                                          <input type="text" class="form-control" placeholder="123" required="required" />
+                                      </div>
+
+                                  </div><!-- end step 3, column 2 -->
+
+                                  <div class="col-md-12"><h4>Billing Address</h4></div>
+
+                                  <div class="col-md-6"><!-- column 1 -->
+
+                                      <div class="section form-group">
+                                          <label class="field-label control-label">Street Address *</label>
+                                          <input type="text" class="form-control" placeholder="Enter Street Address" required="required" />
+                                      </div>
+
+                                      <div class="section form-group">
+                                          <label class="field-label control-label">Suite</label>
+                                          <input type="text" class="form-control" placeholder="Street Address Continued" />
+                                      </div>
+
+                                  </div>
+
+                                  <div class="col-md-6"><!-- column 2 -->
+
+                                      <div class="section form-group">
+                                          <label class="field-label control-label">City *</label>
+                                          <input type="text" class="form-control" placeholder="Enter City" required="required" />
+                                      </div>
+
+                                      <div class="section form-group">
+                                          <label class="field-label control-label">Zipcode *</label>
+                                          <input type="text" class="form-control" placeholder="12345" required="required" />
+                                      </div>
+
+                                  </div>
+
+                                  <div class="col-md-12">
+                                    <div class="panel panel-success">
+                                      <div  id="no-obligation-panel" class="panel-body text-center">
+                                        <i>No obligation cancellation policy!</i>  <span class="glyphicon glyphicon-hand-left"></span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                              </div>
+
+                          </div>
+
+                          <div class="row">
+
+                            <div class="col-md-12"><!-- badges -->
+                                <div class="safe-purchase">
+                                    <ul>
+                                        <li><img src="https://ec2-52-24-108-83.us-west-2.compute.amazonaws.com/images/accr-bus.png" /></li>
+                                        <li><img src="https://ec2-52-24-108-83.us-west-2.compute.amazonaws.com/images/google.png" /></li>
+                                        <li><img src="https://ec2-52-24-108-83.us-west-2.compute.amazonaws.com/images/approved.png" /></li>
+                                    </ul>
+                                </div>
+                            </div><!-- badges -->
+
+                          </div>
+
+                          <button class="pull-right btn btn-submit next" type="submit">Process <span class="glyphicon glyphicon-ok"></span></button>
+                          <button class="pull-right btn prevBtn prev" aria-label="Left Align" type="button">
+                              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous</button>
+
+                        </div><!-- end step 3 -->
+
+                    </form>
+
+                </div><!-- end row A -->
+
+            </div><!-- end react-input-box -->
+
+            <footer>
+                <div class="react-footer-navigation clearfix">
+
+                    <div class="col-md-3 col-sm-2 text-right col-xs-2">
+                        <img src="https://ec2-52-24-108-83.us-west-2.compute.amazonaws.com/images/logo.png" alt="logo"/>
+                    </div>
+
+                    <div class="col-md-2 col-sm-5 col-xs-5">
+                        <ul>
+                            <li class="title">LEARN MORE</li>
+                            <li><a href="http://alliedcares.com/" target="_blank">Allied Cares</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-2 col-md-offset-0 col-sm-5 col-sm-offset-2 col-xs-5 col-xs-offset-2">
+                        <ul>
+                            <li class="title">HELP</li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-2 col-sm-5 col-xs-5">
+                        <ul>
+                            <li class="title">CONNECT</li>
+                            <li><a href="http://www.alliedbuildings.com/contact-us/" target="_blank">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="text-center copyright clearfix">Copyright 2017 Allied Steel Buildings. All rights reserved.</div>
+
+            </footer>
+
+        </div><!-- end react-home & react-checkout -->
+  </body>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

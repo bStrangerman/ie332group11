@@ -1,16 +1,8 @@
 <?php
 
-	// database and user authentication includes
-	include "db.php";
-	require_once 'PhpRbac/src/PhpRbac/Rbac.php';
-	$rbac = new \PhpRbac\Rbac();
+// variable declaration
+	$register_Errors = array();
 
-	// variable declaration
-	$username = "";
-	$email    = "";
-	$errors = array();
-	$_SESSION['success'] = "";
-	$_SESSION['UserID'] = "";
 
 	// connect to database
 	$db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -18,17 +10,37 @@
 	// REGISTER USER
 	if (isset($_POST['reg_user'])) {
 		// receive all input values from the form
-		$username = mysqli_real_escape_string($db, $_POST['username']);
-		$email = mysqli_real_escape_string($db, $_POST['email']);
-		$psswd = mysqli_real_escape_string($db, $_POST['password']);
+		$username = clean($_POST['username']);
+		$email = clean($_POST['email']);
+		$psswd = clean($_POST['password']);
 
 		// form validation: ensure that the form is correctly filled
-		if (empty($username)) { array_push($errors, "Username is required"); }
-		if (empty($email)) { array_push($errors, "Email is required"); }
-		if (empty($psswd)) { array_push($errors, "Password is required"); }
+		if (empty($username)) { array_push($register_Errors, "Username is required"); }
+		if (empty($email)) { array_push($register_Errors, "Email is required"); }
+		if (empty($psswd)) { array_push($register_Errors, "Password is required"); }
+
+		// Check if Username and email is taken
+		$countOfUsername = "SELECT COUNT(*) AS count
+							FROM phprbac_users
+							WHERE username = '$username'";
+
+		$countOfEmail = "SELECT COUNT(*) AS count
+							FROM phprbac_users
+							WHERE email = '$email'";
+
+
+
+		$countUsernameMIDResult = ($conn -> query($countOfUsername));
+		$countUsernameResult = $$countUsernameMIDResult-> fetch_assoc();
+
+		$countEmailMIDResult = ($conn -> query($countOfEmail));
+		$countEmailResult = $countEmailMIDResult -> fetch_assoc();
+
+		if ($countUsernameResult['count'] > 0) { array_push($register_Errors, "Username is taken"); }
+		if ($countEmailResult['count'] > 0) { array_push($register_Errors, "Email is already being used"); }
 
 		// register user if there are no errors in the form
-		if (count($errors) == 0) {
+		if (count($register_Errors) == 0) {
 			$psswd_insert = md5($psswd);//encrypt the password before saving in the database
 			$query = "INSERT INTO phprbac_users (username, email, password)
 					  VALUES('$username', '$email', '$psswd_insert')";
@@ -44,42 +56,44 @@
 			// sets the user information into the session
 			$_SESSION['username'] = $username;
 			$_SESSION['email'] = $email;
-			$_SESSION['success'] = "You are now logged in"	;
-			header('location: account_setup.php');  // redirects to the account setup page
+			header('Location: account_setup.php');  // redirects to the account setup page
+			exit;
 		}
 	}
 
 	// LOGIN USER
 	if (isset($_POST['login_user'])) {
-		$username = mysqli_real_escape_string($db, $_POST['username']);
-		$password = mysqli_real_escape_string($db, $_POST['password']);
+		$username = clean($_POST['username']);
+		$password = clean($_POST['password']);
 
-		// validates the user information is provided
+		$login_Errors = array();
+
+		// double validates the user information is provided
 		if (empty($username)) {
-			array_push($errors, "Username is required");
+			array_push($login_Errors, "Username is required");
 		}
 		if (empty($password)) {
-			array_push($errors, "Password is required");
+			array_push($login_Errors, "Password is required");
 		}
 
 		// validates the user is in the database and logs in the user
-		if (count($errors) == 0) {
+		if (count($login_Errors) == 0) {
 			$password = md5($password);
-			$query = "SELECT * FROM phprbac_users WHERE username='$username' AND password='$password'";
-			$results = mysqli_query($db, $query);
+			$query = "SELECT * FROM phprbac_users WHERE Username='$username' AND Password='$password'";
+			$result = $conn -> query($query);
 
-
-			if (mysqli_num_rows($results) == 1) {
+			if ($result->num_rows == 1) {
 				$_SESSION['username'] = $username;
-				while($rows = $results -> fetch_assoc()){
-					$_SESSION['UserID'] = $rows['UserID'];
-					$_SESSION['email'] = $rows['email'];
+				while($row = $result -> fetch_assoc()){
+					$UserID = $row['UserID'];
+					$_SESSION['UserID'] = $UserID;
+					$_SESSION['Email'] = $row['Email'];
 				}
-				$_SESSION['success'] = "You are now logged in";
-				header('location: warehouse.php');
+				header("Location: index.php");
+				exit;
 			}
 			else {
-				array_push($errors, "Wrong username/password combination");
+				array_push($login_Errors, "Wrong username/password combination");
 			}
 		}
 	}

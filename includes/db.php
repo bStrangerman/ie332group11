@@ -1,10 +1,15 @@
 <?php session_start();
 
-// set the credentials for MySQL
+// // set the credentials for MySQL
 $dbhost = "localhost"; // this will ususally be 'localhost', but can sometimes differ
 $dbname = "ie332group11"; // the name of the database that you are going to use for this project
 $dbuser = "root"; // the username that you created, or were given, to access your database
 $dbpass = ""; // the password that you created, or were given, to access your database
+
+// $dbhost = "mydb.itap.purdue.edu"; // this will ususally be 'localhost', but can sometimes differ
+// $dbname = "g1090432"; // the name of the database that you are going to use for this project
+// $dbuser = "g1090432"; // the username that you created, or were given, to access your database
+// $dbpass = "@Capacity332"; // the password that you created, or were given, to access your database
 
 // creates the connection to the database
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);

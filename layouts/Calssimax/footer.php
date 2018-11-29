@@ -10,7 +10,7 @@
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
-          <img src="../includes/images/logo-footer.png" alt="">
+          <h2><strong><span style="color:white">@</style><span style="color:red">Capacity</span></strong></h2>
           <!-- description -->
           <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
@@ -70,8 +70,8 @@
       <div class="col-sm-6 col-12">
         <!-- Social Icons -->
         <ul class="social-media-icons text-right">
-          <li><a class="fa fa-facebook" href=""></a></li>
-          <li><a class="fa fa-twitter" href=""></a></li>
+          <li><a class="fa fa-facebook" href="https://www.facebook.com/AtCapacity-339587599924715"></a></li>
+          <li><a class="fa fa-twitter" href="https://twitter.com/capacity_332"></a></li>
           <li><a class="fa fa-pinterest-p" href=""></a></li>
           <li><a class="fa fa-vimeo" href=""></a></li>
         </ul>
@@ -86,8 +86,8 @@
 </footer>
 
 <!-- JAVASCRIPTS -->
-<script src="../includes/plugins/jquery/jquery.min.js"></script>
-<script src="../includes/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../includes/plugins/jquery/dist/jquery.min.js"></script>
+<script src="../includes/plugins/jquery/dist/jquery-ui/jquery-ui.min.js"></script>
 <script src="../includes/plugins/tether/js/tether.min.js"></script>
 <script src="../includes/plugins/raty/jquery.raty-fa.js"></script>
 <script src="../includes/plugins/bootstrap/dist/js/popper.min.js"></script>
@@ -97,8 +97,7 @@
 <script src="../includes/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 <script src="../includes/plugins/fancybox/jquery.fancybox.pack.js"></script>
 <script src="../includes/plugins/smoothscroll/SmoothScroll.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-<script src="js/search.js"></script>
+<script src="../includes/js/search.js"></script>
 
 
 <script>
@@ -170,6 +169,7 @@ function initAutocomplete() {
   }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHEHS1YUJVmKDeZhK1zp-5bWFjK7l7Oi0&libraries=places&callback=initAutocomplete" async defer></script>
+  <script src="../includes/dateCheck.js"></script>
 
 
 

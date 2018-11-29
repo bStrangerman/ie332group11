@@ -47,19 +47,20 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="warehouse.php">@Capacity</a>
+                  <a class="navbar-brand" href="index.php"><span class="fa fa-arrow-circle-o-left"> Return Home</span></a>
               </div>
               <!-- /.navbar-header -->
-
+              <?php
+              $n = 5;
+              $alertInfo = getRecentInfo($_SESSION['UserID'], $n);
+              ?>
               <ul class="nav navbar-top-links navbar-right">
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <li class="dropdown" <?php echo (count($alertInfo)) ? "style='background:red'" : "" ?>>
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#" <?php echo (count($alertInfo)) ? "style='color:white'" : "" ?>>
                           <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                       </a>
                       <ul class="dropdown-menu dropdown-messages">
-                        <?php
-                        $n = 5;
-                        $alertInfo = getRecentInfo($_SESSION['UserID'], $n, $conn);
+                  <?php
                         $i=0;
                         while ($i < count($alertInfo)) {
                           $alert = $alertInfo[$i];
@@ -168,15 +169,16 @@
                       <!-- /.dropdown-tasks -->
                   </li>
                   <!-- /.dropdown -->
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+                  <li class="dropdown" <?php echo (count($alertInfo)) ? "style='background:red'" : "" ?>>
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#" <?php echo (count($alertInfo)) ? "style='color:white'" : "" ?>>
                           <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                       </a>
                       <ul class="dropdown-menu dropdown-alerts">
                           <?php
                           $n = 5;
                           $i = 0;
-                          $alertInfo = getRecentInfo($_SESSION['UserID'], $n, $conn);
+                          $alertInfo = getRecentInfo($_SESSION['UserID'], $n);
                           while ($i < count($alertInfo)) {
                             $alert = $alertInfo[$i];
                               echo "<li>
@@ -237,7 +239,7 @@
                               <!-- /input-group -->
                           </li>
                           <li>
-                              <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                              <a href="warehouse.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                           </li>
                           <li>
                               <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -256,6 +258,9 @@
                           </li>
                           <li>
                               <a href="contractList.php"><i class="fa fa-table fa-fw"></i> Contracts</a>
+                          </li>
+                          <li>
+                              <a href="locations.php"><i class="fa fa-table fa-fw"></i> Locations</a>
                           </li>
                           <li>
                               <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
