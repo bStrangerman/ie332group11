@@ -12,23 +12,32 @@ else {
   $LesseeRole = 0;
 }
 
-//Grab REAL IP (not $_SERVER[‘REMOTE_ADDR’])
-function getRealIpAddr()
-{
-    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
-    {
-      $ip=$_SERVER['HTTP_CLIENT_IP'];
-    }
-    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
-    {
-      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-    }
+//Grab REAL IP (not $_SERVER[‘REMOTE_ADDR’] )
+//Pulled from https://stackoverflow.com/questions/22323525/how-get-latitude-and-longitude-by-client-ip)
+function get_client_ip() {
+    $ipaddress = '';
+    if ($_SERVER['HTTP_CLIENT_IP'])
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_X_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if($_SERVER['HTTP_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if($_SERVER['REMOTE_ADDR'])
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
     else
-    {
-      $ip=$_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
+        $ipaddress = 'UNKNOWN';
+
+    return $ipaddress;
 }
+$ip = "23.237.120.42";
+echo $ip . "<br>";
+
+//API from ipstack.com
+$geoIP  = json_decode(file_get_contents("http://api.ipstack.com/$ip?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
 
 ?>
 
