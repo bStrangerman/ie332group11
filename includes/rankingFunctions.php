@@ -400,4 +400,40 @@ function getAvailableSpaces ($start_date, $end_date, $type){
         //echo '<br/>'.$km;
         return ($km * 1000);
       }
+
+      function getLatLon($address){
+        // Adapted from the google geocoding API
+        // Source: http://www.datasciencetoolkit.org/developerdocs#street2coordinates
+        $API_CALL = "http://www.datasciencetoolkit.org/maps/api/geocode/json?sensor=false&address=" . urlencode($address);
+
+        // echo "<a href='" . $url . "'>" . $url . "</a><br>";
+        // get the json response
+        $resp_json = file_get_contents($API_CALL);
+
+        // decode the json
+        $resp = json_decode($resp_json, true);
+
+        // response status will be 'OK', if able to geocode given address
+        if ($resp['status'] == 'OK') {
+
+          $getLat = isset($resp['results'][0]['geometry']['location']['lat']) ? $resp['results'][0]['geometry']['location']['lat'] : "";
+          $getLon = isset($resp['results'][0]['geometry']['location']['lng']) ? $resp['results'][0]['geometry']['location']['lng'] : "";
+
+          // verify if data is complete
+          if ($getLat && $getLon) {
+
+            // put the data in the array
+            $data_arr = array($getLat, $getLon);
+
+            return $data_arr;
+          }
+          else {
+            return false;
+          }
+        }
+        else {
+          echo "<strong>ERROR: {$resp['status']}</strong>";
+          return false;
+        }
+      }
       ?>
