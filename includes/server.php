@@ -1,6 +1,8 @@
 <?php
+
 // variable declaration
 	$register_Errors = array();
+
 
 	// connect to database
 	$db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -26,11 +28,14 @@
 							FROM phprbac_users
 							WHERE email = '$email'";
 
+
+
 		$countUsernameMIDResult = ($conn -> query($countOfUsername));
 		$countUsernameResult = $$countUsernameMIDResult-> fetch_assoc();
 
 		$countEmailMIDResult = ($conn -> query($countOfEmail));
 		$countEmailResult = $countEmailMIDResult -> fetch_assoc();
+
 		if ($countUsernameResult['count'] > 0) { array_push($register_Errors, "Username is taken"); }
 		if ($countEmailResult['count'] > 0) { array_push($register_Errors, "Email is already being used"); }
 
