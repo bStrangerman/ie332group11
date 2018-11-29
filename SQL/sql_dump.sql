@@ -1,16 +1,16 @@
 CREATE TABLE IF NOT EXISTS `phprbac_permissions` (
-  `Idaho` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Title` char(64) COLLATE utf8_bin NOT NULL,
   `Description` varchar(100) COLLATE utf8_bin NOT NULL,
   `Lft` int(11) NOT NULL,
   `Rght` int(11) NOT NULL,
-  PRIMARY KEY (`Idaho`),
+  PRIMARY KEY (`ID`),
   KEY `Title` (`Title`),
   KEY `Lft` (`Lft`),
   KEY `Rght` (`Rght`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;
 
-INSERT INTO `phprbac_permissions` (`Idaho`, `Title`, `Description`, `Lft`, `Rght`) VALUES
+INSERT INTO `phprbac_permissions` (`ID`, `Title`, `Description`, `Lft`, `Rght`) VALUES
 (1, 'root', 'Administrator', 0, 22),
 (2, 'add_warehouses', 'Can Add Warehouses', 1, 2),
 (3, 'add_spaces', 'Can Add Spaces', 3, 4),
@@ -25,19 +25,19 @@ INSERT INTO `phprbac_permissions` (`Idaho`, `Title`, `Description`, `Lft`, `Rght
 (12, 'can_lease', 'Can Lease Warehouses', 20, 21);
 
 CREATE TABLE IF NOT EXISTS `phprbac_roles` (
-  `Idaho` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(128) COLLATE utf8_bin NOT NULL,
   `Description` text COLLATE utf8_bin NOT NULL,
   `Lft` int(11) NOT NULL,
   `Rght` int(11) NOT NULL,
   `OrderNumber` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Idaho`),
+  PRIMARY KEY (`ID`),
   KEY `Title` (`Title`),
   KEY `Lft` (`Lft`),
   KEY `Rght` (`Rght`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
-INSERT INTO `phprbac_roles` (`Idaho`, `Title`, `Description`, `Lft`, `Rght`, `OrderNumber`) VALUES
+INSERT INTO `phprbac_roles` (`ID`, `Title`, `Description`, `Lft`, `Rght`, `OrderNumber`) VALUES
 (1, 'root', 'root', 1, 10, NULL),
 (2, 'Warehouse', 'Warehouse', 2, 7, NULL),
 (3, 'Warehouse_Owner', 'Warehouse Owner', 3, 4, 1),
@@ -52,8 +52,8 @@ CREATE TABLE IF NOT EXISTS `phprbac_rolepermissions` (
   `AssignmentDate` int(11) NOT NULL,
   `PermissionAssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`RoleID`,`PermissionID`),
-  FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`Idaho`) ON DELETE CASCADE,
-  FOREIGN KEY (`PermissionID`) REFERENCES `phprbac_permissions` (`Idaho`) ON DELETE CASCADE
+  FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE,
+  FOREIGN KEY (`PermissionID`) REFERENCES `phprbac_permissions` (`ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `phprbac_rolepermissions` (`RoleID`, `PermissionID`, `AssignmentDate`) VALUES
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `phprbac_userroles` (
   `RoleAssignmentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`UserID`,`RoleID`),
   FOREIGN KEY (`UserID`) REFERENCES `phprbac_users` (`UserID`) ON DELETE CASCADE,
-  FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`Idaho`) ON DELETE CASCADE
+  FOREIGN KEY (`RoleID`) REFERENCES `phprbac_roles` (`ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO phprbac_users(Username,FirstName,LastName,Password,Email,PhoneNumber,Company) VALUES
