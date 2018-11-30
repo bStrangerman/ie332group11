@@ -83,7 +83,7 @@ while($LesseeInfo[]=mysqli_fetch_array($result));
 								<th>Image</th>
 								<th>Contract Info</th>
 								<th class="text-center">Category</th>
-								<th class="text-center">Action</th>
+								<!-- <th class="text-center">Action</th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -97,7 +97,6 @@ while($LesseeInfo[]=mysqli_fetch_array($result));
                                ON Warehouse_Pictures.PictureID = Pictures.PictureID
                                WHERE Warehouse_Pictures.WarehouseID = $warehouseID
                                LIMIT 1";
-                               echo $pictureSQL;
                 $pictureResult = $conn -> query($pictureSQL);
 
                 echo "<tr>";
@@ -112,10 +111,10 @@ while($LesseeInfo[]=mysqli_fetch_array($result));
 									<span class="add-id"><strong>Contract ID:</strong> <?php echo $row['ContractID']; ?></span>
 									<span><strong>Updated on: </strong><time><?php echo $row['StatusTime']; ?></time> </span>
 									<span class="status active"><strong>Status</strong><?php echo $row['StatusName']; ?></span>
-									<span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
+									<span class="location"><strong>Location</strong><?php echo $row['City'] . ", " . $row['State']; ?></span>
 								</td>
 								<td class="product-category"><span class="categories">Laptops</span></td>
-								<td class="action" data-title="Action">
+								<!-- <td class="action" data-title="Action">
 									<div class="">
 										<ul class="list-inline justify-content-center">
 											<li class="list-inline-item">
@@ -135,7 +134,7 @@ while($LesseeInfo[]=mysqli_fetch_array($result));
 											</li>
 										</ul>
 									</div>
-								</td>
+								</td> -->
 							</tr>
             <?php }?>
 
