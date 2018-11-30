@@ -24,6 +24,9 @@
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 
+<!-- Zing javascript graphs  -->
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
 </body>
 
 </html>
