@@ -35,7 +35,7 @@ if($err == array()){
 
   if(isset($_GET['location']) || isset($_GET['state'])){
     if(isset($_GET['location'])){
-      $origin = $_GET['location'];
+      $origin = clean($_GET['location']);
       $lat_lon = getLatLon($origin);
       $origin_lat = $lat_lon[0];
       $origin_lon = $lat_lon[1];
@@ -61,10 +61,10 @@ if($err == array()){
 
     if($stateBoolean == 0) {
       if(isset($_GET['range'])) {
-        $range = $_GET['range'];
+        $range = clean($_GET['range']);
       }
       else {
-        $range = 9000;
+        $range = 100000;
       }
 
       $max_count = count($data);
@@ -88,13 +88,12 @@ if($err == array()){
         $max_size = $data[$i]["SpaceSize"];
     }
   }
-
   if(isset($_GET['size']))
-    $size = $_GET['size'];
+    $size = clean($_GET['size']);
   else
     $size = $max_size;
-
 }
+
 ?>
 
 <section class="page-search">
@@ -142,6 +141,23 @@ if($err == array()){
     <div class="row">
       <div class="col-md-3">
         <div class="category-sidebar">
+          <form action="/~g1090432/pages/results.php?location=Alabama&startdate=2018-11-14&enddate=2018-12-06" method="GET">
+            <?php if($stateBoolean == 1){ ?>
+              <input type="hidden" name="state" value="<?php echo $state; ?>">
+            <?php }
+            else { ?>
+              <input type="hidden" name="location" value="<?php echo $origin; ?>">
+            <?php }?>
+            <input type="hidden" name="startdate" value="<?php echo $start; ?>">
+            <input type="hidden" name="enddate" value="<?php echo $end; ?>">
+            <?php if(isset($_GET['range'])){ ?>
+              <input type="hidden" name="range" value="<?php echo clean($_GET['range']); ?>">
+            <?php }?>
+            <div class="widget filter">
+            <h4 class="widget-header">Size Needed (sqft)</h4>
+            <input class="form-control" type="number" name="size" value="<?php echo clean($_GET['size']); ?>" placeholder="Square Feet">
+          </div>
+        </form>
           <div class="widget category-list">
             <h4 class="widget-header">All Category</h4>
             <ul class="category-list">
@@ -173,16 +189,6 @@ if($err == array()){
                 <li><a href="results.php?state=<?php echo $row['State']; ?>&startdate=<?php echo $start;?>&enddate=<?php echo $end;?>"><?php echo $row['State']; ?> <span><?php echo $row['countof']; ?></span></a></li>
               <?php } ?>
             </ul>
-          </div>
-
-          <div class="widget filter">
-            <h4 class="widget-header">Show Produts</h4>
-            <select>
-              <option>Popularity</option>
-              <option value="1">Top rated</option>
-              <option value="2">Lowest Price</option>
-              <option value="4">Highest Price</option>
-            </select>
           </div>
 
           <?php // TODO: this is not that great of looking ?>
@@ -256,8 +262,6 @@ if($err == array()){
   <div class="row mt-30">
     <?php
 
-
-
     if($err != array()) {
 
       ?>
@@ -272,15 +276,14 @@ if($err == array()){
         for($i = 0; $i < count($spaceID); ++$i){
           if(isset($data[$i]["Spaces"])) {
             $score[$i] = 0;
-            $score[$i] += Utilization($data[$i]['Spaces'], $start, $end, 100 * (6/9));
+            $score[$i] += Utilization($data[$i]['Spaces'], $start, $end, (100 * (5/15)));
             if($stateBoolean == 0)
             {
-              $score[$i] += distance_score($range, $data[$i]['Distance'], 100 * (2/9));
+              $score[$i] += distance_score($range, $data[$i]['Distance'], 100 * (3/15));
             }
 
-            $score[$i] += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (1/9));
-            // FIXME: size score is not currently working
-            // $score[$i] += size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (1/9));
+            $score[$i] += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (2/15));
+            $score[$i] += size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (5/15));
             $score[$i] = round($score[$i]) > 100 ? 100 : round($score[$i]) ;
 
             ?>
@@ -295,7 +298,7 @@ if($err == array()){
                   </a> -->
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title"><a href="space.php?address=<?php echo urlencode($data[$i]['Addresses']); ?>&space=<?php echo $data[$i]['Spaces']; ?>&startdate=<?php echo $_GET['startdate']; ?>&enddate=<?php echo $_GET['enddate']; ?>"><?php echo $data[$i]['Addresses']; ?></a></h4>
+                  <h4 class="card-title"><a href="space.php?space=<?php echo $data[$i]['Spaces']; ?>&startdate=<?php echo $_GET['startdate']; ?>&enddate=<?php echo $_GET['enddate']; ?>"><?php echo $data[$i]['Addresses']; ?></a></h4>
                   <ul class="list-inline product-meta">
                     <!-- <li class="list-inline-item">
                     <a href="spaces.php?spaceID=<?php echo $data['Spaces'][$i]; ?>"><i class="fa fa-folder-open-o"></i>Furnitures</a>

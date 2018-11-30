@@ -1,5 +1,6 @@
 <?php
-// TODO: If the search bar is a state or city in the search, only output those results without the need of the Google API.
+
+//error checking
 $location_error = "Please enter a location";
 $err = array();
 if((isset($_GET['location']) && $_GET['location'] == ""))
@@ -17,11 +18,13 @@ array_push($err, "Please enter a valid start date");
 if((isset($_GET['enddate']) && $_GET['enddate'] == "") || !isset($_GET['enddate']))
 array_push($err, "Please enter a valid end date");
 
+//clean the GET statement
 if(isset($_GET['startdate']))
 $start = $_SESSION['startdate'] = clean($_GET['startdate']);
 else
 $start = "";
 
+//clean the GET statement
 if(isset($_GET['enddate']))
 $end = $_SESSION['enddate'] = clean($_GET['enddate']);
 else
@@ -51,7 +54,7 @@ function getAllSpaces(){
 }
 
 /**
-* Runs the Google API function to get distance and time
+* Runs the Google API function to get distance and time for all addresses
 * @param  [text] $origin  [Origin of the query]
 * @param  [array] $address [list of destinations to be searched.  Can be as many as possible]
 * @return [array]          [Outputs formatted Origin Address, and all distance and time]
@@ -74,7 +77,7 @@ function getDistance($origin, $address){
 }
 
 /**
-* Google API
+* Google API execution
 * @param  [text] $origin      [origin of the query]
 * @param  [array] $destination [destinations of the query]
 * @return [array]              [Returns unformatted results]
@@ -184,6 +187,13 @@ function getAvailableSpaces ($start_date, $end_date, $type){
         echo "</pre>";
       }
 
+/**
+ * Algorithm to determine the utilization of the space
+ * @param [int]  $space [spaceID of the space]
+ * @param [date]  $start [start date of wanted contract]
+ * @param [date]  $end   [end date of wanted contract]
+ * @param integer $scale [default scacle value]
+ */
       function Utilization($space, $start, $end, $scale = 100){
         $score = 1;
         $start = date_create($start);
@@ -194,14 +204,17 @@ function getAvailableSpaces ($start_date, $end_date, $type){
         $result = ($GLOBALS['conn'] -> query($sql));
 
         if ($result && $result->num_rows > 0) {
-          // output data of each row
+          $i = 0;
+          $max_Utilization = 0;
           while($row = $result->fetch_assoc()) {
-            $Utilization = 0;
+            $Utilization[$i] = 0;
             if(count($row) > 0){
 
+              // create formatted dates
               $contractStart =  date_create($row['StartDate']);
               $contractEnd = date_create($row['EndDate']);
 
+              // calculate contract length
               $contractLength  = date_diff($contractStart, $contractEnd , true);
               $contractLength = $contractLength->format("%a");
 
@@ -209,130 +222,31 @@ function getAvailableSpaces ($start_date, $end_date, $type){
               if($start > $contractEnd){
                 $timeUntil = date_diff($start, $contractEnd, true);
                 $timeUntil = $timeUntil->format("%a");
-                $Utilization = $timeUntil / $contractLength;
+                $Utilization[$i] = $timeUntil / $contractLength;
               }
               // Select Past Contracts
               else if($end < $contractStart){
                 $timePast = date_diff($end, $contractStart, true);
                 $timePast = $timePast->format("%a");
-                $Utilization = $timePast / $contractLength;
+                $Utilization[$i] = $timePast / $contractLength;
               }
-              else
-              $Utilization = 0;
+              else{
+                $Utilization[$i] = 0;
+              }
+
+              if($Utilization[$i] > $max_Utilization){
+                $max_Utilization = $Utilization[$i];
+              }
             }
+            $i++;
           }
         }
         else {
-          $Utilization = 1;
+          $max_Utilization = $scale;
         }
 
-        return $Utilization * $scale;
+        return $max_Utilization;
       }
-
-
-      /**
-      * [sortedAddressResults description]
-      * @param  [array] $origin [description]
-      * @param  [array] $spacesLocations [description]
-      * @return [array]         sorted array of spaces (ID, distance, tim) to destinationascending on distance, time, and spaceID
-      */
-      function sortedAddressResults ($origin, $spacesLocations, $returning = "array")
-      {
-        $address = array();
-        $spaceID = array();
-        array_push($spaceID, $spacesLocations['spaceID']);
-        array_push($address, $spacesLocations['address'] . " " . $spacesLocations['city'] . " " . $spacesLocations['state']);
-
-        $arr = array_chunk($address, 99);
-        $data_arr = array();
-        $distance = array();
-        $time = array();
-
-        for ($i = 0; $i < count($arr); $i++) {
-          $data_arr[$i] = distance($origin, $arr[$i]);
-          $distance = array_merge($distance, $data_arr[$i][1]);
-          $time = array_merge($time, $data_arr[$i][2]);
-        }
-
-        // if able to geocode the address
-        if ($data_arr)
-        $getorigin = $data_arr[0][0];
-
-        $sortedDestinations = array($spaceID,
-        $distance,
-        $time);
-
-        array_multisort(
-          $sortedDestinations[1],
-          SORT_ASC,
-          $sortedDestinations[2],
-          SORT_ASC,
-          $sortedDestinations[0],
-          SORT_ASC
-        );
-        return $sortedDestinations;
-      }
-
-      function singular_spaces ($spaceIDs, $size){
-        $sql = "SELECT *
-        FROM spaces
-        WHERE SpaceID IN (".implode(',',$spaceIDs).")
-        AND SpaceSize >= $size
-        ORDER BY SpaceSize ASC
-        ";
-        $result = $GLOBALS['conn'] -> query($sql);
-
-        $out = array();
-
-        while($row = $result -> fetch_assoc()){
-          array_push($out, $row['SpaceID']);
-        }
-        return $out;
-      }
-
-
-      function multi_spaces ($spaceIDs, $maxsize, $maxNumOfSpaces) {
-        $sql = "SELECT *
-        FROM spaces
-        WHERE SpaceID IN (".implode(',',$spaceIDs).")
-        AND SpaceSize < $maxsize
-        ORDER BY SpaceSize ASC";
-
-        $result = $GLOBALS['conn'] -> query($sql);
-
-        $spaces = array();
-        $size = array();
-        while($row = $result -> fetch_assoc()) {
-          array_push($spaces, $row['SpaceID']);
-          array_push($size, $row['SpaceSize']);
-        }
-        $warehousesPicked = array();
-
-        for($i = 0; $i < count($spaces); $i++) {
-          $currentSize = 0;
-          echo "<br>Solution Number " . $i . ": ";
-          $innerwarehousesPicked = array();
-
-          for ($j = $i; $j < count($spaces); $j++) {
-            if($currentSize + $size[$j] <= $maxsize) {
-              $currentSize += $size[$j];
-              array_push($innerwarehousesPicked, $spaces[$j]);
-              echo $spaces[$j] . " ";
-            }
-            else {
-              $currentSize += $size[$j];
-              array_push($innerwarehousesPicked, $spaces[$j]);
-              echo $spaces[$j] . " ";
-              break;
-            }
-          }
-          // array_print($innerwarehousesPicked);
-          $warehousesPicked[$i] = $innerwarehousesPicked;
-          echo "<strong>" . $currentSize . "</strong>";
-        }
-        return $warehousesPicked;
-      }
-
 
       function distance_score($max_distance_wanted , $distance_away, $scale = 100){
         $distance_score = $scale * (1 - $distance_away / $max_distance_wanted);
@@ -340,23 +254,12 @@ function getAvailableSpaces ($start_date, $end_date, $type){
       }
 
       function size_score($size_wanted, $space_size, $max_size, $scale = 100){
-        // y = a(x – h)2 + k
-        if($size_wanted < $max_size)
-        $x = $max_size;
-        else
-        $x = 0;
-        echo $x;
-
-        $a = (0 - $scale) / pow(($x - $size_wanted), 2);
-        $space_score = $a * pow(($space_size - $size_wanted), 2) + $scale;
-
         if($space_size < $size_wanted)
-        $space_score = - $space_score;
-
-        if($space_score > $scale)
-        $space_score = $scale;
-        else if($space_score < 0)
-        $space_score = 0;
+          $space_score = 0;
+        else if($space_size > $size_wanted)
+          $space_score = (-($max_size / ($space_size - $size_wanted)) + $scale);
+        else
+          $space_score = $scale;
 
         return $space_score;
       }
@@ -432,7 +335,38 @@ function getAvailableSpaces ($start_date, $end_date, $type){
           }
         }
         else {
-          echo "<strong>ERROR: {$resp['status']}</strong>";
+          // echo "<strong>ERROR: {$resp['status']}</strong>";
+          return false;
+        }
+      }
+
+      function getZip($lat, $lon){
+        // Adapted from the google geocoding API
+        // Source: http://www.datasciencetoolkit.org/developerdocs#street2coordinates
+          $API_CALL = "http://www.datasciencetoolkit.org/coordinates2politics/". $lat . "%2c" . $lon;
+
+        // echo "<a href='" . $url . "'>" . $url . "</a><br>";
+        // get the json response
+        $resp_json = file_get_contents($API_CALL);
+
+        // decode the json
+        $resp = json_decode($resp_json, true);
+
+        // response status will be 'OK', if able to geocode given address
+        if ($resp['status'] == 'OK') {
+
+          $getZip = isset($resp['location']['']) ? $resp['location'][''] : "";
+
+          // verify if data is complete
+          if ($getZip) {
+            return $getZip;
+          }
+          else {
+            return false;
+          }
+        }
+        else {
+          // echo "<strong>ERROR: {$resp['status']}</strong>";
           return false;
         }
       }
