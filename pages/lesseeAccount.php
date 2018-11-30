@@ -103,7 +103,7 @@ while($LesseeInfo[]=mysqli_fetch_array($result));
 
                 while($picture = $pictureResult -> fetch_assoc()){ ?>
                   <td class="product-thumb">
-  									<img width="80px" height="auto" src="../pictures/<?php echo $picture['FileName']; ?>" alt="<?php echo $picture['FileName']; ?>"></td>
+  									<img width="auto" height="100px" src="../pictures/<?php echo $picture['FileName']; ?>" alt="<?php echo $picture['FileName']; ?>"></td>
                 <?php }?>
 
 								<td class="product-details">
