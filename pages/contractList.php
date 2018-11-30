@@ -20,17 +20,17 @@ else {
 function getContractInfo($UserID){
   return "SELECT *
   FROM phprbac_users
-  INNER JOIN contracts
-  ON contracts.LesseeID = phprbac_users.UserID
-  INNER JOIN spaces
-  ON contracts.SpaceID = spaces.SpaceID
-  INNER JOIN warehouses
-  ON warehouses.warehouseID = spaces.warehouseID
-  INNER JOIN Contract_status
+  INNER JOIN Contracts
+  ON Contracts.LesseeID = phprbac_users.UserID
+  INNER JOIN Spaces
+  ON Contracts.SpaceID = Spaces.SpaceID
+  INNER JOIN Warehouses
+  ON Warehouses.WarehouseID = Spaces.WarehouseID
+  INNER JOIN Contract_Status
   ON Contract_Status.ContractID = Contracts.ContractID
-  INNER JOIN status
-  ON status.StatusID = Contract_Status.StatusID
-  WHERE warehouses.OwnerID = $UserID
+  INNER JOIN Status
+  ON Status.StatusID = Contract_Status.StatusID
+  WHERE Warehouses.OwnerID = $UserID
   ORDER BY StatusTime DESC";
 }
 
