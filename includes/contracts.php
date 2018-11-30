@@ -2,29 +2,31 @@
 function set_contract_status ($contractID, $status)
 {
   if($status == "Undo"){
-    $sql = "DELETE FROM Contract_status
-            WHERE contractID = $contractID
-            AND statusID IN (
-              SELECT statusID
-              FROM status
-              WHERE status.statusName = 'Approved'
-              OR status.statusName = 'Denied'
+    $sql = "DELETE FROM Contract_Status
+            WHERE ContractID = $contractID
+            AND StatusID IN (
+              SELECT StatusID
+              FROM Status
+              WHERE Status.StatusName = 'Approved'
+              OR Status.StatusName = 'Denied'
             )";
     mysqli_query($GLOBALS['conn'], $sql);
   }
   else {
+    // get the Lessee ID
     $getLesseeQuery = "SELECT LesseeID
-    FROM contracts
-    WHERE contracts.contractID = $contractID";
+    FROM Contracts
+    WHERE Contracts.ContractID = $contractID";
+    array_print($getLesseeQuery);
     $getLesseeResult = $GLOBALS['conn'] -> query($getLesseeQuery);
     $getLessee = $getLesseeResult -> fetch_assoc();
 
-    $sql = "INSERT INTO Contract_status (contractID, statusID)
-    SELECT $contractID, status.statusID
-    FROM status
-    WHERE status.StatusName = '$status'";
+    $sql = "INSERT INTO Contract_Status (ContractID, StatusID)
+    SELECT $contractID, Status.StatusID
+    FROM Status
+    WHERE Status.StatusName = '$status'";
     mysqli_query($GLOBALS['conn'], $sql);
-    
+
     notify($getLessee['LesseeID'], $status, "Contract " . $contractID . " was " . $status, 'contract.php?contract=' . $contractID);
   }
 
