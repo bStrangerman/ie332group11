@@ -16,17 +16,17 @@ else {
 //Pulled from https://stackoverflow.com/questions/22323525/how-get-latitude-and-longitude-by-client-ip)
 function get_client_ip() {
     $ipaddress = '';
-    if ($_SERVER['HTTP_CLIENT_IP'])
+    if ($_SERVER['HTTP_CLIENT_IP'] != "")
         $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+    else if($_SERVER['HTTP_X_FORWARDED_FOR'] != "")
         $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_X_FORWARDED'])
+    else if($_SERVER['HTTP_X_FORWARDED'] != "")
         $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-    else if($_SERVER['HTTP_FORWARDED_FOR'])
+    else if($_SERVER['HTTP_FORWARDED_FOR'] != "")
         $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_FORWARDED'])
+    else if($_SERVER['HTTP_FORWARDED'] != "")
         $ipaddress = $_SERVER['HTTP_FORWARDED'];
-    else if($_SERVER['REMOTE_ADDR'])
+    else if($_SERVER['REMOTE_ADDR'] != "")
         $ipaddress = $_SERVER['REMOTE_ADDR'];
     else
         $ipaddress = 'UNKNOWN';
@@ -34,10 +34,9 @@ function get_client_ip() {
     return $ipaddress;
 }
 
-$ip = get_client_ip();
 //API from ipstack.com This makes the cookie for the IP LATS
 if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
-  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/$ip?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
+  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/get_client_ip()?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
   setcookie("IP_Latitude", $geoIP["latitude"]);  //set LAT
   setcookie("IP_Longitude", $geoIP["longitude"]);  //set Lon
 }
@@ -330,10 +329,13 @@ if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
       <div class="explore-content">
 
         <?php
+        echo "lat: " . $lat . " lon: " . $lon . " zip: " . getZip($lat, $lon);
         $results = 1;
         while($results <= 6){?>
           <div class="row">
             <?php
+            $time_pre_dist = microtime(true);
+
             $spaceInfo = getAllSpaces();
 
             if(isset($_COOKIE['Latitude']))
@@ -349,12 +351,16 @@ if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
               $longitude = $_COOKIE['IP_Longitude'];
             else
               $longitude = FALSE;
-// TODO: javascript to adapt this on load
+
             if($latitude && $longitude){
+              $time_pre = microtime(true);
               for($i = 0; $i < count($spaceInfo); $i++){
                 $spaceInfo[$i]["Distance"] = distanceAlgorithm($spaceInfo[$i]["Latitude"], $spaceInfo[$i]["Longitude"], $latitude, $longitude);
                 $spaceInfo[$i]["Utilization"] = Utilization($spaceInfo[$i]['SpaceID'], time(), time(), 100);
               }
+              $time_post_dist = microtime(true);
+              $exec_time = $time_post_dist - $time_pre_dist;
+              echo "<script>console.log( 'Distance Date: " . ($exec_time * 0.000001) . "' );</script>";
               foreach($spaceInfo as $key => $value) {
                 $distance[$key] = $value['Distance'];
                 $Utilization[$key] = $value['Utilization'];
@@ -370,7 +376,9 @@ if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
               }
               array_multisort($Utilization, SORT_DESC, $spaceInfo);
             }
-
+            $time_post = microtime(true);
+            $exec_time = $time_post - $time_pre;
+            echo "<script>console.log( 'Get Date: " . ($exec_time * 0.000001) . "' );</script>";
             for($i = 0; $i < 6; $i++){
               $warehouseID = $spaceInfo[$i]['WarehouseID'];
               $SpaceID = $spaceInfo[$i]['SpaceID'];
