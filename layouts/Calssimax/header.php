@@ -100,7 +100,7 @@ else {
                   <?php if($warehouseRole) {?>
                     <a class="nav-link" href="warehouse.php">Dashboard</a>
                   <?php } else if($LesseeRole) {?>
-                    <a class="nav-link" href="index.php">Dashboard</a>
+                    <a class="nav-link" href="lesseeAccount.php">Dashboard</a>
                   <?php } else { ?>
                     <a class="nav-link" href="login.php">Dashboard</a>
                   <?php } ?>

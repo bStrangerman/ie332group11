@@ -491,10 +491,12 @@ if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
             <li class="scroll"><a href="#reviews">review</a></li>
             <li class="scroll"><a href="#blog">blog</a></li>
             <li class="scroll"><a href="#contact">contact</a></li>
-            <?php if($hasAccount > 0) {?>
+            <?php if($warehouseRole) {?>
               <li><a href="warehouse.php">My Account</a></li>
+            <?php } else if($LesseeRole) {?>
+              <li><a href="lesseeAccount.php">My Account</a></li>
             <?php } else { ?>
-              <li><a href="login.php">Login/Register</a></li>
+              <a class="nav-link" href="login.php">Dashboard</a>
             <?php } ?>
           </ul><!--/.nav -->
         </div>
