@@ -1,6 +1,7 @@
-<?php
-  $mysqli=new mysqli($dbhost, $dbuser, $dbpass, $dbname)
-  if die die
+//this is where the database connection goes
+//<?php
+//  $mysqli=new mysqli($dbhost, $dbuser, $dbpass, $dbname)
+
 
 
 
@@ -21,7 +22,7 @@ while($info=mysqi_fetch_array($data))
   RIGHT JOIN warehouses
   ON Warehouses.warehouseID=spaceID=WarehouseID")
 ?>
-//assigns 
+//assigns SpaceID into labels on bar gragh
 var myLabels=[<?php
 while($info=mysqi_fetch_array($data)
 echo '"'.$info['SpaceID'].'",';
