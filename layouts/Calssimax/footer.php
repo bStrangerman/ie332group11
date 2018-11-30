@@ -43,14 +43,8 @@
       </div>
       <!-- Promotion -->
       <div class="col-lg-4 col-md-7">
-        <!-- App promotion -->
-        <div class="block-2 app-promotion">
-          <a href="">
-            <!-- Icon -->
-            <img src="../includes/images/footer/phone-icon.png" alt="mobile-icon">
-          </a>
-          <p>Get the Dealsy Mobile App and Save more</p>
-        </div>
+
+            <a class="twitter-timeline" data-width="300" data-height="300" href="https://twitter.com/Capacity_332?ref_src=twsrc%5Etfw">Tweets by Capacity_332</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
       </div>
     </div>
   </div>

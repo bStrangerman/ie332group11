@@ -1,3 +1,15 @@
+<?php if(isset($_SESSION['UserID'])){
+  $hasAccount = $rbac->Users->roleCount($UserID = $_SESSION['UserID']);
+  $warehouseRole = $rbac->Users->hasRole("Warehouse_Owner", $UserID = $_SESSION['UserID']);
+  $LesseeRole = $rbac->Users->hasRole("Lessee", $UserID = $_SESSION['UserID']);
+}
+else {
+  $hasAccount = 0;
+  $warehouseRole = 0;
+  $LesseeRole = 0;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,52 +97,58 @@
                   <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="dashboard.html">Dashboard</a>
-                </li>
-                <!-- <li class="nav-item dropdown dropdown-slide">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Pages <span><i class="fa fa-angle-down"></i></span>
-                  </a> -->
-                  <!-- Dropdown list -->
-                  <!-- <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="category.html">Category</a>
-                    <a class="dropdown-item" href="single.html">Single Page</a>
-                    <a class="dropdown-item" href="store-single.html">Store Single</a>
-                    <a class="dropdown-item" href="dashboard.html">Dashboard</a>
-                    <a class="dropdown-item" href="user-profile.html">User Profile</a>
-                    <a class="dropdown-item" href="submit-coupon.html">Submit Coupon</a>
-                    <a class="dropdown-item" href="blog.html">Blog</a>
-                    <a class="dropdown-item" href="single-blog.html">Single Post</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown dropdown-slide">
-                  <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Listing <span><i class="fa fa-angle-down"></i></span>
-                  </a> -->
-                  <!-- Dropdown list -->
-                  <!-- <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li> -->
-              </ul>
-              <ul class="navbar-nav ml-auto mt-10">
-                <li class="nav-item">
-                  <?php if(isset($_SESSION['UserID'])) { ?>
-                    <a class="nav-link login-button" href="warehouse.php">My Account</a>
-                  <?php }
-                  else { ?>
-                  <a class="nav-link login-button" href="login.php">Login</a>
+                  <?php if($warehouseRole) {?>
+                    <a class="nav-link" href="warehouse.php">Dashboard</a>
+                  <?php } else if($LesseeRole) {?>
+                    <a class="nav-link" href="index.php">Dashboard</a>
+                  <?php } else { ?>
+                    <a class="nav-link" href="login.php">Dashboard</a>
                   <?php } ?>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link add-button" href="#"><i class="fa fa-plus-circle"></i> Add Listing</a>
-                </li>
-              </ul>
+                <!-- <li class="nav-item dropdown dropdown-slide">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pages <span><i class="fa fa-angle-down"></i></span>
+              </a> -->
+              <!-- Dropdown list -->
+              <!-- <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="category.html">Category</a>
+              <a class="dropdown-item" href="single.html">Single Page</a>
+              <a class="dropdown-item" href="store-single.html">Store Single</a>
+              <a class="dropdown-item" href="dashboard.html">Dashboard</a>
+              <a class="dropdown-item" href="user-profile.html">User Profile</a>
+              <a class="dropdown-item" href="submit-coupon.html">Submit Coupon</a>
+              <a class="dropdown-item" href="blog.html">Blog</a>
+              <a class="dropdown-item" href="single-blog.html">Single Post</a>
             </div>
-          </nav>
-        </div>
+          </li>
+          <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Listing <span><i class="fa fa-angle-down"></i></span>
+        </a> -->
+        <!-- Dropdown list -->
+        <!-- <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
       </div>
-    </div>
-  </section>
+    </li> -->
+  </ul>
+  <ul class="navbar-nav ml-auto mt-10">
+    <li class="nav-item">
+      <?php if(isset($_SESSION['UserID'])) { ?>
+        <a class="nav-link login-button" href="warehouse.php">My Account</a>
+      <?php }
+      else { ?>
+        <a class="nav-link login-button" href="login.php">Login</a>
+      <?php } ?>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link add-button" href="#"><i class="fa fa-plus-circle"></i> Add Listing</a>
+    </li>
+  </ul>
+</div>
+</nav>
+</div>
+</div>
+</div>
+</section>
