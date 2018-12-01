@@ -6,28 +6,17 @@ echo '$ip=$_SERVER["HTTP_X_FORWARDED_FOR"]: ' . $ip=$_SERVER['HTTP_X_FORWARDED_F
 echo '$ip=$_SERVER["REMOTE_ADDR"]: ' . $ip=$_SERVER['REMOTE_ADDR'] . "<br>";
 
 
-function get_client_ip() {
-    $ipaddress = '';
-    if ($_SERVER['HTTP_CLIENT_IP'])
-        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_X_FORWARDED'])
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-    else if($_SERVER['HTTP_FORWARDED_FOR'])
-        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_FORWARDED'])
-        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-    else if($_SERVER['REMOTE_ADDR'])
-        $ipaddress = $_SERVER['REMOTE_ADDR'];
-    else
-        $ipaddress = 'UNKNOWN';
-    return $ipaddress;
-}
-$ip = get_client_ip();
-echo "IP: " . $ip;
+
+$geoIP = json_decode(file_get_contents("http://api.ipstack.com/172.58.4.147?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
+setcookie("IP_Data", serialize($geoIP)); //test
 
 array_print($_COOKIE);
+
+$IP_Use = unserialize($_COOKIE["IP_Data"]);
+echo "<br> IP_Use:  " . array_print($IP_Use);
+echo $IP_Use["latitude"];
+if(isset($_COOKIE["IP_Data"]))
+  echo "<br> It works";
 
 
 $str = "' OR 1 = 1;/*";
