@@ -77,6 +77,7 @@ table tr[data-href] {
                 <th>Client</th>
                 <th>Dates</th>
                 <th>Profit</th>
+                <th>View</th>
               </tr>
             </thead>
             <tbody>
@@ -104,7 +105,9 @@ table tr[data-href] {
                   <td><?php echo $row['Address']; ?></td>
                   <td><?php echo $row['FirstName'] . " " . $row['LastName']; ?></td>
                   <td><?php echo date("m-d-Y", strtotime($row['StartDate'])) . " to " . date("m-d-Y", strtotime($row['EndDate'])); ?></td>
-                  <td><?php echo "$" . ($row['AmountCharged'] / $feeRate); ?></td>
+                  <td><?php echo "$" . round(($row['AmountCharged'] / $feeRate)); ?></td>
+                  <td><a href="contract.php?contract=<?php echo $row['ContractID']; ?>">
+                    <button class="btn btn-primary">View</button></a></td>
                 </tr>
               <?php $i++;
             } ?>
