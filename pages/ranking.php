@@ -1,14 +1,4 @@
 <?php
-
-// array_multisort(
-//   $data[1],
-//   SORT_ASC,
-//   $data[2],
-//   SORT_ASC,
-//   $data[0],
-//   SORT_ASC
-// );
-
 include "../includes/main.php";
 include "../includes/rankingFunctions.php";
 
