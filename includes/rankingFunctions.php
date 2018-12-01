@@ -195,9 +195,8 @@ function getAvailableSpaces ($start_date, $end_date, $type){
  * @param integer $scale [default scacle value]
  */
       function Utilization($space, $start, $end, $scale = 100){
-        $score = 1;
-        $start = date_create($start);
-        $end = date_create($end);
+        $start = date_create(date("Y-m-d",$start));
+        $end = date_create(date("Y-m-d",$end));
         $sql = "SELECT *
         FROM Contracts
         WHERE SpaceID = $space";
@@ -280,7 +279,7 @@ function getAvailableSpaces ($start_date, $end_date, $type){
 
       function ifMulti($result){
         if(count($result) == 1){
-          $score = 100 / 3;
+            $score = 100 / 3;
         }
         else
         $score = 0;
