@@ -36,7 +36,7 @@ function get_client_ip() {
 
 //API from ipstack.com This makes the cookie for the IP LATS
 if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
-  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/get_client_ip()?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
+  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/" . get_client_ip() . "?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
   setcookie("IP_Latitude", $geoIP["latitude"]);  //set LAT
   setcookie("IP_Longitude", $geoIP["longitude"]);  //set Lon
 }
