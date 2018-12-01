@@ -299,17 +299,19 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
           $pictureResult = $conn -> query($pictureSQL);
           while($pictures[]=mysqli_fetch_array($pictureResult));
           ?>
+
+          <!-- Image grid from https://stackoverflow.com/questions/39320966/bootstrap-responsive-image-grid -->
           <div class="panel-body">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="container">
-                <div class="row imagetiles">
-                  <?php for($i = 0; $i < count($pictures); $i++){
-                    if($i % 4 == 0){ ?>
-                    <?php }
-                    if(isset($pictures[$i]['FileName'])){?>
-                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <img class="img-responsive" src="../pictures/<?php echo $pictures[$i]['FileName']; ?>">
+            <div class="col-lg-12">
+              <?php
+              for($i = 0; $i < count($pictures); $i++){
+                if($i % 4 == 0){ ?>
+                  <div class="row imagetiles">
+                  <?php }
+                  if(isset($pictures[$i]['FileName'])){?>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                      <img class="img-responsive" src="../pictures/<?php echo $pictures[$i]['FileName']; ?>">
+                      <div class="row">
                         <div class="col-lg-3">
                         </div>
                         <div class="col-lg-3">
@@ -320,37 +322,37 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                           </form>
                         </div>
                       </div>
-                    <?php }?>
-                    <?php if($i % 7 == 0){ ?>
-                    <?php } ?>
+                    </div>
+                  <?php
+                  if($i % 4 == 0 && $i != 0){ ?>
+                    </div>
                   <?php }?>
-                </div>
-              </div>
-
-
-                <form action="" method="post" enctype="multipart/form-data">
-                  <div class="col-lg-6">
-                    Select Image Files to Upload:
-                    <input type="hidden" name="upload" value="1">
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                  </div>
-                  <div class="col-lg-6">
-                    <button type="submit" class="btn btn-default">Upload</button>
-                  </div>
-                </form>
-                <?php echo (isset($_POST["upload"]) || isset($_POST['del_picture'])) ? $message : ""; ?>
-              </div>
-              <!-- /.col-lg-6 (nested) -->
+                <?php } ?>
+              <?php } ?>
             </div>
-            <!-- /.row (nested) -->
           </div>
-          <!-- /.panel-body -->
+
+
+            <form action="" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="upload" value="1">
+              <div class="form-group">
+                <label>Select Image Files to Add:</label>
+                <input type="file" name="fileToUpload" id="fileToUpload">
+              </div>
+              <button type="submit" class="btn btn-default">Upload</button>
+            </form>
+            <?php echo (isset($_POST["upload"]) || isset($_POST['del_picture'])) ? $message : ""; ?>
+          </div>
+          <!-- /.col-lg-6 (nested) -->
+          <!-- /.row (nested) -->
         </div>
-        <!-- /.panel -->
+        <!-- /.panel-body -->
       </div>
+      <!-- /.panel -->
     </div>
   </div>
-  <!-- /.row -->
+</div>
+<!-- /.row -->
 </div>
 <!-- /#page-wrapper -->
 
