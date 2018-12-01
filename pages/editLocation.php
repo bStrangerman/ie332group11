@@ -127,42 +127,67 @@ $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
 if(isset($_POST["upload"])) {
-$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-if($check !== false) {
+  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  if($check !== false) {
     // echo "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
-} else {
+  } else {
     $message = "File is not an image.";
     $uploadOk = 0;
-}
+  }
 }
 // Check if file already exists
 if (file_exists($target_file)) {
-$message = "Sorry, file already exists.";
-$uploadOk = 0;
+  $message = "Sorry, file already exists.";
+  $uploadOk = 0;
 }
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
-$message = "Sorry, your file is too large.";
-$uploadOk = 0;
+  $message = "Sorry, your file is too large.";
+  $uploadOk = 0;
 }
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-$message = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-$uploadOk = 0;
+  $message = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-$message = "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+  // if everything is ok, try to upload file
 } else {
-if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    $message = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-} else {
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    $pictureName = basename( $_FILES["fileToUpload"]["name"]);
+    $insertPicSql = "INSERT INTO Pictures (FileName) VALUES ('$pictureName')";
+    if ($conn->query($insertPicSql) === TRUE) {
+      $last_id = $conn->insert_id;
+      $picToWarehouse = "INSERT INTO Warehouse_Pictures VALUES ($last_id, $warehouseID)";
+      if ($conn->query($picToWarehouse) === TRUE) {
+        $message = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+      }
+      else {
+        $message = "Sorry, there was an error uploading your file.";
+      }
+    }
+    else {
+      $message = "Sorry, there was an error uploading your file.";
+    }
+  }
+  else {
     $message = "Sorry, there was an error uploading your file.";
+  }
 }
+
+// Deletes the picture from Warehouse_pictures table
+// Note: for this project, we are not deleting the image from the site because the image is used on multiple pages.
+if(isset($_POST["del_picture"])) {
+  $imageForDeletion = $_POST['del_picture'];
+  $deleteSQL = "DELETE FROM Warehouse_Pictures WHERE PictureID = $imageForDeletion AND WarehouseID = $warehouseID";
+  if ($conn->query($deleteSQL) === TRUE) {
+    $message = "Image Successfully Deleted";
+  }
 }
+
 
 require_once "../layouts/sb_admin_2/header.php";
 ?>
@@ -277,6 +302,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-12">
+                <div class="container">
                 <div class="row imagetiles">
                   <?php for($i = 0; $i < count($pictures); $i++){
                     if($i % 4 == 0){ ?>
@@ -299,19 +325,20 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                     <?php } ?>
                   <?php }?>
                 </div>
+              </div>
 
 
                 <form action="" method="post" enctype="multipart/form-data">
                   <div class="col-lg-6">
-                  Select Image Files to Upload:
-                  <input type="hidden" name="upload" value="1">
+                    Select Image Files to Upload:
+                    <input type="hidden" name="upload" value="1">
                     <input type="file" name="fileToUpload" id="fileToUpload">
                   </div>
                   <div class="col-lg-6">
                     <button type="submit" class="btn btn-default">Upload</button>
                   </div>
                 </form>
-                <?php echo (isset($_POST["upload"])) ? $message : ""; ?>
+                <?php echo (isset($_POST["upload"]) || isset($_POST['del_picture'])) ? $message : ""; ?>
               </div>
               <!-- /.col-lg-6 (nested) -->
             </div>
