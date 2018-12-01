@@ -89,32 +89,32 @@ else{
 }
 
 if(isset($_POST['editing'])){
-  if($_POST['editing'] == 'profile'){
-    $firstname = clean($_POST['first-name']);
-    $lastname = clean($_POST['last-name']);
-    $email = clean($_POST['Email']);
-    $phonenumber = clean($_POST['PhoneNumber']);
-    $company = clean($_POST['Company']);
-    $sql = "UPDATE phprbac_users
-    SET FirstName = '$firstname', LastName = '$lastname', Email = '$email', PhoneNumber = $phonenumber, Company = '$company'
-    WHERE UserID = $UserID";
+  if($_POST['editing'] == 'warehouse'){
+    $street = clean($_POST['address']);
+    $city = clean($_POST['city']);
+    $state = clean($_POST['state']);
+    $zip = clean($_POST['zip-code']);
+    $lat = clean($_POST['lat']);
+    $lon = clean($_POST['lon']);
+    $sql = "UPDATE Warehouses
+    SET Address = '$street', City = '$city', State = '$state', ZipCode = $zip, Latitude = '$lat', Longitude = '$lon'
+    WHERE WarehouseID = $warehouseID";
     if($conn -> query($sql) === TRUE){
       $_SESSION['message'] = "Success!";
       header("Refresh: 0.1");
       $_SESSION['message'] = "Success!";
     }
   }
-  if($_POST['editing'] == 'password'){
-    if(md5(clean($_POST['current-password'])) == $ownerProfile[0]['Password']){
-      $newPassword = md5(clean($_POST['new-password']));
-      $sql = "UPDATE phprbac_users
-      SET Password = '$newPassword'
-      WHERE UserID = $UserID";
-      if($conn -> query($sql) === TRUE){
-        $_SESSION['message'] = "Success!";
-        header("Refresh: 0.1");
-        $_SESSION['message'] = "Success!";
-      }
+  if($_POST['editing'] == 'details'){
+    $details = clean($_POST['details']);
+    $buildingSize = clean($_POST['BuildingSize']);
+    $sql = "UPDATE Warehouses
+    SET WarehouseInformation = '$details', BuildingSize = '$buildingSize'
+    WHERE WarehouseID = $warehouseID";
+    if($conn -> query($sql) === TRUE){
+      $_SESSION['message'] = "Success!";
+      header("Refresh: 0.1");
+      $_SESSION['message'] = "Success!";
     }
   }
 }
@@ -208,7 +208,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
     <!-- /.row -->
     <div class="row">
       <div class="col-lg-6">
-        <div class="panel panel-<?php echo ($_SESSION['message'] == 'Success!') ? "success" : "default"; unset($_SESSION['message']); ?>">
+        <div class="panel panel-<?php echo ($_SESSION['message'] == 'Success!' && ($_POST['editing'] == 'warehouse')) ? "success" : "default"; unset($_SESSION['message']); ?>">
           <div class="panel-heading">
             Address Information
           </div>
@@ -235,11 +235,11 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                   </div>
                   <div class="form-group">
                     <label>Latitude</label>
-                    <input type="number" maxlength="10" class="form-control" name="lat" value="<?php echo ($method == "edit") ? $warehouse[0]['Latitude'] : ""; ?>">
+                    <input type="text" class="form-control" name="lat" value="<?php echo ($method == "edit") ? $warehouse[0]['Latitude'] : ""; ?>">
                   </div>
                   <div class="form-group">
                     <label>Longitude</label>
-                    <input type="number" maxlength="10" class="form-control" name="lon" value="<?php echo ($method == "edit") ? $warehouse[0]['Longitude'] : ""; ?>">
+                    <input type="text" class="form-control" name="lon" value="<?php echo ($method == "edit") ? $warehouse[0]['Longitude'] : ""; ?>">
                   </div>
                   <button type="submit" class="btn btn-default">Save My Changes</button>
                 </form>
@@ -253,7 +253,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
         <!-- /.panel -->
       </div>
       <div class="col-lg-6">
-        <div class="panel panel-<?php echo ($_SESSION['message'] == 'Success!') ? "success" : "default"; unset($_SESSION['message']); ?>">
+        <div class="panel panel-<?php echo (($_SESSION['message'] == 'Success!') && ($_POST['editing'] == 'details')) ? "success" : "default"; unset($_SESSION['message']); ?>">
           <div class="panel-heading">
             Location Specifications
           </div>
@@ -264,11 +264,11 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                   <input type="hidden" name="editing" value="details">
                   <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="details"  value="<?php echo ($method == "edit") ? $warehouse[0]['WarehouseInformation'] : ""; ?>" placeholder="Please describe this location for potential customers.  This could be parking, traffic, the age of this building, etc." rows="3"></textarea>
+                    <textarea class="form-control" name="details" placeholder="Please describe this location for potential customers.  This could be parking, traffic, the age of this building, etc." rows="3"><?php echo ($method == "edit") ? $warehouse[0]['WarehouseInformation'] : ""; ?></textarea>
                   </div>
                   <div class="form-group">
                     <label>Building Size</label>
-                    <input type="number" class="form-control" name="buildingSize" value="<?php echo ($method == "edit") ? $warehouse[0]['BuildingSize'] : ""; ?>">
+                    <input type="number" class="form-control" name="BuildingSize" value="<?php echo ($method == "edit") ? $warehouse[0]['BuildingSize'] : ""; ?>">
                   </div>
 
                   <button type="submit" class="btn btn-default">Save My Changes</button>
@@ -307,56 +307,98 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
               for($i = 0; $i < count($pictures); $i++){
                 if($i % 4 == 0){
                   if($i != 0){?>
-                    </div>
-                  <?php } ?>
-                    <div class="row imagetiles">
-                  <?php }
-                  if(isset($pictures[$i]['FileName'])){?>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <img class="img-responsive" src="../pictures/<?php echo $pictures[$i]['FileName']; ?>">
-                      <div class="row">
-                        <div class="col-lg-3">
-                        </div>
-                        <div class="col-lg-3">
-                          <form role="form" method="POST">
-                            <input type="hidden" name="del_picture" value="<?php echo $pictures[$i]['PictureID']; ?>">
-                            <input type="hidden" name="warehouse" value="<?php echo $warehouseID; ?>">
-                            <button align="center" type="submit" class="btn btn-default">Delete Picture</button>
-                          </form>
-                        </div>
+                  </div>
+                <?php } ?>
+                <div class="row imagetiles">
+                <?php }
+                if(isset($pictures[$i]['FileName'])){?>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <img class="img-responsive" src="../pictures/<?php echo $pictures[$i]['FileName']; ?>">
+                    <div class="row">
+                      <div class="col-lg-3">
+                      </div>
+                      <div class="col-lg-3">
+                        <form role="form" method="POST">
+                          <input type="hidden" name="del_picture" value="<?php echo $pictures[$i]['PictureID']; ?>">
+                          <input type="hidden" name="warehouse" value="<?php echo $warehouseID; ?>">
+                          <button align="center" type="submit" class="btn btn-default">Delete Picture</button>
+                        </form>
                       </div>
                     </div>
-                  
+                  </div>
+
                 <?php } ?>
               <?php } ?>
             </div>
           </div>
 
 
-            <form action="" method="post" enctype="multipart/form-data">
-              <input type="hidden" name="upload" value="1">
-              <div class="form-group">
-                <label>Select Image Files to Add:</label>
-                <input type="file" name="fileToUpload" id="fileToUpload">
-              </div>
-              <button type="submit" class="btn btn-default">Upload</button>
-            </form>
-            <?php echo (isset($_POST["upload"]) || isset($_POST['del_picture'])) ? $message : ""; ?>
-          </div>
-          <!-- /.col-lg-6 (nested) -->
-          <!-- /.row (nested) -->
+          <form action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="upload" value="1">
+            <div class="form-group">
+              <label>Select Image Files to Add:</label>
+              <input type="file" name="fileToUpload" id="fileToUpload">
+            </div>
+            <button type="submit" class="btn btn-default">Upload</button>
+          </form>
+          <?php echo (isset($_POST["upload"]) || isset($_POST['del_picture'])) ? $message : ""; ?>
         </div>
-        <!-- /.panel-body -->
+        <!-- /.col-lg-6 (nested) -->
+        <!-- /.row (nested) -->
       </div>
-      <!-- /.panel -->
+      <!-- /.panel-body -->
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Spaces in this table
+            </div>
+            <!-- /.panel-heading -->
+            <?php
+            $spaceSQL = "SELECT * FROM Spaces WHERE WarehouseID = $warehouseID";
+            $spaceResult = $conn -> query($spaceSQL); ?>
+            <div class="panel-body">
+                <div class="table-responsive table-bordered">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Space ID</th>
+                                <th>Size</th>
+                                <th>Monthly Price</th>
+                                <th>Space Information</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          while($spaceRow = $spaceResult -> fetch_assoc()){ ?>
+                            <tr>
+                                <td><?php echo $spaceRow['SpaceID']; ?></td>
+                                <td><?php echo $spaceRow['SpaceSize']; ?></td>
+                                <td><?php echo $spaceRow['MonthlyPrice']; ?></td>
+                                <td><?php echo $spaceRow['SpaceInformation']; ?></td>
+                                <td>
+                                  <a href="editLocation.php?space=<?php echo $spaceRow['SpaceID']; ?>">
+                                    <button class="btn btn-outline btn-primary">
+                                      Edit
+                                    </button>
+                                  </a>
+                                </td>
+                            </tr>
+                          <?php }?>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
     </div>
   </div>
 </div>
-<!-- /.row -->
-</div>
-<!-- /#page-wrapper -->
+<!-- /.panel -->
 
-</div>
 <!-- /#wrapper -->
 <?php } ?>
 <!-- jQuery -->
