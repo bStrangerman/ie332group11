@@ -35,11 +35,16 @@ function get_client_ip() {
 }
 
 //API from ipstack.com This makes the cookie for the IP LATS
-if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
-  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/" . get_client_ip() . "?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
-  setcookie("IP_Latitude", $geoIP["latitude"]);  //set LAT
-  setcookie("IP_Longitude", $geoIP["longitude"]);  //set Lon
+//to use this unserialize ($geoIP and call its array, refer to the link below to see what can be called.)
+if(!isset($_COOKIE["IP_Data"])){
+  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/172.58.4.147?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
+  setcookie("IP_Data", serialize($geoIP)); //test
+  //setcookie("IP_Latitude", $geoIP["latitude"]);  //set LAT
+  //setcookie("IP_Longitude", $geoIP["longitude"]);  //set Lon
 }
+
+$IP_Use = unserialize($_COOKIE["IP_Data"]);
+//if you need zip do $IP_Use["zip"]
 ?>
 
 <!doctype html>
@@ -340,15 +345,15 @@ if(!isset($_COOKIE['IP_Latitude']) && !isset($_COOKIE['IP_Longitude'])){
 
             if(isset($_COOKIE['Latitude']))
               $latitude = $_COOKIE['Latitude'];
-            elseif(isset($_COOKIE['IP_Latitude']))
-              $latitude = $_COOKIE['IP_Latitude'];
+            elseif(isset($_COOKIE['IP_Data']))
+              $latitude = $IP_Use['latitude'];
             else
               $latitude = FALSE;
 
             if(isset($_COOKIE['Longitude']))
               $longitude = $_COOKIE['Longitude'];
-            elseif(isset($_COOKIE['IP_Longitude']))
-              $longitude = $_COOKIE['IP_Longitude'];
+            elseif(isset($_COOKIE['IP_Data']))
+              $longitude = $IP_Use['longitude'];
             else
               $longitude = FALSE;
 
