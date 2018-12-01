@@ -17,7 +17,6 @@ function set_contract_status ($contractID, $status)
     $getLesseeQuery = "SELECT LesseeID
     FROM Contracts
     WHERE Contracts.ContractID = $contractID";
-    array_print($getLesseeQuery);
     $getLesseeResult = $GLOBALS['conn'] -> query($getLesseeQuery);
     $getLessee = $getLesseeResult -> fetch_assoc();
 
