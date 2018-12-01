@@ -133,7 +133,7 @@ require_once "../layouts/Calssimax/header.php";
 						<!-- Phone Number -->
 						<div class="form-group">
 						    <label for="PhoneNumber">Phone Number</label>
-						    <input type="num" length="10" name="PhoneNumber" class="form-control" id="PhoneNumber" value="<?php echo $LesseeInfo[0]['PhoneNumber']; ?>">
+						    <input type="num" maxlength="10" name="PhoneNumber" class="form-control" id="PhoneNumber" value="<?php echo $LesseeInfo[0]['PhoneNumber']; ?>">
 						</div>
 						<!-- Email -->
 						<div class="form-group">
@@ -151,12 +151,12 @@ require_once "../layouts/Calssimax/header.php";
             <input type="hidden" name="editing" value="password">
 						<!-- Current Password -->
 						<div class="form-group">
-              <input type="password" name="current-password" class="form-control" id="current-password">
+              <input type="password" autocomplete="off" name="current-password" class="form-control" id="current-password">
 						</div>
 						<!-- New Password -->
 						<div class="form-group">
 						    <label for="new-password">New Password</label>
-						    <input type="password" name="new-password" class="form-control" id="new-password">
+						    <input type="password" autocomplete="off" name="new-password" class="form-control" id="new-password">
 						</div>
 						<!-- Submit Button -->
 						<button class="btn btn-transparent">Change Password</button>
