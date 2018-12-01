@@ -13,9 +13,8 @@ else {
   $_SESSION['redirect'] = 'Location: pages/warehouse.php';
   header('Location: login.php');
 }
-// FIXME: currently an error with  Notice: Undefined index: contractInfo in C:\xampp\htdocs\ie332group11\pages\contract.php on line 44
-// Checks if the URL has a contract ID in it
 
+// Checks if the URL has a contract ID in it
 function getContractInfo($contractID, $UserID){
   return "SELECT *
   FROM phprbac_users
