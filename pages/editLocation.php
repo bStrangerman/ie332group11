@@ -305,8 +305,11 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
             <div class="col-lg-12">
               <?php
               for($i = 0; $i < count($pictures); $i++){
-                if($i % 4 == 0){ ?>
-                  <div class="row imagetiles">
+                if($i % 4 == 0){
+                  if($i != 0){?>
+                    </div>
+                  <?php } ?>
+                    <div class="row imagetiles">
                   <?php }
                   if(isset($pictures[$i]['FileName'])){?>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
@@ -323,10 +326,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                         </div>
                       </div>
                     </div>
-                  <?php
-                  if($i % 4 == 0 && $i != 0){ ?>
-                    </div>
-                  <?php }?>
+                  
                 <?php } ?>
               <?php } ?>
             </div>
