@@ -36,7 +36,7 @@ if($err == array()){
   if(isset($_GET['location']) || isset($_GET['state'])){
     if(isset($_GET['location'])){
       $origin = clean($_GET['location']);
-      $lat_lon = getLatLon(strtr($origin, array('.' => '', ',' => '')));
+      $lat_lon = getLatLon(strtr($origin, array('.' => '', ',' => '', 'USA' => '')));
       $origin_lat = $lat_lon[0];
       $origin_lon = $lat_lon[1];
       $stateBoolean = 0;
