@@ -147,7 +147,7 @@ require_once "../layouts/sb_admin_2/header.php";
             </div>
           </div>
           <div id ='AreaGraph'></div>
-          
+
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
           google.charts.load('current', {'packages':['corechart']});
@@ -158,7 +158,7 @@ require_once "../layouts/sb_admin_2/header.php";
           //Breaks total time into 4 quarters for divisions
           $DateIncr = $diff / 4;
           //Each quarter is a separate query to accomodate time difference
-          $quarter1 = mysqli_query($mysqi,SELECT AmountCharged, SpaceID,
+          $quarter1 = mysqli_query($mysqi,"SELECT AmountCharged, SpaceID,
             FROM Contracts
             WHERE Date < StartDate + INTERVAL $DateIncr DAY AND Date > StartDate
             AND Contracts.SpaceID IN (
@@ -168,9 +168,9 @@ require_once "../layouts/sb_admin_2/header.php";
                 SELECT WarehouseID
                 FROM Warehouses
                 WHERE OwnerID = $UserID
-              )))
+              ))");
 
-              $quarter2 = mysqli_query($mysqi, $SELECT AmountCharged, SpaceID
+              $quarter2 = mysqli_query($mysqi, "SELECT AmountCharged, SpaceID
                 FROM Contracts
                 WHERE Date < (StartDate + INTERVAL (2 * $DateIncr) DAY AND Date > StartDate + INTERVAL $DateIncr DAY
                 AND Contracts.SpaceID IN (
@@ -180,9 +180,9 @@ require_once "../layouts/sb_admin_2/header.php";
                     SELECT WarehouseID
                     FROM Warehouses
                     WHERE OwnerID = $UserID
-                  )))
+                  ))");
 
-                  $quarter3 = mysqli_query($mysqi, $SELECT AmountCharged, SpaceID
+                  $quarter3 = mysqli_query($mysqi, "SELECT AmountCharged, SpaceID
                     FROM Contracts
                     WHERE Date < (StartDate + INTERVAL (3 * $DateIncr) DAY AND Date > StartDate + INTERVAL (2 * $DateIncr) DAY
                     AND Contracts.SpaceID IN (
@@ -192,9 +192,9 @@ require_once "../layouts/sb_admin_2/header.php";
                         SELECT WarehouseID
                         FROM Warehouses
                         WHERE OwnerID = $UserID
-                      )))
+                      ))");
 
-                      $quarter4 = mysqli_query($mysqi, $SELECT AmountCharged, SpaceID
+                      $quarter4 = mysqli_query($mysqi, "SELECT AmountCharged, SpaceID
                         FROM Contracts
                         WHERE Date <= CURDATE() AND Date > StartDate + INTERVAL (3 * $DateIncr) DAY
                         AND Contracts.SpaceID IN (
@@ -204,27 +204,35 @@ require_once "../layouts/sb_admin_2/header.php";
                             SELECT WarehouseID
                             FROM Warehouses
                             WHERE OwnerID = $UserID
-                          )))
+                          ))");
                           ?>
                           function drawChart() {
                             var data = google.visualization.arrayToDataTable([
                               //Each array fills with quarterly earnings by space, dependant upon the time between start and current date
                               ['Quarter',<?php
-                              while($info=mysqi_fetch_array($quarter1)
-                              echo '"'.$info['SpaceID'].'",';
+                              while($info=mysqi_fetch_array($quarter1));
+                              echo '"' . $info['SpaceID'].'",';
                               ?>];,
-                              ['Q1',<?php
-                              while($info=$quarter1 -> fetch_assoc())
-                              echo '$info['AmountCharged'].'',';?>],
-                              ['Q2',<?php
-                              while($info=$quarter2 -> fetch_assoc())
-                              echo '$info['AmountCharged'].'',';?>],
-                              ['Q3',<?php
-                              while($info=$quarter3 -> fetch_assoc())
-                              echo '$info['AmountCharged'].'',';?>],
-                              ['Q4',<?php
-                              while($info=$quarter4 -> fetch_assoc())
-                              echo '$info['AmountCharged'].'',';?>]
+                              ['Q1',
+                              <?php
+                              while($info = $quarter1 -> fetch_assoc())
+                              echo $info['AmountCharged'] . ',';?>
+                              ],
+                              ['Q2',
+                              <?php
+                              while($info = $quarter2 -> fetch_assoc())
+                              echo $info['AmountCharged'] . ',';?>
+                              ],
+                              ['Q3',
+                              <?php
+                              while($info = $quarter3 -> fetch_assoc())
+                              echo $info['AmountCharged'] . ',';?>
+                              ],
+                              ['Q4',
+                              <?php
+                              while($info = $quarter4 -> fetch_assoc())
+                              echo $info['AmountCharged'] . ',';?>
+                              ]
                             ]);
 
                             var options = {
