@@ -154,7 +154,8 @@ require_once "../layouts/sb_admin_2/header.php";
           google.charts.setOnLoadCallback(drawChart);
           <?php
           //Calculates time since account creation
-          $diff = CURDATE() - DATE($StartDate);
+          $curdate = date("Y/m/d");
+          $diff = $curdate - DATE($StartDate);
           //Breaks total time into 4 quarters for divisions
           $DateIncr = $diff / 4;
           //Each quarter is a separate query to accomodate time difference
@@ -196,7 +197,7 @@ require_once "../layouts/sb_admin_2/header.php";
 
                       $quarter4 = mysqli_query($mysqi, "SELECT AmountCharged, SpaceID
                         FROM Contracts
-                        WHERE Date <= CURDATE() AND Date > StartDate + INTERVAL (3 * $DateIncr) DAY
+                        WHERE Date <= $curdate AND Date > StartDate + INTERVAL (3 * $DateIncr) DAY
                         AND Contracts.SpaceID IN (
                           SELECT SpaceID
                           FROM Spaces
