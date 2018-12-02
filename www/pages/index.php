@@ -47,6 +47,7 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
 //if you need zip do $IP_Use["zip"]
 ?>
 
+<!- template from https://themewagon.com/themes/free-bootstrap-html5-directory-listing-website-template/ -->
 <!doctype html>
 <html class="no-js" lang="en">
 
