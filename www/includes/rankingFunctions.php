@@ -54,6 +54,31 @@ function getAllSpaces(){
 }
 
 /**
+ * [Get all the spaces in this location]
+ * @param  [var] $state [state in question]
+ * @return [array]        [array of spaces]
+ */
+function getAllSpacesByState($state){
+  $getAllSpacesSQL = "SELECT *
+  FROM Spaces
+  LEFT JOIN Warehouses
+  ON Warehouses.warehouseID = Spaces.warehouseID
+  LEFT JOIN Space_Attributes
+  ON Space_Attributes.SpaceID = Spaces.SpaceID
+  LEFT JOIN Attributes
+  ON Attributes.AttributeID = Space_Attributes.AttributeID
+  WHERE Active = 1
+  AND Warehouses.State = '$state'";
+  $getAllSpaces = array();
+  $result = $GLOBALS['conn'] -> query($getAllSpacesSQL);
+
+  while($getAllSpaces[]=mysqli_fetch_array($result));
+  unset($getAllSpaces[(count($getAllSpaces) - 1)]);
+
+  return $getAllSpaces;
+}
+
+/**
 * Runs the Google API function to get distance and time for all addresses
 * @param  [text] $origin  [Origin of the query]
 * @param  [array] $address [list of destinations to be searched.  Can be as many as possible]
