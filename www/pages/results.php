@@ -36,7 +36,7 @@ if($err == array()){
   if(isset($_GET['location']) || isset($_GET['state'])){
     if(isset($_GET['location'])){
       $origin = clean($_GET['location']);
-      $lat_lon = getLatLon($origin);
+      $lat_lon = getLatLon(strtr($origin, array('.' => '', ',' => '')));
       $origin_lat = $lat_lon[0];
       $origin_lon = $lat_lon[1];
       $stateBoolean = 0;
@@ -108,7 +108,7 @@ if($err == array()){
               <input type="text" class="form-control" name="description" id="inputtext4" value="<?php echo isset($_GET['description']) ? $_GET['description'] : "" ?>" placeholder="What are you looking for">
             </div> -->
             <div class="form-group col-md-4">
-              <input type="text" class="form-control" name="location" id="autocomplete" onFocus="geolocate()" value="<?php echo isset($_GET['location']) ? $_GET['location'] : (isset($_GET['state']) ? $_GET['state'] : "") ?>" placeholder="Location">
+              <input type="text" class="form-control" name="location" id="autocomplete" onFocus="geolocate()" value="<?php echo isset($_GET['location']) ? urldecode($_GET['location']) : (isset($_GET['state']) ? urldecode($_GET['state']) : "") ?>" placeholder="Location">
             </div>
             <div class="form-group col-md-3">
               <input type="date" class="form-control" name="startdate" id="inputdate4" value="<?php echo $start; ?>" placeholder="Start Date">
@@ -132,7 +132,7 @@ if($err == array()){
       <div class="col-md-12">
         <?php if($err == array() || !in_array($location_error, $err)){ ?>
           <div class="search-result bg-gray">
-            <h2>Results For "<?php echo isset($_GET['location']) ? $_GET['location'] : (isset($_GET['state']) ? $_GET['state'] : ""); ?>"</h2>
+            <h2>Results For "<?php echo isset($_GET['location']) ? urldecode($_GET['location']) : (isset($_GET['state']) ? urldecode($_GET['state']) : ""); ?>"</h2>
             <p><?php echo (isset($data)) ? count($data) : "0" ?> Results on <?php echo date("F d, Y"); ?></p>
           </div>
         <?php }?>
@@ -141,7 +141,7 @@ if($err == array()){
     <div class="row">
       <div class="col-md-3">
         <div class="category-sidebar">
-          <form action="/~g1090432/pages/results.php?location=Alabama&startdate=2018-11-14&enddate=2018-12-06" method="GET">
+          <form action="<?php $_SERVER['REQUEST_URI']; ?>" method="GET">
             <?php if($stateBoolean == 1){ ?>
               <input type="hidden" name="state" value="<?php echo $state; ?>">
             <?php }
