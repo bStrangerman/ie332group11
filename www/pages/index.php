@@ -55,6 +55,7 @@ header("refresh: .1");
 $IP_Use = unserialize($_COOKIE["IP_Data"]);
 ?>
 
+<!- template from https://themewagon.com/themes/free-bootstrap-html5-directory-listing-website-template/ -->
 <!doctype html>
 <html class="no-js" lang="en">
 
