@@ -71,7 +71,7 @@ require_once "../layouts/sb_admin_2/header.php";
                   <th>Space #</th>
                   <th>Profit</th>
                   <th>Current Status</th>
-                  <th>View</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -112,8 +112,8 @@ require_once "../layouts/sb_admin_2/header.php";
 
                       ?></td>
                       <td></td>
-                      <td><a href="editLocation.php?edit=1&warehouse=<?php echo $warehouseID; ?>">
-                        <button class="btn btn-outline btn-primary">View</button></a></td>
+                      <td><a href="editSpace.php?edit=1&warehouse=<?php echo $warehouseID; ?>">
+                        <button class="btn btn-outline btn-primary">Edit</button></a></td>
                       </tr>
                       <!-- Print out the first space information -->
                       <tr>
@@ -190,8 +190,8 @@ require_once "../layouts/sb_admin_2/header.php";
                             ?>
                           </td>
                           <td>
-                            <a href="editLocation.php?edit=1&space=<?php echo $space; ?>">
-                              <button class="btn btn-outline btn-primary">View</button></a>
+                            <a href="editSpace.php?edit=1&space=<?php echo $space; ?>">
+                              <button class="btn btn-outline btn-primary">Edit</button></a>
                             </td>
                           </tr>
                           <?php
@@ -264,7 +264,7 @@ require_once "../layouts/sb_admin_2/header.php";
                                     echo "Never been leased";
                                   }
                                 }
-                              } 
+                              }
                             }
                             if ($isThere_aStatus == FALSE){
                               echo "Never been leased";
