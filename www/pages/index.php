@@ -37,14 +37,22 @@ function get_client_ip() {
 //API from ipstack.com This makes the cookie for the IP LATS
 //to use this unserialize ($geoIP and call its array, refer to the link below to see what can be called.)
 if(!isset($_COOKIE["IP_Data"])){
-  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/172.58.4.147?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
+  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/" . get_client_ip() . "?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
   setcookie("IP_Data", serialize($geoIP)); //test
   //setcookie("IP_Latitude", $geoIP["latitude"]);  //set LAT
   //setcookie("IP_Longitude", $geoIP["longitude"]);  //set Lon
+  header("refresh: .1");
 }
 
 $IP_Use = unserialize($_COOKIE["IP_Data"]);
 //if you need zip do $IP_Use["zip"]
+if(isset($IP_Use['region_name']) == ""){
+  $useThisIP = '96.47.227.24'; // sets an ip address of Miami Florida
+  $geoIP = json_decode(file_get_contents("http://api.ipstack.com/" . $useThisIP . "?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
+  setcookie("IP_Data", serialize($geoIP)); //test
+header("refresh: .1");
+}
+$IP_Use = unserialize($_COOKIE["IP_Data"]);
 ?>
 
 <!doctype html>
@@ -341,7 +349,7 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
             <?php
             $time_pre_dist = microtime(true);
 
-            $spaceInfo = getAllSpaces();
+            $spaceInfo = getAllSpacesByState($IP_Use['region_name']);
 
             if(isset($_COOKIE['Latitude']))
               $latitude = $_COOKIE['Latitude'];
