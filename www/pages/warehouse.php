@@ -146,6 +146,106 @@ require_once "../layouts/sb_admin_2/header.php";
               </ul>
             </div>
           </div>
+          <div id ='AreaGraph'></div>
+          
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+          <?php
+          //Calculates time since account creation
+          $diff = CURDATE() - DATE($StartDate);
+          //Breaks total time into 4 quarters for divisions
+          $DateIncr = $diff / 4;
+          //Each quarter is a separate query to accomodate time difference
+          $quarter1 = mysqli_query($mysqi,SELECT AmountCharged, SpaceID,
+            FROM Contracts
+            WHERE Date < StartDate + INTERVAL $DateIncr DAY AND Date > StartDate
+            AND Contracts.SpaceID IN (
+              SELECT SpaceID
+              FROM Spaces
+              WHERE Spaces.WarehouseID IN (
+                SELECT WarehouseID
+                FROM Warehouses
+                WHERE OwnerID = $UserID
+              )))
+
+              $quarter2 = mysqli_query($mysqi, $SELECT AmountCharged, SpaceID
+                FROM Contracts
+                WHERE Date < (StartDate + INTERVAL (2 * $DateIncr) DAY AND Date > StartDate + INTERVAL $DateIncr DAY
+                AND Contracts.SpaceID IN (
+                  SELECT SpaceID
+                  FROM Spaces
+                  WHERE Spaces.WarehouseID IN (
+                    SELECT WarehouseID
+                    FROM Warehouses
+                    WHERE OwnerID = $UserID
+                  )))
+
+                  $quarter3 = mysqli_query($mysqi, $SELECT AmountCharged, SpaceID
+                    FROM Contracts
+                    WHERE Date < (StartDate + INTERVAL (3 * $DateIncr) DAY AND Date > StartDate + INTERVAL (2 * $DateIncr) DAY
+                    AND Contracts.SpaceID IN (
+                      SELECT SpaceID
+                      FROM Spaces
+                      WHERE Spaces.WarehouseID IN (
+                        SELECT WarehouseID
+                        FROM Warehouses
+                        WHERE OwnerID = $UserID
+                      )))
+
+                      $quarter4 = mysqli_query($mysqi, $SELECT AmountCharged, SpaceID
+                        FROM Contracts
+                        WHERE Date <= CURDATE() AND Date > StartDate + INTERVAL (3 * $DateIncr) DAY
+                        AND Contracts.SpaceID IN (
+                          SELECT SpaceID
+                          FROM Spaces
+                          WHERE Spaces.WarehouseID IN (
+                            SELECT WarehouseID
+                            FROM Warehouses
+                            WHERE OwnerID = $UserID
+                          )))
+                          ?>
+                          function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                              //Each array fills with quarterly earnings by space, dependant upon the time between start and current date
+                              ['Quarter',<?php
+                              while($info=mysqi_fetch_array($quarter1)
+                              echo '"'.$info['SpaceID'].'",';
+                              ?>];,
+                              ['Q1',<?php
+                              while($info=$quarter1 -> fetch_assoc())
+                              echo '$info['AmountCharged'].'',';?>],
+                              ['Q2',<?php
+                              while($info=$quarter2 -> fetch_assoc())
+                              echo '$info['AmountCharged'].'',';?>],
+                              ['Q3',<?php
+                              while($info=$quarter3 -> fetch_assoc())
+                              echo '$info['AmountCharged'].'',';?>],
+                              ['Q4',<?php
+                              while($info=$quarter4 -> fetch_assoc())
+                              echo '$info['AmountCharged'].'',';?>]
+                            ]);
+
+                            var options = {
+                              title: 'Relatives Earnings by Space',
+                              hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
+                              vAxis: {minValue: 0}
+                            };
+                            var options_fullStacked = {
+                              isStacked: 'percent',
+                              height: 300,
+                              legend: {position: 'top', maxLines: 10},
+                              vAxis: {
+                                minValue: 0,
+                                ticks: [0, .25, .5, .75, 1]
+                              }
+                            };
+
+                            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                            chart.draw(data, options);
+                          }
+                          </script>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
