@@ -272,7 +272,7 @@ require_once "../layouts/sb_admin_2/header.php";
                             ?>
                           </td>
                           <td>
-                            <a href="editLocation.php?space=<?php echo $space; ?>">
+                            <a href="editSpace.php?edit=1&space=<?php echo $space; ?>">
                               <button class="btn btn-outline btn-primary">Edit</button></a>
                             </td>
                           <?php } ?>
