@@ -112,7 +112,7 @@ require_once "../layouts/sb_admin_2/header.php";
 
                       ?></td>
                       <td></td>
-                      <td><a href="editSpace.php?edit=1&warehouse=<?php echo $warehouseID; ?>">
+                      <td><a href="editLocation.php?edit=1&warehouse=<?php echo $warehouseID; ?>">
                         <button class="btn btn-outline btn-primary">Edit</button></a></td>
                       </tr>
                       <!-- Print out the first space information -->

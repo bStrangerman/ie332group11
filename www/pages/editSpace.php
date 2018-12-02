@@ -107,34 +107,35 @@ require_once "../layouts/sb_admin_2/header.php";
                 <form role="form" method="POST">
                   <input type="hidden" name="editing" value="warehouse">
                   <?php
-                  if($method == "edit") { ?>
+                  if($method == "edit") {
+                    echo "
                     <fieldset disabled>
-                      <div class="form-group">
-                          <label for="disabledSelect">Warehouse Location</label>
-                          <select id="disabledSelect" class="form-control">
-                              <option><?php echo $space[0]['Address']; ?></option>
+                      <div class='form-group'>
+                          <label for='disabledSelect'>Warehouse Location</label>
+                          <select id='disabledSelect' class='form-control'>
+                              <option>" . $space[0]['Address'] . "</option>
                           </select>
                       </div>
-                  </fieldset>
-                <?php
-                }
-                else if($method == "add") {?>
-                  <div class="form-group">
-                      <label for="disabledSelect">Warehouse Location</label>
-                      <select id="disabledSelect" class="form-control">
-                        <?php
+                  </fieldset>";
+                 }
+                else if($method == "add") {
+                  echo "
+                  <div class='form-group'>
+                      <label for='disabledSelect'>Warehouse Location</label>
+                      <select id='disabledSelect' class='form-control'>";
+
                         $sql = "SELECT *
                                 FROM Warehouses
                                 WHERE OwnerID = $UserID";
                         $result = $conn -> query($sql);
-                        while($row = $result -> fetch_assoc()){ ?>
-                          <option>
-                            <?php echo $row['Address']; ?>
-                          </option>
-                        <?php}?>
-                      </select>
-                  </div>
-                <?php}?>
+                        while($row = $result -> fetch_assoc()){
+                          echo "<option>";
+                            echo $row['Address'];
+                          echo "</option>";
+                        }
+                      echo "</select>";
+                  echo "</div>";
+                }?>
 
                   <div class="form-group">
                     <label>Space Size</label>
