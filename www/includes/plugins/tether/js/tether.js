@@ -140,7 +140,7 @@ function removeUtilElements() {
     document.body.removeChild(zeroElement);
   }
   zeroElement = null;
-};
+}
 
 function getBounds(el) {
   var doc = undefined;
