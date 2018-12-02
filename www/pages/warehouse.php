@@ -127,31 +127,7 @@ require_once "../layouts/sb_admin_2/header.php";
       <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-          <div class="pull-right">
-            <div class="btn-group">
-              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                Actions
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu pull-right" role="menu">
-                <li><a href="#">Action</a>
-                </li>
-                <li><a href="#">Another action</a>
-                </li>
-                <li><a href="#">Something else here</a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a>
-                </li>
-              </ul>
-            </div>
-          </div>
           <div id ='AreaGraph'></div>
-
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-          <script type="text/javascript">
-          google.charts.load('current', {'packages':['corechart']});
-          google.charts.setOnLoadCallback(drawChart);
           <?php
           //Calculates time since account creation
           $curdate = date("Y/m/d");
@@ -159,9 +135,11 @@ require_once "../layouts/sb_admin_2/header.php";
           //Breaks total time into 4 quarters for divisions
           $DateIncr = $diff / 4;
           //Each quarter is a separate query to accomodate time difference
-          $quarter1 = mysqli_query($mysqi,"SELECT AmountCharged, SpaceID,
+          $quarter1SQL ="SELECT Contracts.AmountCharged, Contracts.SpaceID
             FROM Contracts
-            WHERE Date < StartDate + INTERVAL $DateIncr DAY AND Date > StartDate
+            LEFT JOIN phprbac_users
+            ON phprbac_users.UserID = $UserID
+            WHERE phprbac_users.CreationDate < StartDate + INTERVAL $DateIncr DAY AND phprbac_users.CreationDate > StartDate
             AND Contracts.SpaceID IN (
               SELECT SpaceID
               FROM Spaces
@@ -169,11 +147,14 @@ require_once "../layouts/sb_admin_2/header.php";
                 SELECT WarehouseID
                 FROM Warehouses
                 WHERE OwnerID = $UserID
-              ))");
+              )
+            )";
 
-              $quarter2 = mysqli_query($mysqi, "SELECT AmountCharged, SpaceID
-                FROM Contracts
-                WHERE Date < (StartDate + INTERVAL (2 * $DateIncr) DAY AND Date > StartDate + INTERVAL $DateIncr DAY
+              $quarter2SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
+              FROM Contracts
+              LEFT JOIN phprbac_users
+              ON phprbac_users.UserID = $UserID
+                WHERE phprbac_users.CreationDate < (StartDate + INTERVAL (2 * $DateIncr) DAY AND phprbac_users.CreationDate > StartDate + INTERVAL $DateIncr DAY)
                 AND Contracts.SpaceID IN (
                   SELECT SpaceID
                   FROM Spaces
@@ -181,39 +162,74 @@ require_once "../layouts/sb_admin_2/header.php";
                     SELECT WarehouseID
                     FROM Warehouses
                     WHERE OwnerID = $UserID
-                  ))");
+                  ))";
 
-                  $quarter3 = mysqli_query($mysqi, "SELECT AmountCharged, SpaceID
-                    FROM Contracts
-                    WHERE Date < (StartDate + INTERVAL (3 * $DateIncr) DAY AND Date > StartDate + INTERVAL (2 * $DateIncr) DAY
-                    AND Contracts.SpaceID IN (
+                  $quarter3SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
+                  FROM Contracts
+                  LEFT JOIN phprbac_users
+                  ON phprbac_users.UserID = $UserID
+                    WHERE phprbac_users.CreationDate <
+                    (
+                      StartDate + INTERVAL
+                      (
+                        3 * $DateIncr
+                      )
+                      DAY AND phprbac_users.CreationDate > StartDate + INTERVAL
+                      (
+                        2 * $DateIncr
+                      )
+                      DAY
+                    )
+                    AND Contracts.SpaceID IN
+                    (
                       SELECT SpaceID
                       FROM Spaces
-                      WHERE Spaces.WarehouseID IN (
+                      WHERE Spaces.WarehouseID IN
+                      (
                         SELECT WarehouseID
                         FROM Warehouses
                         WHERE OwnerID = $UserID
-                      ))");
+                      )
+                    )";
 
-                      $quarter4 = mysqli_query($mysqi, "SELECT AmountCharged, SpaceID
-                        FROM Contracts
-                        WHERE Date <= $curdate AND Date > StartDate + INTERVAL (3 * $DateIncr) DAY
-                        AND Contracts.SpaceID IN (
+                      $quarter4SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
+                      FROM Contracts
+                      LEFT JOIN phprbac_users
+                      ON phprbac_users.UserID = $UserID
+                        WHERE phprbac_users.CreationDate <= $curdate AND phprbac_users.CreationDate > StartDate + INTERVAL
+                        (
+                          3 * $DateIncr
+                        ) DAY
+                        AND Contracts.SpaceID IN
+                        (
                           SELECT SpaceID
                           FROM Spaces
-                          WHERE Spaces.WarehouseID IN (
+                          WHERE Spaces.WarehouseID IN
+                          (
                             SELECT WarehouseID
                             FROM Warehouses
                             WHERE OwnerID = $UserID
-                          ))");
+                          )
+                        )";
+
+                          $quarter1 = $conn -> query($quarter1SQL);
+                          $quarter2 = $conn -> query($quarter2SQL);
+                          $quarter3 = $conn -> query($quarter3SQL);
+                          $quarter4 = $conn -> query($quarter4SQL);
+
                           ?>
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+
                           function drawChart() {
                             var data = google.visualization.arrayToDataTable([
                               //Each array fills with quarterly earnings by space, dependant upon the time between start and current date
                               ['Quarter',<?php
-                              while($info=mysqi_fetch_array($quarter1));
+                              while($info = $quarter1 -> fetch_assoc());
                               echo '"' . $info['SpaceID'].'",';
-                              ?>];,
+                              ?>],
                               ['Q1',
                               <?php
                               while($info = $quarter1 -> fetch_assoc())
@@ -292,10 +308,8 @@ require_once "../layouts/sb_admin_2/header.php";
         ?>
         <script>
         //assigns the amount charged data into myData
-        var myData=[<?php
-        while($info = $data -> fetch_assoc())
-        echo $info['AmountCharged'].',';
-        ?>];
+        var myData=[<?php while($info = $data -> fetch_assoc()) echo
+        $info['AmountCharged'] . ','; ?>];
         //Grabs total money earned by space and spaceID
 
         //assigns SpaceID into labels on bar gragh
@@ -304,7 +318,7 @@ require_once "../layouts/sb_admin_2/header.php";
         echo '"'.$info['WarehouseID'].'",';
         ?>];
         </script>
-        ]
+
         <script>
         window.onload=function(){
           zingchart.render({
