@@ -32,10 +32,9 @@ if($err == array()){
     array_push($spaceInformation, $spaceInfo[$i]['SpaceInformation']);
     $i++;
   }
-
   if(isset($_GET['location']) || isset($_GET['state'])){
     if(isset($_GET['location'])){
-      $origin = clean($_GET['location']);
+      $origin = urldecode((clean($_GET['location'])));
       $lat_lon = getLatLon(strtr($origin, array('.' => '', ',' => '', 'USA' => '')));
       $origin_lat = $lat_lon[0];
       $origin_lon = $lat_lon[1];
@@ -191,58 +190,10 @@ if($err == array()){
             </ul>
           </div>
 
-          <?php // TODO: this is not that great of looking ?>
-          <div class="widget price-range">
-            <h4 class="widget-header">Price Range</h4>
-            <div class="block">
-              <b>10km</b>
-              <input id="ex2" type="range" class="span2" value="" data-slider-min="10000" data-slider-max="100000" data-slider-step="5" data-slider-value="[250,450]"/>
-              <b>1000km</b>
-            </div>
-          </div>
-
-          <div class="widget product-shorting">
-            <h4 class="widget-header">By Condition</h4>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Brand New
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Almost New
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Gently New
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                Havely New
-              </label>
-            </div>
-          </div>
-
         </div>
       </div>
       <div class="col-md-9">
-        <div class="category-search-filter">
-          <div class="row">
-            <div class="col-md-6">
-              <strong>Sort</strong>
-              <select>
-                <option>Most Recent</option>
-                <option value="1">Most Popular</option>
-                <option value="2">Lowest Price</option>
-                <option value="4">Highest Price</option>
-              </select>
-            </div>
+            <div class="row">
             <!-- <div class="col-md-6">
             <div class="view">
             <strong>Views</strong>
@@ -256,7 +207,6 @@ if($err == array()){
       </ul>
     </div>
   </div> -->
-</div>
 </div>
 <div class="product-grid-list">
   <div class="row mt-30">
