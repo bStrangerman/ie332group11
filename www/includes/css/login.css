@@ -9,7 +9,7 @@
 #formContainer {
   width: 100%;
   height: 97vh;
-  background: url("../../images/warehouse.jpg") center;
+  background: url("../../pictures/warehouse.jpg") center;
   background-attachment: fixed !important;
   background-size: cover;
   display: flex;
@@ -70,7 +70,7 @@
 }
 #formRight:before {
   content: "";
-  background: url("../../images/warehouse.jpg") center;
+  background: url("../../pictures/warehouse.jpg") center;
   background-attachment: fixed !important;
   background-size: cover;
   position: absolute;
