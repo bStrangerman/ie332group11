@@ -281,7 +281,7 @@ require_once "../layouts/sb_admin_2/header.php";
                               vAxis: {minValue: 0}
                             };
                             var options_fullStacked = {
-                              isStacked: 'percent',
+                              isStacked: 'relative',
                               height: 300,
                               legend: {position: 'top', maxLines: 10},
                               vAxis: {
