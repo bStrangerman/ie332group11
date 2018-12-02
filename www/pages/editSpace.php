@@ -144,12 +144,11 @@ require_once "../layouts/sb_admin_2/header.php";
                   <label>Monthly Price</label>
                   <div class="form-group input-group">
                       <span class="input-group-addon">$</span>
-                      <input required type="text" name="monthlyPrice" class="form-control">
-                      <span class="input-group-addon">.00</span>
+                      <input required type="text" value="<?php echo ($method == "edit") ? $space[0]['MonthlyPrice'] : ""; ?>" name="monthlyPrice" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="details" placeholder="Please describe this space for potential customers.  This could be private restrooms, security cameras, bay doors, etc." rows="3"><?php echo ($method == "edit") ? $warehouse[0]['WarehouseInformation'] : ""; ?></textarea>
+                    <textarea class="form-control" name="details" placeholder="Please describe this space for potential customers.  This could be private restrooms, security cameras, bay doors, etc." rows="3"><?php echo ($method == "edit") ? $space[0]['SpaceInformation'] : ""; ?></textarea>
                   </div>
                   <button type="submit" class="btn btn-default">Save My Changes</button>
                 </form>
@@ -161,6 +160,27 @@ require_once "../layouts/sb_admin_2/header.php";
           <!-- /.panel-body -->
         </div>
         <!-- /.panel -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-<?php echo ($_SESSION['message'] == 'Success!' && ($_POST['editing'] == 'warehouse')) ? "success" : "default"; unset($_SESSION['message']); ?>">
+              <div class="panel-heading">
+                Space Attributes
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-lg-12">
+        <div class="form-group">
+            <label>Select this space's attributes</label>
+            <?php $attributeSQL = "SELECT * FROM Attributes";
+                  $attributeResult = $conn -> query($attributeSQL);?>
+            <select multiple name="attributes" class="form-control">
+              <?php while($attributeRow = $attributeResult -> fetch_assoc()){
+                echo "<option value='" . $attributeRow['AttributeID'] . "'>" . $attributeRow['AttributeName'] . "</option>";
+                }?>
+            </select>
+          </div>
+        </div>
+        </div>
       </div>
     </div>
   </div>
