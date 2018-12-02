@@ -2,7 +2,7 @@
 Options +FollowSymLinks
 
 # Change default directory pages.
-DirectoryIndex pages
+DirectoryIndex www
 
 # Prevent viewing of htaccess file.
 <Files .htaccess>
