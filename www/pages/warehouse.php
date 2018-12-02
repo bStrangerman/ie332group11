@@ -127,7 +127,9 @@ require_once "../layouts/sb_admin_2/header.php";
       <div class="panel panel-default">
         <div class="panel-heading">
           <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-          <div id ='AreaGraph'></div>
+        </div><div class="panel-body">
+          <div id ="AreaGraph"></div>
+        </div>
           <?php
           //Calculates time since account creation
           $curdate = date("Y/m/d");
@@ -211,14 +213,13 @@ require_once "../layouts/sb_admin_2/header.php";
                             WHERE OwnerID = $UserID
                           )
                         )";
-
-                          $quarter1 = $conn -> query($quarter1SQL);
-                          $quarter2 = $conn -> query($quarter2SQL);
-                          $quarter3 = $conn -> query($quarter3SQL);
-                          $quarter4 = $conn -> query($quarter4SQL);
+                          $quarter1Result = $conn -> query($quarter1SQL);
+                          $quarter2Result = $conn -> query($quarter2SQL);
+                          $quarter3Result = $conn -> query($quarter3SQL);
+                          $quarter4Result = $conn -> query($quarter4SQL);
 
                           ?>
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
           google.charts.load('current', {'packages':['corechart']});
           google.charts.setOnLoadCallback(drawChart);
@@ -226,30 +227,52 @@ require_once "../layouts/sb_admin_2/header.php";
                           function drawChart() {
                             var data = google.visualization.arrayToDataTable([
                               //Each array fills with quarterly earnings by space, dependant upon the time between start and current date
-                              ['Quarter',<?php
-                              while($info = $quarter1 -> fetch_assoc());
-                              echo '"' . $info['SpaceID'].'",';
+                              ['Quarter'<?php
+                              $numOfSpaces = $quarter1Result -> num_rows;
+                              while($spaces = $quarter1Result -> fetch_assoc())
+                              echo ', "' . $spaces['SpaceID'] . '"';
                               ?>],
-                              ['Q1',
-                              <?php
-                              while($info = $quarter1 -> fetch_assoc())
-                              echo $info['AmountCharged'] . ',';?>
-                              ],
-                              ['Q2',
-                              <?php
-                              while($info = $quarter2 -> fetch_assoc())
-                              echo $info['AmountCharged'] . ',';?>
-                              ],
-                              ['Q3',
-                              <?php
-                              while($info = $quarter3 -> fetch_assoc())
-                              echo $info['AmountCharged'] . ',';?>
-                              ],
-                              ['Q4',
-                              <?php
-                              while($info = $quarter4 -> fetch_assoc())
-                              echo $info['AmountCharged'] . ',';?>
-                              ]
+                              ['Q1'<?php
+                              $quarter1Result = $conn -> query($quarter1SQL);
+                              if($quarter1Result -> num_rows > 0){
+                                while($quarter1 = $quarter1Result -> fetch_assoc())
+                                echo "," . $quarter1['AmountCharged'];
+                              }
+                              else{
+                                for($i = 0; $i < $numOfSpaces; $i++){
+                                  echo ", 0";
+                                }
+                              }?>],
+                              ['Q2'<?php $quarter2Result = $conn -> query($quarter2SQL);
+                              if($quarter2Result -> num_rows > 0){
+                                while($quarter2 = $quarter2Result -> fetch_assoc())
+                                echo ", " . $quarter2['AmountCharged'];
+                              }
+                              else{
+                                for($i = 0; $i < $numOfSpaces; $i++){
+                                  echo ", 0";
+                                }
+                              }?>],
+                              ['Q3'<?php $quarter3Result = $conn -> query($quarter3SQL);
+                              if($quarter3Result -> num_rows > 0){
+                                while($quarter3 = $quarter3Result -> fetch_assoc())
+                                echo $quarter3['AmountCharged'] . ',';
+                              }
+                              else{
+                                for($i = 0; $i < $numOfSpaces; $i++){
+                                  echo ", 0";
+                                }
+                              }?>],
+                              ['Q4' <?php $quarter4Result = $conn -> query($quarter4SQL);
+                              if($quarter4Result -> num_rows > 0){
+                                while($quarter4 = $quarter4Result -> fetch_assoc())
+                                echo ", " . $quarter4['AmountCharged'];
+                              }
+                              else{
+                                for($i = 0; $i < $numOfSpaces; $i++){
+                                  echo ", 0";
+                                }
+                              }?>]
                             ]);
 
                             var options = {
@@ -258,7 +281,7 @@ require_once "../layouts/sb_admin_2/header.php";
                               vAxis: {minValue: 0}
                             };
                             var options_fullStacked = {
-                              isStacked: 'percent',
+                              isStacked: 'relative',
                               height: 300,
                               legend: {position: 'top', maxLines: 10},
                               vAxis: {
@@ -267,7 +290,7 @@ require_once "../layouts/sb_admin_2/header.php";
                               }
                             };
 
-                            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                            var chart = new google.visualization.AreaChart(document.getElementById('AreaGraph'));
                             chart.draw(data, options);
                           }
                           </script>
