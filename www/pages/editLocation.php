@@ -374,7 +374,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                 Spaces in this Warehouse
                 <div class="pull-right">
                 <div class="btn-group">
-                  <a href="editLocation.php?add=1">
+                  <a href="editSpace.php?add=1&warehouse=<?php echo $warerhouseID; ?>">
                     <button type="button" class="btn btn-default btn-xs">
                       Add Space
                     </button>
