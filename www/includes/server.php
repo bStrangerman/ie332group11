@@ -1,5 +1,4 @@
 <?php
-
 // variable declaration
 	$register_Errors = array();
 

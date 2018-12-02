@@ -32,6 +32,7 @@ echo clean($str);
 
 array_print($_SESSION);
 echo clean("th!sPwd!s4Le55ee") . "<br>";
+echo clean("th!sPwd!s4r00t") . "<br>";
 echo md5("th!sPwd!s4Le55ee") . "<br>";
 echo "878fcd3829462665ff1ad75ad0f9ca11" . "<br>";
 

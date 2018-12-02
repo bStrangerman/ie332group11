@@ -39,28 +39,6 @@ if(isset($_SESSION['UserID'])){
   <script src="../includes/js/login.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 
-<!-- recaptcha -->
-<script type="text/javascript">
-
-        function onSubmit(token) {
-          console.log('success!');
-          document.getElementById("register").submit();
-        };
-
-        // var onloadCallback = function() {
-        //   grecaptcha.render('submit', {
-        //     'sitekey' : '6Leyl30UAAAAAOfkIHXzEpDJlga7QAmUP0euFwwg',
-        //     'callback' : onSubmit
-        //   });
-        // };
-    </script>
-<!--
-  <script>
-       function onSubmit(token) {
-         document.getElementById("register").submit();
-       }
-     </script> -->
-
 </head>
 <body>
 
@@ -77,7 +55,7 @@ if(isset($_SESSION['UserID'])){
       <div id="formRight">
 
         <!-- Forget Password tab -->
-        <form id="forgot" class="contentArea otherForm">
+        <!-- <form id="forgot" class="contentArea otherForm"> -->
           <!-- Forget Password feature is not currently working -->
           <!-- <div class="formHead">
           <h1>Forgot Password?</h1>
@@ -89,16 +67,16 @@ if(isset($_SESSION['UserID'])){
         <span class="border"></span>
       </label>
     -->
-    <div class="formDiv">
-      <input type="submit" value="Send">
-    </div>
-    <footer>
+    <!-- <div class="formDiv"> -->
+      <!-- <input type="submit" value="Send"> -->
+    <!-- </div> -->
+   <!-- <footer>
       <p class="forgotBtn">Back to Login</p>
-    </footer>
-  </form>
+    </footer> -->
+  <!-- </form> -->
 
   <!-- Registration tab -->
-  <form id="register" class="contentArea otherForm" method="POST" action="login.php">
+  <form id="register" class="contentArea otherForm" method="POST">
     <div class="formHead">
       <h1>Become a member!</h1>
       <p>Register now</p>
@@ -109,7 +87,6 @@ if(isset($_SESSION['UserID'])){
     errors($register_Errors); ?>
     <label class="formDiv">
       <input type="text" placeholder=" " value="<?php echo (isset($username)) ? $username : ""; ?>" name="username">
-
       <p>Username</p>
       <span class="border"></span>
     </label>
@@ -124,13 +101,7 @@ if(isset($_SESSION['UserID'])){
       <span class="border"></span>
     </label>
     <div class="formDiv">
-      <!-- <button type="submit" id="submit" class="g-recaptcha" name="reg_user" data-sitekey="6Leyl30UAAAAAOfkIHXzEpDJlga7QAmUP0euFwwg" data-callback='onSubmit'>Register</button> -->
-      <input type="submit" id="submit" class="g-recaptcha" name="reg_user" value="Register" data-sitekey="6Leyl30UAAAAAOfkIHXzEpDJlga7QAmUP0euFwwg" data-callback="onSubmit">
-      <!-- <input type="submit" name="reg_user" value="Register"> -->
-      <!-- <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    async defer> -->
-</script>
-
+      <input type="submit" name="reg_user" value="Register">
     </div>
     <footer>
       <p class="registerBtn">Back to login</p>
@@ -138,7 +109,7 @@ if(isset($_SESSION['UserID'])){
   </form>
 
   <!-- Login tab -->
-  <form class="contentArea" id="login" method="post" action="login.php">
+  <form class="contentArea" id="login" method="POST">
     <div class="formHead">
       <h1>WELCOME BACK</h1>
       <p>Login to continue</p>
