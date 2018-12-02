@@ -1,6 +1,5 @@
 <?php
 require_once "../includes/main.php";
-
 // checks if the user is logged in and is a warehouse owner
 if (isset($_SESSION['UserID'])) {
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
@@ -88,7 +87,7 @@ else{
   header("Location: locations.php");
 }
 
-if(isset($_POST['editing'])){
+if(isset($_POST['editing']) && !isset($_GET['add'])){
   if($_POST['editing'] == 'warehouse'){
     $street = clean($_POST['address']);
     $city = clean($_POST['city']);
@@ -114,6 +113,25 @@ if(isset($_POST['editing'])){
     if($conn -> query($sql) === TRUE){
       $_SESSION['message'] = "Success!";
       header("Refresh: 0.1");
+      $_SESSION['message'] = "Success!";
+    }
+  }
+}
+else if($_GET['add'] == "1"){
+  if($_POST['editing'] == 'warehouse'){
+    $street = clean($_POST['address']);
+    $city = clean($_POST['city']);
+    $state = clean($_POST['state']);
+    $zip = clean($_POST['zip-code']);
+    $lat = clean($_POST['lat']);
+    $lon = clean($_POST['lon']);
+    $sql = "INSERT INTO Warehouses (OwnerID, Address,City,State,ZipCode,Latitude,Longitude)
+    VALUES ($UserID, '$street', '$city', '$state', $zip, '$lat', '$lon')";
+    if($conn -> query($sql) === TRUE){
+      $warehouseID = $conn->insert_id;
+      $_SESSION['message'] = "Success!";
+      header("Refresh: 0.1");
+      header("Location: editLocation.php?edit=1&warehouse=" . $warehouseID);
       $_SESSION['message'] = "Success!";
     }
   }
@@ -197,7 +215,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
 }
 </style>
 
-<?php if(isset($_GET['warehouse']) && ($method == "edit" || $method == "add")){ ?>
+<?php if((isset($_GET['warehouse']) && $method == "edit") || $method == "add"){ ?>
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
@@ -252,6 +270,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
         </div>
         <!-- /.panel -->
       </div>
+          <?php if($method != "add"){?>
       <div class="col-lg-6">
         <div class="panel panel-<?php echo (($_SESSION['message'] == 'Success!') && ($_POST['editing'] == 'details')) ? "success" : "default"; unset($_SESSION['message']); ?>">
           <div class="panel-heading">
@@ -296,8 +315,9 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
           LEFT JOIN Warehouse_Pictures
           ON Warehouse_Pictures.PictureID = Pictures.PictureID
           WHERE Warehouse_Pictures.WarehouseID = $warehouseID";
-          $pictureResult = $conn -> query($pictureSQL);
-          while($pictures[]=mysqli_fetch_array($pictureResult));
+          if($method != "add"){
+            $pictureResult = $conn -> query($pictureSQL);
+            while($pictures[]=mysqli_fetch_array($pictureResult));
           ?>
 
           <!-- Image grid from https://stackoverflow.com/questions/39320966/bootstrap-responsive-image-grid -->
@@ -331,7 +351,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
               <?php } ?>
             </div>
           </div>
-
+<?php } ?>
 
           <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="upload" value="1">
@@ -351,7 +371,16 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Spaces in this table
+                Spaces in this Warehouse
+                <div class="pull-right">
+                <div class="btn-group">
+                  <a href="editLocation.php?add=1">
+                    <button type="button" class="btn btn-default btn-xs">
+                      Add Space
+                    </button>
+                  </a>
+                </div>
+              </div>
             </div>
             <!-- /.panel-heading -->
             <?php
@@ -396,6 +425,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
         <!-- /.panel -->
     </div>
   </div>
+<?php }?>
 </div>
 <!-- /.panel -->
 
