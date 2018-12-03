@@ -30,7 +30,7 @@
 
 
 		$countUsernameMIDResult = ($conn -> query($countOfUsername));
-		$countUsernameResult = $$countUsernameMIDResult-> fetch_assoc();
+		$countUsernameResult = $countUsernameMIDResult-> fetch_assoc();
 
 		$countEmailMIDResult = ($conn -> query($countOfEmail));
 		$countEmailResult = $countEmailMIDResult -> fetch_assoc();
