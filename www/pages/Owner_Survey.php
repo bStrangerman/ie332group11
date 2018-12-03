@@ -24,6 +24,14 @@ if(isset($_SESSION['UserID'])){
     $results = $conn -> query($sql);
     while($contractInfo[] = mysqli_fetch_array($results));
 
+    // get the lessee's information
+    $lesseeID = $contractInfo[0]['LesseeID'];
+    $sql = "SELECT *
+            FROM phprbac_users
+            WHERE UserID = $lesseeID";
+    $lesseeResult = $conn -> query($sql);
+    while($lesseeInfo[] = mysqli_fetch_array($lesseeResult));
+
     if(count($contractInfo) <= 1){
       header("Location: index.php");
       exit;
@@ -127,12 +135,11 @@ require_once "../layouts/sb_admin_2/header.php";
             <input type="hidden" id="owner" name="owner" value="<?php echo $ownerInfo[0]['UserID']; ?>">
             <input type="hidden" id="lesseeFirstName" name="lesseeFirstName" value="<?php echo $ownerInfo[0]['FirstName']; ?>">
             <input type="hidden" id="lesseeLastName" name="lesseeLastName" value="<?php echo $ownerInfo[0]['LastName']; ?>">
-              <p><strong>Address:</strong> <?php echo $contractInfo[0]['Address']; ?>
-              <br><strong>          </strong> <?php  echo $contractInfo[0]['City'] . ", " . $contractInfo[0]['State'] . " " . $contractInfo[0]['ZipCode']; ?> </p>
-              <p><strong>Space Lessee:</strong> <?php echo $contractInfo[0]['FirstName'] . " " . $contractInfo[0]['LastName']; ?>
-              <p><strong>Warehouse Owner:</strong> <?php echo $ownerInfo[0]['FirstName'] . " " . $ownerInfo[0]['LastName']; ?></p>
-              <p><strong>Company:</strong> <?php echo $ownerInfo[0]['Company']; ?></p>
-              <p><strong>Contract Dates:</strong> <?php echo $contractInfo[0]['StartDate'] . " to " . $contractInfo[0]['EndDate']; ?></p>
+              <p><strong>Address:</strong><address> <?php echo $contractInfo[0]['Address']; ?>
+              <br><strong>          </strong> <?php  echo $contractInfo[0]['City'] . ", " . $contractInfo[0]['State'] . " " . $contractInfo[0]['ZipCode']; ?> </address></p>
+              <p><strong>Space Lessee:</strong> <?php echo $lesseeInfo[0]['FirstName'] . " " . $lesseeInfo[0]['LastName']; ?>
+              <p><strong>Company:</strong> <?php echo $lesseeInfo[0]['Company']; ?></p>
+              <p><strong>Contract Dates:</strong> <?php echo date("m/d/Y", strtotime($contractInfo[0]['StartDate'])) . " to " . date("m/d/Y", strtotime($contractInfo[0]['EndDate'])); ?></p>
 
 
 
@@ -151,7 +158,7 @@ require_once "../layouts/sb_admin_2/header.php";
           Create Your Review
         </div>
         <div class="panel-body">
-          Thank you for taking the time to rate your experience with <?php  echo $contractInfo[0]['FirstName'] . " " . $ownerInfo[0]['LastName']; ?>. Please note that only the written review will be public.  The star rating is for internal use.
+          Thank you for taking the time to rate your experience with <?php  echo $lesseeInfo[0]['FirstName'] . " " . $lesseeInfo[0]['LastName']; ?>. Please note that only the written review will be public.  The star rating is for internal use.
           <div class="row">
             <div class="col-lg-12">
               <form method="post" action = "../includes/lessee_survey_submit.php" role="form">
