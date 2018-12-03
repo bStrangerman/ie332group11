@@ -7,7 +7,7 @@ echo '$ip=$_SERVER["REMOTE_ADDR"]: ' . $ip=$_SERVER['REMOTE_ADDR'] . "<br>";
 
 
 
-$geoIP = json_decode(file_get_contents("http://api.ipstack.com/172.58.4.147?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
+$geoIP = json_decode(file_get_contents("http://api.ipstack.com/" . $_SERVER["REMOTE_ADDR"] . "?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
 setcookie("IP_Data", serialize($geoIP)); //test
 
 array_print($_COOKIE);
