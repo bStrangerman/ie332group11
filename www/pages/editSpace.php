@@ -1,5 +1,6 @@
 <?php
 require_once "../includes/main.php";
+array_print($_POST);
 // checks if the user is logged in and is a warehouse owner
 if (isset($_SESSION['UserID'])) {
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
@@ -83,6 +84,24 @@ else if($_GET['add'] == "1"){
   }
 }
 
+if(isset($_POST['attributes'])){
+  $space = $_POST['space'];
+  $attributesToAdd = $_POST['attributes'];
+  $sql = "INSERT INTO Space_Attributes (SpaceID, AttributeID) VALUES";
+  for($i = 0; $i < count($attributesToAdd); $i++){
+    $sql .= " (" . $space . ", " . $attributesToAdd[$i] . ")";
+    if($i != (count($attributesToAdd) - 1)){
+      $sql .= ",";
+    }
+  }
+  if($conn -> query($sql) === TRUE){
+    $spaceID = $conn->insert_id;
+    $_SESSION['message'] = "Success!";
+    header("Refresh: 0.1");
+    header("Location: editLocation.php?edit=1&warehouse=" . $warehouseID);
+    $_SESSION['message'] = "Success!";
+  }
+}
 require_once "../layouts/sb_admin_2/header.php";
 ?>
 
@@ -110,32 +129,32 @@ require_once "../layouts/sb_admin_2/header.php";
                   if($method == "edit") {
                     echo "
                     <fieldset disabled>
-                      <div class='form-group'>
-                          <label for='disabledSelect'>Warehouse Location</label>
-                          <select id='disabledSelect' class='form-control'>
-                              <option>" . $space[0]['Address'] . "</option>
-                          </select>
-                      </div>
-                  </fieldset>";
-                 }
-                else if($method == "add") {
-                  echo "
-                  <div class='form-group'>
-                      <label for='disabledSelect'>Warehouse Location</label>
-                      <select id='disabledSelect' class='form-control'>";
+                    <div class='form-group'>
+                    <label for='disabledSelect'>Warehouse Location</label>
+                    <select id='disabledSelect' class='form-control'>
+                    <option>" . $space[0]['Address'] . "</option>
+                    </select>
+                    </div>
+                    </fieldset>";
+                  }
+                  else if($method == "add") {
+                    echo "
+                    <div class='form-group'>
+                    <label for='disabledSelect'>Warehouse Location</label>
+                    <select id='disabledSelect' class='form-control'>";
 
-                        $sql = "SELECT *
-                                FROM Warehouses
-                                WHERE OwnerID = $UserID";
-                        $result = $conn -> query($sql);
-                        while($row = $result -> fetch_assoc()){
-                          echo "<option>";
-                            echo $row['Address'];
-                          echo "</option>";
-                        }
-                      echo "</select>";
-                  echo "</div>";
-                }?>
+                    $sql = "SELECT *
+                    FROM Warehouses
+                    WHERE OwnerID = $UserID";
+                    $result = $conn -> query($sql);
+                    while($row = $result -> fetch_assoc()){
+                      echo "<option>";
+                      echo $row['Address'];
+                      echo "</option>";
+                    }
+                    echo "</select>";
+                    echo "</div>";
+                  }?>
 
                   <div class="form-group">
                     <label>Space Size</label>
@@ -143,8 +162,8 @@ require_once "../layouts/sb_admin_2/header.php";
                   </div>
                   <label>Monthly Price</label>
                   <div class="form-group input-group">
-                      <span class="input-group-addon">$</span>
-                      <input required type="text" value="<?php echo ($method == "edit") ? $space[0]['MonthlyPrice'] : ""; ?>" name="monthlyPrice" class="form-control">
+                    <span class="input-group-addon">$</span>
+                    <input required type="text" value="<?php echo ($method == "edit") ? $space[0]['MonthlyPrice'] : ""; ?>" name="monthlyPrice" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Description</label>
@@ -169,38 +188,47 @@ require_once "../layouts/sb_admin_2/header.php";
               <div class="panel-body">
                 <div class="row">
                   <div class="col-lg-12">
-        <div class="form-group">
-            <label>Select this space's attributes</label>
-            <?php $attributeSQL = "SELECT * FROM Attributes";
-                  $attributeResult = $conn -> query($attributeSQL);?>
-            <select multiple name="attributes" class="form-control">
-              <?php while($attributeRow = $attributeResult -> fetch_assoc()){
-                echo "<option value='" . $attributeRow['AttributeID'] . "'>" . $attributeRow['AttributeName'] . "</option>";
-                }?>
-            </select>
-          </div>
+                    <form method="post">
+                      <div class="form-group">
+                        <input type="hidden" name="space" value="<?php echo $space[0]['SpaceID']; ?>">
+                        <input type="hidden" name="attributes" value="attributes">
+                        <label>Select this space's attributes</label>
+                        <?php $attributeSQL = "SELECT * FROM Attributes";
+                              $attributeResult = $conn -> query($attributeSQL);
+                              $spaceAttributes = "SELECT * FROM Space_Attributes WHERE SpaceID = $spaceID";
+                              $spaceAttributesResult = $conn -> query($spaceAttributes);
+
+                              ?>
+                        <select multiple name="attributes[]" class="form-control">
+                          <?php while($attributeRow = $attributeResult -> fetch_assoc()){
+                            echo "<option value='" . $attributeRow['AttributeID'] . "'>" . $attributeRow['AttributeName'] . "</option>";
+                          }?>
+                        </select>
+                        <button type="submit" class="btn btn-default">Save My Changes</button>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php }?>
         </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php }?>
-</div>
-<!-- /.panel -->
+        <!-- /.panel -->
 
-<!-- /#wrapper -->
-<!-- jQuery -->
-<script src="../vendor/jquery/jquery.min.js"></script>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-<!-- Metis Menu Plugin JavaScript -->
-<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="../dist/js/sb-admin-2.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../dist/js/sb-admin-2.js"></script>
 
-</body>
+      </body>
 
-</html>
+      </html>
