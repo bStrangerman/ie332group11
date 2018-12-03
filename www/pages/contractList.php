@@ -14,14 +14,13 @@ else {
   $_SESSION['redirect'] = 'Location: contractList.php';
   header('Location: login.php');
 }
-// FIXME: currently an error with  Notice: Undefined index: contractInfo in C:\xampp\htdocs\ie332group11\pages\contract.php on line 44
 // Checks if the URL has a contract ID in it
 
 function getContractInfo($UserID){
   return "SELECT *
-  FROM phprbac_users
-  INNER JOIN Contracts
-  ON Contracts.LesseeID = phprbac_users.UserID
+  FROM Contracts
+  INNER JOIN phprbac_users
+  ON phprbac_users.UserID = Contracts.LesseeID
   INNER JOIN Spaces
   ON Contracts.SpaceID = Spaces.SpaceID
   INNER JOIN Warehouses
@@ -33,7 +32,6 @@ function getContractInfo($UserID){
   WHERE Warehouses.OwnerID = $UserID
   ORDER BY StatusTime DESC";
 }
-
 $mainSqlResult = $conn -> query(getContractInfo($UserID));
 
 require_once "../layouts/sb_admin_2/header.php";
@@ -78,6 +76,7 @@ table tr[data-href] {
                 <th>Dates</th>
                 <th>Profit</th>
                 <th>View</th>
+                <th>Review</th>
               </tr>
             </thead>
             <tbody>
@@ -108,6 +107,8 @@ table tr[data-href] {
                   <td><?php echo "$" . round(($row['AmountCharged'] / $feeRate)); ?></td>
                   <td><a href="contract.php?contract=<?php echo $row['ContractID']; ?>">
                     <button class="btn btn-primary">View</button></a></td>
+                  <td><a href="Owner_Survey.php?contract=<?php echo $row['ContractID']; ?>">
+                    <button class="btn btn-primary">Review</button></a></td>
                 </tr>
               <?php $i++;
             } ?>

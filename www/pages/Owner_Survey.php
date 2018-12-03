@@ -1,18 +1,5 @@
-<!--=====================================
-=            TABLE OF NAMES             =
-=========================================
-= own_title -> title of the review      =
-= own_body -> Body of the review        =
-= own_feedback -> Feedback to owner     =
-= own_files -> Review pictures          =
-= own_rating -> overall Rating          =
-=                                       =
-======================================-->
-<!-- The variables for the out of 5 ratings arent in the code. -->
-
 <?php
 require_once "../includes/main.php";
-$_SESSION['UserID'] = 3;
 $UserID = $_SESSION['UserID'];
 
 if(isset($_SESSION['UserID'])){
@@ -26,16 +13,16 @@ if(isset($_SESSION['UserID'])){
     $sql = "SELECT *
     FROM Contracts
     LEFT JOIN Spaces
-    ON Spaces.SpaceID =Contracts.SpaceID
-    LEFT JOIN warehouses
-    ON Warehouses.WarehouseID = Spaces.SpaceID
+    ON Spaces.SpaceID = Contracts.SpaceID
+    LEFT JOIN Warehouses
+    ON Warehouses.WarehouseID = Spaces.WarehouseID
     LEFT JOIN phprbac_users
-    ON phprbac_users.UserID = Contracts.LesseeID
-    WHERE LesseeID = $UserID
-    AND ContractID = $contract";
+    ON phprbac_users.UserID = Warehouses.OwnerID
+    WHERE Warehouses.OwnerID = $UserID
+    AND Contracts.ContractID = $contract";
 
-    $results = $GLOBALS ['conn'] -> query($sql);
-    while($contractInfo[]=mysqli_fetch_array($results));
+    $results = $conn -> query($sql);
+    while($contractInfo[] = mysqli_fetch_array($results));
 
     if(count($contractInfo) <= 1){
       header("Location: index.php");
@@ -75,6 +62,17 @@ require_once "../layouts/sb_admin_2/header.php";
 
 
 ?>
+<!-- =====================================
+=            TABLE OF NAMES             =
+=========================================
+= own_title -> title of the review      =
+= own_body -> Body of the review        =
+= own_feedback -> Feedback to owner     =
+= own_files -> Review pictures          =
+= own_rating -> overall Rating          =
+=                                       =
+======================================-->
+<!-- The variables for the out of 5 ratings arent in the code. -->
 
 
 <!--=========================
@@ -131,7 +129,7 @@ require_once "../layouts/sb_admin_2/header.php";
             <input type="hidden" id="lesseeLastName" name="lesseeLastName" value="<?php echo $ownerInfo[0]['LastName']; ?>">
               <p><strong>Address:</strong> <?php echo $contractInfo[0]['Address']; ?>
               <br><strong>          </strong> <?php  echo $contractInfo[0]['City'] . ", " . $contractInfo[0]['State'] . " " . $contractInfo[0]['ZipCode']; ?> </p>
-              <p><strong>Space Lessee:</strong> <?php echo $contractInfo[0]['FirstName'] . " " . $ownerInfo[0]['LastName']; ?>
+              <p><strong>Space Lessee:</strong> <?php echo $contractInfo[0]['FirstName'] . " " . $contractInfo[0]['LastName']; ?>
               <p><strong>Warehouse Owner:</strong> <?php echo $ownerInfo[0]['FirstName'] . " " . $ownerInfo[0]['LastName']; ?></p>
               <p><strong>Company:</strong> <?php echo $ownerInfo[0]['Company']; ?></p>
               <p><strong>Contract Dates:</strong> <?php echo $contractInfo[0]['StartDate'] . " to " . $contractInfo[0]['EndDate']; ?></p>
