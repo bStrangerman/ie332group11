@@ -37,11 +37,20 @@ require_once "../layouts/sb_admin_2/header.php";
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
-              <i class="fa fa-comments fa-5x"></i>
+              <i class="fa fa-map-marker fa-5x"></i>
             </div>
             <div class="col-xs-9 text-right">
-              <div class="huge">26</div>
-              <div>New Comments!</div>
+              <div class="huge">
+                <?php
+                  $sql = "SELECT COUNT(*) AS countOF
+                          FROM Warehouses
+                          WHERE OwnerID = $UserID";
+                  $result = $conn -> query($sql);
+                  while($row = $result -> fetch_assoc()){
+                    echo $row['countOF'];
+                  }?>
+              </div>
+              <div>Locations</div>
             </div>
           </div>
         </div>
@@ -59,11 +68,24 @@ require_once "../layouts/sb_admin_2/header.php";
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
-              <i class="fa fa-tasks fa-5x"></i>
+              <i class="fa fa-clipboard fa-5x"></i>
             </div>
             <div class="col-xs-9 text-right">
-              <div class="huge">12</div>
-              <div>New Tasks!</div>
+              <div class="huge">
+                <?php
+                  $sql = "SELECT COUNT(*) AS countOF
+                          FROM Contracts
+                          LEFT JOIN Spaces
+                          ON Spaces.SpaceID = Contracts.SpaceID
+                          LEFT JOIN Warehouses
+                          ON Warehouses.WarehouseID = Spaces.SpaceID
+                          WHERE Warehouses.OwnerID = $UserID";
+                  $result = $conn -> query($sql);
+                  while($row = $result -> fetch_assoc()){
+                    echo $row['countOF'];
+                  }?>
+                </div>
+              <div>Contracts</div>
             </div>
           </div>
         </div>
@@ -81,11 +103,34 @@ require_once "../layouts/sb_admin_2/header.php";
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
-              <i class="fa fa-shopping-cart fa-5x"></i>
+              <i class="fa fa-inbox fa-5x"></i>
             </div>
             <div class="col-xs-9 text-right">
-              <div class="huge">124</div>
-              <div>New Orders!</div>
+              <div class="huge">
+                <?php
+                  $sql = "SELECT *
+                          FROM Contracts
+                          LEFT JOIN Spaces
+                          ON Spaces.SpaceID = Contracts.SpaceID
+                          LEFT JOIN Warehouses
+                          ON Warehouses.WarehouseID = Spaces.WarehouseID
+                          LEFT JOIN Contract_Status
+                          ON Contract_Status.ContractID = Contracts.ContractID
+                          LEFT JOIN Status
+                          ON Status.StatusID = Contract_Status.StatusID
+                          WHERE Warehouses.OwnerID = $UserID
+                          ORDER BY Contract_Status.StatusTime DESC";
+
+                  $result = $conn -> query($sql);
+                  $sum = 0;
+                  while($row = $result -> fetch_assoc()){
+                    if($row['StatusName'] == 'Pending')
+                      $sum++;
+                  }
+                  echo $sum;
+                  ?>
+                </div>
+              <div>Pending Contracts</div>
             </div>
           </div>
         </div>
@@ -103,11 +148,37 @@ require_once "../layouts/sb_admin_2/header.php";
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
-              <i class="fa fa-support fa-5x"></i>
+              <i class="fa fa-thumbs-o-up fa-5x"></i>
             </div>
             <div class="col-xs-9 text-right">
-              <div class="huge">13</div>
-              <div>Support Tickets!</div>
+              <div class="huge">
+                <?php
+                $sql = "SELECT COUNT(*) AS countOF
+                        FROM Contracts
+                        LEFT JOIN Spaces
+                        ON Spaces.SpaceID = Contracts.SpaceID
+                        LEFT JOIN Warehouses
+                        ON Warehouses.WarehouseID = Spaces.WarehouseID
+                        WHERE Warehouses.OwnerID = $UserID
+                        AND (
+                          ContractID NOT IN (
+                            SELECT ContractID
+                            FROM Numeric_Contract_Ratings
+                          )
+                          OR
+                          ContractID NOT IN (
+                            SELECT ContractID
+                            FROM Numeric_Contract_Ratings
+                          )
+                        )";
+
+                $result = $conn -> query($sql);
+                while($row = $result -> fetch_assoc()){
+                  echo $row['countOF'];
+                }
+                ?>
+                </div>
+              <div>Reviews</div>
             </div>
           </div>
         </div>
@@ -281,7 +352,7 @@ require_once "../layouts/sb_admin_2/header.php";
                               vAxis: {minValue: 0}
                             };
                             var options_fullStacked = {
-                              isStacked: 'percent',
+                              isStacked: 'true',
                               height: 300,
                               legend: {position: 'top', maxLines: 10},
                               vAxis: {
@@ -294,10 +365,6 @@ require_once "../layouts/sb_admin_2/header.php";
                             chart.draw(data, options);
                           }
                           </script>
-        </div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-          <div id="morris-area-chart"></div>
         </div>
         <!-- /.panel-body -->
       </div>
