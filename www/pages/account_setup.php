@@ -33,23 +33,13 @@ if(isset($_POST['editing'])){
     $sql = "UPDATE phprbac_users
             SET FirstName = '$firstname', LastName = '$lastname', Email = '$email', PhoneNumber = $phonenumber, Company = '$company'
             WHERE UserID = $UserID";
+    for($i = 0; $i < count($_POST['role']); $i++){
+      $rbac->Users->assign($_POST['role'][$i], $UserID = $_SESSION['UserID']);
+    }
     if($conn -> query($sql) === TRUE){
       $_SESSION['message'] = "Success!";
-      header("Refresh: 0.1");
+      header("Location: index.php");
       $_SESSION['message'] = "Success!";
-    }
-  }
-  if($_POST['editing'] == 'password'){
-    if(md5(clean($_POST['current-password'])) == $LesseeInfo[0]['Password']){
-      $newPassword = md5(clean($_POST['new-password']));
-      $sql = "UPDATE phprbac_users
-              SET Password = '$newPassword'
-              WHERE UserID = $UserID";
-      if($conn -> query($sql) === TRUE){
-        $_SESSION['message'] = "Success!";
-        header("Refresh: 0.1");
-        $_SESSION['message'] = "Success!";
-      }
     }
   }
 }
@@ -59,7 +49,53 @@ if(isset($_POST['editing'])){
 require_once "../layouts/Calssimax/header.php";
 
 
-?><!--==================================
+?>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+<!-- Style for image checkbox -->
+<style>
+.nopad {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+/*image gallery*/
+.image-checkbox {
+	cursor: pointer;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border: 4px solid transparent;
+	margin-bottom: 0;
+	outline: 0;
+}
+.image-checkbox input[type="checkbox"] {
+	display: none;
+}
+
+.image-checkbox-checked {
+	border-color: #ff545a;
+  background-color: lightblue;
+}
+.image-checkbox .fa {
+  position: absolute;
+  color: #ff545a;
+  background-color: #fff;
+  padding: 10px;
+  top: 0;
+  right: 0;
+}
+.image-checkbox-checked .fa {
+  display: block !important;
+}
+</style>
+
+<!--
+Image Checkbox Bootstrap template for multiple image selection
+https://www.prepbootstrap.com/bootstrap-template/image-checkbox
+-->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<!--==================================
 =            User Profile            =
 ===================================-->
 
@@ -75,9 +111,8 @@ require_once "../layouts/Calssimax/header.php";
 							<img src="images/user/user-thumb.jpg" alt="" class="rounded-circle">
 						</div> -->
 						<!-- User Name -->
-						<h5 class="text-center"><?php echo $LesseeInfo[0]['UserName']; ?></h5>
+						<h5 class="text-center"><?php echo $LesseeInfo[0]['Username']; ?></h5>
 						<p>Joined <?php echo date("F d, Y" , strtotime($LesseeInfo[0]['CreationDate'])); ?></p>
-						<a href="account_setup.php" class="btn btn-main-sm">Edit Profile</a>
 					</div>
 					<!-- Dashboard Links -->
           <div class="widget user-dashboard-menu">
@@ -95,83 +130,61 @@ require_once "../layouts/Calssimax/header.php";
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
         <!-- Edit Personal Info -->
         <div class="widget personal-info">
-          <h3 class="widget-header user">Edit Personal Information</h3>
+          <h3 class="widget-header user">Set up your account</h3>
           <form method="POST">
             <input type="hidden" name="editing" value="profile">
+            <input type="hidden" name="editing" value="profile">						<!-- First Name -->
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" name="first-name" class="form-control" id="first-name" value="<?php echo $LesseeInfo[0]['FirstName']; ?>">
+            </div>
+            <!-- Last Name -->
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" name="last-name" class="form-control" id="last-name" value="<?php echo $LesseeInfo[0]['LastName']; ?>">
+            </div>
+            <!-- Company -->
+            <div class="form-group">
+                <label for="Company">Company</label>
+                <input type="text" name="Company" class="form-control" id="Company" value="<?php echo $LesseeInfo[0]['Company']; ?>">
+            </div>
+            <div class="form-group">
+                <label for="PhoneNumber">Phone Number</label>
+                <input type="num" maxlength="10" name="PhoneNumber" class="form-control" id="PhoneNumber" value="<?php echo $LesseeInfo[0]['PhoneNumber']; ?>">
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" name="Email" class="form-control" id="Email" value="<?php echo $LesseeInfo[0]['Email']; ?>">
+            </div>
+            <!-- code from https://codepen.io/kskhr/pen/pRwKjg -->
+            <div class="container">
+              <h3>Please Select Your Role(s)</h3>
+              <div class="col-xs-4 col-sm-3 col-md-2">
+              </div>
+              <div class="col-xs-4 col-sm-3 col-md-2 nopad text-center">
+                <label class="image-checkbox">
+                  <img class="img-responsive" src="https://png.pngtree.com/svg/20170426/warehouse_467076.png" />
+                  <p>Warehouse Owner</p>
+                  <input type="checkbox" name="role[]" value="Warehouse_Owner" />
+                  <i class="fa fa-check hidden"></i>
+                </label>
+              </div>
+              <div class="col-xs-4 col-sm-3 col-md-2 nopad text-center">
+                <label class="image-checkbox">
+                  <img class="img-responsive" src="https://static.thenounproject.com/png/111378-200.png" />
+                  <p>Lessee</p>
+                  <input type="checkbox" name="role[]" value="Lessee" />
+                  <i class="fa fa-check hidden"></i>
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <button class="btn btn-transparent">Save My Changes</button>
           </form>
         </div>
       </div>
-			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-				<!-- Edit Personal Info -->
-				<div class="widget personal-info">
-          <h3 style="color: green"><?php echo $_SESSION['message']; unset($_SESSION['message']); ?></h3>
-					<h3 class="widget-header user">Edit Personal Information</h3>
-          <form action="lesseeProfile.php" method="POST">
-            <input type="hidden" name="editing" value="profile">						<!-- First Name -->
-						<div class="form-group">
-						    <label for="first-name">First Name</label>
-						    <input type="text" name="first-name" class="form-control" id="first-name" value="<?php echo $LesseeInfo[0]['FirstName']; ?>">
-						</div>
-						<!-- Last Name -->
-						<div class="form-group">
-						    <label for="last-name">Last Name</label>
-						    <input type="text" name="last-name" class="form-control" id="last-name" value="<?php echo $LesseeInfo[0]['LastName']; ?>">
-						</div>
-						<!-- Company -->
-						<div class="form-group">
-						    <label for="Company">Company</label>
-						    <input type="text" name="Company" class="form-control" id="Company" value="<?php echo $LesseeInfo[0]['Company']; ?>">
-						</div>
-						<!-- File chooser -->
-						<!-- <div class="form-group choose-file">
-							<i class="fa fa-user text-center"></i>
-						    <input type="file" class="form-control-file d-inline" id="input-file">
-						 </div> -->
-						<!-- Comunity Name -->
-						<!-- <div class="form-group">
-						    <label for="comunity-name">Comunity Name</label>
-						    <input type="text" class="form-control" id="comunity-name">
-						</div> -->
-						<!-- Checkbox -->
-						<!-- <div class="form-check">
-						  <label class="form-check-label" for="hide-profile">
-						    <input class="form-check-input" type="checkbox" value="" id="hide-profile">
-						    Hide Profile from Public/Comunity
-						  </label>
-						</div> -->
-						<!-- Phone Number -->
-						<div class="form-group">
-						    <label for="PhoneNumber">Phone Number</label>
-						    <input type="num" maxlength="10" name="PhoneNumber" class="form-control" id="PhoneNumber" value="<?php echo $LesseeInfo[0]['PhoneNumber']; ?>">
-						</div>
-						<!-- Email -->
-						<div class="form-group">
-						    <label for="Email">Email</label>
-						    <input type="email" name="Email" class="form-control" id="Email" value="<?php echo $LesseeInfo[0]['Email']; ?>">
-						</div>
-						<!-- Submit button -->
-						<button class="btn btn-transparent">Save My Changes</button>
-					</form>
-				</div>
-				<!-- Change Password -->
-				<div class="widget change-password">
-					<h3 class="widget-header user">Edit Password</h3>
-					<form action="lesseeProfile.php" method="POST">
-            <input type="hidden" name="editing" value="password">
-						<!-- Current Password -->
-						<div class="form-group">
-              <input type="password" autocomplete="off" name="current-password" class="form-control" id="current-password">
-						</div>
-						<!-- New Password -->
-						<div class="form-group">
-						    <label for="new-password">New Password</label>
-						    <input type="password" autocomplete="off" name="new-password" class="form-control" id="new-password">
-						</div>
-						<!-- Submit Button -->
-						<button class="btn btn-transparent">Change Password</button>
-					</form>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>
@@ -180,88 +193,7 @@ require_once "../layouts/Calssimax/header.php";
 =            Footer            =
 =============================-->
 
-<footer class="footer section section-sm">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0">
-        <!-- About -->
-        <div class="block about">
-          <!-- footer logo -->
-          <img src="images/logo-footer.png" alt="">
-          <!-- description -->
-          <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </div>
-      <!-- Link list -->
-      <div class="col-lg-2 offset-lg-1 col-md-3">
-        <div class="block">
-          <h4>Site Pages</h4>
-          <ul>
-            <li><a href="#">Boston</a></li>
-            <li><a href="#">How It works</a></li>
-            <li><a href="#">Deals & Coupons</a></li>
-            <li><a href="#">Articls & Tips</a></li>
-            <li><a href="#">Terms of Services</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- Link list -->
-      <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
-        <div class="block">
-          <h4>Admin Pages</h4>
-          <ul>
-            <li><a href="#">Boston</a></li>
-            <li><a href="#">How It works</a></li>
-            <li><a href="#">Deals & Coupons</a></li>
-            <li><a href="#">Articls & Tips</a></li>
-            <li><a href="#">Terms of Services</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- Promotion -->
-      <div class="col-lg-4 col-md-7">
-        <!-- App promotion -->
-        <div class="block-2 app-promotion">
-          <a href="">
-            <!-- Icon -->
-            <img src="images/footer/phone-icon.png" alt="mobile-icon">
-          </a>
-          <p>Get the Dealsy Mobile App and Save more</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Container End -->
-</footer>
-<!-- Footer Bottom -->
-<footer class="footer-bottom">
-    <!-- Container Start -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-12">
-          <!-- Copyright -->
-          <div class="copyright">
-            <p>Copyright © 2016. All Rights Reserved</p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-12">
-          <!-- Social Icons -->
-          <ul class="social-media-icons text-right">
-              <li><a class="fa fa-facebook" href=""></a></li>
-              <li><a class="fa fa-twitter" href=""></a></li>
-              <li><a class="fa fa-pinterest-p" href=""></a></li>
-              <li><a class="fa fa-vimeo" href=""></a></li>
-            </ul>
-        </div>
-      </div>
-    </div>
-    <!-- Container End -->
-    <!-- To Top -->
-    <div class="top-to">
-      <a id="top" class="" href=""><i class="fa fa-angle-up"></i></a>
-    </div>
-</footer>
+<?php include_once("../layouts/Calssimax/footer.php"); ?>
 
   <!-- JAVASCRIPTS -->
   <script src="plugins/jquery/jquery.min.js"></script>
@@ -276,8 +208,31 @@ require_once "../layouts/Calssimax/header.php";
   <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
   <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-  <script src="js/scripts.js"></script>
+  <script src="../includes/js/scripts.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+ <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+ <!-- JS for image checkboxes -->
+ <script>
+ // image gallery
+ // init the state from the input
+ $(".image-checkbox").each(function () {
+   if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+     $(this).addClass('image-checkbox-checked');
+   }
+   else {
+     $(this).removeClass('image-checkbox-checked');
+   }
+ });
 
+ // sync the state to the input
+ $(".image-checkbox").on("click", function (e) {
+   $(this).toggleClass('image-checkbox-checked');
+   var $checkbox = $(this).find('input[type="checkbox"]');
+   $checkbox.prop("checked",!$checkbox.prop("checked"))
+
+   e.preventDefault();
+ });
+ </script>
 </body>
 
 </html>
