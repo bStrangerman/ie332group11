@@ -41,21 +41,29 @@ if(!isset($_COOKIE["IP_Data"])){
   setcookie("IP_Data", serialize($geoIP)); //test
   //setcookie("IP_Latitude", $geoIP["latitude"]);  //set LAT
   //setcookie("IP_Longitude", $geoIP["longitude"]);  //set Lon
+  $ip_message = "";
   header("refresh: .1");
+  echo "Please wait while this page reloads";
+  exit;
 }
 
 $IP_Use = unserialize($_COOKIE["IP_Data"]);
+
 //if you need zip do $IP_Use["zip"]
-if(isset($IP_Use['region_name']) == ""){
+if($IP_Use['region_name'] == ""){
   $useThisIP = '96.47.227.24'; // sets an ip address of Miami Florida
   $geoIP = json_decode(file_get_contents("http://api.ipstack.com/" . $useThisIP . "?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
   setcookie("IP_Data", serialize($geoIP)); //test
-header("refresh: .1");
+  $ip_message = "It appears your location cannot be determined. <br> Please try using a VPN to a different location in the United States or using a network outside of Purdue University.<br> For demonstration purposes, Miami, Florida has been set as your location.  <br> Please clear your cookies and change your location to get nearby results. ";
+  header("refresh: .1");
+  echo "Please wait while this page reloads";
+  exit;
 }
 $IP_Use = unserialize($_COOKIE["IP_Data"]);
+
 ?>
 
-<!- template from https://themewagon.com/themes/free-bootstrap-html5-directory-listing-website-template/ -->
+<!-- template from https://themewagon.com/themes/free-bootstrap-html5-directory-listing-website-template/ -->
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -333,17 +341,18 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
   </section><!--/.list-topics-->
   <!--list-topics end-->
 
+<!-- Print out nearby results to the user -->
   <!--nearby start -->
   <section id="nearby" class="explore">
     <div class="container">
       <div class="section-header">
         <h2>nearby</h2>
         <p>Explore nearby and recommended locations</p>
+        <?php echo ($ip_message == "") ? "" : "<p>" . $ip_message . "</p>"; ?>
       </div><!--/.section-header-->
       <div class="explore-content">
 
         <?php
-        echo "lat: " . $lat . " lon: " . $lon . " zip: " . getZip($lat, $lon);
         $results = 1;
         while($results <= 6){?>
           <div class="row">
@@ -351,7 +360,6 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
             $time_pre_dist = microtime(true);
 
             $spaceInfo = getAllSpacesByState($IP_Use['region_name']);
-
             if(isset($_COOKIE['Latitude']))
               $latitude = $_COOKIE['Latitude'];
             elseif(isset($_COOKIE['IP_Data']))
@@ -381,15 +389,7 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
               }
               array_multisort($distance, SORT_ASC, $Utilization, SORT_DESC, $spaceInfo);
             }
-            else{
-              for($i = 0; $i < count($spaceInfo); $i++){
-                $spaceInfo[$i]["Utilization"] = Utilization($spaceInfo[$i]['SpaceID'], time(), time(), 100);
-              }
-              foreach($spaceInfo as $key => $value) {
-                $Utilization[$key] = $value['Utilization'];
-              }
-              array_multisort($Utilization, SORT_DESC, $spaceInfo);
-            }
+
             $time_post = microtime(true);
             $exec_time = $time_post - $time_pre;
             echo "<script>console.log( 'Get Date: " . ($exec_time * 0.000001) . "' );</script>";
