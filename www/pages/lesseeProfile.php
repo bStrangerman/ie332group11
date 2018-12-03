@@ -77,7 +77,7 @@ require_once "../layouts/Calssimax/header.php";
 						<!-- User Name -->
 						<h5 class="text-center"><?php echo $LesseeInfo[0]['FirstName'] . " " . $LesseeInfo[0]['LastName']; ?></h5>
 						<p>Joined <?php echo date("F d, Y" , strtotime($LesseeInfo[0]['CreationDate'])); ?></p>
-						<a href="user-profile.html" class="btn btn-main-sm">Edit Profile</a>
+						<a href="lesseeProfile.php" class="btn btn-main-sm">Edit Profile</a>
 					</div>
 					<!-- Dashboard Links -->
           <div class="widget user-dashboard-menu">
