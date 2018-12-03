@@ -1,0 +1,14 @@
+# Follow symbolic links.
+Options +FollowSymLinks
+
+# Change default directory pages.
+DirectoryIndex www
+
+# Prevent viewing of htaccess file.
+<Files .htaccess>
+    order allow,deny
+    deny from all
+</Files>
+
+# Prevent directory listings
+Options All -Indexes
