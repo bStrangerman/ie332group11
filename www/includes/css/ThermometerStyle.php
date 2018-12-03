@@ -1,11 +1,12 @@
+<style>
 #countdown-wrap {
   width: 100%;
-  height: 300px;
+  height: 10px;
   //border: 1px solid black;
   padding: 20px;
   font-family: arial;
   max-width: 650px;
-  margin: 150px auto 300px;
+  margin: 15px auto 30px;
 }
 
 #goal {
@@ -29,7 +30,7 @@
 
 #progress {
   float: left;
-  width: <?php echo ["$percentage"];?>%;
+  width: <?php echo $percentage;?>%;
   height: 20px;
   background: #FF5D50;
   z-index: 333;
@@ -57,3 +58,4 @@
 .goal-number {
   font-weight: bold;
 }
+</style>

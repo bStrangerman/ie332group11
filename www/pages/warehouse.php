@@ -42,13 +42,13 @@ require_once "../layouts/sb_admin_2/header.php";
             <div class="col-xs-9 text-right">
               <div class="huge">
                 <?php
-                  $sql = "SELECT COUNT(*) AS countOF
-                          FROM Warehouses
-                          WHERE OwnerID = $UserID";
-                  $result = $conn -> query($sql);
-                  while($row = $result -> fetch_assoc()){
-                    echo $row['countOF'];
-                  }?>
+                $sql = "SELECT COUNT(*) AS countOF
+                FROM Warehouses
+                WHERE OwnerID = $UserID";
+                $result = $conn -> query($sql);
+                while($row = $result -> fetch_assoc()){
+                  echo $row['countOF'];
+                }?>
               </div>
               <div>Locations</div>
             </div>
@@ -73,18 +73,18 @@ require_once "../layouts/sb_admin_2/header.php";
             <div class="col-xs-9 text-right">
               <div class="huge">
                 <?php
-                  $sql = "SELECT COUNT(*) AS countOF
-                          FROM Contracts
-                          LEFT JOIN Spaces
-                          ON Spaces.SpaceID = Contracts.SpaceID
-                          LEFT JOIN Warehouses
-                          ON Warehouses.WarehouseID = Spaces.SpaceID
-                          WHERE Warehouses.OwnerID = $UserID";
-                  $result = $conn -> query($sql);
-                  while($row = $result -> fetch_assoc()){
-                    echo $row['countOF'];
-                  }?>
-                </div>
+                $sql = "SELECT COUNT(*) AS countOF
+                FROM Contracts
+                LEFT JOIN Spaces
+                ON Spaces.SpaceID = Contracts.SpaceID
+                LEFT JOIN Warehouses
+                ON Warehouses.WarehouseID = Spaces.SpaceID
+                WHERE Warehouses.OwnerID = $UserID";
+                $result = $conn -> query($sql);
+                while($row = $result -> fetch_assoc()){
+                  echo $row['countOF'];
+                }?>
+              </div>
               <div>Contracts</div>
             </div>
           </div>
@@ -108,28 +108,28 @@ require_once "../layouts/sb_admin_2/header.php";
             <div class="col-xs-9 text-right">
               <div class="huge">
                 <?php
-                  $sql = "SELECT *
-                          FROM Contracts
-                          LEFT JOIN Spaces
-                          ON Spaces.SpaceID = Contracts.SpaceID
-                          LEFT JOIN Warehouses
-                          ON Warehouses.WarehouseID = Spaces.WarehouseID
-                          LEFT JOIN Contract_Status
-                          ON Contract_Status.ContractID = Contracts.ContractID
-                          LEFT JOIN Status
-                          ON Status.StatusID = Contract_Status.StatusID
-                          WHERE Warehouses.OwnerID = $UserID
-                          ORDER BY Contract_Status.StatusTime DESC";
+                $sql = "SELECT *
+                FROM Contracts
+                LEFT JOIN Spaces
+                ON Spaces.SpaceID = Contracts.SpaceID
+                LEFT JOIN Warehouses
+                ON Warehouses.WarehouseID = Spaces.WarehouseID
+                LEFT JOIN Contract_Status
+                ON Contract_Status.ContractID = Contracts.ContractID
+                LEFT JOIN Status
+                ON Status.StatusID = Contract_Status.StatusID
+                WHERE Warehouses.OwnerID = $UserID
+                ORDER BY Contract_Status.StatusTime DESC";
 
-                  $result = $conn -> query($sql);
-                  $sum = 0;
-                  while($row = $result -> fetch_assoc()){
-                    if($row['StatusName'] == 'Pending')
-                      $sum++;
-                  }
-                  echo $sum;
-                  ?>
-                </div>
+                $result = $conn -> query($sql);
+                $sum = 0;
+                while($row = $result -> fetch_assoc()){
+                  if($row['StatusName'] == 'Pending')
+                  $sum++;
+                }
+                echo $sum;
+                ?>
+              </div>
               <div>Pending Contracts</div>
             </div>
           </div>
@@ -154,30 +154,30 @@ require_once "../layouts/sb_admin_2/header.php";
               <div class="huge">
                 <?php
                 $sql = "SELECT COUNT(*) AS countOF
-                        FROM Contracts
-                        LEFT JOIN Spaces
-                        ON Spaces.SpaceID = Contracts.SpaceID
-                        LEFT JOIN Warehouses
-                        ON Warehouses.WarehouseID = Spaces.WarehouseID
-                        WHERE Warehouses.OwnerID = $UserID
-                        AND (
-                          ContractID NOT IN (
-                            SELECT ContractID
-                            FROM Numeric_Contract_Ratings
-                          )
-                          OR
-                          ContractID NOT IN (
-                            SELECT ContractID
-                            FROM Numeric_Contract_Ratings
-                          )
-                        )";
+                FROM Contracts
+                LEFT JOIN Spaces
+                ON Spaces.SpaceID = Contracts.SpaceID
+                LEFT JOIN Warehouses
+                ON Warehouses.WarehouseID = Spaces.WarehouseID
+                WHERE Warehouses.OwnerID = $UserID
+                AND (
+                  ContractID NOT IN (
+                    SELECT ContractID
+                    FROM Numeric_Contract_Ratings
+                  )
+                  OR
+                  ContractID NOT IN (
+                    SELECT ContractID
+                    FROM Numeric_Contract_Ratings
+                  )
+                )";
 
                 $result = $conn -> query($sql);
                 while($row = $result -> fetch_assoc()){
                   echo $row['countOF'];
                 }
                 ?>
-                </div>
+              </div>
               <div>Reviews</div>
             </div>
           </div>
@@ -192,6 +192,53 @@ require_once "../layouts/sb_admin_2/header.php";
       </div>
     </div>
   </div>
+  <?php
+  $sql = "SELECT SUM(AmountCharged) AS Profit, COUNT(*) AS countOF
+  FROM Contracts
+  WHERE ContractID = $UserID";
+
+  $result = $conn -> query($sql);
+  while($row = $result -> fetch_assoc()){
+    $percentage = round((($row['Profit'] / 500000) * 100),2);
+    $profit = round($row['Profit'],2);
+  }
+  include_once "../includes/css/ThermometerStyle.php"; ?>
+
+  <div class="row">
+    <style>
+    div.temp * {
+      font-family: 'Nunito', sans-serif;
+      box-sizing: border-box;
+    }
+
+    div.temp {
+      background-color: #142F4C;
+    }
+    </style>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-bar-chart-o fa-fw"></i> Rewards System
+        </div>
+        <div class="temp panel-body">
+          <div id="countdown-wrap">
+            <div id="goal">$500,000</div>
+            <div id="glass">
+              <div id="progress"></div>
+            </div>
+            <div class="goal-stat">
+              <span class="goal-number"><?php echo $percentage;?>% </span>
+              <span class="goal-label">Funded</span>
+            </div>
+            <div class="goal-stat">
+              <span class="goal-number">$<?php echo $profit;?></span>
+              <span class="goal-label">Raised</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- /.row -->
   <div class="row">
     <div class="col-lg-8">
@@ -201,206 +248,176 @@ require_once "../layouts/sb_admin_2/header.php";
         </div><div class="panel-body">
           <div id ="AreaGraph"></div>
         </div>
-          <?php
-          //Calculates time since account creation
-          $curdate = date("Y/m/d");
-          $diff = $curdate - DATE($StartDate);
-          //Breaks total time into 4 quarters for divisions
-          $DateIncr = $diff / 4;
-          //Each quarter is a separate query to accomodate time difference
-          $quarter1SQL ="SELECT Contracts.AmountCharged, Contracts.SpaceID
-            FROM Contracts
-            LEFT JOIN phprbac_users
-            ON phprbac_users.UserID = $UserID
-            WHERE phprbac_users.CreationDate < StartDate + INTERVAL $DateIncr DAY AND phprbac_users.CreationDate > StartDate
-            AND Contracts.SpaceID IN (
-              SELECT SpaceID
-              FROM Spaces
-              WHERE Spaces.WarehouseID IN (
-                SELECT WarehouseID
-                FROM Warehouses
-                WHERE OwnerID = $UserID
-              )
-            )";
+        <?php
+        //Calculates time since account creation
+        $curdate = date("Y/m/d");
+        $diff = $curdate - DATE($StartDate);
+        //Breaks total time into 4 quarters for divisions
+        $DateIncr = $diff / 4;
+        //Each quarter is a separate query to accomodate time difference
+        $quarter1SQL ="SELECT Contracts.AmountCharged, Contracts.SpaceID
+        FROM Contracts
+        LEFT JOIN phprbac_users
+        ON phprbac_users.UserID = $UserID
+        WHERE phprbac_users.CreationDate < StartDate + INTERVAL $DateIncr DAY AND phprbac_users.CreationDate > StartDate
+        AND Contracts.SpaceID IN (
+          SELECT SpaceID
+          FROM Spaces
+          WHERE Spaces.WarehouseID IN (
+            SELECT WarehouseID
+            FROM Warehouses
+            WHERE OwnerID = $UserID
+          )
+        )";
 
-              $quarter2SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
-              FROM Contracts
-              LEFT JOIN phprbac_users
-              ON phprbac_users.UserID = $UserID
-                WHERE phprbac_users.CreationDate < (StartDate + INTERVAL (2 * $DateIncr) DAY AND phprbac_users.CreationDate > StartDate + INTERVAL $DateIncr DAY)
-                AND Contracts.SpaceID IN (
-                  SELECT SpaceID
-                  FROM Spaces
-                  WHERE Spaces.WarehouseID IN (
-                    SELECT WarehouseID
-                    FROM Warehouses
-                    WHERE OwnerID = $UserID
-                  ))";
+        $quarter2SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
+        FROM Contracts
+        LEFT JOIN phprbac_users
+        ON phprbac_users.UserID = $UserID
+        WHERE phprbac_users.CreationDate < (StartDate + INTERVAL (2 * $DateIncr) DAY AND phprbac_users.CreationDate > StartDate + INTERVAL $DateIncr DAY)
+        AND Contracts.SpaceID IN (
+          SELECT SpaceID
+          FROM Spaces
+          WHERE Spaces.WarehouseID IN (
+            SELECT WarehouseID
+            FROM Warehouses
+            WHERE OwnerID = $UserID
+          ))";
 
-                  $quarter3SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
-                  FROM Contracts
-                  LEFT JOIN phprbac_users
-                  ON phprbac_users.UserID = $UserID
-                    WHERE phprbac_users.CreationDate <
-                    (
-                      StartDate + INTERVAL
-                      (
-                        3 * $DateIncr
-                      )
-                      DAY AND phprbac_users.CreationDate > StartDate + INTERVAL
-                      (
-                        2 * $DateIncr
-                      )
-                      DAY
-                    )
-                    AND Contracts.SpaceID IN
-                    (
-                      SELECT SpaceID
-                      FROM Spaces
-                      WHERE Spaces.WarehouseID IN
-                      (
-                        SELECT WarehouseID
-                        FROM Warehouses
-                        WHERE OwnerID = $UserID
-                      )
-                    )";
+          $quarter3SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
+          FROM Contracts
+          LEFT JOIN phprbac_users
+          ON phprbac_users.UserID = $UserID
+          WHERE phprbac_users.CreationDate <
+          (
+            StartDate + INTERVAL
+            (
+              3 * $DateIncr
+            )
+            DAY AND phprbac_users.CreationDate > StartDate + INTERVAL
+            (
+              2 * $DateIncr
+            )
+            DAY
+          )
+          AND Contracts.SpaceID IN
+          (
+            SELECT SpaceID
+            FROM Spaces
+            WHERE Spaces.WarehouseID IN
+            (
+              SELECT WarehouseID
+              FROM Warehouses
+              WHERE OwnerID = $UserID
+            )
+          )";
 
-                      $quarter4SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
-                      FROM Contracts
-                      LEFT JOIN phprbac_users
-                      ON phprbac_users.UserID = $UserID
-                        WHERE phprbac_users.CreationDate <= $curdate AND phprbac_users.CreationDate > StartDate + INTERVAL
-                        (
-                          3 * $DateIncr
-                        ) DAY
-                        AND Contracts.SpaceID IN
-                        (
-                          SELECT SpaceID
-                          FROM Spaces
-                          WHERE Spaces.WarehouseID IN
-                          (
-                            SELECT WarehouseID
-                            FROM Warehouses
-                            WHERE OwnerID = $UserID
-                          )
-                        )";
-                          $quarter1Result = $conn -> query($quarter1SQL);
-                          $quarter2Result = $conn -> query($quarter2SQL);
-                          $quarter3Result = $conn -> query($quarter3SQL);
-                          $quarter4Result = $conn -> query($quarter4SQL);
+          $quarter4SQL = "SELECT Contracts.AmountCharged, Contracts.SpaceID
+          FROM Contracts
+          LEFT JOIN phprbac_users
+          ON phprbac_users.UserID = $UserID
+          WHERE phprbac_users.CreationDate <= $curdate AND phprbac_users.CreationDate > StartDate + INTERVAL
+          (
+            3 * $DateIncr
+          ) DAY
+          AND Contracts.SpaceID IN
+          (
+            SELECT SpaceID
+            FROM Spaces
+            WHERE Spaces.WarehouseID IN
+            (
+              SELECT WarehouseID
+              FROM Warehouses
+              WHERE OwnerID = $UserID
+            )
+          )";
+          $quarter1Result = $conn -> query($quarter1SQL);
+          $quarter2Result = $conn -> query($quarter2SQL);
+          $quarter3Result = $conn -> query($quarter3SQL);
+          $quarter4Result = $conn -> query($quarter4SQL);
 
-                          ?>
-                          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          ?>
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
           google.charts.load('current', {'packages':['corechart']});
           google.charts.setOnLoadCallback(drawChart);
 
-                          function drawChart() {
-                            var data = google.visualization.arrayToDataTable([
-                              //Each array fills with quarterly earnings by space, dependant upon the time between start and current date
-                              ['Quarter'<?php
-                              $numOfSpaces = $quarter1Result -> num_rows;
-                              while($spaces = $quarter1Result -> fetch_assoc())
-                              echo ', "' . $spaces['SpaceID'] . '"';
-                              ?>],
-                              ['Q1'<?php
-                              $quarter1Result = $conn -> query($quarter1SQL);
-                              if($quarter1Result -> num_rows > 0){
-                                while($quarter1 = $quarter1Result -> fetch_assoc())
-                                echo "," . $quarter1['AmountCharged'];
-                              }
-                              else{
-                                for($i = 0; $i < $numOfSpaces; $i++){
-                                  echo ", 0";
-                                }
-                              }?>],
-                              ['Q2'<?php $quarter2Result = $conn -> query($quarter2SQL);
-                              if($quarter2Result -> num_rows > 0){
-                                while($quarter2 = $quarter2Result -> fetch_assoc())
-                                echo ", " . $quarter2['AmountCharged'];
-                              }
-                              else{
-                                for($i = 0; $i < $numOfSpaces; $i++){
-                                  echo ", 0";
-                                }
-                              }?>],
-                              ['Q3'<?php $quarter3Result = $conn -> query($quarter3SQL);
-                              if($quarter3Result -> num_rows > 0){
-                                while($quarter3 = $quarter3Result -> fetch_assoc())
-                                echo $quarter3['AmountCharged'] . ',';
-                              }
-                              else{
-                                for($i = 0; $i < $numOfSpaces; $i++){
-                                  echo ", 0";
-                                }
-                              }?>],
-                              ['Q4' <?php $quarter4Result = $conn -> query($quarter4SQL);
-                              if($quarter4Result -> num_rows > 0){
-                                while($quarter4 = $quarter4Result -> fetch_assoc())
-                                echo ", " . $quarter4['AmountCharged'];
-                              }
-                              else{
-                                for($i = 0; $i < $numOfSpaces; $i++){
-                                  echo ", 0";
-                                }
-                              }?>]
-                            ]);
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              //Each array fills with quarterly earnings by space, dependant upon the time between start and current date
+              ['Quarter'<?php
+              $numOfSpaces = $quarter1Result -> num_rows;
+              while($spaces = $quarter1Result -> fetch_assoc())
+              echo ', "' . $spaces['SpaceID'] . '"';
+              ?>],
+              ['Q1'<?php
+              $quarter1Result = $conn -> query($quarter1SQL);
+              if($quarter1Result -> num_rows > 0){
+                while($quarter1 = $quarter1Result -> fetch_assoc())
+                echo "," . $quarter1['AmountCharged'];
+              }
+              else{
+                for($i = 0; $i < $numOfSpaces; $i++){
+                  echo ", 0";
+                }
+              }?>],
+              ['Q2'<?php $quarter2Result = $conn -> query($quarter2SQL);
+              if($quarter2Result -> num_rows > 0){
+                while($quarter2 = $quarter2Result -> fetch_assoc())
+                echo ", " . $quarter2['AmountCharged'];
+              }
+              else{
+                for($i = 0; $i < $numOfSpaces; $i++){
+                  echo ", 0";
+                }
+              }?>],
+              ['Q3'<?php $quarter3Result = $conn -> query($quarter3SQL);
+              if($quarter3Result -> num_rows > 0){
+                while($quarter3 = $quarter3Result -> fetch_assoc())
+                echo $quarter3['AmountCharged'] . ',';
+              }
+              else{
+                for($i = 0; $i < $numOfSpaces; $i++){
+                  echo ", 0";
+                }
+              }?>],
+              ['Q4' <?php $quarter4Result = $conn -> query($quarter4SQL);
+              if($quarter4Result -> num_rows > 0){
+                while($quarter4 = $quarter4Result -> fetch_assoc())
+                echo ", " . $quarter4['AmountCharged'];
+              }
+              else{
+                for($i = 0; $i < $numOfSpaces; $i++){
+                  echo ", 0";
+                }
+              }?>]
+            ]);
 
-                            var options = {
-                              title: 'Relatives Earnings by Space',
-                              hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
-                              vAxis: {minValue: 0}
-                            };
-                            var options_fullStacked = {
-                              isStacked: 'relative',
-                              height: 300,
-                              legend: {position: 'top', maxLines: 10},
-                              vAxis: {
-                                minValue: 0,
-                                ticks: [0, .25, .5, .75, 1]
-                              }
-                            };
+            var options = {
+              title: 'Relatives Earnings by Space',
+              hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
+              vAxis: {minValue: 0}
+            };
+            var options_fullStacked = {
+              isStacked: 'relative',
+              height: 300,
+              legend: {position: 'top', maxLines: 10},
+              vAxis: {
+                minValue: 0,
+                ticks: [0, .25, .5, .75, 1]
+              }
+            };
 
-                            var chart = new google.visualization.AreaChart(document.getElementById('AreaGraph'));
-                            chart.draw(data, options);
-                          }
-                          </script>
+            var chart = new google.visualization.AreaChart(document.getElementById('AreaGraph'));
+            chart.draw(data, options);
+          }
+          </script>
         </div>
         <!-- /.panel-body -->
       </div>
     </div>
-    <div id=countdown-wrap>
-    <link rel="stylesheet" type="text/css" href="ThermometerStyle.php">
-      <div id="goal">$500,000</div>
-      <div id="glass">
-        <div id="progress">
-        </div>
-      </div>
-      <?php
-      $sql = "SELECT SUM(AmountCharged), COUNT(*)
-             FROM Contracts
-             WHERE ContractID = $UserID";
 
-      $result = $conn -> query($sql);
-      $percentage = ($result / 500,000);
-      ?>
-      <div class="goal-stat">
-        <span class="goal-number"><?php echo ["$percentage"];?>% </span>
-        <span class="goal-label">Funded</span>
-      </div>
-      <div class="goal-stat">
-        <span class="goal-number"><?php echo ["$result"];?></span>
-        <span class="goal-label">Raised</span>
-      </div>
-      <div class="goal-stat">
-        <span class="goal-number"><div id="countdown"></div></span>
-        <span class="goal-label">Days to Go</span>
-      </div>
-      <div class="goal-stat">
-        <span class="goal-number">38</span>
-        <span class="goal-label">Sponsors</span>
-      </div>
-    </div>
+
     <!-- /.row -->
     <div class="row">
       <div class="col-lg-8">
@@ -409,11 +426,11 @@ require_once "../layouts/sb_admin_2/header.php";
           <div class="panel-heading">
             <i class="fa fa-bar-chart-o fa-fw"></i> Profit By Warehouse
           </div>
-        <!-- /.panel -->
-        <div class="panel-body">
-          <div id="myChart"></div>
+          <!-- /.panel -->
+          <div class="panel-body">
+            <div id="myChart"></div>
+          </div>
         </div>
-      </div>
 
         <?php
         $sqlBarGraph = "SELECT *
