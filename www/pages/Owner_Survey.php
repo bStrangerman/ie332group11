@@ -140,6 +140,7 @@ require_once "../layouts/sb_admin_2/header.php";
               <p><strong>Space Lessee:</strong> <?php echo $lesseeInfo[0]['FirstName'] . " " . $lesseeInfo[0]['LastName']; ?>
               <p><strong>Company:</strong> <?php echo $lesseeInfo[0]['Company']; ?></p>
               <p><strong>Contract Dates:</strong> <?php echo date("m/d/Y", strtotime($contractInfo[0]['StartDate'])) . " to " . date("m/d/Y", strtotime($contractInfo[0]['EndDate'])); ?></p>
+              <p><strong>Contract Details:</strong> <?php echo $contractInfo[0]['ContractInformation']; ?></p>
 
 
 
