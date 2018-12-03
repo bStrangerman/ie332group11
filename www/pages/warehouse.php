@@ -369,6 +369,38 @@ require_once "../layouts/sb_admin_2/header.php";
         <!-- /.panel-body -->
       </div>
     </div>
+    <div id=countdown-wrap>
+    <link rel="stylesheet" type="text/css" href="ThermometerStyle.php">
+      <div id="goal">$500,000</div>
+      <div id="glass">
+        <div id="progress">
+        </div>
+      </div>
+      <?php
+      $sql = "SELECT SUM(AmountCharged), COUNT(*)
+             FROM Contracts
+             WHERE ContractID = $UserID";
+
+      $result = $conn -> query($sql);
+      $percentage = ($result / 500,000);
+      ?>
+      <div class="goal-stat">
+        <span class="goal-number"><?php echo ["$percentage"];?>% </span>
+        <span class="goal-label">Funded</span>
+      </div>
+      <div class="goal-stat">
+        <span class="goal-number"><?php echo ["$result"];?></span>
+        <span class="goal-label">Raised</span>
+      </div>
+      <div class="goal-stat">
+        <span class="goal-number"><div id="countdown"></div></span>
+        <span class="goal-label">Days to Go</span>
+      </div>
+      <div class="goal-stat">
+        <span class="goal-number">38</span>
+        <span class="goal-label">Sponsors</span>
+      </div>
+    </div>
     <!-- /.row -->
     <div class="row">
       <div class="col-lg-8">
