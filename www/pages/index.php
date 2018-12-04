@@ -341,6 +341,91 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
   </section><!--/.list-topics-->
   <!--list-topics end-->
 
+
+  <!-- statistics strat -->
+  <section id="statistics"  class="statistics">
+    <div class="container">
+      <div class="statistics-counter">
+        <div class="col-md-3 col-sm-6">
+          <div class="single-ststistics-box">
+            <div class="statistics-content">
+              <div class="counter">
+                <?php
+                // display number of listings
+                $sql1 = "SELECT COUNT(*) AS countOF
+                         FROM Spaces";
+                $result1 = $conn -> query($sql1);
+                while($row1 = $result1 -> fetch_assoc()){
+                  echo $row1['countOF'];
+                }
+                ?>
+              </div> <span></span>
+            </div><!--/.statistics-content-->
+            <h3>listings</h3>
+          </div><!--/.single-ststistics-box-->
+        </div><!--/.col-->
+        <div class="col-md-3 col-sm-6">
+          <div class="single-ststistics-box">
+            <div class="statistics-content">
+              <div class="counter">
+              <?php
+              // display number of categories
+              $sql2 = "SELECT COUNT(*) AS countOF
+                       FROM Attributes";
+                       $result2 = $conn -> query($sql2);
+                       while($row2 = $result2 -> fetch_assoc()){
+                         echo $row2['countOF'];
+                       }
+              ?>
+            </div> <span></span>
+            </div><!--/.statistics-content-->
+            <h3>listing categories</h3>
+          </div><!--/.single-ststistics-box-->
+        </div><!--/.col-->
+        <div class="col-md-3 col-sm-6">
+          <div class="single-ststistics-box">
+            <div class="statistics-content">
+              <div class="counter">
+                <?php
+                // display number of contracts
+                $sql3 = "SELECT COUNT(*) AS countOF
+                         FROM Contracts";
+                         $result3 = $conn -> query($sql3);
+                         while($row3 = $result3 -> fetch_assoc()){
+                           echo $row3['countOF'];
+                         }
+                ?>
+              </div> <span></span>
+            </div><!--/.statistics-content-->
+            <h3>visitors</h3>
+          </div><!--/.single-ststistics-box-->
+        </div><!--/.col-->
+        <div class="col-md-3 col-sm-6">
+          <div class="single-ststistics-box">
+            <div class="statistics-content">
+              <div class="counter">
+                <?php
+                // display number of users
+                $sql4 = "SELECT COUNT(*) AS countOF
+                         FROM phprbac_users";
+                         $result4 = $conn -> query($sql4);
+                         while($row4 = $result4 -> fetch_assoc()){
+                           echo $row4['countOF'];
+                         }
+                ?>
+              </div> <span></span>
+            </div><!--/.statistics-content-->
+            <h3>happy clients</h3>
+          </div><!--/.single-ststistics-box-->
+        </div><!--/.col-->
+      </div><!--/.statistics-counter-->
+    </div><!--/.container-->
+
+  </section><!--/.counter-->
+  <!-- statistics end -->
+
+
+
 <!-- Print out nearby results to the user -->
   <!--nearby start -->
   <section id="nearby" class="explore">
@@ -667,3 +752,5 @@ function limitTextLength($string, $length){
   return $string;
 }
 ?>
+
+6
