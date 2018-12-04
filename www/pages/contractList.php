@@ -30,7 +30,7 @@ function getContractInfo($UserID){
   INNER JOIN Contract_Status
   ON Contract_Status.ContractID = Contracts.ContractID
   INNER JOIN Status
-  ON Status.StatusID = Contract_Status.StatusID " . ((!$root) ? " ORDER BY StatusTime DESC" : "AND Warehouses.OwnerID = $UserID ORDER BY Contracts.ContractID ASC");
+  ON Status.StatusID = Contract_Status.StatusID " . ((!$root) ? " ORDER BY Contracts.ContractID ASC" : "AND Warehouses.OwnerID = $UserID ORDER BY StatusTime DESC");
 }
 $mainSqlResult = $conn -> query(getContractInfo($UserID));
 

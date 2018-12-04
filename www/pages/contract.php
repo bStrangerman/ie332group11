@@ -6,7 +6,7 @@ $root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
 
 if (isset($_SESSION['UserID'])) {
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) || !$root)
-  header('Location: pages/index.php');
+  header('Location: index.php');
   else
   $UserID = $_SESSION['UserID'];
 }

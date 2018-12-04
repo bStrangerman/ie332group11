@@ -2,8 +2,11 @@
 require_once "../includes/main.php";
 include_once "../includes/contracts.php";
 
+// checks if user has proper roles
+$root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
+
 if (isset($_SESSION['UserID'])) {
-  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID'])) {
+  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) || !$root) {
     header('Location: login.php');
     $_SESSION['redirect'] = 'Location: warehouse.php';
   }
@@ -42,9 +45,9 @@ require_once "../layouts/sb_admin_2/header.php";
             <div class="col-xs-9 text-right">
               <div class="huge">
                 <?php
+                // print number of locations
                 $sql = "SELECT COUNT(*) AS countOF
-                FROM Warehouses
-                WHERE OwnerID = $UserID";
+                FROM Warehouses " . (($root) ? "" : " WHERE OwnerID = $UserID");
                 $result = $conn -> query($sql);
                 while($row = $result -> fetch_assoc()){
                   echo $row['countOF'];
@@ -78,8 +81,7 @@ require_once "../layouts/sb_admin_2/header.php";
                 LEFT JOIN Spaces
                 ON Spaces.SpaceID = Contracts.SpaceID
                 LEFT JOIN Warehouses
-                ON Warehouses.WarehouseID = Spaces.SpaceID
-                WHERE Warehouses.OwnerID = $UserID";
+                ON Warehouses.WarehouseID = Spaces.SpaceID " . (($root) ? "" : " WHERE Warehouses.OwnerID = $UserID");
                 $result = $conn -> query($sql);
                 while($row = $result -> fetch_assoc()){
                   echo $row['countOF'];
@@ -117,9 +119,9 @@ require_once "../layouts/sb_admin_2/header.php";
                 LEFT JOIN Contract_Status
                 ON Contract_Status.ContractID = Contracts.ContractID
                 LEFT JOIN Status
-                ON Status.StatusID = Contract_Status.StatusID
+                ON Status.StatusID = Contract_Status.StatusID " . (($root) ? "" : "
                 WHERE Warehouses.OwnerID = $UserID
-                ORDER BY Contract_Status.StatusTime DESC";
+                ORDER BY Contract_Status.StatusTime DESC");
 
                 $result = $conn -> query($sql);
                 $sum = 0;
@@ -158,9 +160,8 @@ require_once "../layouts/sb_admin_2/header.php";
                 LEFT JOIN Spaces
                 ON Spaces.SpaceID = Contracts.SpaceID
                 LEFT JOIN Warehouses
-                ON Warehouses.WarehouseID = Spaces.WarehouseID
-                WHERE Warehouses.OwnerID = $UserID
-                AND (
+                ON Warehouses.WarehouseID = Spaces.WarehouseID " . (($root) ?
+                "WHERE ( " : "WHERE Warehouses.OwnerID = $UserID AND ( ") . "
                   ContractID NOT IN (
                     SELECT ContractID
                     FROM Numeric_Contract_Ratings
