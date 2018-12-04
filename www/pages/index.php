@@ -587,7 +587,7 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
         <div class="col-sm-9">
           <ul class="footer-menu-item">
             <li class="scroll"><a href="#explore">Nearby</a></li>
-            <li class="scroll"><a href="#contact">contact</a></li>
+            <li><a href="contact.php">contact</a></li>
             <?php if($warehouseRole) {?>
               <li><a href="warehouse.php">Dashboard</a></li>
             <?php } else if($LesseeRole) {?>
