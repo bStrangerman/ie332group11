@@ -154,7 +154,6 @@ require_once "../layouts/sb_admin_2/header.php";
                     if(!$root){
                       $ownerID = $UserID;
                     }
-                    array_print($ownerID);
                     echo "
                     <div class='form-group'>
                     <label for='disabledSelect'>Warehouse Location</label>

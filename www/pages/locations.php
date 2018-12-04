@@ -84,7 +84,10 @@ require_once "../layouts/sb_admin_2/header.php";
                 <?php
 
                 $warehouse = "";
-                while($mainSqlResult = $mainSqlMidResult -> fetch_assoc()){?>
+                while($mainSqlResult = $mainSqlMidResult -> fetch_assoc()){
+                  array_print($mainSqlResult);
+                  if($mainSQLResult['SpaceID'] != ""){
+                  ?>
                   <tr>
                     <?php
                     $warehouseID = $mainSqlResult['WarehouseID'];
@@ -202,7 +205,7 @@ require_once "../layouts/sb_admin_2/header.php";
                               <button class="btn btn-outline btn-primary">Edit</button></a>
                             </td>
                           </tr>
-                          <?php
+                        <?php }
                           $warehouse = $mainSqlResult['WarehouseID'];
                         }
                         // print out the rest of the spaces for this warehouse

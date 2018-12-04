@@ -1,8 +1,11 @@
 <?php
 require_once "../includes/main.php";
+// checks if they are a proper user
+$root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
+
 // checks if the user is logged in and is a warehouse owner
 if (isset($_SESSION['UserID'])) {
-  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
+  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) && !$root)
   header('Location: index.php');
   else
   $UserID = $_SESSION['UserID'];
@@ -26,8 +29,8 @@ else if(isset($_GET['edit']) && $_GET['edit'] == 1){
     // Checks if this user owns this warehouse
     $warehouseExistsSQL = "SELECT COUNT(*) AS CountOF
     FROM Warehouses
-    WHERE Warehouses.WarehouseID = $warehouseID
-    AND Warehouses.OwnerID = $UserID";
+    WHERE Warehouses.WarehouseID = $warehouseID " . (($root) ? "" : "
+    AND Warehouses.OwnerID = $UserID");
 
     $warehouseExistsResult = $conn -> query($warehouseExistsSQL);
     while ($warehouseExists = $warehouseExistsResult -> fetch_assoc()) {
@@ -40,12 +43,13 @@ else if(isset($_GET['edit']) && $_GET['edit'] == 1){
     WHERE Warehouses.WarehouseID = $warehouseID";
     $warehouseResult = $conn -> query($warehouseSQL);
     while($warehouse[]=mysqli_fetch_array($warehouseResult));
+    $ownerID = $warehouse[0]['OwnerID'];
 
     // Checks if this user owns this warehouse
     $warehouseExistsSQL = "SELECT COUNT(*) AS CountOF
     FROM Warehouses
     WHERE Warehouses.WarehouseID = $warehouseID
-    AND Warehouses.OwnerID = $UserID";
+    AND Warehouses.OwnerID = $ownerID";
 
     $warehouseExistsResult = $conn -> query($warehouseExistsSQL);
     while ($warehouseExists = $warehouseExistsResult -> fetch_assoc()) {
@@ -374,7 +378,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                 Spaces in this Warehouse
                 <div class="pull-right">
                 <div class="btn-group">
-                  <a href="editSpace.php?add=1&warehouse=<?php echo $warerhouseID; ?>">
+                  <a href="editSpace.php?add=1&warehouse=<?php echo $warehouseID; ?>">
                     <button type="button" class="btn btn-default btn-xs">
                       Add Space
                     </button>
@@ -407,7 +411,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                                 <td><?php echo $spaceRow['MonthlyPrice']; ?></td>
                                 <td><?php echo $spaceRow['SpaceInformation']; ?></td>
                                 <td>
-                                  <a href="editLocation.php?space=<?php echo $spaceRow['SpaceID']; ?>">
+                                  <a href="editSpace.php?edit=1&space=<?php echo $spaceRow['SpaceID']; ?>">
                                     <button class="btn btn-outline btn-primary">
                                       Edit
                                     </button>
