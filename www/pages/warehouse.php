@@ -7,7 +7,7 @@ $root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
 
 if (isset($_SESSION['UserID'])) {
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) || !$root) {
-    header('Location: login.php');
+    // header('Location: login.php');
     $_SESSION['redirect'] = 'Location: warehouse.php';
   }
 }

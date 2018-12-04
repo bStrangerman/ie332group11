@@ -169,9 +169,9 @@ require_once "../layouts/sb_admin_2/header.php";
                             while($status = $statusResult -> fetch_assoc()){
                               $isThere_aStatus = TRUE;  //set status as true
                               if(isset($status['ContractID'])){
-                                $date_diff_future = date_diff(date_create(date("Y-m-d")), date_create(date("Y-m-d",strtotime($status['StartDate']))))->format("%R%a");
+                                $date_diff_future = date_diff(date_create(date("Y-m-d",strtotime($status['StartDate']))), date_create(date("Y-m-d")))->format("%R%a");
                                 $date_diff_past = date_diff(date_create(date("Y-m-d",strtotime($status['EndDate']))), date_create(date("Y-m-d")))->format("%R%a");
-
+                                echo "future: " . $date_diff_future . " past: " . $date_diff_past . "<br>";
                                 if($date_diff_future <= 0 && $date_diff_past <= 0){
                                   echo "Currently being leased";
                                   break;
@@ -252,8 +252,9 @@ require_once "../layouts/sb_admin_2/header.php";
                               while($status = $statusResult -> fetch_assoc()){
                                 $isThere_aStatus = TRUE;  //set status as true
                                 if(isset($status['ContractID'])){
-                                  $date_diff_future = date_diff(date_create(date("Y-m-d")), date_create(date("Y-m-d",strtotime($status['StartDate']))))->format("%R%a");
+                                  $date_diff_future = date_diff(date_create(date("Y-m-d",strtotime($status['StartDate']))), date_create(date("Y-m-d")))->format("%R%a");
                                   $date_diff_past = date_diff(date_create(date("Y-m-d",strtotime($status['EndDate']))), date_create(date("Y-m-d")))->format("%R%a");
+                                  echo "future: " . $date_diff_future . " past: " . $date_diff_past . "<br>";
 
                                   if($date_diff_future <= 0 && $date_diff_past <= 0){
                                     echo "Currently being leased";

@@ -1,9 +1,12 @@
 <?php
 require_once "../includes/main.php";
 array_print($_POST);
+// checks if they are a proper user
+$root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
+
 // checks if the user is logged in and is a warehouse owner
 if (isset($_SESSION['UserID'])) {
-  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
+  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) || !$root)
   header('Location: index.php');
   else
   $UserID = $_SESSION['UserID'];
@@ -28,13 +31,13 @@ else if(isset($_GET['edit']) && $_GET['edit'] == 1){
     FROM Spaces
     LEFT JOIN Warehouses
     ON Warehouses.WarehouseID = Spaces.WarehouseID
-    WHERE Spaces.SpaceID = $spaceID
-    AND Warehouses.OwnerID = $UserID";
+    WHERE Spaces.SpaceID = $spaceID " . (($root) ? "" : "
+    AND Warehouses.OwnerID = $UserID");
 
     $spaceExistsResult = $conn -> query($spaceExistsSQL);
     while ($spaceExists = $spaceExistsResult -> fetch_assoc()) {
       if($spaceExists['CountOF'] == 0){
-        header('Location: locations.php');
+        // header('Location: locations.php');
       }
     }
     $spaceSQL = "SELECT *
@@ -44,6 +47,8 @@ else if(isset($_GET['edit']) && $_GET['edit'] == 1){
     WHERE Spaces.SpaceID = $spaceID";
     $spaceResult = $conn -> query($spaceSQL);
     while($space[]=mysqli_fetch_array($spaceResult));
+    $ownerID = $space[0]['OwnerID'];
+
   }
 }
 else{
@@ -52,6 +57,7 @@ else{
 
 if(isset($_POST['editing']) && !isset($_GET['add'])){
   if($_POST['editing'] == 'space'){
+    $warehouseID = clean($_POST['warehouseID']);
     $spaceID = clean($_POST['spaceID']);
     $size = clean($_POST['size']);
     $monthlyPrice = clean($_POST['monthlyPrice']);
@@ -59,6 +65,7 @@ if(isset($_POST['editing']) && !isset($_GET['add'])){
     $sql = "UPDATE Spaces
     SET WarehouseID = $warehouseID, SpaceSize = $size, MonthlyPrice = $monthlyPrice, SpaceInformation = '$info'
     WHERE SpaceID = $spaceID";
+    echo $sql;
     if($conn -> query($sql) === TRUE){
       $_SESSION['message'] = "Success!";
       header("Refresh: 0.1");
@@ -116,7 +123,7 @@ require_once "../layouts/sb_admin_2/header.php";
     <!-- /.row -->
     <div class="row">
       <div class="col-lg-12">
-        <div class="panel panel-<?php echo ($_SESSION['message'] == 'Success!' && ($_POST['editing'] == 'warehouse')) ? "success" : "default"; unset($_SESSION['message']); ?>">
+        <div class="panel panel-<?php echo ($_SESSION['message'] == 'Success!' && ($_POST['editing'] == 'space')) ? "success" : "default"; unset($_SESSION['message']); ?>">
           <div class="panel-heading">
             Space Details
           </div>
@@ -124,31 +131,31 @@ require_once "../layouts/sb_admin_2/header.php";
             <div class="row">
               <div class="col-lg-12">
                 <form role="form" method="POST">
-                  <input type="hidden" name="editing" value="warehouse">
+                  <input type="hidden" name="editing" value="space">
+                  <input type="hidden" name="space" value="<?php echo $space[0]['SpaceID']; ?>">
                   <?php
-                  if($method == "edit") {
+                  if($method == "edit" && !$root) {
                     echo "
                     <fieldset disabled>
                     <div class='form-group'>
                     <label for='disabledSelect'>Warehouse Location</label>
                     <select id='disabledSelect' class='form-control'>
-                    <option>" . $space[0]['Address'] . "</option>
+                    <option value = '" . $space[0]['WarehouseID'] . "'>" . $space[0]['Address'] . "</option>
                     </select>
                     </div>
                     </fieldset>";
                   }
-                  else if($method == "add") {
+                  else if(($method == "add") || ($method == "edit" && $root)) {
                     echo "
                     <div class='form-group'>
                     <label for='disabledSelect'>Warehouse Location</label>
-                    <select id='disabledSelect' class='form-control'>";
-
+                    <select id='disabledSelect' class='form-control' name='warehouseID'>";
                     $sql = "SELECT *
                     FROM Warehouses
-                    WHERE OwnerID = $UserID";
+                    WHERE OwnerID = $ownerID";
                     $result = $conn -> query($sql);
                     while($row = $result -> fetch_assoc()){
-                      echo "<option>";
+                      echo "<option value = '" . $row['WarehouseID'] . "' " . ($row['WarehouseID'] == $space[0]['WarehouseID'] ? "selected" : "") . " >";
                       echo $row['Address'];
                       echo "</option>";
                     }

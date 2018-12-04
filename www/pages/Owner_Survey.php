@@ -3,7 +3,7 @@ require_once "../includes/main.php";
 $UserID = $_SESSION['UserID'];
 
 if(isset($_SESSION['UserID'])){
-  if(!$rbac->Users->hasRole('Lessee', $UserID = $_SESSION['UserID'])){
+  if(!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID'])){
     header('Location: warehouse.php');
   }
   else if (isset($_GET['contract'])){
