@@ -234,7 +234,6 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
           <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
             <li class=" scroll active"><a href="#home">home</a></li>
             <li class="scroll"><a href="#nearby">nearby</a></li>
-            <li class="scroll"><a href="#reviews">review</a></li>
             <?php if($warehouseRole) {?>
               <li><a href="warehouse.php">My Account</a></li>
             <?php } else if($LesseeRole) {?>
@@ -501,16 +500,14 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
         </div>
         <div class="col-sm-9">
           <ul class="footer-menu-item">
-            <li class="scroll"><a href="#explore">explore</a></li>
-            <li class="scroll"><a href="#reviews">review</a></li>
-            <li class="scroll"><a href="#blog">blog</a></li>
+            <li class="scroll"><a href="#explore">Nearby</a></li>
             <li class="scroll"><a href="#contact">contact</a></li>
             <?php if($warehouseRole) {?>
-              <li><a href="warehouse.php">My Account</a></li>
+              <li><a href="warehouse.php">Dashboard</a></li>
             <?php } else if($LesseeRole) {?>
-              <li><a href="lesseeAccount.php">My Account</a></li>
+              <li><a href="lesseeAccount.php">Dashboard</a></li>
             <?php } else { ?>
-              <a class="nav-link" href="login.php">Dashboard</a>
+              <li><a href="login.php">My Account</a></li>
             <?php } ?>
           </ul><!--/.nav -->
         </div>
@@ -526,8 +523,8 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
         <div class="col-sm-7">
           <div class="footer-social">
             <span><i class="fa fa-phone"> +1  (123) 456 7890</i></span>
-            <a class="fa fa-facebook" href="https://www.facebook.com/AtCapacity-339587599924715"></a>
-            <a class="fa fa-twitter" href="https://twitter.com/capacity_332"></a>
+            <a href="https://www.facebook.com/AtCapacity-339587599924715">F</a>
+            <a href="https://twitter.com/capacity_332">T</a>
             <!-- <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#"><i class="fa fa-google-plus"></i></a> -->
           </div>
