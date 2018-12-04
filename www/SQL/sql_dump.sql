@@ -1385,477 +1385,477 @@ CREATE TABLE IF NOT EXISTS Warehouses (
               (156, 93, '1718 N Fry Rd', NULL, 'Houston', 'Texas', 18330, 0.000000, 0.000000, ''),
               (157, 132, '827 W 34th St', NULL, 'Houston', 'Texas', 5500, 0.000000, 0.000000, '');
 
-UPDATE Warehouses
-SET Latitude = '32.72665', Longitude = '-97.61729'
-   WHERE WarehouseID = 1;
-UPDATE Warehouses
-SET Latitude = '39.76821', Longitude = '-84.21908'
-  WHERE WarehouseID = 2;
-UPDATE Warehouses
-SET Latitude = '41.12918', Longitude = '-104.73972'
-  WHERE WarehouseID = 3;
-UPDATE Warehouses
-SET Latitude = '32.58496', Longitude = '-96.86586'
-  WHERE WarehouseID = 4;
-UPDATE Warehouses
-SET Latitude = '49.31658', Longitude = '-123.07943'
-  WHERE WarehouseID = 5;
-UPDATE Warehouses
-SET Latitude = '44.33557', Longitude = '-105.52237'
-  WHERE WarehouseID = 6;
-UPDATE Warehouses
-SET Latitude = '44.32147', Longitude = '-105.52941'
-  WHERE WarehouseID = 7;
-UPDATE Warehouses
-SET Latitude = '41.11075', Longitude = '-104.83266'
-  WHERE WarehouseID = 8;
-UPDATE Warehouses
-SET Latitude = '41.1397', Longitude = '-104.7037'
-  WHERE WarehouseID = 9;
-UPDATE Warehouses
-SET Latitude = '25.82325', Longitude = '-80.30003'
-  WHERE WarehouseID = 10;
-UPDATE Warehouses
-SET Latitude = '43.68767', Longitude = '-79.35319'
-  WHERE WarehouseID = 11;
-UPDATE Warehouses
-SET Latitude = '41.13111', Longitude = '-104.83022'
-  WHERE WarehouseID = 12;
-UPDATE Warehouses
-SET Latitude = '42.86447', Longitude = '-106.3472'
-  WHERE WarehouseID = 13;
-UPDATE Warehouses
-SET Latitude = '39.63149', Longitude = '-85.45454'
-  WHERE WarehouseID = 14;
-UPDATE Warehouses
-SET Latitude = '42.85297', Longitude = '-106.30181'
-  WHERE WarehouseID = 15;
-UPDATE Warehouses
-SET Latitude = '30.85063', Longitude = '-87.778'
-  WHERE WarehouseID = 16;
-UPDATE Warehouses
-SET Latitude = '44.29803', Longitude = '-105.52847'
-  WHERE WarehouseID = 17;
-UPDATE Warehouses
-SET Latitude = '41.35628', Longitude = '-88.36401'
-  WHERE WarehouseID = 18;
-UPDATE Warehouses
-SET Latitude = '44.29878', Longitude = '-105.5279'
-  WHERE WarehouseID = 19;
-UPDATE Warehouses
-SET Latitude = '44.29858', Longitude = '-105.52808'
-  WHERE WarehouseID = 20;
-UPDATE Warehouses
-SET Latitude = '46.87908', Longitude = '-114.01947'
-  WHERE WarehouseID = 21;
-UPDATE Warehouses
-SET Latitude = '45.75', Longitude = '-108.58229'
-  WHERE WarehouseID = 22;
-UPDATE Warehouses
-SET Latitude = '45.75313', Longitude = '-108.55008'
-  WHERE WarehouseID = 23;
-UPDATE Warehouses
-SET Latitude = '45.70485', Longitude = '-111.18786'
-  WHERE WarehouseID = 24;
-UPDATE Warehouses
-SET Latitude = '46.93196', Longitude = '-114.09733'
-  WHERE WarehouseID = 25;
-UPDATE Warehouses
-SET Latitude = '33.75055', Longitude = '-80.21884'
-  WHERE WarehouseID = 26;
-UPDATE Warehouses
-SET Latitude = '45.6995', Longitude = '-111.04392'
-  WHERE WarehouseID = 27;
-UPDATE Warehouses
-SET Latitude = '49.24175', Longitude = '-98.53916'
-  WHERE WarehouseID = 28;
-UPDATE Warehouses
-SET Latitude = '30.58237', Longitude = '-91.1584'
-  WHERE WarehouseID = 29;
-UPDATE Warehouses
-SET Latitude = '46.53843', Longitude = '-111.94675'
-  WHERE WarehouseID = 30;
-UPDATE Warehouses
-SET Latitude = '30.40067', Longitude = '-90.08764'
-  WHERE WarehouseID = 31;
-UPDATE Warehouses
-SET Latitude = '29.18575', Longitude = '-82.17498'
-  WHERE WarehouseID = 32;
-UPDATE Warehouses
-SET Latitude = '43.75127', Longitude = '-79.46878'
-  WHERE WarehouseID = 33;
-UPDATE Warehouses
-SET Latitude = '41.24594', Longitude = '-89.93413'
-  WHERE WarehouseID = 34;
-UPDATE Warehouses
-SET Latitude = '47.48728', Longitude = '-111.35157'
-  WHERE WarehouseID = 35;
-UPDATE Warehouses
-SET Latitude = '36.73725', Longitude = '-84.94483'
-  WHERE WarehouseID = 36;
-UPDATE Warehouses
-SET Latitude = '45.70229', Longitude = '-108.62213'
-  WHERE WarehouseID = 37;
-UPDATE Warehouses
-SET Latitude = '45.75644', Longitude = '-108.65107'
-  WHERE WarehouseID = 38;
-UPDATE Warehouses
-SET Latitude = '61.3308', Longitude = '-149.5552'
-  WHERE WarehouseID = 39;
-UPDATE Warehouses
-SET Latitude = '61.57608', Longitude = '-149.64227'
-  WHERE WarehouseID = 40;
-UPDATE Warehouses
-SET Latitude = '61.61127', Longitude = '-149.33096'
-  WHERE WarehouseID = 41;
-UPDATE Warehouses
-SET Latitude = '61.14929', Longitude = '-149.84259'
-  WHERE WarehouseID = 42;
-UPDATE Warehouses
-SET Latitude = '64.81864', Longitude = '-147.75049'
-  WHERE WarehouseID = 43;
-UPDATE Warehouses
-SET Latitude = '61.22669', Longitude = '-149.84547'
-  WHERE WarehouseID = 44;
-UPDATE Warehouses
-SET Latitude = '61.16466', Longitude = '-149.88215'
-  WHERE WarehouseID = 45;
-UPDATE Warehouses
-SET Latitude = '61.147941', Longitude = '-149.84507'
-  WHERE WarehouseID = 46;
-UPDATE Warehouses
-SET Latitude = '61.175813', Longitude = '-149.96199'
-  WHERE WarehouseID = 47;
-UPDATE Warehouses
-SET Latitude = '60.485708', Longitude = '-151.19443'
-  WHERE WarehouseID = 48;
-UPDATE Warehouses
-SET Latitude = '60.725271', Longitude = '-151.31334'
-  WHERE WarehouseID = 49;
-UPDATE Warehouses
-SET Latitude = '61.158998', Longitude = '-149.83281'
-  WHERE WarehouseID = 50;
-UPDATE Warehouses
-SET Latitude = '60.515033', Longitude = '-151.1938'
-  WHERE WarehouseID = 51;
-UPDATE Warehouses
-SET Latitude = '64.798346', Longitude = '-147.54955'
-  WHERE WarehouseID = 52;
-UPDATE Warehouses
-SET Latitude = '61.12677', Longitude = '-149.87671'
-  WHERE WarehouseID = 53;
-UPDATE Warehouses
-SET Latitude = '64.848906', Longitude = '-147.72692'
-  WHERE WarehouseID = 54;
-UPDATE Warehouses
-SET Latitude = '61.162679', Longitude = '-149.88943'
-  WHERE WarehouseID = 55;
-UPDATE Warehouses
-SET Latitude = '61.220497', Longitude = '-149.82731'
-  WHERE WarehouseID = 56;
-UPDATE Warehouses
-SET Latitude = '46.87659', Longitude = '-96.811328'
-  WHERE WarehouseID = 57;
-UPDATE Warehouses
-SET Latitude = '47.372021', Longitude = '-102.739605'
-  WHERE WarehouseID = 58;
-UPDATE Warehouses
-SET Latitude = '48.387342', Longitude = '-102.93453'
-  WHERE WarehouseID = 59;
-UPDATE Warehouses
-SET Latitude = '48.13185', Longitude = '-103.72228'
-  WHERE WarehouseID = 60;
-UPDATE Warehouses
-SET Latitude = '48.131289', Longitude = '-103.72226'
-  WHERE WarehouseID = 61;
-UPDATE Warehouses
-SET Latitude = '48.150034', Longitude = '-103.71893'
-  WHERE WarehouseID = 62;
-UPDATE Warehouses
-SET Latitude = '47.780393', Longitude = '-103.41866'
-  WHERE WarehouseID = 63;
-UPDATE Warehouses
-SET Latitude = '48.193629', Longitude = '-103.65606'
-  WHERE WarehouseID = 64;
-UPDATE Warehouses
-SET Latitude = '46.292041', Longitude = '-96.611686'
-  WHERE WarehouseID = 65;
-UPDATE Warehouses
-SET Latitude = '48.1476', Longitude = '-103.6181'
-  WHERE WarehouseID = 66;
-UPDATE Warehouses
-SET Latitude = '48.233754', Longitude = '-101.22911'
-  WHERE WarehouseID = 67;
-UPDATE Warehouses
-SET Latitude = '47.910065', Longitude = '-97.097493'
-  WHERE WarehouseID = 68;
-UPDATE Warehouses
-SET Latitude = '47.918288', Longitude = '-97.645835'
-  WHERE WarehouseID = 69;
-UPDATE Warehouses
-SET Latitude = '46.8792', Longitude = '-102.7896'
-  WHERE WarehouseID = 70;
-UPDATE Warehouses
-SET Latitude = '48.344528', Longitude = '-103.61991'
-  WHERE WarehouseID = 71;
-UPDATE Warehouses
-SET Latitude = '48.211234', Longitude = '-101.447619'
-  WHERE WarehouseID = 72;
-UPDATE Warehouses
-SET Latitude = '48.256393', Longitude = '-103.60858'
-  WHERE WarehouseID = 73;
-UPDATE Warehouses
-SET Latitude = '46.934936', Longitude = '-96.828303'
-  WHERE WarehouseID = 74;
-UPDATE Warehouses
-SET Latitude = '46.822841', Longitude = '-96.843236'
-  WHERE WarehouseID = 75;
-UPDATE Warehouses
-SET Latitude = '48.3111', Longitude = '-102.5466'
-  WHERE WarehouseID = 76;
-UPDATE Warehouses
-SET Latitude = '27.76484', Longitude = '-82.66961'
-  WHERE WarehouseID = 77;
-UPDATE Warehouses
-SET Latitude = '27.98944', Longitude = '-82.76228'
-  WHERE WarehouseID = 78;
-UPDATE Warehouses
-SET Latitude = '27.764839', Longitude = '-82.669609'
-  WHERE WarehouseID = 79;
-UPDATE Warehouses
-SET Latitude = '28.56312', Longitude = '-81.42127'
-  WHERE WarehouseID = 80;
-UPDATE Warehouses
-SET Latitude = '30.73864', Longitude = '-86.5622'
-  WHERE WarehouseID = 81;
-UPDATE Warehouses
-SET Latitude = '30.23878', Longitude = '-85.558'
-  WHERE WarehouseID = 82;
-UPDATE Warehouses
-SET Latitude = '30.21762', Longitude = '-81.56504'
-  WHERE WarehouseID = 83;
-UPDATE Warehouses
-SET Latitude = '30.27213', Longitude = '-81.62865'
-  WHERE WarehouseID = 84;
-UPDATE Warehouses
-SET Latitude = '30.25135', Longitude = '-82.255013'
-  WHERE WarehouseID = 85;
-UPDATE Warehouses
-SET Latitude = '39.95982', Longitude = '-84.170273'
-  WHERE WarehouseID = 86;
-UPDATE Warehouses
-SET Latitude = '30.27444', Longitude = '-81.63869'
-  WHERE WarehouseID = 87;
-UPDATE Warehouses
-SET Latitude = '27.943316', Longitude = '-82.437943'
-  WHERE WarehouseID = 88;
-UPDATE Warehouses
-SET Latitude = '36.7415', Longitude = '-78.92848'
-  WHERE WarehouseID = 89;
-UPDATE Warehouses
-SET Latitude = '25.82312', Longitude = '-80.33673'
-  WHERE WarehouseID = 90;
-UPDATE Warehouses
-SET Latitude = '27.90383', Longitude = '-82.71195'
-  WHERE WarehouseID = 91;
-UPDATE Warehouses
-SET Latitude = '38.29008', Longitude = '-85.80257'
-  WHERE WarehouseID = 92;
-UPDATE Warehouses
-SET Latitude = '26.07069', Longitude = '-80.18148'
-  WHERE WarehouseID = 93;
-UPDATE Warehouses
-SET Latitude = '26.57089', Longitude = '-80.05436'
-  WHERE WarehouseID = 94;
-UPDATE Warehouses
-SET Latitude = '35.48359', Longitude = '-97.55093'
-  WHERE WarehouseID = 95;
-UPDATE Warehouses
-SET Latitude = '25.94492', Longitude = '-80.20536'
-  WHERE WarehouseID = 96;
-UPDATE Warehouses
- SET Latitude = '25.92009', Longitude = '-80.295'
-  WHERE WarehouseID = 97;
-UPDATE Warehouses
-SET Latitude = '40.812', Longitude = '-73.88552'
-  WHERE WarehouseID = 98;
-UPDATE Warehouses
-SET Latitude = '40.8447', Longitude = '-73.27773'
-  WHERE WarehouseID = 99;
-UPDATE Warehouses
-SET Latitude = '40.71504', Longitude = '-73.99083'
-  WHERE WarehouseID = 100;
-UPDATE Warehouses
-SET Latitude = '41.10843', Longitude = '-74.02797'
-  WHERE WarehouseID = 101;
-UPDATE Warehouses
-SET Latitude = '40.66331', Longitude = '-73.99619'
-  WHERE WarehouseID = 102;
-UPDATE Warehouses
-SET Latitude = '40.6479', Longitude = '-73.5733'
-  WHERE WarehouseID = 103;
-UPDATE Warehouses
-SET Latitude = '40.99569', Longitude = '-73.66139'
-  WHERE WarehouseID = 104;
-UPDATE Warehouses
-SET Latitude = '43.19191', Longitude = '-77.58403'
-  WHERE WarehouseID = 105;
-UPDATE Warehouses
-SET Latitude = '40.87133', Longitude = '-73.428'
-  WHERE WarehouseID = 106;
-UPDATE Warehouses
-SET Latitude = '41.5401', Longitude = '-73.830109'
-  WHERE WarehouseID = 107;
-UPDATE Warehouses
-SET Latitude = '42.30241', Longitude = '-77.24522'
-  WHERE WarehouseID = 108;
-UPDATE Warehouses
-SET Latitude = '40.77373', Longitude = '-73.0924'
-  WHERE WarehouseID = 109;
-UPDATE Warehouses
-SET Latitude = '40.86023', Longitude = '-73.64199'
-  WHERE WarehouseID = 110;
-UPDATE Warehouses
-SET Latitude = '42.28123', Longitude = '-71.1329'
-  WHERE WarehouseID = 111;
-UPDATE Warehouses
-SET Latitude = '41.21975', Longitude = '-73.71984'
-  WHERE WarehouseID = 112;
-UPDATE Warehouses
-SET Latitude = '40.81499', Longitude = '-73.66054'
-  WHERE WarehouseID = 113;
-UPDATE Warehouses
-SET Latitude = '30.75986', Longitude = '-98.66293'
-  WHERE WarehouseID = 114;
-UPDATE Warehouses
-SET Latitude = '40.747308', Longitude = '-73.590756'
-  WHERE WarehouseID = 115;
-UPDATE Warehouses
-SET Latitude = '40.718979', Longitude = '-73.94191'
-  WHERE WarehouseID = 116;
-UPDATE Warehouses
-SET Latitude = '33.857842', Longitude = '-117.9158'
-  WHERE WarehouseID = 117;
-UPDATE Warehouses
-SET Latitude = '38.517974', Longitude = '-121.47027'
-  WHERE WarehouseID = 118;
-UPDATE Warehouses
-SET Latitude = '34.418868', Longitude = '-119.6899'
-  WHERE WarehouseID = 119;
-UPDATE Warehouses
-SET Latitude = '33.801501', Longitude = '-118.32651'
-  WHERE WarehouseID = 120;
-UPDATE Warehouses
-SET Latitude = '34.008843', Longitude = '-117.95157'
-  WHERE WarehouseID = 121;
-UPDATE Warehouses
-SET Latitude = '32.59571', Longitude = '-117.03006'
-  WHERE WarehouseID = 122;
-UPDATE Warehouses
-SET Latitude = '34.05913', Longitude = '-117.73266'
-  WHERE WarehouseID = 123;
-UPDATE Warehouses
-SET Latitude = '38.4756', Longitude = '-122.73745'
-  WHERE WarehouseID = 124;
-UPDATE Warehouses
-SET Latitude = '32.88283', Longitude = '-117.16309'
-  WHERE WarehouseID = 125;
-UPDATE Warehouses
-SET Latitude = '37.75494', Longitude = '-122.38945'
-  WHERE WarehouseID = 126;
-UPDATE Warehouses
-SET Latitude = '33.62784', Longitude = '-117.60933'
-  WHERE WarehouseID = 127;
-UPDATE Warehouses
-SET Latitude = '37.77081', Longitude = '-122.21288'
-  WHERE WarehouseID = 128;
-UPDATE Warehouses
-SET Latitude = '37.8132', Longitude = '-122.29285'
-  WHERE WarehouseID = 129;
-UPDATE Warehouses
-SET Latitude = '37.80234', Longitude = '-122.23887'
-  WHERE WarehouseID = 130;
-UPDATE Warehouses
-SET Latitude = '33.81636', Longitude = '-118.30283'
-  WHERE WarehouseID = 131;
-UPDATE Warehouses
-SET Latitude = '37.93041', Longitude = '-121.32408'
-  WHERE WarehouseID = 132;
-UPDATE Warehouses
-SET Latitude = '33.81832', Longitude = '-118.29999'
-  WHERE WarehouseID = 133;
-UPDATE Warehouses
-SET Latitude = '33.79865', Longitude = '-118.27612'
-  WHERE WarehouseID = 134;
-UPDATE Warehouses
-SET Latitude = '33.84338', Longitude = '-118.33582'
-  WHERE WarehouseID = 135;
-UPDATE Warehouses
-SET Latitude = '32.91304', Longitude = '-117.11239'
-  WHERE WarehouseID = 136;
-UPDATE Warehouses
-SET Latitude = '32.83155', Longitude = '-117.14662'
-  WHERE WarehouseID = 137;
-UPDATE Warehouses
-SET Latitude = '30.2011', Longitude = '-97.72123'
-  WHERE WarehouseID = 138;
-UPDATE Warehouses
-SET Latitude = '30.43094', Longitude = '-97.6809'
-  WHERE WarehouseID = 139;
-UPDATE Warehouses
-SET Latitude = '30.25998', Longitude = '-97.67579'
-  WHERE WarehouseID = 140;
-UPDATE Warehouses
-SET Latitude = '32.88203', Longitude = '-96.69831'
-  WHERE WarehouseID = 141;
-UPDATE Warehouses
-SET Latitude = '32.80942', Longitude = '-96.85241'
-  WHERE WarehouseID = 142;
-UPDATE Warehouses
-SET Latitude = '32.87896', Longitude = '-96.87967'
-  WHERE WarehouseID = 143;
-UPDATE Warehouses
-SET Latitude = '29.78082', Longitude = '-95.27655'
-  WHERE WarehouseID = 144;
-UPDATE Warehouses
-SET Latitude = '29.68393', Longitude = '-95.39947'
-  WHERE WarehouseID = 145;
-UPDATE Warehouses
-SET Latitude = '29.81969', Longitude = '-95.66823'
-  WHERE WarehouseID = 146;
-UPDATE Warehouses
-SET Latitude = '32.61576', Longitude = '-97.3285'
-  WHERE WarehouseID = 147;
-UPDATE Warehouses
-SET Latitude = '32.83665', Longitude = '-97.346848'
-  WHERE WarehouseID = 148;
-UPDATE Warehouses
-SET Latitude = '32.79076', Longitude = '-97.219353'
-  WHERE WarehouseID = 149;
-UPDATE Warehouses
-SET Latitude = '32.68686', Longitude = '-97.35937'
-  WHERE WarehouseID = 150;
-UPDATE Warehouses
-SET Latitude = '31.04874', Longitude = '-95.12493'
-  WHERE WarehouseID = 151;
-UPDATE Warehouses
-SET Latitude = '29.38019', Longitude = '-94.94108'
-  WHERE WarehouseID = 152;
-UPDATE Warehouses
-SET Latitude = '30.26584', Longitude = '-97.69657'
-  WHERE WarehouseID = 153;
-UPDATE Warehouses
-SET Latitude = '30.46006', Longitude = '-97.82901'
-  WHERE WarehouseID = 154;
-UPDATE Warehouses
-SET Latitude = '30.20671', Longitude = '-97.7294'
-  WHERE WarehouseID = 155;
-UPDATE Warehouses
-SET Latitude = '29.79109', Longitude = '-95.71716'
-  WHERE WarehouseID = 156;
-UPDATE Warehouses
-SET Latitude = '29.81683', Longitude = '-95.41478'
-  WHERE WarehouseID = 157;
+              UPDATE Warehouses
+              SET Latitude = '32.72665', Longitude = '-97.61729'
+              WHERE WarehouseID = 1;
+              UPDATE Warehouses
+              SET Latitude = '39.76821', Longitude = '-84.21908'
+              WHERE WarehouseID = 2;
+              UPDATE Warehouses
+              SET Latitude = '41.12918', Longitude = '-104.73972'
+              WHERE WarehouseID = 3;
+              UPDATE Warehouses
+              SET Latitude = '32.58496', Longitude = '-96.86586'
+              WHERE WarehouseID = 4;
+              UPDATE Warehouses
+              SET Latitude = '49.31658', Longitude = '-123.07943'
+              WHERE WarehouseID = 5;
+              UPDATE Warehouses
+              SET Latitude = '44.33557', Longitude = '-105.52237'
+              WHERE WarehouseID = 6;
+              UPDATE Warehouses
+              SET Latitude = '44.32147', Longitude = '-105.52941'
+              WHERE WarehouseID = 7;
+              UPDATE Warehouses
+              SET Latitude = '41.11075', Longitude = '-104.83266'
+              WHERE WarehouseID = 8;
+              UPDATE Warehouses
+              SET Latitude = '41.1397', Longitude = '-104.7037'
+              WHERE WarehouseID = 9;
+              UPDATE Warehouses
+              SET Latitude = '25.82325', Longitude = '-80.30003'
+              WHERE WarehouseID = 10;
+              UPDATE Warehouses
+              SET Latitude = '43.68767', Longitude = '-79.35319'
+              WHERE WarehouseID = 11;
+              UPDATE Warehouses
+              SET Latitude = '41.13111', Longitude = '-104.83022'
+              WHERE WarehouseID = 12;
+              UPDATE Warehouses
+              SET Latitude = '42.86447', Longitude = '-106.3472'
+              WHERE WarehouseID = 13;
+              UPDATE Warehouses
+              SET Latitude = '39.63149', Longitude = '-85.45454'
+              WHERE WarehouseID = 14;
+              UPDATE Warehouses
+              SET Latitude = '42.85297', Longitude = '-106.30181'
+              WHERE WarehouseID = 15;
+              UPDATE Warehouses
+              SET Latitude = '30.85063', Longitude = '-87.778'
+              WHERE WarehouseID = 16;
+              UPDATE Warehouses
+              SET Latitude = '44.29803', Longitude = '-105.52847'
+              WHERE WarehouseID = 17;
+              UPDATE Warehouses
+              SET Latitude = '41.35628', Longitude = '-88.36401'
+              WHERE WarehouseID = 18;
+              UPDATE Warehouses
+              SET Latitude = '44.29878', Longitude = '-105.5279'
+              WHERE WarehouseID = 19;
+              UPDATE Warehouses
+              SET Latitude = '44.29858', Longitude = '-105.52808'
+              WHERE WarehouseID = 20;
+              UPDATE Warehouses
+              SET Latitude = '46.87908', Longitude = '-114.01947'
+              WHERE WarehouseID = 21;
+              UPDATE Warehouses
+              SET Latitude = '45.75', Longitude = '-108.58229'
+              WHERE WarehouseID = 22;
+              UPDATE Warehouses
+              SET Latitude = '45.75313', Longitude = '-108.55008'
+              WHERE WarehouseID = 23;
+              UPDATE Warehouses
+              SET Latitude = '45.70485', Longitude = '-111.18786'
+              WHERE WarehouseID = 24;
+              UPDATE Warehouses
+              SET Latitude = '46.93196', Longitude = '-114.09733'
+              WHERE WarehouseID = 25;
+              UPDATE Warehouses
+              SET Latitude = '33.75055', Longitude = '-80.21884'
+              WHERE WarehouseID = 26;
+              UPDATE Warehouses
+              SET Latitude = '45.6995', Longitude = '-111.04392'
+              WHERE WarehouseID = 27;
+              UPDATE Warehouses
+              SET Latitude = '49.24175', Longitude = '-98.53916'
+              WHERE WarehouseID = 28;
+              UPDATE Warehouses
+              SET Latitude = '30.58237', Longitude = '-91.1584'
+              WHERE WarehouseID = 29;
+              UPDATE Warehouses
+              SET Latitude = '46.53843', Longitude = '-111.94675'
+              WHERE WarehouseID = 30;
+              UPDATE Warehouses
+              SET Latitude = '30.40067', Longitude = '-90.08764'
+              WHERE WarehouseID = 31;
+              UPDATE Warehouses
+              SET Latitude = '29.18575', Longitude = '-82.17498'
+              WHERE WarehouseID = 32;
+              UPDATE Warehouses
+              SET Latitude = '43.75127', Longitude = '-79.46878'
+              WHERE WarehouseID = 33;
+              UPDATE Warehouses
+              SET Latitude = '41.24594', Longitude = '-89.93413'
+              WHERE WarehouseID = 34;
+              UPDATE Warehouses
+              SET Latitude = '47.48728', Longitude = '-111.35157'
+              WHERE WarehouseID = 35;
+              UPDATE Warehouses
+              SET Latitude = '36.73725', Longitude = '-84.94483'
+              WHERE WarehouseID = 36;
+              UPDATE Warehouses
+              SET Latitude = '45.70229', Longitude = '-108.62213'
+              WHERE WarehouseID = 37;
+              UPDATE Warehouses
+              SET Latitude = '45.75644', Longitude = '-108.65107'
+              WHERE WarehouseID = 38;
+              UPDATE Warehouses
+              SET Latitude = '61.3308', Longitude = '-149.5552'
+              WHERE WarehouseID = 39;
+              UPDATE Warehouses
+              SET Latitude = '61.57608', Longitude = '-149.64227'
+              WHERE WarehouseID = 40;
+              UPDATE Warehouses
+              SET Latitude = '61.61127', Longitude = '-149.33096'
+              WHERE WarehouseID = 41;
+              UPDATE Warehouses
+              SET Latitude = '61.14929', Longitude = '-149.84259'
+              WHERE WarehouseID = 42;
+              UPDATE Warehouses
+              SET Latitude = '64.81864', Longitude = '-147.75049'
+              WHERE WarehouseID = 43;
+              UPDATE Warehouses
+              SET Latitude = '61.22669', Longitude = '-149.84547'
+              WHERE WarehouseID = 44;
+              UPDATE Warehouses
+              SET Latitude = '61.16466', Longitude = '-149.88215'
+              WHERE WarehouseID = 45;
+              UPDATE Warehouses
+              SET Latitude = '61.147941', Longitude = '-149.84507'
+              WHERE WarehouseID = 46;
+              UPDATE Warehouses
+              SET Latitude = '61.175813', Longitude = '-149.96199'
+              WHERE WarehouseID = 47;
+              UPDATE Warehouses
+              SET Latitude = '60.485708', Longitude = '-151.19443'
+              WHERE WarehouseID = 48;
+              UPDATE Warehouses
+              SET Latitude = '60.725271', Longitude = '-151.31334'
+              WHERE WarehouseID = 49;
+              UPDATE Warehouses
+              SET Latitude = '61.158998', Longitude = '-149.83281'
+              WHERE WarehouseID = 50;
+              UPDATE Warehouses
+              SET Latitude = '60.515033', Longitude = '-151.1938'
+              WHERE WarehouseID = 51;
+              UPDATE Warehouses
+              SET Latitude = '64.798346', Longitude = '-147.54955'
+              WHERE WarehouseID = 52;
+              UPDATE Warehouses
+              SET Latitude = '61.12677', Longitude = '-149.87671'
+              WHERE WarehouseID = 53;
+              UPDATE Warehouses
+              SET Latitude = '64.848906', Longitude = '-147.72692'
+              WHERE WarehouseID = 54;
+              UPDATE Warehouses
+              SET Latitude = '61.162679', Longitude = '-149.88943'
+              WHERE WarehouseID = 55;
+              UPDATE Warehouses
+              SET Latitude = '61.220497', Longitude = '-149.82731'
+              WHERE WarehouseID = 56;
+              UPDATE Warehouses
+              SET Latitude = '46.87659', Longitude = '-96.811328'
+              WHERE WarehouseID = 57;
+              UPDATE Warehouses
+              SET Latitude = '47.372021', Longitude = '-102.739605'
+              WHERE WarehouseID = 58;
+              UPDATE Warehouses
+              SET Latitude = '48.387342', Longitude = '-102.93453'
+              WHERE WarehouseID = 59;
+              UPDATE Warehouses
+              SET Latitude = '48.13185', Longitude = '-103.72228'
+              WHERE WarehouseID = 60;
+              UPDATE Warehouses
+              SET Latitude = '48.131289', Longitude = '-103.72226'
+              WHERE WarehouseID = 61;
+              UPDATE Warehouses
+              SET Latitude = '48.150034', Longitude = '-103.71893'
+              WHERE WarehouseID = 62;
+              UPDATE Warehouses
+              SET Latitude = '47.780393', Longitude = '-103.41866'
+              WHERE WarehouseID = 63;
+              UPDATE Warehouses
+              SET Latitude = '48.193629', Longitude = '-103.65606'
+              WHERE WarehouseID = 64;
+              UPDATE Warehouses
+              SET Latitude = '46.292041', Longitude = '-96.611686'
+              WHERE WarehouseID = 65;
+              UPDATE Warehouses
+              SET Latitude = '48.1476', Longitude = '-103.6181'
+              WHERE WarehouseID = 66;
+              UPDATE Warehouses
+              SET Latitude = '48.233754', Longitude = '-101.22911'
+              WHERE WarehouseID = 67;
+              UPDATE Warehouses
+              SET Latitude = '47.910065', Longitude = '-97.097493'
+              WHERE WarehouseID = 68;
+              UPDATE Warehouses
+              SET Latitude = '47.918288', Longitude = '-97.645835'
+              WHERE WarehouseID = 69;
+              UPDATE Warehouses
+              SET Latitude = '46.8792', Longitude = '-102.7896'
+              WHERE WarehouseID = 70;
+              UPDATE Warehouses
+              SET Latitude = '48.344528', Longitude = '-103.61991'
+              WHERE WarehouseID = 71;
+              UPDATE Warehouses
+              SET Latitude = '48.211234', Longitude = '-101.447619'
+              WHERE WarehouseID = 72;
+              UPDATE Warehouses
+              SET Latitude = '48.256393', Longitude = '-103.60858'
+              WHERE WarehouseID = 73;
+              UPDATE Warehouses
+              SET Latitude = '46.934936', Longitude = '-96.828303'
+              WHERE WarehouseID = 74;
+              UPDATE Warehouses
+              SET Latitude = '46.822841', Longitude = '-96.843236'
+              WHERE WarehouseID = 75;
+              UPDATE Warehouses
+              SET Latitude = '48.3111', Longitude = '-102.5466'
+              WHERE WarehouseID = 76;
+              UPDATE Warehouses
+              SET Latitude = '27.76484', Longitude = '-82.66961'
+              WHERE WarehouseID = 77;
+              UPDATE Warehouses
+              SET Latitude = '27.98944', Longitude = '-82.76228'
+              WHERE WarehouseID = 78;
+              UPDATE Warehouses
+              SET Latitude = '27.764839', Longitude = '-82.669609'
+              WHERE WarehouseID = 79;
+              UPDATE Warehouses
+              SET Latitude = '28.56312', Longitude = '-81.42127'
+              WHERE WarehouseID = 80;
+              UPDATE Warehouses
+              SET Latitude = '30.73864', Longitude = '-86.5622'
+              WHERE WarehouseID = 81;
+              UPDATE Warehouses
+              SET Latitude = '30.23878', Longitude = '-85.558'
+              WHERE WarehouseID = 82;
+              UPDATE Warehouses
+              SET Latitude = '30.21762', Longitude = '-81.56504'
+              WHERE WarehouseID = 83;
+              UPDATE Warehouses
+              SET Latitude = '30.27213', Longitude = '-81.62865'
+              WHERE WarehouseID = 84;
+              UPDATE Warehouses
+              SET Latitude = '30.25135', Longitude = '-82.255013'
+              WHERE WarehouseID = 85;
+              UPDATE Warehouses
+              SET Latitude = '39.95982', Longitude = '-84.170273'
+              WHERE WarehouseID = 86;
+              UPDATE Warehouses
+              SET Latitude = '30.27444', Longitude = '-81.63869'
+              WHERE WarehouseID = 87;
+              UPDATE Warehouses
+              SET Latitude = '27.943316', Longitude = '-82.437943'
+              WHERE WarehouseID = 88;
+              UPDATE Warehouses
+              SET Latitude = '36.7415', Longitude = '-78.92848'
+              WHERE WarehouseID = 89;
+              UPDATE Warehouses
+              SET Latitude = '25.82312', Longitude = '-80.33673'
+              WHERE WarehouseID = 90;
+              UPDATE Warehouses
+              SET Latitude = '27.90383', Longitude = '-82.71195'
+              WHERE WarehouseID = 91;
+              UPDATE Warehouses
+              SET Latitude = '38.29008', Longitude = '-85.80257'
+              WHERE WarehouseID = 92;
+              UPDATE Warehouses
+              SET Latitude = '26.07069', Longitude = '-80.18148'
+              WHERE WarehouseID = 93;
+              UPDATE Warehouses
+              SET Latitude = '26.57089', Longitude = '-80.05436'
+              WHERE WarehouseID = 94;
+              UPDATE Warehouses
+              SET Latitude = '35.48359', Longitude = '-97.55093'
+              WHERE WarehouseID = 95;
+              UPDATE Warehouses
+              SET Latitude = '25.94492', Longitude = '-80.20536'
+              WHERE WarehouseID = 96;
+              UPDATE Warehouses
+              SET Latitude = '25.92009', Longitude = '-80.295'
+              WHERE WarehouseID = 97;
+              UPDATE Warehouses
+              SET Latitude = '40.812', Longitude = '-73.88552'
+              WHERE WarehouseID = 98;
+              UPDATE Warehouses
+              SET Latitude = '40.8447', Longitude = '-73.27773'
+              WHERE WarehouseID = 99;
+              UPDATE Warehouses
+              SET Latitude = '40.71504', Longitude = '-73.99083'
+              WHERE WarehouseID = 100;
+              UPDATE Warehouses
+              SET Latitude = '41.10843', Longitude = '-74.02797'
+              WHERE WarehouseID = 101;
+              UPDATE Warehouses
+              SET Latitude = '40.66331', Longitude = '-73.99619'
+              WHERE WarehouseID = 102;
+              UPDATE Warehouses
+              SET Latitude = '40.6479', Longitude = '-73.5733'
+              WHERE WarehouseID = 103;
+              UPDATE Warehouses
+              SET Latitude = '40.99569', Longitude = '-73.66139'
+              WHERE WarehouseID = 104;
+              UPDATE Warehouses
+              SET Latitude = '43.19191', Longitude = '-77.58403'
+              WHERE WarehouseID = 105;
+              UPDATE Warehouses
+              SET Latitude = '40.87133', Longitude = '-73.428'
+              WHERE WarehouseID = 106;
+              UPDATE Warehouses
+              SET Latitude = '41.5401', Longitude = '-73.830109'
+              WHERE WarehouseID = 107;
+              UPDATE Warehouses
+              SET Latitude = '42.30241', Longitude = '-77.24522'
+              WHERE WarehouseID = 108;
+              UPDATE Warehouses
+              SET Latitude = '40.77373', Longitude = '-73.0924'
+              WHERE WarehouseID = 109;
+              UPDATE Warehouses
+              SET Latitude = '40.86023', Longitude = '-73.64199'
+              WHERE WarehouseID = 110;
+              UPDATE Warehouses
+              SET Latitude = '42.28123', Longitude = '-71.1329'
+              WHERE WarehouseID = 111;
+              UPDATE Warehouses
+              SET Latitude = '41.21975', Longitude = '-73.71984'
+              WHERE WarehouseID = 112;
+              UPDATE Warehouses
+              SET Latitude = '40.81499', Longitude = '-73.66054'
+              WHERE WarehouseID = 113;
+              UPDATE Warehouses
+              SET Latitude = '30.75986', Longitude = '-98.66293'
+              WHERE WarehouseID = 114;
+              UPDATE Warehouses
+              SET Latitude = '40.747308', Longitude = '-73.590756'
+              WHERE WarehouseID = 115;
+              UPDATE Warehouses
+              SET Latitude = '40.718979', Longitude = '-73.94191'
+              WHERE WarehouseID = 116;
+              UPDATE Warehouses
+              SET Latitude = '33.857842', Longitude = '-117.9158'
+              WHERE WarehouseID = 117;
+              UPDATE Warehouses
+              SET Latitude = '38.517974', Longitude = '-121.47027'
+              WHERE WarehouseID = 118;
+              UPDATE Warehouses
+              SET Latitude = '34.418868', Longitude = '-119.6899'
+              WHERE WarehouseID = 119;
+              UPDATE Warehouses
+              SET Latitude = '33.801501', Longitude = '-118.32651'
+              WHERE WarehouseID = 120;
+              UPDATE Warehouses
+              SET Latitude = '34.008843', Longitude = '-117.95157'
+              WHERE WarehouseID = 121;
+              UPDATE Warehouses
+              SET Latitude = '32.59571', Longitude = '-117.03006'
+              WHERE WarehouseID = 122;
+              UPDATE Warehouses
+              SET Latitude = '34.05913', Longitude = '-117.73266'
+              WHERE WarehouseID = 123;
+              UPDATE Warehouses
+              SET Latitude = '38.4756', Longitude = '-122.73745'
+              WHERE WarehouseID = 124;
+              UPDATE Warehouses
+              SET Latitude = '32.88283', Longitude = '-117.16309'
+              WHERE WarehouseID = 125;
+              UPDATE Warehouses
+              SET Latitude = '37.75494', Longitude = '-122.38945'
+              WHERE WarehouseID = 126;
+              UPDATE Warehouses
+              SET Latitude = '33.62784', Longitude = '-117.60933'
+              WHERE WarehouseID = 127;
+              UPDATE Warehouses
+              SET Latitude = '37.77081', Longitude = '-122.21288'
+              WHERE WarehouseID = 128;
+              UPDATE Warehouses
+              SET Latitude = '37.8132', Longitude = '-122.29285'
+              WHERE WarehouseID = 129;
+              UPDATE Warehouses
+              SET Latitude = '37.80234', Longitude = '-122.23887'
+              WHERE WarehouseID = 130;
+              UPDATE Warehouses
+              SET Latitude = '33.81636', Longitude = '-118.30283'
+              WHERE WarehouseID = 131;
+              UPDATE Warehouses
+              SET Latitude = '37.93041', Longitude = '-121.32408'
+              WHERE WarehouseID = 132;
+              UPDATE Warehouses
+              SET Latitude = '33.81832', Longitude = '-118.29999'
+              WHERE WarehouseID = 133;
+              UPDATE Warehouses
+              SET Latitude = '33.79865', Longitude = '-118.27612'
+              WHERE WarehouseID = 134;
+              UPDATE Warehouses
+              SET Latitude = '33.84338', Longitude = '-118.33582'
+              WHERE WarehouseID = 135;
+              UPDATE Warehouses
+              SET Latitude = '32.91304', Longitude = '-117.11239'
+              WHERE WarehouseID = 136;
+              UPDATE Warehouses
+              SET Latitude = '32.83155', Longitude = '-117.14662'
+              WHERE WarehouseID = 137;
+              UPDATE Warehouses
+              SET Latitude = '30.2011', Longitude = '-97.72123'
+              WHERE WarehouseID = 138;
+              UPDATE Warehouses
+              SET Latitude = '30.43094', Longitude = '-97.6809'
+              WHERE WarehouseID = 139;
+              UPDATE Warehouses
+              SET Latitude = '30.25998', Longitude = '-97.67579'
+              WHERE WarehouseID = 140;
+              UPDATE Warehouses
+              SET Latitude = '32.88203', Longitude = '-96.69831'
+              WHERE WarehouseID = 141;
+              UPDATE Warehouses
+              SET Latitude = '32.80942', Longitude = '-96.85241'
+              WHERE WarehouseID = 142;
+              UPDATE Warehouses
+              SET Latitude = '32.87896', Longitude = '-96.87967'
+              WHERE WarehouseID = 143;
+              UPDATE Warehouses
+              SET Latitude = '29.78082', Longitude = '-95.27655'
+              WHERE WarehouseID = 144;
+              UPDATE Warehouses
+              SET Latitude = '29.68393', Longitude = '-95.39947'
+              WHERE WarehouseID = 145;
+              UPDATE Warehouses
+              SET Latitude = '29.81969', Longitude = '-95.66823'
+              WHERE WarehouseID = 146;
+              UPDATE Warehouses
+              SET Latitude = '32.61576', Longitude = '-97.3285'
+              WHERE WarehouseID = 147;
+              UPDATE Warehouses
+              SET Latitude = '32.83665', Longitude = '-97.346848'
+              WHERE WarehouseID = 148;
+              UPDATE Warehouses
+              SET Latitude = '32.79076', Longitude = '-97.219353'
+              WHERE WarehouseID = 149;
+              UPDATE Warehouses
+              SET Latitude = '32.68686', Longitude = '-97.35937'
+              WHERE WarehouseID = 150;
+              UPDATE Warehouses
+              SET Latitude = '31.04874', Longitude = '-95.12493'
+              WHERE WarehouseID = 151;
+              UPDATE Warehouses
+              SET Latitude = '29.38019', Longitude = '-94.94108'
+              WHERE WarehouseID = 152;
+              UPDATE Warehouses
+              SET Latitude = '30.26584', Longitude = '-97.69657'
+              WHERE WarehouseID = 153;
+              UPDATE Warehouses
+              SET Latitude = '30.46006', Longitude = '-97.82901'
+              WHERE WarehouseID = 154;
+              UPDATE Warehouses
+              SET Latitude = '30.20671', Longitude = '-97.7294'
+              WHERE WarehouseID = 155;
+              UPDATE Warehouses
+              SET Latitude = '29.79109', Longitude = '-95.71716'
+              WHERE WarehouseID = 156;
+              UPDATE Warehouses
+              SET Latitude = '29.81683', Longitude = '-95.41478'
+              WHERE WarehouseID = 157;
 
 
               INSERT INTO `Spaces` (`SpaceID`, `WarehouseID`, `SpaceSize`, `MonthlyPrice`, `Active`, `DateAdded`, `SpaceInformation`) VALUES
@@ -12398,3 +12398,2801 @@ SET Latitude = '29.81683', Longitude = '-95.41478'
                 ,(1398,12)
                 ,(1398,4)
                 ,(1399,4);
+
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  1 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  2 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  3 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  4 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  5 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  6 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  7 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  8 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  9 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  10 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  11 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  12 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  13 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  14 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  15 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  16 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  17 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  18 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  19 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  20 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  21 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  22 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  23 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  24 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  25 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  26 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  27 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  28 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  29 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  30 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  31 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  32 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  33 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  34 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  35 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  36 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  37 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  38 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  39 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  40 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  41 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  42 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  43 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  44 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  45 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  46 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  47 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  48 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  49 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  50 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  51 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  52 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  53 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  54 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  55 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  56 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  57 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  58 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  59 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  60 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  61 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  62 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  63 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  64 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  65 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  66 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  67 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  68 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  69 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  70 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  71 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  72 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  73 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  74 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  75 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  76 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  77 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  78 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  79 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  80 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  81 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  82 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  83 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  84 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  85 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  86 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  87 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  88 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  89 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  90 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  91 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  92 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  93 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  94 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  95 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  96 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  97 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  98 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  99 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  100 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  101 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  102 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  103 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  104 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  105 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  106 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  107 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  108 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  109 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  110 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  111 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  112 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  113 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  114 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  115 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  116 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  117 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  118 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  119 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  120 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  121 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  122 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  123 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  124 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  125 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  126 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  127 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  128 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  129 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  130 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  131 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  132 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  133 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  134 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  135 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  136 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  137 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  138 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  139 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  140 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  141 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  142 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  143 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  144 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  145 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  146 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  147 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  148 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  149 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  150 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  151 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  152 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  153 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  154 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  155 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  156 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  157 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  158 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  159 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  160 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  161 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  162 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  163 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  164 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  165 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  166 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  167 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  168 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  169 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  170 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  171 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  172 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  173 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  174 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  175 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  176 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  177 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  178 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  179 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  180 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  181 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  182 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  183 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  184 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  185 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  186 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  187 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  188 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  189 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  190 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  191 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  192 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  193 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  194 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  195 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  196 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  197 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  198 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  199 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  200 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  201 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  202 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  203 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  204 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  205 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  206 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  207 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  208 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  209 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  210 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  211 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  212 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  213 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  214 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  215 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  216 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  217 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  218 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  219 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  220 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  221 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  222 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  223 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  224 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  225 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  226 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  227 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  228 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  229 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  230 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  231 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  232 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  233 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  234 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  235 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  236 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  237 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  238 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  239 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  240 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  241 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  242 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  243 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  244 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  245 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  246 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  247 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  248 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  249 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  250 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  251 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  252 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  253 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  254 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  255 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  256 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  257 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  258 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  259 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  260 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  261 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  262 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  263 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  264 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  265 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  266 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  267 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  268 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  269 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  270 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  271 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  272 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  273 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  274 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  275 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  276 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  277 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  278 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  279 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  280 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  281 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  282 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  283 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  284 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  285 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  286 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  287 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  288 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  289 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  290 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  291 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  292 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  293 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  294 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  295 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  296 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  297 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  298 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  299 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  300 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  301 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  302 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  303 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  304 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  305 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  306 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  307 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  308 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  309 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  310 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  311 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  312 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  313 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  314 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  315 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  316 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  317 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  318 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  319 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  320 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  321 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  322 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  323 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  324 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  325 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  326 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  327 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  328 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  329 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  330 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  331 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  332 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  333 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  334 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  335 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  336 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  337 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  338 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  339 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  340 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  341 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  342 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  343 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  344 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  345 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  346 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  347 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  348 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  349 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  350 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  351 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  352 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  353 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  354 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  355 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  356 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  357 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  358 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  359 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  360 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  361 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  362 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  363 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  364 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  365 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  366 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  367 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  368 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  369 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  370 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  371 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  372 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  373 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  374 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  375 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  376 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  377 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  378 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  379 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  380 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  381 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  382 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  383 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  384 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  385 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  386 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  387 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  388 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  389 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  390 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  391 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  392 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  393 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  394 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  395 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  396 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  397 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  398 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  399 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  400 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  401 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  402 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  403 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  404 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  405 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  406 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  407 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  408 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  409 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  410 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  411 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  412 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  413 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  414 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  415 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  416 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  417 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  418 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  419 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  420 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  421 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  422 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  423 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  424 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  425 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  426 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  427 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  428 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  429 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  430 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  431 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  432 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  433 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  434 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  435 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  436 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  437 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  438 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  439 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  440 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  441 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  442 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  443 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  444 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  445 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  446 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  447 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  448 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  449 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  450 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  451 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  452 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  453 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  454 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  455 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  456 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  457 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  458 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  459 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  460 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  461 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  462 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  463 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  464 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  465 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  466 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  467 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  468 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  469 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  470 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  471 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  472 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  473 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  474 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  475 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  476 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  477 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  478 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  479 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  480 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  481 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  482 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  483 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  484 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  485 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  486 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  487 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  488 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  489 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  490 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  491 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  492 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  493 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  494 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  495 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  496 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  497 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  498 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  499 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  500 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  501 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  502 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  503 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  504 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  505 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  506 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  507 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  508 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  509 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  510 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  511 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  512 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  513 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  514 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  515 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  516 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  517 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  518 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  519 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  520 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  521 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  522 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  523 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  524 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  525 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  526 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  527 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  528 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  529 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  530 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  531 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  532 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  533 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  534 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  535 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  536 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  537 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  538 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  539 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  540 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  541 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  542 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  543 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  544 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  545 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  546 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  547 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  548 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  549 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  550 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  551 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  552 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  553 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  554 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  555 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  556 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  557 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  558 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  559 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  560 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  561 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  562 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  563 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  564 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  565 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  566 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  567 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  568 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  569 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  570 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  571 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  572 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  573 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  574 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  575 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  576 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  577 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  578 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  579 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  580 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  581 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  582 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  583 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  584 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  585 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  586 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  587 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  588 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  589 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  590 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  591 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  592 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  593 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  594 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  595 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  596 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  597 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  598 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  599 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  600 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  601 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  602 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  603 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  604 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  605 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  606 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  607 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  608 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  609 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  610 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  611 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  612 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  613 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  614 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  615 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  616 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  617 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  618 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  619 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  620 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  621 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  622 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  623 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  624 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  625 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  626 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  627 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  628 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  629 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  630 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  631 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  632 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  633 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  634 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  635 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  636 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  637 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  638 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  639 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  640 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  641 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  642 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  643 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  644 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  645 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  646 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  647 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  648 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  649 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  650 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  651 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  652 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  653 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  654 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  655 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  656 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  657 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  658 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  659 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  660 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  661 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  662 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  663 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  664 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  665 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  666 ;
+
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  667 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  668 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  669 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  670 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  671 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  672 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  673 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  674 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  675 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  676 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  677 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  678 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  679 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  680 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  681 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  682 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  683 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  684 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  685 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  686 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  687 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  688 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  689 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  690 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  691 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  692 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  693 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  694 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  695 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  696 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  697 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  698 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  699 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  700 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  701 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  702 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  703 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  704 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  705 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  706 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  707 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  708 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  709 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  710 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  711 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  712 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  713 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  714 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  715 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  716 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  717 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  718 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  719 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  720 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  721 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  722 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  723 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  724 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  725 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  726 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  727 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  728 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  729 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  730 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  731 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  732 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  733 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  734 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  735 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  736 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  737 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  738 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  739 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  740 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  741 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  742 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  743 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  744 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  745 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  746 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  747 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  748 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  749 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  750 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  751 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  752 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  753 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  754 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  755 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  756 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  757 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  758 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  759 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  760 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  761 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  762 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  763 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  764 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  765 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  766 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  767 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  768 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  769 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  770 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  771 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  772 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  773 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  774 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  775 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  776 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  777 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  778 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  779 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  780 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  781 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  782 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  783 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  784 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  785 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  786 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  787 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  788 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  789 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  790 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  791 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  792 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  793 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  794 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  795 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  796 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  797 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  798 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  799 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  800 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  801 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  802 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  803 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  804 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  805 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  806 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  807 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  808 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  809 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  810 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  811 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  812 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  813 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  814 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  815 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  816 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  817 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  818 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  819 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  820 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  821 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  822 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  823 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  824 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  825 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  826 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  827 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  828 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  829 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  830 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  831 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  832 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  833 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  834 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  835 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  836 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  837 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  838 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  839 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  840 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  841 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  842 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  843 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  844 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  845 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  846 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  847 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  848 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  849 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  850 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  851 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  852 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  853 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  854 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  855 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  856 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  857 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  858 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  859 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  860 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  861 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  862 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  863 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  864 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  865 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  866 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  867 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  868 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  869 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  870 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  871 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  872 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  873 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  874 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  875 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  876 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  877 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  878 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  879 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  880 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  881 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  882 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  883 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  884 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  885 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  886 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  887 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  888 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  889 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  890 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  891 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  892 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  893 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  894 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  895 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  896 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  897 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  898 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  899 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  900 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  901 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  902 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  903 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  904 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  905 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  906 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  907 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  908 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  909 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  910 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  911 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  912 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  913 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  914 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  915 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  916 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  917 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  918 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  919 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Located almost on the same block as the museum. Easily accessible by all major highways. Daytime population of over 350,000 within a three-mile radius.'
+                WHERE WarehouseID =  920 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  921 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  922 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  923 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  924 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  925 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'The immediate area is primarily comprised of Agricultural land though numerous residential developments, both planned and existing, can be found.It is home to one of the most active residential submarkets within the county. Additionally the interstate is located just 2 miles to the east.'
+                WHERE WarehouseID =  926 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  927 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  928 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  929 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Exceptional Visibility and Signage Opportunity on street. Extensive 10 in. glass line. Nearby development projects are aggressively pushing rental rates.'
+                WHERE WarehouseID =  930 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Rents are below comparable properties and seller is currently paying for all water at the property, opportunity for future owner to increase rents by charge back for water. Accompany showing is required. No showing without accepted contract. Contact the listing agent to request the detail information. Please do not disturbing leasing office.'
+                WHERE WarehouseID =  931 ;
+                UPDATE Warehouses
+                SET WarehouseInformation= 'Only a few blocks from the park and surrounded by restaurants, shopping & entertainment. Only 2 Blocks to the train station.'
+                WHERE WarehouseID =  932 ;
