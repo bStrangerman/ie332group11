@@ -1647,7 +1647,7 @@ UPDATE Warehouses
 SET Latitude = '30.27444', Longitude = '-81.63869'
   WHERE WarehouseID = 87;
 UPDATE Warehouses
-SET Latitude = '40.4083', Longitude = '-86.87479'
+SET Latitude = '27.943316', Longitude = '-82.437943'
   WHERE WarehouseID = 88;
 UPDATE Warehouses
 SET Latitude = '36.7415', Longitude = '-78.92848'
