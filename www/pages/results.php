@@ -76,7 +76,6 @@ if($err == array()){
     }
   }
 
-  // array_print($data);
   if(count($data) == 0)
   array_push($err, "0 Results");
 
@@ -116,7 +115,6 @@ for($i = 0; $i < count($spaceID); ++$i){
     array_push($newdata, array("Spaces" => $data[$i]['Spaces'], "Latitude" => $data[$i]['Latitude'], "Longitude" => $data[$i]['Longitude'], "Addresses" => $data[$i]['Addresses'], "Distance" => $data[$i]['Distance'], "MonthlyPrice" => $data[$i]['MonthlyPrice'], "SpaceSize" => $data[$i]['SpaceSize'], "SpaceInformation" => $newdata[$i]['SpaceInformation'], "Score" => $score));
   }
 }
-array_print($newdata);
 
 ?>
 
