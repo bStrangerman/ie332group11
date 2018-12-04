@@ -3,9 +3,11 @@ require_once "../includes/main.php";
 include_once "../includes/contracts.php";
 
 $feeRate = 1.05;
+$root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
+
 
 if (isset($_SESSION['UserID'])) {
-  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
+  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) || !$root)
     header('Location: index.php');
   else
     $UserID = $_SESSION['UserID'];
@@ -28,9 +30,7 @@ function getContractInfo($UserID){
   INNER JOIN Contract_Status
   ON Contract_Status.ContractID = Contracts.ContractID
   INNER JOIN Status
-  ON Status.StatusID = Contract_Status.StatusID
-  WHERE Warehouses.OwnerID = $UserID
-  ORDER BY StatusTime DESC";
+  ON Status.StatusID = Contract_Status.StatusID " . ((!$root) ? " ORDER BY StatusTime DESC" : "AND Warehouses.OwnerID = $UserID ORDER BY Contracts.ContractID ASC");
 }
 $mainSqlResult = $conn -> query(getContractInfo($UserID));
 
