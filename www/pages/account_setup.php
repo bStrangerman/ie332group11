@@ -1,9 +1,7 @@
 <?php
 require_once "../includes/main.php";
-
 // checks if logged in
 if(!isset($_SESSION['UserID'])){
-  $_SESSION['redirect'] = 'Location: lesseeAccount.php';
   header("Location: login.php");
 }
 else if (!$rbac->Users->hasRole('need_setup', $UserID = $_SESSION['UserID'])){
@@ -31,12 +29,13 @@ if(isset($_POST['editing'])){
     $phonenumber = clean($_POST['PhoneNumber']);
     $company = clean($_POST['Company']);
     $sql = "UPDATE phprbac_users
-            SET FirstName = '$firstname', LastName = '$lastname', Email = '$email', PhoneNumber = $phonenumber, Company = '$company'
+            SET FirstName = '$firstname', LastName = '$lastname', Email = '$email', PhoneNumber = '$phonenumber', Company = '$company'
             WHERE UserID = $UserID";
-    for($i = 0; $i < count($_POST['role']); $i++){
-      $rbac->Users->assign($_POST['role'][$i], $UserID = $_SESSION['UserID']);
-    }
+
     if($conn -> query($sql) === TRUE){
+      for($i = 0; $i < count($_POST['role']); $i++){
+        $rbac->Users->assign($_POST['role'][$i], $UserID = $_SESSION['UserID']);
+      }
       $_SESSION['message'] = "Success!";
       header("Location: index.php");
       $_SESSION['message'] = "Success!";
@@ -133,7 +132,7 @@ https://www.prepbootstrap.com/bootstrap-template/image-checkbox
           <h3 class="widget-header user">Set up your account</h3>
           <form method="POST">
             <input type="hidden" name="editing" value="profile">
-            <input type="hidden" name="editing" value="profile">						<!-- First Name -->
+            						<!-- First Name -->
             <div class="form-group">
                 <label for="first-name">First Name</label>
                 <input type="text" name="first-name" class="form-control" id="first-name" value="<?php echo $LesseeInfo[0]['FirstName']; ?>">
