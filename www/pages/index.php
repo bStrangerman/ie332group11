@@ -1,5 +1,6 @@
 <?php // TODO: Organize this file into the proper layout (header.php, footer.php, etc.)
 require_once "../includes/main.php";
+$feeRate = 1.05;
 
 if(isset($_SESSION['UserID'])){
   $hasAccount = $rbac->Users->roleCount($UserID = $_SESSION['UserID']);
@@ -429,11 +430,11 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
                     <div class="single-explore-txt bg-theme-1">
                       <h2><a href="space.php?space=<?php echo $spaceInfo[$i]['SpaceID']; ?>"><?php echo $spaceInfo[$i]['Address'] . ", " . $spaceInfo[$i]['City'] . " " . $spaceInfo[$i]['State']; ?></a></h2>
                       <p class="explore-rating-price">
-                        <span class="explore-rating">5.0</span>
-                        <a href="space.php?space=<?php echo $spaceInfo[$i]['SpaceID']; ?>"> <?php echo $results; ?> ratings</a>
+                        <!-- <span class="explore-rating">5.0</span> -->
+                        <a href="space.php?space=<?php echo $spaceInfo[$i]['SpaceID']; ?>"> <?php echo $spaceInfo[$i]['SpaceSize']; ?> SqFt</a>
                         <span class="explore-price-box">
                           From
-                          <span class="explore-price">$<?php echo ($spaceInfo[$i]['MonthlyPrice'] * $spaceInfo[$i]['SpaceSize']); ?>/mo</span>
+                          <span class="explore-price">$<?php echo ($spaceInfo[$i]['MonthlyPrice'] * $spaceInfo[$i]['SpaceSize']) * $feeRate; ?>/mo</span>
                         </span>
                         <a href="space.php?space=<?php echo $spaceInfo[$i]['SpaceID']; ?>"><?php echo $attributes['AttributeName']; ?></a>
                       </p>
