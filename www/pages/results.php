@@ -16,7 +16,7 @@ if($err == array()){
   $state = array();
 
   if(isset($_GET['type']))
-    array_push($type, clean(urldecode($_GET['type'])));
+  array_push($type, clean(urldecode($_GET['type'])));
 
   $spaceInfo = getAvailableSpaces($start, $end, $type, $conn);
 
@@ -48,6 +48,7 @@ if($err == array()){
     $data = array();
     $max_count = count($spaceID);
 
+    // pushes the results info into an array
     for($i = 0; $i < $max_count; $i++){
       if($stateBoolean == 0 && $latitude[$i] != 0 && $longitude[$i] != 0){
         array_push($data, array("Spaces" => $spaceID[$i], "Latitude" => $latitude[$i], "Longitude" => $longitude[$i], "Addresses" => $address[$i], "Distance" => distanceAlgorithm($origin_lat, $origin_lon, $latitude[$i], $longitude[$i]), "MonthlyPrice" => $monthlyPrice[$i], "SpaceSize" => $spaceSize[$i], "SpaceInformation" => $spaceInformation[$i]));
@@ -56,7 +57,6 @@ if($err == array()){
         array_push($data, array("Spaces" => $spaceID[$i], "Latitude" => $latitude[$i], "Longitude" => $longitude[$i], "Addresses" => $address[$i], "Distance" => 0, "MonthlyPrice" => $monthlyPrice[$i], "SpaceSize" => $spaceSize[$i], "SpaceInformation" => $spaceInformation[$i]));
       }
     }
-    // array_print($data);
 
     if($stateBoolean == 0) {
       if(isset($_GET['range'])) {
@@ -78,20 +78,45 @@ if($err == array()){
 
   // array_print($data);
   if(count($data) == 0)
-    array_push($err, "0 Results");
+  array_push($err, "0 Results");
 
   $max_size = 0;
-   for($i = 0; $i < $max_count; $i++){
+  for($i = 0; $i < $max_count; $i++){
     if(isset($data[$i])){
       if($data[$i]['SpaceSize'] > $max_size)
-        $max_size = $data[$i]["SpaceSize"];
+      $max_size = $data[$i]["SpaceSize"];
     }
   }
   if(isset($_GET['size']))
-    $size = clean($_GET['size']);
+  $size = clean($_GET['size']);
   else
-    $size = $max_size;
+  $size = $max_size;
 }
+
+$max_price = 10000;
+$max_size = 3000;
+
+$newdata = array();
+
+for($i = 0; $i < count($spaceID); ++$i){
+  if(isset($data[$i]["Spaces"])) {
+    $score = 0;
+    $score += Utilization($data[$i]['Spaces'], $start, $end, (100 * (5/15)));
+    if($stateBoolean == 0)
+    {
+      $score += distance_score($range, $data[$i]['Distance'], 100 * (3/15));
+    }
+    else {
+      $score += 100 * (3 / 15);
+    }
+
+    $score += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (2/15));
+    $score += size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (5/15));
+    $score = round($score) > 100 ? 100 : round($score);
+    array_push($newdata, array("Spaces" => $data[$i]['Spaces'], "Latitude" => $data[$i]['Latitude'], "Longitude" => $data[$i]['Longitude'], "Addresses" => $data[$i]['Addresses'], "Distance" => $data[$i]['Distance'], "MonthlyPrice" => $data[$i]['MonthlyPrice'], "SpaceSize" => $data[$i]['SpaceSize'], "SpaceInformation" => $newdata[$i]['SpaceInformation'], "Score" => $score));
+  }
+}
+array_print($newdata);
 
 ?>
 
@@ -132,7 +157,7 @@ if($err == array()){
         <?php if($err == array() || !in_array($location_error, $err)){ ?>
           <div class="search-result bg-gray">
             <h2>Results For "<?php echo isset($_GET['location']) ? urldecode($_GET['location']) : (isset($_GET['state']) ? urldecode($_GET['state']) : ""); ?>"</h2>
-            <p><?php echo (isset($data)) ? count($data) : "0" ?> Results on <?php echo date("F d, Y"); ?></p>
+            <p><?php echo (isset($newdata)) ? count($newdata) : "0" ?> Results on <?php echo date("F d, Y"); ?></p>
           </div>
         <?php }?>
       </div>
@@ -153,10 +178,10 @@ if($err == array()){
               <input type="hidden" name="range" value="<?php echo clean($_GET['range']); ?>">
             <?php }?>
             <div class="widget filter">
-            <h4 class="widget-header">Size Needed (sqft)</h4>
-            <input class="form-control" type="number" name="size" value="<?php echo clean($_GET['size']); ?>" placeholder="Square Feet">
-          </div>
-        </form>
+              <h4 class="widget-header">Size Needed (sqft)</h4>
+              <input class="form-control" type="number" name="size" value="<?php echo clean($_GET['size']); ?>" placeholder="Square Feet">
+            </div>
+          </form>
           <div class="widget category-list">
             <h4 class="widget-header">All Category</h4>
             <ul class="category-list">
@@ -193,88 +218,81 @@ if($err == array()){
         </div>
       </div>
       <div class="col-md-9">
-            <div class="row">
-            <!-- <div class="col-md-6">
-            <div class="view">
-            <strong>Views</strong>
-            <ul class="list-inline view-switcher">
-            <li class="list-inline-item">
-            <a href="javascript:void(0);"><i class="fa fa-th-large"></i></a>
-          </li>
+        <div class="row">
+          <!-- <div class="col-md-6">
+          <div class="view">
+          <strong>Views</strong>
+          <ul class="list-inline view-switcher">
           <li class="list-inline-item">
-          <a href="javascript:void(0);"><i class="fa fa-reorder"></i></a>
+          <a href="javascript:void(0);"><i class="fa fa-th-large"></i></a>
         </li>
-      </ul>
-    </div>
-  </div> -->
+        <li class="list-inline-item">
+        <a href="javascript:void(0);"><i class="fa fa-reorder"></i></a>
+      </li>
+    </ul>
+  </div>
+</div> -->
 </div>
 <div class="product-grid-list">
   <div class="row mt-30">
     <?php
 
+    // prints errors from the search
     if($err != array()) {
 
       ?>
       <div class="col-sm-12 col-lg-12 col-md-12">
         <?php
         for($i = 0; $i < count($err); $i++){
-          echo "<h2 align='center'>" . $err[$i] . "</h2>"; } ?>
-        </div>
-      <?php } else {
-        $max_price = 10000;
-        $max_size = 3000;
-        for($i = 0; $i < count($spaceID); ++$i){
-          if(isset($data[$i]["Spaces"])) {
-            $score[$i] = 0;
-            $score[$i] += Utilization($data[$i]['Spaces'], $start, $end, (100 * (5/15)));
-            if($stateBoolean == 0)
-            {
-              $score[$i] += distance_score($range, $data[$i]['Distance'], 100 * (3/15));
-            }
+          echo "<h2 align='center'>" . $err[$i] . "</h2>";
+        }
+        ?>
+      </div>
+      <?php
+    }
+    else {
+      for($i = 0; $i < count($newdata); $i++){
+      ?>
 
-            $score[$i] += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (2/15));
-            $score[$i] += size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (5/15));
-            $score[$i] = round($score[$i]) > 100 ? 100 : round($score[$i]) ;
-
-            ?>
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <!-- product card -->
-              <div class="product-item bg-light">
-                <div class="card" <?php echo ($score[$i] >= 75) ? 'style="background:lightgreen"' : "" ?>>
-                  <div class="thumb-content">
-                    <!-- <div class="price">$200</div> -->
-                    <!-- <a href="">
-                    <img class="card-img-left img-fluid" src="../includes/images/products/products-2.jpg" alt="Card image cap">
-                  </a> -->
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title"><a href="space.php?space=<?php echo $data[$i]['Spaces']; ?>&startdate=<?php echo $_GET['startdate']; ?>&enddate=<?php echo $_GET['enddate']; ?>"><?php echo $data[$i]['Addresses']; ?></a></h4>
-                  <ul class="list-inline product-meta">
-                    <!-- <li class="list-inline-item">
-                    <a href="spaces.php?spaceID=<?php echo $data['Spaces'][$i]; ?>"><i class="fa fa-folder-open-o"></i>Furnitures</a>
-                  </li> -->
-                  <li class="list-inline-item">
-                    <a href=""><strong><?php echo $score[$i] . "%</strong> match"; ?></a>
-                  </li>
-                </ul>
-                <p class="card-text"><?php echo $data[$i]['SpaceInformation']; ?></p>
-                <div class="product-ratings">
-                  <ul class="list-inline">
-                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+      <div class="col-sm-12 col-lg-12 col-md-12">
+        <!-- product card -->
+        <div class="product-item bg-light">
+          <div class="card" <?php echo ($newdata[$i]['Score'] >= 75) ? 'style="background:lightgreen"' : "" ?>>
+            <div class="thumb-content">
+              <!-- <div class="price">$200</div> -->
+              <!-- <a href="">
+              <img class="card-img-left img-fluid" src="../includes/images/products/products-2.jpg" alt="Card image cap">
+            </a> -->
+          </div>
+          <div class="card-body">
+            <h4 class="card-title"><a href="space.php?space=<?php echo $newdata[$i]['Spaces']; ?>&startdate=<?php echo $_GET['startdate']; ?>&enddate=<?php echo $_GET['enddate']; ?>"><?php echo $newdata[$i]['Addresses']; ?></a></h4>
+            <ul class="list-inline product-meta">
+              <!-- <li class="list-inline-item">
+              <a href="spaces.php?spaceID=<?php echo $newdata['Spaces'][$i]; ?>"><i class="fa fa-folder-open-o"></i>Furnitures</a>
+            </li> -->
+            <li class="list-inline-item">
+              <a href=""><strong><?php echo $newdata[$i]['Score'] . "%</strong> match"; ?></a>
+            </li>
+          </ul>
+          <p class="card-text"><?php echo $newdata[$i]['SpaceInformation']; ?></p>
+          <div class="product-ratings">
+            <ul class="list-inline">
+              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+              <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+              <li class="list-inline-item"><i class="fa fa-star"></i></li>
+            </ul>
           </div>
         </div>
-      <?php }
-    }}
-    ?>
+      </div>
+    </div>
   </div>
+<?php }
+}
+
+?>
+</div>
 </div>
 </div>
 </div>
