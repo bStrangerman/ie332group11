@@ -4,9 +4,13 @@ require_once "../includes/main.php";
 //set the fee rate
 $feeRate = 1.05;
 
+// checks if they are a proper user
+$root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
+
 // checks if the user is logged in and is a warehouse owner
 if (isset($_SESSION['UserID'])) {
-  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
+  // checks if they are a proper user
+  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) || !$root)
   header('Location: index.php');
   else
   $UserID = $_SESSION['UserID'];
@@ -25,8 +29,8 @@ function getLocations($UserID){
   return "SELECT *
   FROM Warehouses
   LEFT JOIN Spaces
-  ON Spaces.WarehouseID = Warehouses.WarehouseID
-  WHERE Warehouses.OwnerID = $UserID
+  ON Spaces.WarehouseID = Warehouses.WarehouseID " . ((!$root) ? "" : "
+  WHERE Warehouses.OwnerID = $UserID") . "
   ORDER BY Warehouses.WarehouseID ASC, Spaces.SpaceID ASC";
 }
 
