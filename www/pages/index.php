@@ -42,7 +42,7 @@ if(!isset($_COOKIE["IP_Data"])){
   //setcookie("IP_Latitude", $geoIP["latitude"]);  //set LAT
   //setcookie("IP_Longitude", $geoIP["longitude"]);  //set Lon
   $ip_message = "";
-  header("refresh: .1");
+  header("refresh: 0");
   echo "Please wait while this page reloads";
   exit;
 }
@@ -55,7 +55,7 @@ if($IP_Use['region_name'] == ""){
   $geoIP = json_decode(file_get_contents("http://api.ipstack.com/" . $useThisIP . "?access_key=d3bc63cb9b643a0c5f818c7762f23dda"), true);
   setcookie("IP_Data", serialize($geoIP)); //test
   $ip_message = "It appears your location cannot be determined. <br> Please try using a VPN to a different location in the United States or using a network outside of Purdue University.<br> For demonstration purposes, Miami, Florida has been set as your location.  <br> Please clear your cookies and change your location to get nearby results. ";
-  header("refresh: .1");
+  header("refresh: 0");
   echo "Please wait while this page reloads";
   exit;
 }
