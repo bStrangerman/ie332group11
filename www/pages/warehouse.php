@@ -57,7 +57,7 @@ require_once "../layouts/sb_admin_2/header.php";
             </div>
           </div>
         </div>
-        <a href="#">
+        <a href="locations.php">
           <div class="panel-footer">
             <span class="pull-left">View Details</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -91,7 +91,7 @@ require_once "../layouts/sb_admin_2/header.php";
             </div>
           </div>
         </div>
-        <a href="#">
+        <a href="contractList.php">
           <div class="panel-footer">
             <span class="pull-left">View Details</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -136,7 +136,7 @@ require_once "../layouts/sb_admin_2/header.php";
             </div>
           </div>
         </div>
-        <a href="#">
+        <a href="contractList.php">
           <div class="panel-footer">
             <span class="pull-left">View Details</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
