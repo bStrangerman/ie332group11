@@ -52,6 +52,6 @@ function insertBooking ($spaceID, $LesseeID, $startDate, $endDate, $AmountCharge
   //Notify Warehouse Owner of New Contract
     notify($_POST['OwnerID'], 'pending', "A new contract has been created!", 'contract.php?contract=' . $last_id);
 
-    //Notify Lessee Owner of New Contract
+    //set contract to pending
     set_contract_status($last_id, 'Pending');
 }

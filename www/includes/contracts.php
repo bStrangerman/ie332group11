@@ -32,6 +32,16 @@ function set_contract_status ($contractID, $status)
     $getLesseeResult = $GLOBALS['conn'] -> query($getLesseeQuery);
     $getLessee = $getLesseeResult -> fetch_assoc();
 
+
+        $sql = "DELETE FROM Contract_Status
+        WHERE ContractID = $contractID
+        AND StatusID IN (
+          SELECT StatusID
+          FROM Status
+          WHERE Status.StatusName = 'Pending'
+        )";
+        mysqli_query($GLOBALS['conn'], $sql);
+
     $sql = "INSERT INTO Contract_Status (ContractID, StatusID)
     SELECT $contractID, Status.StatusID
     FROM Status
@@ -40,14 +50,6 @@ function set_contract_status ($contractID, $status)
 
     notify($getLessee['LesseeID'], $status, "Contract " . $contractID . " was " . $status, 'contract.php?contract=' . $contractID);
 
-    $sql = "DELETE FROM Contract_Status
-    WHERE ContractID = $contractID
-    AND StatusID IN (
-      SELECT StatusID
-      FROM Status
-      WHERE Status.StatusName = 'Pending'
-    )";
-    mysqli_query($GLOBALS['conn'], $sql);
   }
 
   return $status;
