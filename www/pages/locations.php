@@ -71,6 +71,7 @@ require_once "../layouts/sb_admin_2/header.php";
                   <th>Space #</th>
                   <th>Profit</th>
                   <th>Current Status</th>
+                  <th>Utilization</th>
                   <th>Edit</th>
                 </tr>
               </thead>
@@ -111,6 +112,7 @@ require_once "../layouts/sb_admin_2/header.php";
                       echo "$ " . round($max_profit_per_warehouse / $feeRate,2);
 
                       ?></td>
+                      <td></td>
                       <td></td>
                       <td><a href="editLocation.php?edit=1&warehouse=<?php echo $warehouseID; ?>">
                         <button class="btn btn-outline btn-primary">Edit</button></a></td>
@@ -189,6 +191,7 @@ require_once "../layouts/sb_admin_2/header.php";
                             }
                             ?>
                           </td>
+                          <td><?php echo round(100 - Utilization($space, time(), time()), 2); ?>%</td>
                           <td>
                             <a href="editSpace.php?edit=1&space=<?php echo $space; ?>">
                               <button class="btn btn-outline btn-primary">Edit</button></a>
@@ -271,6 +274,7 @@ require_once "../layouts/sb_admin_2/header.php";
                             }
                             ?>
                           </td>
+                          <td><?php echo round(100 - Utilization($mainSqlResult['SpaceID'], time(), time()) , 2); ?>%</td>
                           <td>
                             <a href="editSpace.php?edit=1&space=<?php echo $space; ?>">
                               <button class="btn btn-outline btn-primary">Edit</button></a>
