@@ -1,12 +1,12 @@
 <?php
 require_once "../includes/main.php";
-array_print($_POST);
+
 // checks if they are a proper user
 $root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
 
 // checks if the user is logged in and is a warehouse owner
 if (isset($_SESSION['UserID'])) {
-  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) || !$root)
+  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) && !$root)
   header('Location: index.php');
   else
   $UserID = $_SESSION['UserID'];
@@ -18,11 +18,16 @@ else {
 
 //divides the page into add or edit sections
 if(isset($_GET['add']) && $_GET['add'] == 1){
+// root cannot add spaces
+  if($root){
+    header("Location: locations.php; Refresh: 5");
+    echo "you cannot add a space as root";
+    exit;
+  }
   $method = "add";
 }
-else if(isset($_GET['edit']) && $_GET['edit'] == 1){
+else if((isset($_GET['edit']) && $_GET['edit'] == 1)){
   $method = "edit";
-
   if (isset($_GET['space'])){
     $spaceID = clean($_GET['space']);
 
@@ -65,7 +70,7 @@ if(isset($_POST['editing']) && !isset($_GET['add'])){
     $sql = "UPDATE Spaces
     SET WarehouseID = $warehouseID, SpaceSize = $size, MonthlyPrice = $monthlyPrice, SpaceInformation = '$info'
     WHERE SpaceID = $spaceID";
-    echo $sql;
+
     if($conn -> query($sql) === TRUE){
       $_SESSION['message'] = "Success!";
       header("Refresh: 0.1");
@@ -132,7 +137,7 @@ require_once "../layouts/sb_admin_2/header.php";
               <div class="col-lg-12">
                 <form role="form" method="POST">
                   <input type="hidden" name="editing" value="space">
-                  <input type="hidden" name="space" value="<?php echo $space[0]['SpaceID']; ?>">
+                  <input type="hidden" name="spaceID" value="<?php echo clean($_GET['space']); ?>">
                   <?php
                   if($method == "edit" && !$root) {
                     echo "
@@ -146,6 +151,10 @@ require_once "../layouts/sb_admin_2/header.php";
                     </fieldset>";
                   }
                   else if(($method == "add") || ($method == "edit" && $root)) {
+                    if(!$root){
+                      $ownerID = $UserID;
+                    }
+                    array_print($ownerID);
                     echo "
                     <div class='form-group'>
                     <label for='disabledSelect'>Warehouse Location</label>
