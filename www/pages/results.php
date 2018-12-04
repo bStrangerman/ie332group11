@@ -193,7 +193,7 @@ for($i = 0; $i < count($spaceID); ++$i){
               LIMIT 6";
               $result = $conn -> query($sql);
               while($row = $result -> fetch_assoc()){ ?>
-                <li><a href="results.php?location=<?php echo urlencode($_GET['location']);?>&type=<?php echo (isset($_GET['type']) ? $_GET['type'] . "&type=" : "") . urlencode($row['AttributeName']); ?>&startdate=<?php echo $start;?>&enddate=<?php echo $end;?>"><?php echo $row['AttributeName']; ?> <span><?php echo $row['countof']; ?></span></a></li>
+                <li><a href="results.php?location=<?php echo urlencode($_GET['location']);?>&type=<?php echo (isset($_GET['type']) ? $_GET['type'] . "&type=x" : "") . urlencode($row['AttributeName']); ?>&startdate=<?php echo $start;?>&enddate=<?php echo $end;?>"><?php echo $row['AttributeName']; ?> <span><?php echo $row['countof']; ?></span></a></li>
               <?php } ?>
             </ul>
           </div>
@@ -273,7 +273,7 @@ for($i = 0; $i < count($spaceID); ++$i){
             </li>
           </ul>
           <p class="card-text"><?php echo $newdata[$i]['SpaceInformation']; ?></p>
-          <div class="product-ratings">
+          <!-- <div class="product-ratings">
             <ul class="list-inline">
               <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
               <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
@@ -281,7 +281,7 @@ for($i = 0; $i < count($spaceID); ++$i){
               <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
               <li class="list-inline-item"><i class="fa fa-star"></i></li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
