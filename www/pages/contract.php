@@ -2,9 +2,10 @@
 require_once "../includes/main.php";
 include_once "../includes/contracts.php";
 
+$root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
 
 if (isset($_SESSION['UserID'])) {
-  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']))
+  if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) || !$root)
   header('Location: pages/index.php');
   else
   $UserID = $_SESSION['UserID'];
@@ -28,9 +29,7 @@ function getContractInfo($contractID, $UserID){
   ON Contract_Status.ContractID = Contracts.ContractID
   LEFT JOIN Status
   ON Status.StatusID = Contract_Status.StatusID
-  WHERE Contracts.ContractID = $contractID
-  AND Warehouses.OwnerID = $UserID
-  ORDER BY StatusTime DESC";
+  WHERE Contracts.ContractID = $contractID " . ((!$root) ? "" : "AND Warehouses.OwnerID = $UserID") . " ORDER BY StatusTime DESC";
 }
 
 // if the session changed
@@ -40,6 +39,7 @@ $contractID = clean($_GET['contract']);  // stored for local use
 if(isset($_POST['status'])){
   set_contract_status($contractID, $_POST['status']);
 }
+
 
 // sql query for new contract info
 $mainSqlMidResult = ($conn -> query(getContractInfo($contractID, $UserID)));
