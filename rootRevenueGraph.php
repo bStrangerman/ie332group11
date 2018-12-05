@@ -1,3 +1,67 @@
+<?php
+require_once "www/includes/main.php";
+ ?>
+
+ <?php
+ 	echo "Line: 6";
+ 	$curdate = date("Y/m/d");
+ 	//Query the contract amount, start date, and associated space ID of every contract in database
+ 	$contractSQL = "SELECT *
+ 	FROM Contracts
+ 	ORDER BY StartDate ASC";
+ 	$contractInfo = $conn->query($contractSQL);
+ 	//parse the query into 3 identically indexed arrays
+ 	$priceArray=array();
+	$dateArray=array();
+ 	while($row = $contractInfo -> fetch_assoc()){
+		$amountCharged = $row['AmountCharged'];
+		$startDate = $row['StartDate'];
+ 		array_push($priceArray, $amountCharged);
+		array_push($dateArray, $startDate);
+		// echo $row["AmountCharged"] . " " . $row["StartDate"] . "<br>";
+	}
+
+
+
+
+ //iteratively creates array dayTake, where every index is the sum of contract value for that day
+ //indexed the same as the date range from first contract to current day (business day we have been running)
+ //j is contract Number
+ //$d is dates
+
+ $j=0;
+ $d=0;
+$daily_hold = 0;
+$DateList = array();
+$dailyTake = array();
+if($dateArray != array() && $priceArray != array()){
+ while($j < (count($priceArray))){
+
+ 	$daily_hold = $priceArray[$j];
+	if(isset($dateArray[$j + 1])){
+ 	if($dateArray[$j] == $dateArray[$j + 1]){
+ 		$j = $j + 1;
+ 		$daily_hold = $daily_hold + $priceArray[$j];
+
+ 	}
+}
+ 	$DateList[$d] = $dateArray[$j];
+ 	$dailyTake[$d] = $daily_hold;
+ 	$d = $d + 1;
+ 	$j = $j + 1;
+ }
+}
+ // echo "DateList: " . array_print($DateList);
+ // echo "dailyTake: " . array_print($dailyTake);
+
+ //echos the arrays needed for the chart
+ $k = 0;
+ while($k<$d){
+ 	echo "{ x: new Date(" . $DateList[$k] . "), y: " . ($dailyTake[$k]) . "},";
+ 	$k++;
+ }?>
+
+
 <html>
 <head>
 <script>
@@ -25,7 +89,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "area",
 		yValueFormatString: "#,##0.0mn",
 		dataPoints: [<?php
-
+		echo "Line: 34";
 		$curdate = date("Y/m/d");
     //Query the contract amount, start date, and associated space ID of every contract in database
     $contractSQL = "SELECT AmountCharged, StartDate, *
@@ -63,7 +127,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 			$d = $d + 1;
 			$j = $j + 1;
 		}
-
+		echo "DateList: " . array_print($DateList);
+		echo "dailyTake: " . array_print($dailyTake);
 
 		//echos the arrays needed for the chart
 		$k = 0;
