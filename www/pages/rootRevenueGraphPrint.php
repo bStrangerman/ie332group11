@@ -133,7 +133,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		//echos the arrays needed for the chart
 		$k = 0;
 		while($k<$d){
-    	echo "{ x: new Date(" . $DateList[$k] . "), y: " . ($dailyTake[$k]) . "},";
+    	echo "{ x: new Date(" . $DateList[$k] . "), y: " . ($dailyTake[$k]) . "label: ''},";
 			$k++;
 		}?>
 			// { x: new Date(2015, 02, 1), y: 54.6, label: "Q1-2015" },
