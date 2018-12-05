@@ -48,7 +48,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	 //$d is dates
 
     $j=0;
-		$d=0
+		$d=0;
 
 		while($j < (sizeof($priceArray)+1)){
 
@@ -67,9 +67,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
 
 		//echos the arrays needed for the chart
 		$k = 0;
-			while($k<$d){
-      	echo "{ x: new Date(" . $DateList[$k] . "), y: " . ($dailyTake[$k]) . "},";
-				$k++;
+		while($k<$d){
+    	echo "{ x: new Date(" . $DateList[$k] . "), y: " . ($dailyTake[$k]) . "},";
+			$k++;
 		}?>
 			// { x: new Date(2015, 02, 1), y: 54.6, label: "Q1-2015" },
 			// { x: new Date(2015, 05, 1), y: 61.1, label: "Q2-2015" },
