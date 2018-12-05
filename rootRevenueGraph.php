@@ -19,7 +19,7 @@ require_once "www/includes/main.php";
  		array_push($priceArray, $amountCharged);
 		array_push($dateArray, $startDate);
 
-		 echo $row["AmountCharged"] . " " . $row["StartDate"] . "<br>";
+		  echo $row["AmountCharged"] . " " . $row["StartDate"] . "<br>";
 	}
 
 
