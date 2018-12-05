@@ -8459,7 +8459,7 @@ INSERT INTO Numeric_Contract_Ratings(ContractID,NumericRatingID,RatingResult) VA
 CREATE TABLE IF NOT EXISTS Text_Contract_Ratings (
   ContractID int(11),
   TextRatingID int(11),
-  RatingResult int(500),
+  RatingResult varchar(500),
   PRIMARY KEY(ContractID, TextRatingID),
   FOREIGN KEY(ContractID) REFERENCES Contracts(ContractID) ON DELETE CASCADE,
   FOREIGN KEY(TextRatingID) REFERENCES Text_Rating_Types(TextRatingID) ON DELETE RESTRICT
