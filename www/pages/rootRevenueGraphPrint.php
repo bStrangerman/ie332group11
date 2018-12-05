@@ -73,8 +73,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Company Profit Over Time"
 	},
 	axisX: {
-		minimum: new Date(<?php min($dateArray[])?>),
-		maximum: new Date(<?php max($dateArray[])?>),
+		minimum: new Date(<?php min($dateArray)?>),
+		maximum: new Date(<?php max($dateArray)?>),
 
 		valueFormatString: "MMM YY"
 	},
