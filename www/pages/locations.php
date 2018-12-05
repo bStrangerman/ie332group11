@@ -27,11 +27,10 @@ else {
 */
 function getLocations($UserID){
   return "SELECT *
-  FROM Warehouses
-  LEFT JOIN Spaces
-  ON Spaces.WarehouseID = Warehouses.WarehouseID " . (($GLOBALS['root'] == 1) ? "" : "
+  FROM Warehouses" .
+  (($GLOBALS['root'] == 1) ? "" : "
   WHERE Warehouses.OwnerID = $UserID") . "
-  ORDER BY Warehouses.WarehouseID ASC, Spaces.SpaceID ASC";
+  ORDER BY Warehouses.WarehouseID ASC";
 
 }
 
@@ -58,7 +57,7 @@ require_once "../layouts/sb_admin_2/header.php";
           <div class="pull-right">
             <div class="btn-group">
               <a href="editLocation.php?add=1">
-                <button type="button" class="btn btn-default btn-xs">
+                <button type="button" class="btn btn-info btn-xs">
                   Add Location
                 </button>
               </a>
@@ -75,7 +74,6 @@ require_once "../layouts/sb_admin_2/header.php";
                   <th>Address</th>
                   <th>Space #</th>
                   <th>Profit</th>
-                  <th>Current Status</th>
                   <th>Utilization</th>
                   <th>Edit</th>
                 </tr>
@@ -85,18 +83,12 @@ require_once "../layouts/sb_admin_2/header.php";
 
                 $warehouse = "";
                 while($mainSqlResult = $mainSqlMidResult -> fetch_assoc()){
-                  array_print($mainSqlResult);
-                  if($mainSQLResult['SpaceID'] != ""){
-                  ?>
+                  $warehouseID = $mainSqlResult['WarehouseID'];?>
                   <tr>
-                    <?php
-                    $warehouseID = $mainSqlResult['WarehouseID'];
-
-                    // Is this a new warehouse row? then print out the warehouse information
-                    if($warehouse != $mainSqlResult['WarehouseID']){ ?>
-                      <td><?php echo $mainSqlResult['Address']; ?></td>
-                      <td></td>
-                      <td><?php
+                    <td><?php echo $mainSqlResult['Address']; ?></td>
+                    <td>--</td>
+                    <td>
+                      <?php
                       $profitByWarehouseSQL = "SELECT SUM(Contracts.AmountCharged) AS Profit
                       FROM Contracts
                       RIGHT JOIN Spaces
@@ -108,32 +100,45 @@ require_once "../layouts/sb_admin_2/header.php";
 
                       //gets the profit for each warehouse
                       $profitByWarehouseResult = $conn -> query($profitByWarehouseSQL);
-                      $max_profit_per_warehouse = 0;
-                      if(isset($mainSqlResult['SpaceID'])){
-                        while($profitByWarehouse = $profitByWarehouseResult -> fetch_assoc()){
-                          if($profitByWarehouse['Profit'] > $max_profit_per_warehouse){
-                            $max_profit_per_warehouse = $profitByWarehouse['Profit'];
-                          }
-                        }
+                      while($profitByWarehouse = $profitByWarehouseResult -> fetch_assoc()){
+                        // print the profit for each warehouse - our fee
+                        echo "$ " . round($profitByWarehouse['Profit'] / $feeRate, 2);
                       }
-                      // print the profit for each warehouse - our fee
-                      echo "$ " . round($max_profit_per_warehouse / $feeRate,2);
+                      ?>
+                    </td>
+                    <td><a href="editLocation.php?edit=1&warehouse=<?php echo $warehouseID; ?>">
+                      <button class="btn btn-outline btn-primary">Edit</button></a>
+                    </td>
+                  </tr>
+                  <?php
+                  // Gets spaces for this warehosue
+                  $spacesSQL = "SELECT *
+                  FROM Spaces
+                  LEFT JOIN Warehouses
+                  ON Warehouses.WarehouseID = Spaces.WarehouseID
+                  WHERE Spaces.WarehouseID = $warehouseID";
+                  $spacesResult = $conn -> query($spacesSQL);
 
-                      ?></td>
+                  if ($spacesResult->num_rows <= 0) {
+                    ?>
+                    <tr>
+                      <td>No Space has been created.</td>
                       <td></td>
                       <td></td>
-                      <td><a href="editLocation.php?edit=1&warehouse=<?php echo $warehouseID; ?>">
-                        <button class="btn btn-outline btn-primary">Edit</button></a></td>
-                      </tr>
-                      <!-- Print out the first space information -->
-                      <tr>
-                        <td align="center">-</td>
-                        <td><?php
-                        $space = $mainSqlResult['SpaceID'];
-                        echo $mainSqlResult['SpaceID'];
-                        ?></td>
-                        <td>
-                          <?php
+                      <td><a href="editSpace.php?add=1&warehouse=<?php echo $warehouseID; ?>">
+                        <button class="btn btn-outline btn-primary">Add Space</button></a>
+                      </td>
+                    </tr>
+                    <?php
+                    }
+                    else {
+                      while ($spaces = $spacesResult -> fetch_assoc()) {
+                        ?>
+                        <tr>
+                          <td>--</td>
+                          <td><?php echo $spaces['SpaceID']; ?></td>
+                          <td><?php
+                          $space = $spaces['SpaceID'];
                           $profitBySpaceSQL = "SELECT SUM(Contracts.AmountCharged) AS Profit
                           FROM Contracts
                           WHERE Contracts.SpaceID = $space
@@ -142,176 +147,50 @@ require_once "../layouts/sb_admin_2/header.php";
                           //gets the profit for each warehouse
                           $profitBySpaceResult = $conn -> query($profitBySpaceSQL);
                           $max_profit_per_space = 0;
-                          if(isset($mainSqlResult['SpaceID'])){
+                          if(isset($spaces['SpaceID'])){
+
                             while($profitBySpace = $profitBySpaceResult -> fetch_assoc()){
                               if($profitBySpace['Profit'] > $max_profit_per_space){
                                 $max_profit_per_space = $profitBySpace['Profit'];
                               }
                             }
                           }
+
                           // print the profit for each warehouse - our fee
-                          echo "$ " . round($max_profit_per_space / $feeRate,2);
-
-                          ?>
-                        </td>
-                        <td>
-                          <?php
-                          // Get all the contracts for this space
-                          $statusSQL = "SELECT *
-                          FROM Contracts
-                          LEFT JOIN Contract_Status
-                          ON Contract_Status.ContractID = Contracts.ContractID
-                          LEFT JOIN Status
-                          ON Status.StatusID = Contract_Status.StatusID
-                          WHERE SpaceID = $space";
-                          $statusResult = $conn -> query($statusSQL);
-
-                          //displays important status of the space
-                          $isThere_aStatus = FALSE; //checks if there is a status
-                          if(isset($mainSqlResult['SpaceID'])){
-
-                            while($status = $statusResult -> fetch_assoc()){
-                              $isThere_aStatus = TRUE;  //set status as true
-                              if(isset($status['ContractID'])){
-                                $date_diff_future = date_diff(date_create(date("Y-m-d",strtotime($status['StartDate']))), date_create(date("Y-m-d")))->format("%R%a");
-                                $date_diff_past = date_diff(date_create(date("Y-m-d",strtotime($status['EndDate']))), date_create(date("Y-m-d")))->format("%R%a");
-                                echo "future: " . $date_diff_future . " past: " . $date_diff_past . "<br>";
-                                if($date_diff_future <= 0 && $date_diff_past <= 0){
-                                  echo "Currently being leased";
-                                  break;
-                                }
-                                else if($date_diff_future > 0 && $date_diff_past < 0){
-                                  echo "Next lease in " . $date_diff_future . " days";
-                                  break;
-                                }
-                                else if($date_diff_future < 0 && $date_diff_past > 0){
-                                  echo "Last lease was " . $date_diff_past . " days ago";
-                                  break;
-                                }
-                                else{
-                                  echo "Never been leased";
-                                }
-                              }
-                            }                    }
-
-                            if ($isThere_aStatus == FALSE){
-                              echo "Never been leased";
-                            }
-                            ?>
-                          </td>
-                          <td><?php echo round(100 - Utilization($space, time(), time()), 2); ?>%</td>
-                          <td>
-                            <a href="editSpace.php?edit=1&space=<?php echo $space; ?>">
-                              <button class="btn btn-outline btn-primary">Edit</button></a>
-                            </td>
+                          echo "$ " . round($max_profit_per_space / $feeRate,2);?></td>
+                          <td><a href="editSpace.php?add=1&warehouse=<?php echo $warehouseID; ?>">
+                            <button class="btn btn-outline btn-primary">Add Space</button></a></td>
                           </tr>
-                        <?php }
-                          $warehouse = $mainSqlResult['WarehouseID'];
+                          <?php
                         }
-                        // print out the rest of the spaces for this warehouse
-                        else {?>
-                          <td align="center">-</td>
-                          <td><?php
-                          $space = $mainSqlResult['SpaceID'];
-                          echo $mainSqlResult['SpaceID'];
-                          ?></td>
-                          <td>
-                            <?php
-                            $profitBySpaceSQL = "SELECT SUM(Contracts.AmountCharged) AS Profit
-                            FROM Contracts
-                            WHERE Contracts.SpaceID = $space
-                            GROUP BY Contracts.SpaceID";
+                      }
+                    }
 
-                            //gets the profit for each warehouse
-                            $profitBySpaceResult = $conn -> query($profitBySpaceSQL);
-                            $max_profit_per_space = 0;
-                            if(isset($mainSqlResult['SpaceID'])){
 
-                              while($profitBySpace = $profitBySpaceResult -> fetch_assoc()){
-                                if($profitBySpace['Profit'] > $max_profit_per_space){
-                                  $max_profit_per_space = $profitBySpace['Profit'];
-                                }
-                              }
-                            }
+                    ?>
 
-                            // print the profit for each warehouse - our fee
-                            echo "$ " . round($max_profit_per_space / $feeRate,2);?>
-                          </td>
-                          <td>
-                            <?php
-                            // Get all the contracts for this space
-                            $statusSQL = "SELECT *
-                            FROM Contracts
-                            LEFT JOIN Contract_Status
-                            ON Contract_Status.ContractID = Contracts.ContractID
-                            LEFT JOIN Status
-                            ON Status.StatusID = Contract_Status.StatusID
-                            WHERE SpaceID = $space";
-                            $statusResult = $conn -> query($statusSQL);
 
-                            //displays important status of the space
-                            $isThere_aStatus = FALSE; //checks if there is a status
-                            if(isset($mainSqlResult['SpaceID'])){
-
-                              while($status = $statusResult -> fetch_assoc()){
-                                $isThere_aStatus = TRUE;  //set status as true
-                                if(isset($status['ContractID'])){
-                                  $date_diff_future = date_diff(date_create(date("Y-m-d",strtotime($status['StartDate']))), date_create(date("Y-m-d")))->format("%R%a");
-                                  $date_diff_past = date_diff(date_create(date("Y-m-d",strtotime($status['EndDate']))), date_create(date("Y-m-d")))->format("%R%a");
-                                  echo "future: " . $date_diff_future . " past: " . $date_diff_past . "<br>";
-
-                                  if($date_diff_future <= 0 && $date_diff_past <= 0){
-                                    echo "Currently being leased";
-                                    break;
-                                  }
-                                  else if($date_diff_future > 0 && $date_diff_past < 0){
-                                    echo "Next lease in " . $date_diff_future . " days";
-                                    break;
-                                  }
-                                  else if($date_diff_future < 0 && $date_diff_past > 0){
-                                    echo "Last lease was " . $date_diff_past . " days ago";
-                                    break;
-                                  }
-                                  else{
-                                    echo "Never been leased";
-                                  }
-                                }
-                              }
-                            }
-                            if ($isThere_aStatus == FALSE){
-                              echo "Never been leased";
-                            }
-                            ?>
-                          </td>
-                          <td><?php echo round(100 - Utilization($mainSqlResult['SpaceID'], time(), time()) , 2); ?>%</td>
-                          <td>
-                            <a href="editSpace.php?edit=1&space=<?php echo $space; ?>">
-                              <button class="btn btn-outline btn-primary">Edit</button></a>
-                            </td>
-                          <?php } ?>
-                        </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                  <h5 align="right">Current Fee Rate is <?php echo (($feeRate - 1) * 100); ?>%.  This has already been removed from your Profit.</h5>
-                </div>
-                <!-- /.table-responsive -->
+                  </tbody>
+                </table>
+                <h5 align="right">Current Fee Rate is <?php echo (($feeRate - 1) * 100); ?>%.  This has already been removed from your Profit.</h5>
               </div>
-              <!-- /.panel-body -->
+              <!-- /.table-responsive -->
             </div>
-            <!-- /.panel -->
-            <!-- /.panel -->
+            <!-- /.panel-body -->
           </div>
-          <!-- /.col-lg-6 -->
+          <!-- /.panel -->
+          <!-- /.panel -->
         </div>
-
-
+        <!-- /.col-lg-6 -->
       </div>
-      <!-- /.panel-body -->
+
+
     </div>
-    <!-- /.panel -->
+    <!-- /.panel-body -->
   </div>
-  <!-- /.col-lg-6 -->
+  <!-- /.panel -->
+</div>
+<!-- /.col-lg-6 -->
 </div>
 <!-- /.row -->
 </div>
