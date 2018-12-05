@@ -155,3 +155,4 @@ chart.render();
 <body>
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
