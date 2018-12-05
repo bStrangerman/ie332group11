@@ -11,11 +11,11 @@ if(isset($_POST['email'])) {
 
   function died($error) {
     // your error code can go here
-    echo "We are very sorry, but there were error(s) found with the form you submitted. ";
-    echo "These errors appear below.<br /><br />";
-    echo $error."<br /><br />";
-    echo "Please go back and fix these errors.<br /><br />";
-    die();
+    $err = "We are very sorry, but there were error(s) found with the form you submitted. ";
+    $err .= "These errors appear below.<br />";
+    $err .= $error."<br /><br />";
+    $err .= "Please go back and fix these errors.<br /><br />";
+    return $err;
   }
 
 
@@ -25,7 +25,7 @@ if(isset($_POST['email'])) {
   !isset($_POST['email']) ||
   !isset($_POST['telephone']) ||
   !isset($_POST['comments'])) {
-    died('We are sorry, but there appears to be a problem with the form you submitted.');
+    $error_message = died('We are sorry, but there appears to be a problem with the form you submitted.');
   }
 
   $first_name = $_POST['first_name']; // required
@@ -56,7 +56,7 @@ if(isset($_POST['email'])) {
   }
 
   if(strlen($error_message) > 0) {
-    died($error_message);
+    $error_message = died($error_message);
   }
 
   $email_message = "Form details below.\n\n";
@@ -80,7 +80,7 @@ $message = "";
   if(!$captcha){
     $message = 'Please check the the captcha form.';
   }
-  $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=YOUR SECRET KEY&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']), true);
+  $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcUDX8UAAAAAHXHHjeNUcrsldiZza1oF0PCcbwc&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']), true);
   if($response['success'] == false)
   {
     $message = 'You are a robot. Please leave.';
@@ -111,7 +111,7 @@ $message = "";
     <!-- Row Start -->
     <div class="row">
       <div class="col-md-12">
-        <h3 style="color:green"><?php echo (!isset($sent)) ? $error_message : $message ?> </h3>
+        <h3 style="<?php echo (isset($sent) ? (isset($error_message) ? "color:green" : (isset($message0 ? "color:red" : "")) : "")?>"><?php echo (!isset($sent)) ? $error_message : $message ?> </h3>
         <div class="widget personal-info">
           <h3 class="widget-header user">Contact Us</h3>
           <form name="contactform" method="POST">

@@ -1,10 +1,10 @@
 <?php
-require_once "www/includes/main.php";
+require_once "../includes/main.php";
  ?>
-
+<!-- Prints -->
  <?php
  	echo "Line: 6";
- 	$curdate = date("Y/m/d");
+ 	$curdate = date("Y,m,d");
  	//Query the contract amount, start date, and associated space ID of every contract in database
  	$contractSQL = "SELECT *
  	FROM Contracts
@@ -18,8 +18,7 @@ require_once "www/includes/main.php";
 		$startDate = $row['StartDate'];
  		array_push($priceArray, $amountCharged);
 		array_push($dateArray, $startDate);
-
-		  echo $row["AmountCharged"] . " " . $row["StartDate"] . "<br>";
+		// echo $row["AmountCharged"] . " " . $row["StartDate"] . "<br>";
 	}
 
 
@@ -74,8 +73,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Company Profit Over Time"
 	},
 	axisX: {
-		minimum: new Date(<?php min($dateArray)?>),
-		maximum: new Date(<?php max($dateArray)?>),
+		minimum: new Date(<?php minimum($dateArray[])?>),
+		maximum: new Date(<?php maximum($dateArray[])?>),
 
 		valueFormatString: "MMM YY"
 	},
@@ -91,7 +90,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		yValueFormatString: "#,##0.0mn",
 		dataPoints: [<?php
 		echo "Line: 34";
-		$curdate = date("Y/m/d");
+		$curdate = date("Y,m,d");
     //Query the contract amount, start date, and associated space ID of every contract in database
     $contractSQL = "SELECT AmountCharged, StartDate, *
     FROM Contracts
@@ -134,10 +133,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		//echos the arrays needed for the chart
 		$k = 0;
 		while($k<$d){
-    	echo "{ x:" . (date("Y,m,d", strtotime($DateList[$k]))) . ", y: " . ($dailyTake[$k]) . "},";
+    	echo "{ x: new Date(" . $DateList[$k] . "), y: " . ($dailyTake[$k]) . "},";
 			$k++;
 		}?>
-			{ x: new Date(2015, 02, 1), y: 54.6, label: "Q1-2015" },
+			// { x: new Date(2015, 02, 1), y: 54.6, label: "Q1-2015" },
 			// { x: new Date(2015, 05, 1), y: 61.1, label: "Q2-2015" },
 			// { x: new Date(2015, 08, 1), y: 47.0, label: "Q3-2015" },
 			// { x: new Date(2015, 11, 1), y: 48.0, label: "Q4-2015" },
