@@ -38,22 +38,3 @@ CREATE TABLE IF NOT EXISTS Notifications (
   FOREIGN KEY(UserID) REFERENCES phprbac_users(UserID),
   FOREIGN KEY(NotificationType) REFERENCES Notification_Types(TypeID)
 );
-
-CREATE TABLE IF NOT EXISTS Notification_Status (
-  NotificationStatusID int(11) AUTO_INCREMENT,
-  NotificationStatusName varchar(30),
-  PRIMARY KEY(NotificationStatusID)
-);
-
-INSERT INTO Notification_Status (NotificationStatusName) VALUES
-('New'),
-('Read');
-
-CREATE TABLE IF NOT EXISTS Notification_Status_Time (
-  NotificationID int(11),
-  NotificationStatusID int(11),
-  NotificationStatusTime timestamp DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY(NotificationID, NotificationStatusID),
-  FOREIGN KEY(NotificationID) REFERENCES Notifications(NotificationID),
-  FOREIGN KEY(NotificationStatusID) REFERENCES Notification_Status(NotificationStatusID)
-)
