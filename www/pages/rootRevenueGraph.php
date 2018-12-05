@@ -3,7 +3,7 @@ require_once "../includes/main.php";
  ?>
 
  <?php
- 	echo "Line: 6";
+
  	$curdate = date("Y/m/d");
  	//Query the contract amount, start date, and associated space ID of every contract in database
  	$contractSQL = "SELECT *
@@ -50,10 +50,7 @@ if($dateArray != array() && $priceArray != array()){
  	$j = $j + 1;
  }
 }
- // echo "DateList: " . array_print($DateList);
- // echo "dailyTake: " . array_print($dailyTake);
 
- //echos the arrays needed for the chart
  $k = 0;
  while($k<$d){
  	echo "{ x: new Date(" . $DateList[$k] . "), y: " . ($dailyTake[$k]) . "},";
@@ -135,7 +132,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     	echo "{ x:" . (date("Y,m,d", strtotime($DateList[$k]))) . ", y: " . ($dailyTake[$k]) . "}, label:'' ";
 			$k++;
 		}?>
-			{ x: new Date(2015, 02, 1), y: 54.6, label: "Q1-2015" },
+			//{ x: new Date(2015, 02, 1), y: 54.6, label: "Q1-2015" },
 			// { x: new Date(2015, 05, 1), y: 61.1, label: "Q2-2015" },
 			// { x: new Date(2015, 08, 1), y: 47.0, label: "Q3-2015" },
 			// { x: new Date(2015, 11, 1), y: 48.0, label: "Q4-2015" },
