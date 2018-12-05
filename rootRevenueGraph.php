@@ -18,7 +18,8 @@ require_once "www/includes/main.php";
 		$startDate = $row['StartDate'];
  		array_push($priceArray, $amountCharged);
 		array_push($dateArray, $startDate);
-		// echo $row["AmountCharged"] . " " . $row["StartDate"] . "<br>";
+
+		  echo $row["AmountCharged"] . " " . $row["StartDate"] . "<br>";
 	}
 
 
@@ -73,8 +74,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Company Profit Over Time"
 	},
 	axisX: {
-		minimum: new Date(<?php minimum($dateArray[])?>),
-		maximum: new Date(<?php maximum($dateArray[])?>),
+		minimum: new Date(<?php min($dateArray)?>),
+		maximum: new Date(<?php max($dateArray)?>),
 
 		valueFormatString: "MMM YY"
 	},
@@ -133,10 +134,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		//echos the arrays needed for the chart
 		$k = 0;
 		while($k<$d){
-    	echo "{ x: new Date(" . $DateList[$k] . "), y: " . ($dailyTake[$k]) . "},";
+    	echo "{ x:" . (date("Y,m,d", strtotime($DateList[$k]))) . ", y: " . ($dailyTake[$k]) . "},";
 			$k++;
 		}?>
-			// { x: new Date(2015, 02, 1), y: 54.6, label: "Q1-2015" },
+			{ x: new Date(2015, 02, 1), y: 54.6, label: "Q1-2015" },
 			// { x: new Date(2015, 05, 1), y: 61.1, label: "Q2-2015" },
 			// { x: new Date(2015, 08, 1), y: 47.0, label: "Q3-2015" },
 			// { x: new Date(2015, 11, 1), y: 48.0, label: "Q4-2015" },
