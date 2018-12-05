@@ -1,5 +1,5 @@
 ###WAREHOUSE INFORMATION###
-###This section prints SQL queries for appending the Warehouse Information column 
+###This section prints SQL queries for appending the Warehouse Information column
 #to the already produced WAREHOUSES data###
 
 warehousesID <- c(667:932)
