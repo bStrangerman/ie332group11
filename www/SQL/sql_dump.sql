@@ -9537,20 +9537,20 @@ SET Latitude = '29.81683', Longitude = '-95.41478'
                 ('Retail/Industrial', 1, 'This location is ideal for retail use.', 'fas fa-store-alt'),
                 ('Office/Industrial', 1, 'This location is ideal for office use.', 'fas fa-building'),
                 ('Industrial', 1, 'This location is ideal for industrial use.', 'fa fa-industry'),
-                ('Yard', 2, 'This location has an exterior yard.', ''),
-                ('Fencing', 2, 'This location has an outdoor fenced area.', ''),
-                ('Loading Dock', 2, 'This location has a loading dock and bay doors, perfect for moving Indiana and out.', 'fas fa-temperature-low'),
-                ('Floor Drains', 2, 'This location has indoor floor drains.', 'fa fa-truck'),
-                ('Sprinkler', 2, '', ''),
-                ('Bathroom', 2, '', ''),
-                ('Customizable', 2, '', ''),
-                ('Power', 2, '', ''),
+                ('Yard', 2, 'This location has an exterior yard.', 'fas fa-tree'),
+                ('Fencing', 2, 'This location has an outdoor fenced area.', 'fa fa-chain'),
+                ('Loading Dock', 2, 'This location has a loading dock and bay doors, perfect for moving Indiana and out.', 'fa fa-truck'),
+                ('Floor Drains', 2, 'This location has indoor floor drains.', 'fas fa-shower'),
+                ('Sprinkler', 2, '', 'fa fa-fire-extinguisher'),
+                ('Bathroom', 2, '', 'fas fa-toilet-paper'),
+                ('Customizable', 2, '', 'fas fa-cogs'),
+                ('Power', 2, '', 'fas fa-battery-full'),
                 ('Crane', 2, '', ''),
                 ('Mezzanine', 2, '', ''),
-                ('Kitchen', 2, '', ''),
-                ('Air Conditioning', 2, '', ''),
-                ('Security', 2, '', ''),
-                ('Auto Service', 2, '', '');
+                ('Kitchen', 2, '', 'fa fa-cutlery'),
+                ('Air Conditioning', 2, '', 'fa fa-snowflake-o'),
+                ('Security', 2, '', 'fa fa-lock'),
+                ('Auto Service', 2, '', 'fas fa-wrench');
 
 
                 INSERT INTO Space_Attributes(SpaceID,AttributeID) VALUES
