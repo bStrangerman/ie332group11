@@ -135,7 +135,10 @@ else {
   </ul>
   <ul class="navbar-nav ml-auto mt-10">
     <li class="nav-item">
-      <?php if(isset($_SESSION['UserID'])) { ?>
+      <?php if($LesseeRole) { ?>
+      <a class="nav-link login-button" href="lesseeAccount.php">My Account</a>
+      <?php }
+      else if($warehouseRole) { ?>
         <a class="nav-link login-button" href="warehouse.php">My Account</a>
       <?php }
       else { ?>

@@ -238,7 +238,7 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
             <?php if($warehouseRole) {?>
               <li><a href="warehouse.php">My Account</a></li>
             <?php } else if($LesseeRole) {?>
-              <li><a href="index.php">My Account</a></li>
+              <li><a href="lesseeAccount.php">My Account</a></li>
             <?php } else if(isset($_SESSION['UserID'])){ ?>
               <li><a href="index.php">My Account</a></li>
             <?php } else { ?>

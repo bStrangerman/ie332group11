@@ -149,7 +149,7 @@ https://www.prepbootstrap.com/bootstrap-template/image-checkbox
             </div>
             <div class="form-group">
                 <label for="PhoneNumber">Phone Number</label>
-                <input type="num" maxlength="10" name="PhoneNumber" class="form-control" id="PhoneNumber" value="<?php echo $LesseeInfo[0]['PhoneNumber']; ?>">
+                <input type="number" maxlength="12" name="PhoneNumber" class="form-control" id="PhoneNumber" value="<?php echo $LesseeInfo[0]['PhoneNumber']; ?>">
             </div>
             <!-- Email -->
             <div class="form-group">

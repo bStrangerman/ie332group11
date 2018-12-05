@@ -246,13 +246,25 @@ function getAvailableSpaces ($start_date, $end_date, $type){
               if($start > $contractEnd){
                 $timeUntil = date_diff($start, $contractEnd, true);
                 $timeUntil = $timeUntil->format("%a");
-                $Utilization[$i] = $timeUntil / $contractLength;
+                if($contractLength != 0){
+                  $Utilization[$i] = $timeUntil / $contractLength;
+                }
+                else {
+                  $Utilization[$i] = $scale;
+                }
+
               }
               // Select Past Contracts
               else if($end < $contractStart){
                 $timePast = date_diff($end, $contractStart, true);
                 $timePast = $timePast->format("%a");
-                $Utilization[$i] = $timePast / $contractLength;
+                if($contractLength != 0){
+                  $Utilization[$i] = $timePast / $contractLength;
+                }
+                else {
+                  $Utilization[$i] = $scale;
+                }
+
               }
               else{
                 $Utilization[$i] = 0;

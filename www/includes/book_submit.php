@@ -21,7 +21,9 @@ if(isset($_POST['SpaceID'])){
     }
   }
 }
-
+$_SESSION['book_submit'] = 'success';
+unset($_SESSION['book_info']);
+header("Location: ../pages/lesseeAccount.php");
 
 /**
  * [insertBooking description]
@@ -54,4 +56,5 @@ function insertBooking ($spaceID, $LesseeID, $startDate, $endDate, $AmountCharge
 
     //set contract to pending
     set_contract_status($last_id, 'Pending');
+
 }

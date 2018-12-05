@@ -87,9 +87,13 @@ if($err == array()){
     }
   }
   if(isset($_GET['size']))
-  $size = clean($_GET['size']);
+    $size = clean($_GET['size']);
   else
-  $size = $max_size;
+    $size = $max_size;
+  if(isset($_GET['price']))
+    $price = clean($_GET['price']);
+  else
+    $price = $max_price;
 }
 
 $max_price = 10000;
@@ -109,7 +113,7 @@ for($i = 0; $i < count($spaceID); ++$i){
       $score += 100 * (3 / 15);
     }
 
-    $score += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $max_price, 100 * (2/15));
+    $score += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $price, 100 * (2/15));
     $score += size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (5/15));
     $score = round($score) > 100 ? 100 : round($score);
     array_push($newdata, array("Spaces" => $data[$i]['Spaces'], "Latitude" => $data[$i]['Latitude'], "Longitude" => $data[$i]['Longitude'], "Addresses" => $data[$i]['Addresses'], "Distance" => $data[$i]['Distance'], "MonthlyPrice" => $data[$i]['MonthlyPrice'], "SpaceSize" => $data[$i]['SpaceSize'], "SpaceInformation" => $newdata[$i]['SpaceInformation'], "Score" => $score));
@@ -178,6 +182,13 @@ for($i = 0; $i < count($spaceID); ++$i){
             <div class="widget filter">
               <h4 class="widget-header">Size Needed (sqft)</h4>
               <input class="form-control" type="number" name="size" value="<?php echo clean($_GET['size']); ?>" placeholder="Square Feet">
+            </div>
+            <div class="widget filter">
+              <h4 class="widget-header">Max Price ($)</h4>
+              <input class="form-control" type="number" name="price" value="<?php echo clean($_GET['price']); ?>" placeholder="$">
+            </div>
+            <div class="form-group col-md-2">
+              <button type="submit" class="btn btn-primary">Search Now</button>
             </div>
           </form>
           <div class="widget category-list">

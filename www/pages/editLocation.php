@@ -2,7 +2,7 @@
 require_once "../includes/main.php";
 // checks if they are a proper user
 $root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
-
+array_print($_POST);
 // checks if the user is logged in and is a warehouse owner
 if (isset($_SESSION['UserID'])) {
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) && !$root)
@@ -100,7 +100,7 @@ if(isset($_POST['editing']) && !isset($_GET['add'])){
     $lat = clean($_POST['lat']);
     $lon = clean($_POST['lon']);
     $sql = "UPDATE Warehouses
-    SET Address = '$street', City = '$city', State = '$state', ZipCode = $zip, Latitude = '$lat', Longitude = '$lon'
+    SET Address = '$street', City = '$city', State = '$state', ZipCode = '$zip', Latitude = '$lat', Longitude = '$lon'
     WHERE WarehouseID = $warehouseID";
     if($conn -> query($sql) === TRUE){
       $_SESSION['message'] = "Success!";
@@ -130,7 +130,8 @@ else if($_GET['add'] == "1"){
     $lat = clean($_POST['lat']);
     $lon = clean($_POST['lon']);
     $sql = "INSERT INTO Warehouses (OwnerID, Address,City,State,ZipCode,Latitude,Longitude)
-    VALUES ($UserID, '$street', '$city', '$state', $zip, '$lat', '$lon')";
+    VALUES ($UserID, '$street', '$city', '$state', '$zip', '$lat', '$lon')";
+    echo $sql;
     if($conn -> query($sql) === TRUE){
       $warehouseID = $conn->insert_id;
       $_SESSION['message'] = "Success!";
@@ -224,6 +225,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header"><?php echo ($method == "add") ? "Add a new Location" : "Edit this location" ?></h1>
+        <p class="page-header">Make sure you add at least one space in this warehouse at the bottom of this page to start getting contracts.</p>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -258,10 +260,12 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                   <div class="form-group">
                     <label>Latitude</label>
                     <input type="text" class="form-control" name="lat" value="<?php echo ($method == "edit") ? $warehouse[0]['Latitude'] : ""; ?>">
+                    <p>Please input the Latitude so @Capacity's search can provide accurate results to the lessees.</p>
                   </div>
                   <div class="form-group">
                     <label>Longitude</label>
                     <input type="text" class="form-control" name="lon" value="<?php echo ($method == "edit") ? $warehouse[0]['Longitude'] : ""; ?>">
+                    <p>Please input the Longitude so @Capacity's search can provide accurate results to the lessees.</p>
                   </div>
                   <button type="submit" class="btn btn-default">Save My Changes</button>
                 </form>
@@ -313,6 +317,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
           <div class="panel-heading">
             Pictures
           </div>
+          <p>The following pictures are pictures for your warehouse.  These will be displayed on all the spaces partitioned in this spaces.</p>
           <?php
           $pictureSQL = "SELECT *
           FROM Pictures
@@ -379,7 +384,7 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
                 <div class="pull-right">
                 <div class="btn-group">
                   <a href="editSpace.php?add=1&warehouse=<?php echo $warehouseID; ?>">
-                    <button type="button" class="btn btn-default btn-xs">
+                    <button type="button" class="btn btn-info btn-xs">
                       Add Space
                     </button>
                   </a>
