@@ -1,2 +1,4 @@
 
 includes/PhpRbac/database/database.config
+www/includes/PhpRbac/database/database.config
+www/includes/db.php
