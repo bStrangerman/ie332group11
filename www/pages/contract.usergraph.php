@@ -42,7 +42,7 @@ while($row=$userInfo->fetch_assoc()){
 	}
 	}
 	$DateList[$d]= $userDateArray[$j];
-	$DailyUsers[$d]= $hold_users;
+	$DailyUsers[$d]= $hold_users + $DailyUsers[$d-1];
 	$d=$d+1;
 	$j=$j+1;
 }}
@@ -57,13 +57,13 @@ while($row=$userInfo->fetch_assoc()){
 	if($contractDateArray != array() && $ContractCount != array()){
 	while($k<(count($ContractCount))){
 	$hold_contracts = $ContractCount[$k];
-	if(isset($ContractrDateArray[$k+1])){
+	if(isset($ContractDateArray[$k+1])){
 		$k=$k+1;
 		$hold_contracts= $hold_contracts+ $ContractCount;
 	}
 	}
 	$DateList2[$l]= $ContractDateArray[$k];
-	$DailyContracts[$l]= $hold_contracts;
+	$DailyContracts[$l]= $hold_contracts + $DailyContracts[$l-1];
 	$l=$l+1;
 	$k=$k+1;
 
