@@ -33,11 +33,11 @@ while($row=$userInfo->fetch_assoc()){
 	$DateList=array();
 	$DailyUsers=array();
 	if($userDateArray != array() && $userCount != array()){
-	while($j<(count($userCount))){
+	while($j < (count($userCount))){
 	$hold_users = $userCount[$j];
 	if(isset($userDateArray[$j+1])){
-		$j=$j+1;
-		$hold_users= $hold_users+ $userCount;
+		$j= $j + 1;
+		$hold_users= $hold_users + $userCount[$j];
 		}
 	}
 	$DateList[$d]= $userDateArray[$j];
@@ -53,18 +53,18 @@ while($row=$userInfo->fetch_assoc()){
 	$DateList2=array();
 	$DailyContracts=array();
 	if($contractDateArray != array() && $ContractCount != array()){
-	while($k<(count($ContractCount))){
+	while($k < (count($ContractCount))){
 	$hold_contracts = $ContractCount[$k];
-	if(isset($ContractDateArray[$k+1])){
-		if($ContractDateArray[$k]==$ContractDateArray[$K+1]){
-		$k=$k+1;
+	if(isset($ContractDateArray[$k + 1])){
+		if($ContractDateArray[$k] == $ContractDateArray[$k + 1]){
+		$k=$k + 1;
 		$hold_contracts= $hold_contracts+ $ContractCount[$k];
 	}
 	}
 	$DateList2[$l]= $ContractDateArray[$k];
 	$DailyContracts[$l]= $hold_contracts + $DailyContracts[$l-1];
-	$l=$l+1;
-	$k=$k+1;
+	$l=$l + 1;
+	$k=$k + 1;
 
 }}
 
