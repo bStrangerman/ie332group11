@@ -52,6 +52,11 @@ if($dateArray != array() && $priceArray != array()){
 
 
 }
+
+
+
+
+
  // echo "DateList: " . array_print($DateList);
  // echo "dailyTake: " . array_print($dailyTake);
 
