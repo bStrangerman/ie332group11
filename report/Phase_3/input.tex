@@ -35,15 +35,19 @@ Tested on Google Chrome and Firefox:\\
 \item Notifications for the Warehouse Owner for new contracts (this is a work in progress).  The notifications are on the top right of the warehouse dashboard, highlighted as red if there is a notification.
 \item Utilization of Leaflet and openstreetmap.org map layer to provide the lessee with the location of the space during their search and their booking process
 \item A carousel of pictures are displayed to the lessee while looking at a location to lease.  These pictures are for the entire warehouse.  To add/ remove a picture for a warehouse, this is through the Edit Warehouse page from above.
-\item Utilization of javascript graphs, such as Zing and 
-\item nearby results on the homepage based on browser location
-\item google autocomplete search
-\item HTML5 Browser Geolocation to provide users with nearby locations to the user
+\item Utilization of javascript graphs, such as Zing 
+\item Nearby results on the homepage based on browser and IP location
+\item Location search is based on the Google Autocomplete Location Search API (note: Google limits the amount of queries we can send.  If the location autocomplete is not showing, this is because Google stopped our API key)
 \item Passwords are md5 hashed for security in the database
-\item .htaccess file preserves file organization with web pages
-\item pictures can be included with reviews
+\item .htaccess file preserves file organization with web pages so the root folder redirects to www/pages and .php is hidden from the url
 \item contact form sends an email to our group email and the recipient email regarding the contents of the contact form
-\item Presentation is made in LaTeX, the LaTeX code is included in submittal. 
+\item Presentation is made in LaTeX, the LaTeX code is included in submittal.
+\item ReCaptcha is on the contact form to spam contacts cannot be created.
+\item \textbf{Our group utilized GitHub and XAMPP to work on the website.  This is evidenced by the below picture displaying our finalized GitHub Repository}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{Phase_3/github}
+\end{figure}
 \end{itemize}
 
 \section*{Account Information}
@@ -160,22 +164,13 @@ Finding the perfect warehouse is only part of the matching process. Whan a lesse
 \end{figure}
 
 \subsection{Analytics}
-
-Several key dynamic data points are established as indicators of growth and stability. As seen below in Figure~\ref{fig:ownergraph} and Figure~\ref{fig:profit} ,respectivley, tracking revenue over time for the company and the respective warehouse owners can indicate trends in market demand or development for discrete areas. @Capacity also gives owners the tools to manage properties as a part of a larger portfolio, comparing warehouses as percentages of total investment with the company. Profit derived from the 5 \% commission is updated live based on national rental activity.
+Several key dynamic data points are established as indicators of growth and stability. As seen below in Figure~\ref{fig:ownergraph} @Capacity allows the owner of a warehouse to track revenue over time and indicate trends in market demand or development for discrete areas. @Capacity also gives owners the tools to manage properties as a part of a larger portfolio, comparing warehouses as percentages of total investment with the company. Profit derived from the 5 \% commission is updated live based on national rental activity.
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Phase_3/earninggraph}
 \caption{Snapshot in Owner's dashboard displaying total earnings for each warehouse}
 \label{fig:ownergraph}
 \end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{Phase_3/Profit}
-\caption{Snapshot in Root's dashboard displaying live tracking of company profit over time}
-\label{fig:profit}
-\end{figure}
-
 
 \subsection{Rewards and Incentives}
 As a company in touch with its users, it is in the best interest of all parties involved to reward exceptional use of the provided services. Benchmarks are established at earnings milestones influenced by occupation rates in the surrounding area. Reaching these marks allows the warehouse owner the opportunity to potentially renegotiate fee percentages for future contracts. Encouraging optimal use of warehouse services brings power users and new owners alike a new type of drive and relationship with their listing company, increasing customer retention. 

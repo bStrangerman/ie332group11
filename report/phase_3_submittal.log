@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.2)  5 DEC 2018 22:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.2)  5 DEC 2018 22:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -488,103 +488,99 @@ Overfull \hbox (4.49379pt too wide) in paragraph at lines 19--20
 
 [2
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+]
+<Phase_3/github.png, id=180, 1901.1025pt x 880.28876pt>
+File: Phase_3/github.png Graphic file (type png)
+<use Phase_3/github.png>
+Package pdftex.def Info: Phase_3/github.png  used on input line 49.
+(pdftex.def)             Requested size: 505.89pt x 234.24252pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.60 \item w
-            ww/includes/db.php [3]pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+l.59     \item P
+                urdue Career Account Information Username: \textbf{g1090432}... [3]pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 \newpage
-              [4] (./phase_3_submittal.toc)
+l.73 \newpage
+              [4 <./Phase_3/github.png>] (./phase_3_submittal.toc)
 \tf@toc=\write4
 \openout4 = `phase_3_submittal.toc'.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.71 \newpage
+l.75 \newpage
               [5]
-<Phase_3/Capacity_Logo_Trans.png, id=224, 1016.29688pt x 201.75375pt>
+<Phase_3/Capacity_Logo_Trans.png, id=227, 1016.29688pt x 201.75375pt>
 File: Phase_3/Capacity_Logo_Trans.png Graphic file (type png)
 <use Phase_3/Capacity_Logo_Trans.png>
-Package pdftex.def Info: Phase_3/Capacity_Logo_Trans.png  used on input line 83.
+Package pdftex.def Info: Phase_3/Capacity_Logo_Trans.png  used on input line 87.
 (pdftex.def)             Requested size: 328.82541pt x 65.27672pt.
  [1 <./Phase_3/Capacity_Logo_Trans.png>]
-<Phase_3/screenshot.png, id=232, 1445.4pt x 677.53125pt>
+<Phase_3/screenshot.png, id=234, 1445.4pt x 677.53125pt>
 File: Phase_3/screenshot.png Graphic file (type png)
 <use Phase_3/screenshot.png>
-Package pdftex.def Info: Phase_3/screenshot.png  used on input line 95.
+Package pdftex.def Info: Phase_3/screenshot.png  used on input line 99.
 (pdftex.def)             Requested size: 379.4175pt x 177.84944pt.
-<Phase_3/loading.png, id=234, 1432.60219pt x 727.21687pt>
+<Phase_3/loading.png, id=236, 1432.60219pt x 727.21687pt>
 File: Phase_3/loading.png Graphic file (type png)
 <use Phase_3/loading.png>
-Package pdftex.def Info: Phase_3/loading.png  used on input line 104.
+Package pdftex.def Info: Phase_3/loading.png  used on input line 108.
 (pdftex.def)             Requested size: 379.4175pt x 192.5895pt.
  [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.114 \subsection
+l.118 \subsection
                  {Intuitive and Informative Interface}pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.114 \subsection
+l.118 \subsection
                  {Intuitive and Informative Interface} <./Phase_3/screenshot.png> <./Phase_3/loading.png>]
-<Phase_3/utilization.png, id=245, 848.4197pt x 660.96938pt>
+<Phase_3/utilization.png, id=247, 848.4197pt x 660.96938pt>
 File: Phase_3/utilization.png Graphic file (type png)
 <use Phase_3/utilization.png>
-Package pdftex.def Info: Phase_3/utilization.png  used on input line 131.
+Package pdftex.def Info: Phase_3/utilization.png  used on input line 135.
 (pdftex.def)             Requested size: 379.4175pt x 295.58781pt.
  [3] [4pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.147 \paragraph
+l.151 \paragraph
                 {Amenities} <./Phase_3/utilization.png>]
-<Phase_3/distance.png, id=261, 1124.2pt x 795.97375pt>
+<Phase_3/distance.png, id=263, 1124.2pt x 795.97375pt>
 File: Phase_3/distance.png Graphic file (type png)
 <use Phase_3/distance.png>
-Package pdftex.def Info: Phase_3/distance.png  used on input line 157.
+Package pdftex.def Info: Phase_3/distance.png  used on input line 161.
 (pdftex.def)             Requested size: 379.4175pt x 268.63562pt.
-<Phase_3/earninggraph.png, id=264, 653.44125pt x 368.87813pt>
+<Phase_3/earninggraph.png, id=265, 653.44125pt x 368.87813pt>
 File: Phase_3/earninggraph.png Graphic file (type png)
 <use Phase_3/earninggraph.png>
-Package pdftex.def Info: Phase_3/earninggraph.png  used on input line 167.
+Package pdftex.def Info: Phase_3/earninggraph.png  used on input line 170.
 (pdftex.def)             Requested size: 505.89pt x 285.57927pt.
  [5pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.171 
+l.174 
        <./Phase_3/distance.png>]
-<Phase_3/Profit.png, id=273, 1152.10425pt x 234.27525pt>
-File: Phase_3/Profit.png Graphic file (type png)
-<use Phase_3/Profit.png>
-Package pdftex.def Info: Phase_3/Profit.png  used on input line 174.
-(pdftex.def)             Requested size: 505.89pt x 102.87051pt.
-<Phase_3/thermometer.png, id=274, 497.60907pt x 121.95563pt>
+<Phase_3/thermometer.png, id=273, 497.60907pt x 121.95563pt>
 File: Phase_3/thermometer.png Graphic file (type png)
 <use Phase_3/thermometer.png>
-Package pdftex.def Info: Phase_3/thermometer.png  used on input line 187.
+Package pdftex.def Info: Phase_3/thermometer.png  used on input line 182.
 (pdftex.def)             Requested size: 379.4175pt x 92.99054pt.
  [6pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.191 
+l.189 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.191 
-       <./Phase_3/earninggraph.PNG> <./Phase_3/Profit.PNG>] [7pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.209 \subsection
-                 {Self-Sustainment} <./Phase_3/thermometer.png>]) [8] (./phase_3_submittal.bbl)pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+l.189 
+       <./Phase_3/earninggraph.PNG> <./Phase_3/thermometer.png>] [7]) [8] (./phase_3_submittal.bbl)pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.69 \include{Phase_3/appendix}
@@ -594,7 +590,7 @@ l.69 \include{Phase_3/appendix}
 \openout2 = `Phase_3/appendix.aux'.
 
  (./Phase_3/appendix.tex
-<Phase_3/ER_Diagram.pdf, id=302, page=1, 556.0775pt x 782.925pt>
+<Phase_3/ER_Diagram.pdf, id=300, page=1, 556.0775pt x 782.925pt>
 File: Phase_3/ER_Diagram.pdf Graphic file (type pdf)
 <use Phase_3/ER_Diagram.pdf, page 1>
 Package pdftex.def Info: Phase_3/ER_Diagram.pdf , page1 used on input line 7.
@@ -605,7 +601,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has be
 l.12 \section
              {Ranking Algorithm} [10
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -622,7 +618,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has be
 <to be read again> 
                    \relax 
 l.53 
-      [11pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
+      [11pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.53 
+     pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -632,16 +633,11 @@ l.53
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.53 
-     pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.53 
      ]pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.60 \newpage
-              [12pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
+              [12pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -666,18 +662,18 @@ Package rerunfilecheck Info: File `phase_3_submittal.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 72.
  ) 
 Here is how much of TeX's memory you used:
- 10345 strings out of 492639
- 148271 string characters out of 6133103
- 284568 words of memory out of 5000000
- 13973 multiletter control sequences out of 15000+600000
+ 10343 strings out of 492639
+ 148250 string characters out of 6133103
+ 284463 words of memory out of 5000000
+ 13972 multiletter control sequences out of 15000+600000
  16706 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,9n,39p,1437b,574s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,9n,39p,1437b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on phase_3_submittal.pdf (18 pages, 1722281 bytes).
+Output written on phase_3_submittal.pdf (18 pages, 1706489 bytes).
 PDF statistics:
- 407 PDF objects out of 1000 (max. 8388607)
- 350 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 405 PDF objects out of 1000 (max. 8388607)
+ 348 compressed objects within 4 object streams
+ 74 named destinations out of 1000 (max. 500000)
  270 words of extra memory for PDF output out of 10000 (max. 10000000)
 
