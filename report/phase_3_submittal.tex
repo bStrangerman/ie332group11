@@ -1,0 +1,72 @@
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.75in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{apacite}
+\usepackage{soul} % Allows strikethroughs with \st
+\usepackage{graphicx}
+\usepackage{float}
+
+\begin{document}
+\pagenumbering{roman}
+\vspace*{0.5in}
+
+\begin{center}
+\Huge{{\bf IE332 Final Project}}
+\end{center}
+
+\vspace{0.3in}
+
+\noindent We certify that the submitted work does not violate any academic misconduct rules, and that it is solely our own work. By listing our names and student IDs we acknowledge that any misconduct will result in appropriate consequences.  Moreover, we have {\bf read and understood the assignment instructions}.
+
+\vspace{0.2in}
+
+\noindent {\em ``As a Boilermaker pursuing academic excellence, I pledge to be honest and true in all that I do.
+Accountable together - we are Purdue.''}
+
+\vspace{0.3in}
+
+\begin{flushleft}
+FULL name of each team member, as indicated in Blackboard:
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l}
+Name                       & PUID       & Purdue Email Address                                    \\ \hline
+Alexander (Alex) Rastovski & 0027736002 & \href{mailto:arastovs@purdue.edu}{arastovs@purdue.edu}  \\
+Austin Bohlin              & 0026937790 & \href{mailto:abohlin@purdue.edu}{abohlin@purdue.edu}    \\
+Blake Cobb                 & 0027886040 & \href{mailto:cobb17@purdue.edu}{cobb17@purdue.edu}      \\
+Brad Johnson               & 0027867858 & \href{mailto:john1663@purdue.edu}{john1663@purdue.edu}  \\
+Brandon Haberman           & 0028786526 & \href{mailto:bhaberma@purdue.edu}{bhaberma@purdue.edu}  \\
+John (Jack) Penna          & 0028167175 & \href{mailto:jpenna@purdue.edu}{jpenna@purdue.edu}      \\
+Jacob Moeckler             & 0028764178 & \href{mailto:jmoeckle@purdue.edu} {jmoeckle@purdue.edu}
+\end{tabular}
+\end{table}
+
+\end{flushleft}
+
+\vspace{0.2in}
+
+\noindent Date: \today
+
+
+
+
+% We created a separate file where the actual contents of Phase 1 are located.  This allows us to quickly change the input file for each phase without the worry that something has been mistakenly been edited in this file.
+\include{Phase_3/input}
+% \include{Phase_2/appendix}
+
+\renewcommand{\thepage}{}
+\bibliography{Phase_3/ref}
+\bibliographystyle{apacite}
+
+\include{Phase_3/appendix}
+
+
+\end{document}
