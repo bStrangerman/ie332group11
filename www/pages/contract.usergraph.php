@@ -36,6 +36,8 @@ while($row=$userInfo->fetch_assoc()){
 	while($j < (count($userCount))){
 	$hold_users = $userCount[$j];
 	if(isset($userDateArray[$j+1])){
+	if($userDateArray[j]==$userDateArray[$j+1]){
+
 		$j= $j + 1;
 		$hold_users= $hold_users + $userCount[$j];
 		}
@@ -44,7 +46,8 @@ while($row=$userInfo->fetch_assoc()){
 	$DailyUsers[$d]= $hold_users + $DailyUsers[$d-1];
 	$d=$d+1;
 	$j=$j+1;
-
+}
+}
 ?>
 <?php
 	$k=0;
