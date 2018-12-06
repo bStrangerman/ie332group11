@@ -122,7 +122,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		dataPoints: [<?php
 				$n=0;
 				while($n<$d){
-				echo "{ x:" . (date("Y,m,d", strtotime($Datelist[$n]))) . ", y:" ($runningContracts[$n]) . "},";
+				echo "{ x:" . (date("Y,m,d", strtotime($Datelist2[$n]))) . ", y:" ($runningContracts[$n]) . "},";
 					$n++;
 				}?>
 
