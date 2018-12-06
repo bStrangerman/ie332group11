@@ -32,7 +32,6 @@ function getContractInfo($UserID){
   INNER JOIN Status
   ON Status.StatusID = Contract_Status.StatusID " . (($GLOBALS['root'] == 1) ? " ORDER BY Contracts.ContractID ASC" : "AND Warehouses.OwnerID = $UserID ORDER BY StatusTime DESC");
 }
-echo getContractInfo($UserID);
 $mainSqlResult = $conn -> query(getContractInfo($UserID));
 
 require_once "../layouts/sb_admin_2/header.php";

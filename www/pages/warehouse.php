@@ -206,9 +206,18 @@ require_once "../layouts/sb_admin_2/header.php";
         </div>
       </div>
       <?php
-      $sql = "SELECT SUM(AmountCharged) AS Profit, COUNT(*) AS countOF
+      $sql = "SELECT SUM(Contracts.AmountCharged) AS Profit
       FROM Contracts
-      WHERE ContractID = $UserID";
+      LEFT JOIN Spaces
+      ON Spaces.SpaceID = Contracts.SpaceID
+      LEFT JOIN Warehouses
+      ON Warehouses.WarehouseID
+      LEFT JOIN Contract_Status
+      ON Contract_Status.ContractID = Contracts.ContractID
+      LEFT JOIN Status
+      ON Status.StatusID = Contract_Status.StatusID
+      WHERE Warehouses.OwnerID = $UserID
+      AND Status.StatusName = 'Approved'";
 
       $result = $conn -> query($sql);
       while($row = $result -> fetch_assoc()){
