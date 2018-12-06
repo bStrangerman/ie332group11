@@ -90,6 +90,7 @@ if($err == array()){
     $size = clean($_GET['size']);
   else
     $size = $max_size;
+
   if(isset($_GET['price']))
     $price = clean($_GET['price']);
   else
@@ -97,11 +98,10 @@ if($err == array()){
 }
 
 $max_price = 10000;
-$max_size = 3000;
 
 $newdata = array();
 
-for($i = 0; $i < count($spaceID); ++$i){
+for($i = 0; $i < count($spaceID); $i++){
   if(isset($data[$i]["Spaces"])) {
     $score = 0;
     $score += Utilization($data[$i]['Spaces'], $start, $end, (100 * (5/15)));
@@ -115,7 +115,9 @@ for($i = 0; $i < count($spaceID); ++$i){
 
     $score += price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $price, 100 * (2/15));
     $score += size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (5/15));
+    echo "<br>size: " . $size . " spaceSize " . $data[$i]['SpaceSize'] . " maxSize " . $max_size . "<br>";
     $score = round($score) > 100 ? 100 : round($score);
+    echo "score: " . size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (5/15));
     array_push($newdata, array("Spaces" => $data[$i]['Spaces'], "Latitude" => $data[$i]['Latitude'], "Longitude" => $data[$i]['Longitude'], "Addresses" => $data[$i]['Addresses'], "Distance" => $data[$i]['Distance'], "MonthlyPrice" => $data[$i]['MonthlyPrice'], "SpaceSize" => $data[$i]['SpaceSize'], "SpaceInformation" => $newdata[$i]['SpaceInformation'], "Score" => $score));
   }
 }
@@ -280,7 +282,7 @@ for($i = 0; $i < count($spaceID); ++$i){
               <a href="spaces.php?spaceID=<?php echo $newdata['Spaces'][$i]; ?>"><i class="fa fa-folder-open-o"></i>Furnitures</a>
             </li> -->
             <li class="list-inline-item">
-              <a href=""><strong><?php echo $newdata[$i]['Score'] . "%</strong> match"; ?></a>
+              <a href=""><strong><?php echo $newdata[$i]['Score'] . "%</strong> match" . "price_score " . price_score(($data[$i]['MonthlyPrice'] * $data[$i]['SpaceSize']), $price, 100 * (2/15)) . " size_score: " . size_score($size, $data[$i]['SpaceSize'], $max_size, 100 * (5/15)); ?></a>
             </li>
           </ul>
           <p class="card-text"><?php echo $newdata[$i]['SpaceInformation']; ?></p>

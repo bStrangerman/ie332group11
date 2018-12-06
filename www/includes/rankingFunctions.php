@@ -284,44 +284,65 @@ function getAvailableSpaces ($start_date, $end_date, $type){
         return $max_Utilization;
       }
 
+/**
+ * Rank distances
+ * @param  [num]  $max_distance_wanted [maximum wanted distance]
+ * @param  [num]  $distance_away       [distance away the space is]
+ * @param  integer $scale               [scale of the score]
+ * @return [num]                       [score]
+ */
       function distance_score($max_distance_wanted , $distance_away, $scale = 100){
         $distance_score = $scale * (1 - $distance_away / $max_distance_wanted);
         return $distance_score;
       }
 
+/**
+ * size score for lessee
+ * @param  [num]  $size_wanted [size that is wanted]
+ * @param  [num]  $space_size  [size of the space]
+ * @param  [num]  $max_size    [maximum size of all the spaces]
+ * @param  integer $scale       [scale of the score]
+ * @return [type]               [size scocre output]
+ */
       function size_score($size_wanted, $space_size, $max_size, $scale = 100){
-        if($space_size < $size_wanted)
+
+        if($space_size < $size_wanted){
           $space_score = 0;
-        else if($space_size > $size_wanted)
-          $space_score = (-($max_size / ($space_size - $size_wanted)) + $scale);
-        else
+        }
+        else if($space_size > $size_wanted){
+          $space_score = $scale * (1 - (($space_size - $size_wanted) / ($max_size)));
+        }
+        else{
           $space_score = $scale;
+        }
 
         return $space_score;
       }
 
+/**
+ * Price score rankings
+ * @param  [int]  $space_price [price of the current space]
+ * @param  [int]  $max_price   [max price wanted]
+ * @param  integer $min_price   [min price of selection]
+ * @param  integer $scale       [scale of score wanted]
+ * @return [type]               [socre of price]
+ */
       function price_score($space_price, $max_price, $min_price = 0, $scale = 100){
 
         $price_score = $scale * (1 - ($space_price - $min_price) / ($max_price - $min_price));
         if($space_price > $max_price)
-        $price_score = 0;
+          $price_score = 0;
         return $price_score;
       }
 
-
-      function previousRatings($spaceID, $scale = 100){
-        $rating_range = 5;
-        $rating_score = ($scale / $rating_range) * $rating;
-      }
-
-      function ifMulti($result){
-        if(count($result) == 1){
-            $score = 100 / 3;
-        }
-        else
-        $score = 0;
-      }
-
+/**
+ * Distance algorithm  https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
+ * @param  [type] $lat1 [latitude of origin]
+ * @param  [type] $lon1 [longitude of origin]
+ * @param  [type] $lat2 [latitude of destination]
+ * @param  [type] $lon2 [longitude of destingation]
+ * @return [type]       [distance]
+ */
       function distanceAlgorithm($lat1, $lon1, $lat2, $lon2) {
         $pi80 = M_PI / 180;
         $lat1 *= $pi80;
@@ -340,6 +361,11 @@ function getAvailableSpaces ($start_date, $end_date, $type){
         return ($km * 1000);
       }
 
+/**
+ * convert address to lat lon
+ * @param  [type] $address [address of querty]
+ * @return [type]          [array of lat lon]
+ */
       function getLatLon($address){
         // Adapted from the google geocoding API
         // Source: http://www.datasciencetoolkit.org/developerdocs#street2coordinates
@@ -376,34 +402,6 @@ function getAvailableSpaces ($start_date, $end_date, $type){
         }
       }
 
-      function getZip($lat, $lon){
-        // Adapted from the google geocoding API
-        // Source: http://www.datasciencetoolkit.org/developerdocs#street2coordinates
-          $API_CALL = "http://www.datasciencetoolkit.org/coordinates2politics/". $lat . "%2c" . $lon;
 
-        // echo "<a href='" . $url . "'>" . $url . "</a><br>";
-        // get the json response
-        $resp_json = file_get_contents($API_CALL);
 
-        // decode the json
-        $resp = json_decode($resp_json, true);
-
-        // response status will be 'OK', if able to geocode given address
-        if ($resp['status'] == 'OK') {
-
-          $getZip = isset($resp['location']['']) ? $resp['location'][''] : "";
-
-          // verify if data is complete
-          if ($getZip) {
-            return $getZip;
-          }
-          else {
-            return false;
-          }
-        }
-        else {
-          // echo "<strong>ERROR: {$resp['status']}</strong>";
-          return false;
-        }
-      }
       ?>
