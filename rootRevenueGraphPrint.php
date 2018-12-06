@@ -49,6 +49,8 @@ if($dateArray != array() && $priceArray != array()){
  	$d = $d + 1;
  	$j = $j + 1;
  }
+
+
 }
  // echo "DateList: " . array_print($DateList);
  // echo "dailyTake: " . array_print($dailyTake);
@@ -58,8 +60,6 @@ if($dateArray != array() && $priceArray != array()){
  // while($k<$d){
 	//  echo "{ x: new Date(" . (date("Y,m,d", strtotime($DateList[$k]))) . "), y: " . ($dailyTake[$k]) . "},<br>";
 	//  $k++;
-  echo (date("Y,m,d", strtotime($DateList[0])));
-  echo (date("Y,m,d", strtotime($DateList[$d-1])));
 
  ?>
 
@@ -90,7 +90,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		indexLabelFontColor: "darkSlateGray",
 		name: "views",
 		type: "area",
-		yValueFormatString: "#,##0.0mn",
+		yValueFormatString: "$#,##0.00",
 		dataPoints: [
 	<?php
 		$k=0;
