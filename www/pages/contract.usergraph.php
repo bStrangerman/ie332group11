@@ -43,7 +43,7 @@ if($userDateArray != array() && $userCount != array()){
 			}
 		}
 		$DateList[$d]= $userDateArray[$j];
-		$DailyUsers[$d]= $hold_users + $DailyUsers[$d-1];
+		$DailyUsers[$d]= $hold_users + $DailyUsers[$d];
 		$d=$d+1;
 		$j=$j+1;
 	}
