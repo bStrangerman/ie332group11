@@ -1,3 +1,10 @@
+
+
+####### This scipt generates data for all of the main entities represented in our database. 
+#Additional R functions and CSV files in the DATA GENERATION folder are needed to successfully run this code. #########
+
+
+
 ################# USER DATA#################
 #All information generated in this section is data for both Owners and Lessees, which is separated upon SQL injection###
 
@@ -121,6 +128,22 @@ r_companies <- function(n){
 user_data <- data.frame(r_usernames(n),r_first_names(n),r_last_names(n),r_passwords(n),r_email_addresses(n),r_phone_numbers(n),r_companies(n))
 write.table(user_data,file = "USERS.csv", append = FALSE, quote = FALSE, sep = ",", row.names = FALSE, col.names = TRUE)
 
+########## USER ROLES ##############
+#This code assigns each user a role
+# Warehouse Owner = 3
+# Lessee = 5
+
+warehouseOwners <- c(1:400) #Designate first 400 random users as owners
+ownerRoles <- rep(3,length(warehouseOwners))
+
+lessees <- c(401:1000) #Designate last 600 random users as lessees
+lesseeRoles <- rep(5,length(lessees))
+
+userIDs <- c(warehouseOwners, lessees)
+roleIDs <- c(ownerRoles,lesseeRoles)
+
+userRoles_data <- data.frame(userIDs,roleIDs)
+write.table(userRoles_data,file="USER_ROLES.csv",append=F,quote=F,sep=",",row.names=F,col.names=T)
 
 ########### WAREHOUSE DATA ####################
 
