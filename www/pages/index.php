@@ -433,7 +433,7 @@ $IP_Use = unserialize($_COOKIE["IP_Data"]);
       <div class="section-header">
         <h2>nearby</h2>
         <p>Explore nearby and recommended locations</p>
-        <?php echo ($_SESSION['ip_message'] == "") ? "" : "<p>" . $_SESSION['ip_message'] . "</p>"; ?>
+        <?php echo ($_SESSION['ip_message'] == "") ? "" : "<p style='color:red'>" . $_SESSION['ip_message'] . "</p>"; ?>
       </div><!--/.section-header-->
       <div class="explore-content">
 

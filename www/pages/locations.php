@@ -158,8 +158,8 @@ require_once "../layouts/sb_admin_2/header.php";
 
                           // print the profit for each warehouse - our fee
                           echo "$ " . round($max_profit_per_space / $feeRate,2);?></td>
-                          <td><a href="editSpace.php?add=1&warehouse=<?php echo $warehouseID; ?>">
-                            <button class="btn btn-outline btn-primary">Add Space</button></a></td>
+                          <td><a href="editSpace.php?edit=1&space=<?php echo $spaces['SpaceID']; ?>">
+                            <button class="btn btn-outline btn-primary">Edit</button></a></td>
                           </tr>
                           <?php
                         }
