@@ -21,7 +21,7 @@ while($row=$contractInfo ->fetch_assoc()){
 	array_push($contractDateArray,$ContractCount);
 
 }
-while($row=$contractInfo->fetch_assoc()){
+while($row=$userInfo->fetch_assoc()){
 		$userCreationDate=$row['CreationDate'];
 		$userCount=$row['Count'];
 		array_push($userDateArray,$userCount);
