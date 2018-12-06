@@ -1,6 +1,6 @@
 
 
-####### This scipt generates data for all of the main entities represented in our database. 
+####### This script generates data for all of the main entities represented in our database. 
 #Additional R functions and CSV files in the DATA GENERATION folder are needed to successfully run this code. #########
 
 
@@ -9,6 +9,7 @@
 #All information generated in this section is data for both Owners and Lessees, which is separated upon SQL injection###
 
 ##The following functions are taken from an R-project package generator
+#REFERENCE: Hendricks, P. (2015, Aug). Package 'generator'. R Project. Retrieved from https://cran.r-project.org/web/packages/generator/generator.pdf
 
 n = 1000 #number of users to generate
 
@@ -41,7 +42,7 @@ r_email_addresses <- function(n) {
 
 #Create n random full names
 r_full_names <- function(n) {
-  CommonNames <- read.csv("Most Common Names.csv") #Read CSV file of most common names 
+  CommonNames <- read.csv("Most Common Names.csv") #Read CSV file of most common names
   names <- CommonNames[3:1002,18]
   surnames <- CommonNames[3:502,1]
   first_names <- names[c(sample(1:length(names), size = n, replace = TRUE))]
@@ -82,8 +83,8 @@ r_phone_numbers <- function(n, use_hyphens = FALSE, use_parentheses = FALSE, use
            paste0(sample(1:9, size = 4), collapse = ""),
            collapse = "")
   }
-  
-  
+
+
   return(replicate(n, build_phone_number(l = left_paren,
                                          r = right_paren,
                                          h = hyphen,
@@ -154,7 +155,7 @@ streetName <- randomAddresses[ ,22]
 addresses <- paste(houseNumber,streetName,sep=" ")
 
 ##OWNER ID##
-ownerID <- sample(1:400,length(addresses),replace=T) #First 400 Users designated as Owners 
+ownerID <- sample(1:400,length(addresses),replace=T) #First 400 Users designated as Owners
 
 ##ZIP CODE##
 zipcodes <- randomAddresses[ ,2]
@@ -168,6 +169,9 @@ states<- randomAddresses[ ,5]
 ##LATITUDES AND LONGITUDES##
 latitudes <- randomAddresses[ ,7]
 longitudes <- randomAddresses[ ,8]
+
+### WAREHOUSE descriptive statistics taken from real warehouses at LoopNet.com
+#REFERENCE: Loopnet commercial real estate. (n.d.). CoStar Group Inc. Retrieved from http://www.loopnet.com/
 
 ##BUILDING SIZE##
 n=length(addresses)
@@ -320,7 +324,7 @@ end[1] <- as.Date(end_date[1],origin="2012-12-31")
 
 #Assign start dates and end dates to each space
 for (i in 2:length(spaceID)){
-  if (spaceID[i] == spaceID[i-1]){ #Ensure two contracts for the same space do not overlap in the schedule  
+  if (spaceID[i] == spaceID[i-1]){ #Ensure two contracts for the same space do not overlap in the schedule
     start_date[i] <- sample(seq(end_date[i-1], end_date[i-1]+sample(14:365,1)), 1)
     end_date[i] = start_date[i] + sample(14:365) #Ensure end date > start date
   }
@@ -359,7 +363,7 @@ write.table(contract_data,file = "CONTRACTS.csv", append = FALSE, quote = FALSE,
 
 ########## CONTRACT STATUS ###############
 
-contractID <- sample(1:2000,2000,replace=F) #randomize contractID 
+contractID <- sample(1:2000,2000,replace=F) #randomize contractID
 round(contractID, digits=0)
 
 contractStatus <- sample(2:4,2000,replace=T) #randomize the status of the contract
