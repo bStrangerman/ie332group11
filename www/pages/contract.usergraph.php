@@ -1,15 +1,13 @@
-<!DOCTYPE HTML>
-<html>
-<head>
+<?php require_once "www/includes/main.php"; ?>
 <?php
 $curdate = date("Y/m/d");
 //Query the contract amount, start date, and associated space ID of every contract in database
-$contractSQL = "SELECT Contracts.StartDate
+$contractSQL = "SELECT Contracts.StartDate, COUNT()
 FROM Contracts
 ORDER BY Contracts.StartDate ASC";
 $contractInfo = $conn->query($contractSQL);
 
-$userSQL = "SELECT phprbac_users.CreationDate
+$userSQL = "SELECT phprbac_users.CreationDate, COUNT()
 FROM phprbac_users
 ORDER BY phprbac_users.CreationDate ASC";
 $userInfo = $conn->query($userSQL);
@@ -19,19 +17,61 @@ $userDateArray=array();
 
 while($row=$contractInfo ->fetch_assoc()){
 	$ContractCreationDate = $row['CreationDate'];
-	array_push($contractDateArray,$ContractCreationDate);
+	$ContractCount=$row['Count'];
+	array_push($contractDateArray,$ContractCount);
 
 }
 while($row=$contractInfo->fetch_assoc()){
 		$userCreationDate=$row['CreationDate'];
-		array_push($userDateArray,$userCreationDate);
+		$userCount=$row['Count'];
+		array_push($userDateArray,$userCount);
 
 	}
-	$runningUsers=0;
-	$runningContracts=0;
+	$j=0;
+	$d=0;
+	$hold_users=0;
+	$DateList=array();
+	$DailyUsers=array();
+;
+	if($userDateArray != array() && $userCount != array()){
+	while($j<(count($userCount))){
+	$hold_users = $userCount[$j];
+	if(isset($userDateArray[$j+1])){
+		$j=$j+1;
+		$hold_users= $hold_users+ $userCount;
+	}
+	}
+	$DateList[$d]= $userDateArray[$j];
+	$DailyUsers[$d]= $hold_users;
+	$d=$d+1;
+	$j=$j+1;
+}}
+?>
+<?php
+	$k=0;
+	$l=0;
+	$hold_contracts=0;
+	$DateList2=array();
+	$DailyContracts=array();
 
+	if($contractDateArray != array() && $ContractCount != array()){
+	while($k<(count($ContractCount))){
+	$hold_contracts = $ContractCount[$k];
+	if(isset($ContractrDateArray[$k+1])){
+		$k=$k+1;
+		$hold_contracts= $hold_contracts+ $ContractCount;
+	}
+	}
+	$DateList2[$l]= $ContractDateArray[$k];
+	$DailyContracts[$l]= $hold_contracts;
+	$l=$l+1;
+	$k=$k+1;
+
+}}
 
 	?>
+	<html>
+	<head>
 <script>
 window.onload = function () {
 
@@ -65,9 +105,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		markerSize: 0,
 		yValueFormatString: "#,###",
 		dataPoints: [<?php
-		while($k<$d){
-		echo	"{ x:" . (date("Y,m,d", strtotime($DateList[$k])))", y:" ($runningUsers[$k]) . "},";
-			$k++;
+		$m=0;
+		while($m<$d){
+		echo	"{ x:" . (date("Y,m,d", strtotime($DateList[$m])))", y:" ($runningUsers[$m]) . "},";
+			$m++;
 		}?>
 		]
 	},
@@ -79,9 +120,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		markerSize: 0,
 		yValueFormatString: "#,###",
 		dataPoints: [<?php
-				while($k<$d){
-				echo "{ x:" . (date("Y,m,d", strtotime($Datelist[$k]))) . ", y:" ($runningContracts[k]) . "},";
-					$k++;
+				$n=0;
+				while($n<$d){
+				echo "{ x:" . (date("Y,m,d", strtotime($Datelist[$n]))) . ", y:" ($runningContracts[$n]) . "},";
+					$n++;
 				}?>
 
 		]
