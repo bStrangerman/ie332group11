@@ -54,11 +54,13 @@ if($dateArray != array() && $priceArray != array()){
  // echo "dailyTake: " . array_print($dailyTake);
 
  //echos the arrays needed for the chart
- $k=0;
- while($k<$d){
-	 echo "{ x: new Date(" . (date("Y,m,d", strtotime($DateList[$k]))) . "), y: " . ($dailyTake[$k]) . "},<br>";
-	 $k++;
- }
+ // $k=0;
+ // while($k<$d){
+	//  echo "{ x: new Date(" . (date("Y,m,d", strtotime($DateList[$k]))) . "), y: " . ($dailyTake[$k]) . "},<br>";
+	//  $k++;
+  echo (date("Y,m,d", strtotime($DateList[0])));
+  echo (date("Y,m,d", strtotime($DateList[$d-1])));
+
  ?>
 
 
@@ -73,10 +75,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Company Profit Over Time"
 	},
 	axisX: {
-	// minimum: new Date(<?php (date("Y,m,d", strtotime($DateList[0])))?>),
-	// maximum: new Date(<?php (date("Y,m,d", strtotime($DateList[$d-1])))?>),
-	minimum: new Date(2013,01,01),
-	maximum: new Date(2025,01,15),
+	minimum: new Date(<?php echo (date("Y,m,d", strtotime($DateList[0])))?>),
+	maximum: new Date(<?php echo (date("Y,m,d", strtotime($DateList[$d-1])))?>),
+	// minimum: new Date(2013,01,01),
+	// maximum: new Date(2025,01,15),
 		valueFormatString: "MMM YY"
 	},
 	axisY: {
