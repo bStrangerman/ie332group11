@@ -57,7 +57,7 @@ while($row=$userInfo->fetch_assoc()){
 	$hold_contracts = $ContractCount[$k];
 	if(isset($ContractDateArray[$k + 1])){
 		if($ContractDateArray[$k] == $ContractDateArray[$k + 1]){
-		$k=$k + 1;
+		$k= $k + 1;
 		$hold_contracts= $hold_contracts+ $ContractCount[$k];
 	}
 	}
@@ -66,7 +66,8 @@ while($row=$userInfo->fetch_assoc()){
 	$l=$l + 1;
 	$k=$k + 1;
 
-}}
+}
+}
 
 	?>
 	<html>
