@@ -44,7 +44,7 @@ while($row=$userInfo->fetch_assoc()){
 	$DailyUsers[$d]= $hold_users + $DailyUsers[$d-1];
 	$d=$d+1;
 	$j=$j+1;
-}}
+}
 ?>
 <?php
 	$k=0;
