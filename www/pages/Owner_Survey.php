@@ -1,7 +1,9 @@
 <?php
 require_once "../includes/main.php";
-$UserID = $_SESSION['UserID'];
+// checks if user has proper roles
+$root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
 
+$UserID = $_SESSION['UserID'];
 if(isset($_SESSION['UserID'])){
   if(!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID'])){
     header('Location: warehouse.php');
@@ -68,6 +70,11 @@ else {
 }
 require_once "../layouts/sb_admin_2/header.php";
 
+
+if($root){
+  echo "You need to be signed in as an owner to review contracts.";
+  exit;
+}
 
 ?>
 <!-- =====================================

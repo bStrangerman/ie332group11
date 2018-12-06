@@ -1,0 +1,25 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+PHP-RBAC%
+}{%
+PHP-RBAC%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+abiusx}
+\APACinsertmetastar {%
+abiusx}%
+\begin{APACrefauthors}%
+PHP-RBAC.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APACrefbtitle {PHP-RBAC.} {Php-rbac.}
+\newblock
+\begin{APACrefURL} \url{http://phprbac.net/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

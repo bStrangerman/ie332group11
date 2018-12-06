@@ -146,7 +146,7 @@ else {
       <?php } ?>
     </li>
     <li class="nav-item">
-      <a class="nav-link add-button" href="#"><i class="fa fa-plus-circle"></i> Add Listing</a>
+      <a class="nav-link add-button" href="logout.php"><i class="fa fa-negative-circle"></i> Logout</a>
     </li>
   </ul>
 </div>

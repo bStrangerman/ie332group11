@@ -2,7 +2,6 @@
 require_once "../includes/main.php";
 // checks if they are a proper user
 $root = $rbac->Users->hasRole('root', $UserID = $_SESSION['UserID']);
-array_print($_POST);
 // checks if the user is logged in and is a warehouse owner
 if (isset($_SESSION['UserID'])) {
   if (!$rbac->Users->hasRole('Warehouse_Owner', $UserID = $_SESSION['UserID']) && !$root)
@@ -131,7 +130,6 @@ else if($_GET['add'] == "1"){
     $lon = clean($_POST['lon']);
     $sql = "INSERT INTO Warehouses (OwnerID, Address,City,State,ZipCode,Latitude,Longitude)
     VALUES ($UserID, '$street', '$city', '$state', '$zip', '$lat', '$lon')";
-    echo $sql;
     if($conn -> query($sql) === TRUE){
       $warehouseID = $conn->insert_id;
       $_SESSION['message'] = "Success!";

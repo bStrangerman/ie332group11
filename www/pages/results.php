@@ -90,6 +90,7 @@ if($err == array()){
     $size = clean($_GET['size']);
   else
     $size = $max_size;
+
   if(isset($_GET['price']))
     $price = clean($_GET['price']);
   else
@@ -97,11 +98,10 @@ if($err == array()){
 }
 
 $max_price = 10000;
-$max_size = 3000;
 
 $newdata = array();
 
-for($i = 0; $i < count($spaceID); ++$i){
+for($i = 0; $i < count($spaceID); $i++){
   if(isset($data[$i]["Spaces"])) {
     $score = 0;
     $score += Utilization($data[$i]['Spaces'], $start, $end, (100 * (5/15)));

@@ -1,3 +1,6 @@
+<?php
+require_once "../includes/main.php";
+?>
 <!--====================================
 =            TABLE OF NAMES            =
 ========================================
@@ -13,10 +16,7 @@
 = ls_val -> Value of Space             =
 ======================================-->
 <!-- The variables for the out of 5 ratings arent in the code. -->
-
 <?php
-require_once "../includes/main.php";
-$_SESSION['UserID'] = 3;
 $UserID = $_SESSION['UserID'];
 
 if(isset($_SESSION['UserID'])){
@@ -31,14 +31,14 @@ if(isset($_SESSION['UserID'])){
     FROM Contracts
     LEFT JOIN Spaces
     ON Spaces.SpaceID =Contracts.SpaceID
-    LEFT JOIN warehouses
+    LEFT JOIN Warehouses
     ON Warehouses.WarehouseID = Spaces.SpaceID
     LEFT JOIN phprbac_users
     ON phprbac_users.UserID = Contracts.LesseeID
     WHERE LesseeID = $UserID
     AND ContractID = $contract";
 
-    $results = $GLOBALS ['conn'] -> query($sql);
+    $results = $conn -> query($sql);
     while($contractInfo[]=mysqli_fetch_array($results));
 
     if(count($contractInfo) <= 1){

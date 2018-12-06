@@ -2,7 +2,6 @@
 require_once "../includes/main.php";
 // print the header
 require_once "../layouts/Calssimax/header.php";
-array_print($_POST);
 if(isset($_POST['email'])) {
 
   // EDIT THE 2 LINES BELOW AS REQUIRED
@@ -111,7 +110,7 @@ $message = "";
     <!-- Row Start -->
     <div class="row">
       <div class="col-md-12">
-        <h3 style="<?php echo (isset($sent) ? (isset($error_message) ? "color:green" : (isset($message0 ? "color:red" : "")) : "")?>"><?php echo (!isset($sent)) ? $error_message : $message ?> </h3>
+        <h3 style="<?php echo (isset($sent) ? (isset($error_message) ? "color:green" : (isset($message) ? "color:red" : "")) : "")?>"><?php echo (!isset($sent)) ? $error_message : $message ?> </h3>
         <div class="widget personal-info">
           <h3 class="widget-header user">Contact Us</h3>
           <form name="contactform" method="POST">
